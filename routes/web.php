@@ -6,6 +6,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ShipperController;
 use App\Http\Controllers\TypePackagingController;
 use App\Http\Controllers\TypeWeightController;
+use App\Http\Controllers\TypeMeasurementController;
 use App\Models\Shipper;
 use App\Models\TypePackaging;
 use App\Models\User;
@@ -100,5 +101,18 @@ Route::middleware('auth')->group(function () {
         Route::get('/typeWeightEdit/{id}', 'edit')->name('typeWeight.edit');
         Route::put('/typeWeightUpdate/{id}', 'update')->name(('typeWeight.update'));
         Route::get('/typeWeightDestroy/{id}', 'destroy')->name('typeWeight.destroy');
+    });
+});
+
+// Type Measurement
+Route::middleware('auth')->group(function () {
+    Route::controller(TypeMeasurementController::class)->group(function () {
+        Route::get('/typeMeasurement', 'index')->name('typeMeasurement');
+        Route::get('/typeMeasurementShow/{id}', 'show')->name('typeMeasurement.show');
+        Route::get('/typeMeasurementCreate', 'create')->name('typeMeasurement.create');
+        Route::post('/typeMeasurementStore', 'store')->name('typeMeasurement.store');
+        Route::get('/typeMeasurementEdit/{id}', 'edit')->name('typeMeasurement.edit');
+        Route::put('/typeMeasurementUpdate/{id}', 'update')->name(('typeMeasurement.update'));
+        Route::get('/typeMeasurementDestroy/{id}', 'destroy')->name('typeMeasurement.destroy');
     });
 });
