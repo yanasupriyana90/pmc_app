@@ -63,7 +63,7 @@ class ContainerSizeTypeSeeder extends Seeder
             'updated_at' => Carbon::now()],
 
             ['name'=>"40' DC DRY CONTAINER ",
-
+            'user_id' => 2,
             'created_at'=>Carbon::now(),
             'updated_at' => Carbon::now()],
 

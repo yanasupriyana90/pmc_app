@@ -8,6 +8,7 @@ use App\Http\Controllers\TypeCurrencyController;
 use App\Http\Controllers\TypePackagingController;
 use App\Http\Controllers\TypeWeightController;
 use App\Http\Controllers\TypeMeasurementController;
+use App\Http\Controllers\TypePaymentController;
 use App\Models\Shipper;
 use App\Models\TypePackaging;
 use App\Models\User;
@@ -128,5 +129,18 @@ Route::middleware('auth')->group(function () {
         Route::get('/typeCurrencyEdit/{id}', 'edit')->name('typeCurrency.edit');
         Route::put('/typeCurrencyUpdate/{id}', 'update')->name(('typeCurrency.update'));
         Route::get('/typeCurrencyDestroy/{id}', 'destroy')->name('typeCurrency.destroy');
+    });
+});
+
+// Type Payment
+Route::middleware('auth')->group(function () {
+    Route::controller(TypePaymentController::class)->group(function () {
+        Route::get('/typePayment', 'index')->name('typePayment');
+        Route::get('/typePaymentShow/{id}', 'show')->name('typePayment.show');
+        Route::get('/typePaymentCreate', 'create')->name('typePayment.create');
+        Route::post('/typePaymentStore', 'store')->name('typePayment.store');
+        Route::get('/typePaymentEdit/{id}', 'edit')->name('typePayment.edit');
+        Route::put('/typePaymentUpdate/{id}', 'update')->name(('typePayment.update'));
+        Route::get('/typePaymentDestroy/{id}', 'destroy')->name('typePayment.destroy');
     });
 });

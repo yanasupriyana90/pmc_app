@@ -119,7 +119,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ Route('typePayment') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Payment Information</p>
                             </a>
