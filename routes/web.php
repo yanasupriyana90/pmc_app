@@ -5,6 +5,7 @@ use App\Http\Controllers\DivisionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ShipperController;
 use App\Http\Controllers\TypePackagingController;
+use App\Http\Controllers\TypeWeightController;
 use App\Models\Shipper;
 use App\Models\TypePackaging;
 use App\Models\User;
@@ -88,3 +89,16 @@ Route::middleware('auth')->group(function () {
     });
 });
 
+
+// Type Weight
+Route::middleware('auth')->group(function () {
+    Route::controller(TypeWeightController::class)->group(function () {
+        Route::get('/typeWeight', 'index')->name('typeWeight');
+        Route::get('/typeWeightShow/{id}', 'show')->name('typeWeight.show');
+        Route::get('/typeWeightCreate', 'create')->name('typeWeight.create');
+        Route::post('/typeWeightStore', 'store')->name('typeWeight.store');
+        Route::get('/typeWeightEdit/{id}', 'edit')->name('typeWeight.edit');
+        Route::put('/typeWeightUpdate/{id}', 'update')->name(('typeWeight.update'));
+        Route::get('/typeWeightDestroy/{id}', 'destroy')->name('typeWeight.destroy');
+    });
+});
