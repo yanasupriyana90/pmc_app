@@ -4,6 +4,7 @@ use App\Http\Controllers\ContainerSizeTypeController;
 use App\Http\Controllers\DivisionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ShipperController;
+use App\Http\Controllers\TypeCurrencyController;
 use App\Http\Controllers\TypePackagingController;
 use App\Http\Controllers\TypeWeightController;
 use App\Http\Controllers\TypeMeasurementController;
@@ -114,5 +115,18 @@ Route::middleware('auth')->group(function () {
         Route::get('/typeMeasurementEdit/{id}', 'edit')->name('typeMeasurement.edit');
         Route::put('/typeMeasurementUpdate/{id}', 'update')->name(('typeMeasurement.update'));
         Route::get('/typeMeasurementDestroy/{id}', 'destroy')->name('typeMeasurement.destroy');
+    });
+});
+
+// Type Currency
+Route::middleware('auth')->group(function () {
+    Route::controller(TypeCurrencyController::class)->group(function () {
+        Route::get('/typeCurrency', 'index')->name('typeCurrency');
+        Route::get('/typeCurrencyShow/{id}', 'show')->name('typeCurrency.show');
+        Route::get('/typeCurrencyCreate', 'create')->name('typeCurrency.create');
+        Route::post('/typeCurrencyStore', 'store')->name('typeCurrency.store');
+        Route::get('/typeCurrencyEdit/{id}', 'edit')->name('typeCurrency.edit');
+        Route::put('/typeCurrencyUpdate/{id}', 'update')->name(('typeCurrency.update'));
+        Route::get('/typeCurrencyDestroy/{id}', 'destroy')->name('typeCurrency.destroy');
     });
 });
