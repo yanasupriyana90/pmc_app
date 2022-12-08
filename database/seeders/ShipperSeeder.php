@@ -27,7 +27,7 @@ class ShipperSeeder extends Seeder
                 'fax' => '02231325103',
                 'email' => '',
                 'npwp' => '',
-                'user_id' => 2,
+                'user_id' => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -41,7 +41,7 @@ class ShipperSeeder extends Seeder
                 'fax' => '',
                 'email' => '',
                 'npwp' => '',
-                'user_id' => 2,
+                'user_id' => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -55,11 +55,10 @@ class ShipperSeeder extends Seeder
                 'fax' => '',
                 'email' => '',
                 'npwp' => '',
-                'user_id' => 2,
+                'user_id' => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
-
         ];
         Shipper::insert($createMultipleShipper); // Eloquent
 

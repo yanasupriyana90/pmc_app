@@ -16,13 +16,56 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        User::insert([
-            'name' => 'yana',
-            'email' => 'yana-it@pundimascorps.com',
-            'password' => bcrypt('yana'),
+        $createMultipleUser = [
+            ['name' => 'SUPERUSER',
+            'email'=>'superuser@pundimascorps.com',
+            'password' => bcrypt('superuser'),
             'division_id' => 1,
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-        ]);
+            'created_at'=> Carbon::now(),
+            'updated_at' => Carbon::now()],
+
+            ['name' => 'USER-1',
+            'email'=>'user-1@pundimascorps.com',
+            'password' => bcrypt('user-1'),
+            'division_id' => 2,
+            'created_at'=> Carbon::now(),
+            'updated_at' => Carbon::now()],
+
+            ['name' => 'USER-2',
+            'email'=>'user-2@pundimascorps.com',
+            'password' => bcrypt('user-2'),
+            'division_id' => 3,
+            'created_at'=> Carbon::now(),
+            'updated_at' => Carbon::now()],
+
+            ['name' => 'USER-3',
+            'email'=>'user-3@pundimascorps.com',
+            'password' => bcrypt('user-3'),
+            'division_id' => 4,
+            'created_at'=> Carbon::now(),
+            'updated_at' => Carbon::now()],
+
+            ['name' => 'USER-4',
+            'email'=>'user-4@pundimascorps.com',
+            'password' => bcrypt('user-4'),
+            'division_id' => 5,
+            'created_at'=> Carbon::now(),
+            'updated_at' => Carbon::now()],
+
+            ['name' => 'USER-5',
+            'email'=>'user-5@pundimascorps.com',
+            'password' => bcrypt('user-5'),
+            'division_id' => 6,
+            'created_at'=> Carbon::now(),
+            'updated_at' => Carbon::now()],
+
+            ['name' => 'USER-6',
+            'email'=>'user-6@pundimascorps.com',
+            'password' => bcrypt('user-6'),
+            'division_id' => 7,
+            'created_at'=> Carbon::now(),
+            'updated_at' => Carbon::now()],
+        ];
+        User::insert($createMultipleUser); // Eloquent
     }
 }

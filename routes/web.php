@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ContainerSizeTypeController;
 use App\Http\Controllers\DivisionController;
+use App\Http\Controllers\ExportDeliveryInstructionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ShipperController;
 use App\Http\Controllers\TypeCurrencyController;
@@ -142,5 +143,20 @@ Route::middleware('auth')->group(function () {
         Route::get('/typePaymentEdit/{id}', 'edit')->name('typePayment.edit');
         Route::put('/typePaymentUpdate/{id}', 'update')->name(('typePayment.update'));
         Route::get('/typePaymentDestroy/{id}', 'destroy')->name('typePayment.destroy');
+    });
+});
+
+
+// MARKETING
+// Export Delivery Instruction
+Route::middleware('auth')->group(function () {
+    Route::controller(ExportDeliveryInstructionController::class)->group(function () {
+        Route::get('/exportDeliveryInstruction', 'index')->name('exportDeliveryInstruction');
+        Route::get('/exportDeliveryInstructionShow/{id}', 'show')->name('exportDeliveryInstruction.show');
+        Route::get('/exportDeliveryInstructionCreate', 'create')->name('exportDeliveryInstruction.create');
+        Route::post('/exportDeliveryInstructionStore', 'store')->name('exportDeliveryInstruction.store');
+        Route::get('/exportDeliveryInstructionEdit/{id}', 'edit')->name('exportDeliveryInstruction.edit');
+        Route::put('/exportDeliveryInstructionUpdate/{id}', 'update')->name(('exportDeliveryInstruction.update'));
+        Route::get('/exportDeliveryInstructionDestroy/{id}', 'destroy')->name('exportDeliveryInstruction.destroy');
     });
 });

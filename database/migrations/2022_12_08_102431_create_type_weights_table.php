@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('type_weights', function (Blueprint $table) {
             $table->id();
-            $table->string('code_weight', 10);
+            $table->string('code_weight', 20);
             $table->string('name', 50);
             $table->unsignedBigInteger('user_id');
             $table->timestamps();

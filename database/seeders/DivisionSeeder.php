@@ -19,14 +19,47 @@ class DivisionSeeder extends Seeder
     {
 
         $createMultipleDivision = [
-            ['name'=>'SUPERUSER','created_at'=> Carbon::now(), 'updated_at' => Carbon::now()],
-            ['name'=>'MARKETING','created_at'=>Carbon::now(), 'updated_at' => Carbon::now()],
-            ['name'=>'CUSTOMER SERVICE','created_at'=>Carbon::now(), 'updated_at' => Carbon::now()],
-            ['name'=>'OPERATIONAL','created_at'=>Carbon::now(), 'updated_at' => Carbon::now()],
-            ['name'=>'DOCUMENT','created_at'=>Carbon::now(), 'updated_at' => Carbon::now()],
-            ['name'=>'ACCOUNTING & FINANCE','created_at'=>Carbon::now(), 'updated_at' => Carbon::now()],
-            ['name'=>'HRD','created_at'=>Carbon::now(), 'updated_at' => Carbon::now()],
+            [
+                'name' => 'SUPERUSER',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
 
+            [
+                'name' => 'MARKETING',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+
+            [
+                'name' => 'CUSTOMER SERVICE',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+
+            [
+                'name' => 'OPERATIONAL',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+
+            [
+                'name' => 'DOCUMENT',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+
+            [
+                'name' => 'ACCOUNTING & FINANCE',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+
+            [
+                'name' => 'HRD',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
         ];
         Division::insert($createMultipleDivision); // Eloquent
     }

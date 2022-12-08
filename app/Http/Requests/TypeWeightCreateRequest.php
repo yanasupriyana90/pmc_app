@@ -25,7 +25,7 @@ class TypeWeightCreateRequest extends FormRequest
     {
         return [
 
-            'code_weight' => 'unique:type_weights|max:10|required',
+            'code_weight' => 'unique:type_weights|max:20|required',
             'name' => 'max:50|required',
 
         ];
