@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ShipperCreateRequest;
+use App\Models\MandatoryTax;
 use App\Models\Shipper;
 use Illuminate\Http\Request;
 
@@ -10,14 +11,15 @@ class ShipperController extends Controller
 {
     public function index()
     {
-        $shipper = Shipper::with('user')->orderBy('id','desc')->get();
+        $shipper = Shipper::with('user', 'mandatoryTax')->orderBy('id','desc')->get();
         return view('master.shipper.index',['shipperList' => $shipper]);
     }
 
 
     public function create()
     {
-        return view('master.shipper.partials.create');
+        $mandatory_tax = MandatoryTax::select('id', 'name')->get();
+        return view('master.shipper.partials.create', ['shipper' => $mandatory_tax]);
     }
 
 
@@ -42,19 +44,21 @@ class ShipperController extends Controller
 
     public function show($id)
     {
-        $shipper = Shipper::find($id);
+        // $shipper = Shipper::find($id);
+        $shipper = Shipper::with(['user', 'mandatoryTax'])->findOrFail($id);
         return view('master.shipper.partials.show', ['shipper' => $shipper]);
     }
 
 
     public function edit(Shipper $shipper, $id)
     {
-        $shipper = Shipper::findOrfail($id);
-        return view('master.shipper.partials.edit', ['shipper' => $shipper]);
+        $shipper = Shipper::with('mandatoryTax')->findOrfail($id);
+        $mandatoryTax = MandatoryTax::where('id', '!=', $shipper->mandatory_tax_id)->get(['id', 'name']);
+        return view('master.shipper.partials.edit', ['shipper' => $shipper, 'mandatoryTax' => $mandatoryTax]);
     }
 
 
-    public function update(Request $request, $id)
+    public function update(ShipperCreateRequest $request, $id)
     {
         $shipper = Shipper::findOrfail($id);
 

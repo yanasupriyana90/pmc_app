@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('name', 50);
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('restrict');
         });
     }
 
@@ -29,6 +30,9 @@ return new class extends Migration
      */
     public function down()
     {
+        Schema::table('type_weights', function (Blueprint $table) {
+            $table->dropForeign(['user_id']);
+        });
         Schema::dropIfExists('type_weights');
     }
 };

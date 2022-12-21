@@ -45,7 +45,8 @@
                             <th>Phone 2</th>
                             <th>Fax</th>
                             <th>Email</th>
-                            <th>NPWP</th>
+                            <th>Mandatory Tax</th>
+                            <th>Tax ID</th>
                             <th>User</th>
                             <th>Action</th>
                         </tr>
@@ -56,12 +57,13 @@
                                 <td class="align-middle" style="text-align:center">{{ $loop->iteration }}</td>
                                 <td class="align-middle" style="text-align:center">{{ $shipper->code_shipper }}</td>
                                 <td class="align-middle">{{ $shipper->name }}</td>
-                                <td>{{ $shipper->address }}</td>
+                                <td class="align-middle">{{ $shipper->address }}</td>
                                 <td class="align-middle">{{ $shipper->phone_1 }}</td>
                                 <td class="align-middle">{{ $shipper->phone_2 }}</td>
                                 <td class="align-middle">{{ $shipper->fax }}</td>
-                                <td>{{ $shipper->email }}</td>
-                                <td class="align-middle">{{ $shipper->npwp }}</td>
+                                <td class="align-middle">{{ $shipper->email }}</td>
+                                <td class="align-middle">{{ $shipper->mandatoryTax['name'] }}</td>
+                                <td class="align-middle">{{ $shipper->tax_id }}</td>
                                 <td class="align-middle" style="text-align:center">{{ $shipper->user['name'] }}</td>
                                 <td class="align-middle" style="text-align:center">
                                     <a class="btn btn-primary btn-xs" href="{{ route('shipper.show', $shipper->id) }}"><i

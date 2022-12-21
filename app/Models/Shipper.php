@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 
 class Shipper extends Model
@@ -19,18 +18,20 @@ class Shipper extends Model
         'phone_2',
         'fax',
         'email',
-        'npwp',
+        'mandatory_tax_id',
+        'tax_id',
         'user_id',
     ];
 
-    /**
-     * Get the user that owns the Shipper
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function user(): BelongsTo
+    public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+
+    public function mandatoryTax()
+    {
+        return $this->belongsTo(MandatoryTax::class);
     }
 
 }

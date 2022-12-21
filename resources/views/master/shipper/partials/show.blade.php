@@ -46,39 +46,39 @@
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label for="inputCodeShipper">Code Shipper</label>
-                                                <input type="text" name="code_shipper" class="form-control"
+                                                <input type="text" name="code_shipper" class="form-control form-control-sm"
                                                     id="code_shipper" value="{{ $shipper->code_shipper }}" disabled>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputName">Name</label>
-                                        <input type="text" name="name" class="form-control" id="name"
+                                        <input type="text" name="name" class="form-control form-control-sm" id="name"
                                             value="{{ $shipper->name }}" disabled>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputAddress">Address</label>
-                                        <textarea class="form-control" name="address" id="address" disabled>{{ $shipper->address }}</textarea>
+                                        <textarea class="form-control form-control-sm" name="address" id="address" disabled>{{ $shipper->address }}</textarea>
                                     </div>
                                     <div class="row">
                                         <div class="col-4">
                                             <div class="form-group">
                                                 <label for="inputPhone_1">Phone 1</label>
-                                                <input type="number" name="phone_1" class="form-control" id="phone_1"
+                                                <input type="text" name="phone_1" class="form-control form-control-sm" id="phone_1"
                                                     value="{{ $shipper->phone_1 }}" disabled>
                                             </div>
                                         </div>
                                         <div class="col-4">
                                             <div class="form-group">
                                                 <label for="inputPhone_2">Phone 2</label>
-                                                <input type="number" name="phone_2" class="form-control" id="phone_2"
+                                                <input type="text" name="phone_2" class="form-control form-control-sm" id="phone_2"
                                                     value="{{ $shipper->phone_2 }}" disabled>
                                             </div>
                                         </div>
                                         <div class="col-4">
                                             <div class="form-group">
                                                 <label for="inputFax">Fax</label>
-                                                <input type="number" name="fax" class="form-control" id="fax"
+                                                <input type="text" name="fax" class="form-control form-control-sm" id="fax"
                                                     value="{{ $shipper->fax }}" disabled>
                                             </div>
                                         </div>
@@ -87,21 +87,21 @@
                                         <div class="col-8">
                                             <div class="form-group">
                                                 <label for="inputEmail">Email address</label>
-                                                <input type="email" name="email" class="form-control" id="email"
+                                                <input type="email" name="email" class="form-control form-control-sm" id="email"
                                                     value="{{ $shipper->email }}" disabled>
                                             </div>
                                         </div>
                                         <div class="col-4">
                                             <div class="form-group">
-                                                <label for="inputNPWP">NPWP</label>
-                                                <input type="number" name="npwp" class="form-control" id="npwp"
-                                                    value="{{ $shipper->npwp }}" disabled>
+                                                <label for="inputNPWP">{{ $shipper->mandatoryTax['name'] }}</label>
+                                                <input type="text" name="tax_id" class="form-control form-control-sm" id="tax_id"
+                                                    value="{{ $shipper->tax_id }}" disabled>
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="d-grid gap-2 d-md-block">
-                                        <a href="{{ route('shipper') }}" class="btn btn-success" type="button">OK</a>
+                                        <a href="{{ route('shipper') }}" class="btn btn-success mr-3" type="button">OK</a>
                                         <a class="btn btn-primary" href="{{ route('shipper.edit', $shipper->id) }}"><i
                                                 class="fa fa-edit"></i> Edit</a>
                                     </div>

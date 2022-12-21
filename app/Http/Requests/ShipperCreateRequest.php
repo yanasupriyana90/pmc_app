@@ -23,18 +23,35 @@ class ShipperCreateRequest extends FormRequest
      */
     public function rules()
     {
-        return [
+        $rules = [
 
-            'code_shipper' => 'unique:shippers|max:3|required',
-            'name' => 'max:255|required',
-            'address' => 'max:255|required',
-            'phone_1' => 'max:20|required',
-            'phone_2' => 'max:20',
-            'fax' => 'max:20',
-            'email' => 'email:rfc,dns|max:255',
-            'npwp' => 'max:25',
+            'code_shipper' => 'required|unique:shippers|max:3',
+            'name' => 'required|max:255',
+            'address' => 'required|max:255',
+            'phone_1' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/',
+            'phone_2' => 'nullable|regex:/^([0-9\s\-\+\(\)]*)$/',
+            'fax' => 'nullable|regex:/^([0-9\s\-\+\(\)]*)$/',
+            'email' => 'required|email:rfc,dns|max:255',
+            'mandatory_tax_id' => 'required',
+            'tax_id' => 'nullable|regex:/^([0-9\.\s\-\+\(\)]*)$/|max:35',
 
         ];
+
+        if ($this->getMethod() == "PUT") {
+            $rules = [
+
+                'name' => 'required|max:255',
+                'address' => 'required|max:255',
+                'phone_1' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/',
+                'phone_2' => 'nullable|regex:/^([0-9\s\-\+\(\)]*)$/',
+                'fax' => 'nullable|regex:/^([0-9\s\-\+\(\)]*)$/',
+                'email' => 'required|email:rfc,dns|max:255',
+                'mandatory_tax_id' => 'required',
+                'tax_id' => 'nullable|regex:/^([0-9\.\s\-\+\(\)]*)$/|max:35',
+
+            ];
+        }
+        return $rules;
     }
 
     public function attributes()
@@ -47,7 +64,8 @@ class ShipperCreateRequest extends FormRequest
             'phone_2' => 'PHONE 2',
             'fax' => 'FAX',
             'email' => 'EMAIL ADDRESS',
-            'npwp' => 'NPWP',
+            'mandatory_tax_id' => 'MANDATORY TAX',
+            'tax_id' => 'TAX ID',
         ];
     }
 }

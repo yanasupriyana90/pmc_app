@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use League\CommonMark\Reference\Reference;
 
 return new class extends Migration
 {
@@ -22,9 +23,12 @@ return new class extends Migration
             $table->string('phone_2', 20)->nullable();
             $table->string('fax', 20)->nullable();
             $table->string('email')->nullable();
-            $table->string('npwp', 25)->nullable();
+            $table->unsignedBigInteger('mandatory_tax_id');
+            $table->string('tax_id', 35)->nullable();
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('restrict');
+
         });
     }
 
@@ -35,6 +39,9 @@ return new class extends Migration
      */
     public function down()
     {
+        Schema::table('shippers', function (Blueprint $table) {
+            $table->dropForeign(['user_id']);
+        });
         Schema::dropIfExists('shippers');
     }
 };

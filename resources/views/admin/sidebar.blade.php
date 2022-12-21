@@ -48,7 +48,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <form method="POST" action="{{ route('logout') }}">
+                    <form method="POST" action="{{ route('logout') }}" class="nav-link">
                         @csrf
                         <a href="route('logout')"
                             onclick="event.preventDefault();
@@ -72,57 +72,121 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="{{ Route('user') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="far fa-user nav-icon"></i>
                                 <p>User</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('division') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fas fa-project-diagram nav-icon"></i>
                                 <p>Division</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ Route('shipper') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Shipper</p>
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-ellipsis-h nav-icon"></i>
+                                <p>
+                                    Company Name
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ Route('shipper') }}" class="nav-link">
+                                        <i class="fas fa-ship nav-icon"></i>
+                                        <p>Shipper</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ Route('undername') }}" class="nav-link">
+                                        <i class="fas fa-ship nav-icon"></i>
+                                        <p>Undername</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ Route('consignee') }}" class="nav-link">
+                                        <i class="fas fa-ship nav-icon"></i>
+                                        <p>Consignee</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ Route('notifyParty') }}" class="nav-link">
+                                        <i class="fas fa-ship nav-icon"></i>
+                                        <p>Notify Party</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('mandatoryTax') }}" class="nav-link">
+                                <i class="fas fa-money-check nav-icon"></i>
+                                <p>Mandatory Tax</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ Route('containerSizeType') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fas fa-box nav-icon"></i>
                                 <p>Container Size Type </p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ Route('typePackaging') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fas fa-box-open nav-icon"></i>
                                 <p>Type Packaging</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ Route('typeWeight') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fas fa-weight nav-icon"></i>
                                 <p>Type Weight</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ Route('typeMeasurement') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fas fa-ruler-combined nav-icon"></i>
                                 <p>Type Measurement</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ Route('typeCurrency') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fas fa-money-bill-wave nav-icon"></i>
                                 <p>Type Currency</p>
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="{{ Route('typeBillOfLading') }}" class="nav-link">
+                                <i class="fas fa-file-invoice nav-icon"></i>
+                                <p>Type Bill Of Lading</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="{{ Route('typePayment') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fas fa-handshake nav-icon"></i>
                                 <p>Payment Information</p>
                             </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-ellipsis-h nav-icon"></i>
+                                <p>
+                                    Category Buy & Sell
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ Route('categoryBuying') }}" class="nav-link">
+                                        <i class="fas fa-cart-plus nav-icon"></i>
+                                        <p>Buying</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ Route('categorySelling') }}" class="nav-link">
+                                        <i class="fas fa-cart-arrow-down nav-icon"></i>
+                                        <p>Selling</p>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </li>
@@ -153,9 +217,9 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Export Delivery Intruction</p>
+                            <a href="{{ route('jobSheet') }}" class="nav-link">
+                                <i class="far fa-file-alt nav-icon"></i>
+                                <p>Job Sheet</p>
                             </a>
                         </li>
                     </ul>

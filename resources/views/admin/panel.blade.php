@@ -34,6 +34,7 @@
     <link rel="stylesheet" href="{{ asset('lte') }}/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
     <!-- Notification -->
     <link rel="stylesheet" href="{{ asset('lte') }}/plugins/toastr/toastr.css">
+
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -80,8 +81,10 @@
     <script src="{{ asset('lte') }}/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
     <!-- jQuery Knob Chart -->
     <script src="{{ asset('lte') }}/plugins/jquery-knob/jquery.knob.min.js"></script>
-    <!-- daterangepicker -->
+    <!-- InputMask -->
     <script src="{{ asset('lte') }}/plugins/moment/moment.min.js"></script>
+    <script src="{{ asset('lte') }}/plugins/inputmask/jquery.inputmask.min.js"></script>
+    <!-- daterangepicker -->
     <script src="{{ asset('lte') }}/plugins/daterangepicker/daterangepicker.js"></script>
     <!-- Tempusdominus Bootstrap 4 -->
     <script src="{{ asset('lte') }}/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
@@ -154,7 +157,6 @@
 
     <script src="{{ asset('lte') }}/plugins/sweetalert2/sweetalert2.all.min.js"></script>
     <script src="{{ asset('lte') }}/plugins/code.js"></script>
-
 
 
 </body>

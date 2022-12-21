@@ -26,7 +26,8 @@ class ShipperSeeder extends Seeder
                 'phone_2' => '',
                 'fax' => '02231325103',
                 'email' => '',
-                'npwp' => '',
+                'mandatory_tax_id' => 1,
+                'tax_id' => '',
                 'user_id' => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
@@ -40,7 +41,8 @@ class ShipperSeeder extends Seeder
                 'phone_2' => '',
                 'fax' => '',
                 'email' => '',
-                'npwp' => '',
+                'mandatory_tax_id' => 1,
+                'tax_id' => '',
                 'user_id' => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
@@ -54,7 +56,8 @@ class ShipperSeeder extends Seeder
                 'phone_2' => '',
                 'fax' => '',
                 'email' => '',
-                'npwp' => '',
+                'mandatory_tax_data_id' => 1,
+                'tax_id' => '',
                 'user_id' => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
