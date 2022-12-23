@@ -20,6 +20,8 @@
     <link rel="stylesheet" href="{{ asset('lte') }}/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- JQVMap -->
     <link rel="stylesheet" href="{{ asset('lte') }}/plugins/jqvmap/jqvmap.min.css">
+    <!-- Jquery UI -->
+    {{-- <link rel="stylesheet" href="{{ asset('lte') }}/plugins/jquery-ui/jquery-ui.min.css"> --}}
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('lte') }}/dist/css/adminlte.min.css">
     <!-- overlayScrollbars -->

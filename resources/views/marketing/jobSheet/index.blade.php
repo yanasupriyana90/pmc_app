@@ -41,27 +41,42 @@
                             <th>Code Job Sheet</th>
                             <th>Booking No</th>
                             <th>Shipper</th>
-                            <th>Address</th>
-                            <th>Phone 1</th>
                             <th>Undername</th>
                             <th>Consignee</th>
                             <th>Notify Party</th>
-                            <th>Port Of Loading</th>
+                            <th>Carrier</th>
+                            <th>Vessel</th>
                             <th>ETD</th>
-                            <th>Port Of Discharge</th>
-                            <th>Shipping Line</th>
-                            <th>Vessel's Name</th>
+                            <th>P.O.L</th>
+                            <th>P.O.D</th>
+                            <th>Open CY</th>
+                            <th>Closing Doc</th>
                             <th>Closing CY</th>
-                            <th>Bill Of Lading</th>
-                            <th>Desc Of Goods</th>
+                            <th>Volume</th>
                             <th>Cont Size Type</th>
-                            <th>Net Weight</th>
+                            <th>Qty</th>
+                            <th>Type Pack</th>
+                            <th>Commodity M-B/L</th>
+                            <th>Type M-B/L</th>
+                            <th>B/L Delivery</th>
+                            <th>Delivery Desc</th>
+                            <th>Issue Location</th>
+                            <th>Commodity H-B/L</th>
+                            <th>Type H-B/L</th>
                             <th>Gross Weight</th>
+                            <th>Gross Type</th>
+                            <th>Net Weight</th>
+                            <th>Net Type</th>
                             <th>Measurement</th>
+                            <th>Measurement Type</th>
                             <th>Stuffing Date</th>
-                            <th>Warehouse</th>
-                            <th>Payment Info</th>
-                            <th>Noted</th>
+                            <th>Stuffing Address</th>
+                            <th>PIC Name</th>
+                            <th>PIC Phone</th>
+                            <th>T.O.P</th>
+                            <th>Type Payment</th>
+                            <th>Remaks</th>
+                            <th>File Shipping Path</th>
                             <th>Status</th>
                             <th>User</th>
                             <th>Action</th>

@@ -341,3 +341,12 @@ $(function () {
 
 
 });
+
+$(document).ready(function() {
+  $(document).on('change', '.name_ship', function() {
+    console.log("its change");
+
+    var nameShip=$(this).val();
+    console.log(nameShip);
+  });
+});

@@ -106,7 +106,7 @@
                                             <div class="form-group">
                                                 <label for="mandatory_tax">Mandatory Tax</label>
                                                 <select name="mandatory_tax_id" id="mandatory_tax_id" class="form-control form-control-sm select2"
-                                                    style="width: 100%;" onchange="showDiv(this.options[this.selectedIndex].text)">
+                                                    style="width: 100%;" onchange="showDiv(this)">
                                                     @foreach ($undername as $item)
                                                         <option value="{{ old('mandatory_tax_id', $item->id) }}">{{ $item->name }}</option>
                                                     @endforeach
@@ -147,12 +147,12 @@
 
 <script>
     function showDiv(select) {
-        console.log(select.innerHTML);
-        // if (select.value != 1) {
-        //     document.getElementById('tax_id').value = "";
-        //     document.getElementById('tax_id_group').style.display = "block";
-        // } else {
-        //     document.getElementById('tax_id_group').style.display = "none";
-        // }
+        // console.log(select.options[select.selectedIndex].text);
+        if (select.options[select.selectedIndex].text != "NONE TAX") {
+            document.getElementById('tax_id').value = "";
+            document.getElementById('tax_id_group').style.display = "block";
+        } else {
+            document.getElementById('tax_id_group').style.display = "none";
+        }
     }
 </script>

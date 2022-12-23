@@ -93,7 +93,7 @@
                                         </div>
                                         <div class="col-4">
                                             <div class="form-group">
-                                                <label for="inputNPWP">{{ $shipper->mandatoryTax['name'] }}</label>
+                                                <label for="inputMandatoryTax">{{ $shipper->mandatoryTax['name'] }}</label>
                                                 <input type="text" name="tax_id" class="form-control form-control-sm" id="tax_id"
                                                     value="{{ $shipper->tax_id }}" disabled>
                                             </div>

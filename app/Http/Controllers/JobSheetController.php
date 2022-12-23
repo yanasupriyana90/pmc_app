@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\JobSheet;
+use App\Models\Shipper;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class JobSheetController extends Controller
 {
@@ -24,7 +26,26 @@ class JobSheetController extends Controller
      */
     public function create()
     {
-        return view('marketing.jobSheet.partials.create');
+        // $shipper = Shipper::select('id', 'na me', 'address','phone_1', 'phone_2', 'fax', 'email', 'mandatory_tax_id', 'tax_id')->get();
+        // dd($shipper);
+        $q = DB::table('job_sheet_heads')->select(DB::raw('MAX(RIGHT(code_job_sheet,4)) as kode'));
+        $kd = "";
+        if ($q->count() > 0) {
+            foreach ($q->get() as $k) {
+                $tmp = ((int)$k->kode) + 1;
+                $kd = sprintf("%04s", $tmp);
+            }
+        } else {
+            $kd = "0001";
+        }
+        // return view('marketing.jobSheet.partials.create', ['jobSheet' => $shipper], ['kd' => $kd]);
+        return view('marketing.jobSheet.partials.create', ['kd' => $kd]);
+    }
+
+    public function getShipper(Request $request){
+        if($request->has('term')){
+            return Shipper::where('name','like','%'.$request->input('term').'%')->get();
+        }
     }
 
     /**
@@ -33,6 +54,7 @@ class JobSheetController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
         //

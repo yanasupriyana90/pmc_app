@@ -250,6 +250,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/jobSheet', 'index')->name('jobSheet');
         // Route::get('/jobSheetShow/{id}', 'show')->name('jobSheet.show');
         Route::get('/jobSheetCreate', 'create')->name('jobSheet.create');
+        Route::get('/jobSheetCreate/getShipper', 'getShipper')->name('jobSheet.getShipper');
+
         Route::post('/jobSheetStore', 'store')->name('jobSheet.store');
         // Route::get('/jobSheetEdit/{id}', 'edit')->name('jobSheet.edit');
         // Route::put('/jobSheetUpdate/{id}', 'update')->name(('jobSheet.update'));

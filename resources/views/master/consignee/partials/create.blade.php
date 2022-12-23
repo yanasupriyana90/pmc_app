@@ -147,8 +147,8 @@
 
 <script>
     function showDiv(select) {
-        // console.log(select.innerHTML);
-        if (select.value != 1) {
+        // console.log(select.options[select.selectedIndex].text);
+        if (select.options[select.selectedIndex].text != "NONE TAX") {
             document.getElementById('tax_id').value = "";
             document.getElementById('tax_id_group').style.display = "block";
         } else {
