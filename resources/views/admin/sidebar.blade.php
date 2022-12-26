@@ -98,21 +98,15 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ Route('undername') }}" class="nav-link">
+                                    <a href="{{ Route('undernameMbl') }}" class="nav-link">
                                         <i class="fas fa-ship nav-icon"></i>
-                                        <p>Undername</p>
+                                        <p>Undername M-BL / Booking</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ Route('consignee') }}" class="nav-link">
+                                    <a href="{{ Route('undernameHbl') }}" class="nav-link">
                                         <i class="fas fa-ship nav-icon"></i>
-                                        <p>Consignee</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ Route('notifyParty') }}" class="nav-link">
-                                        <i class="fas fa-ship nav-icon"></i>
-                                        <p>Notify Party</p>
+                                        <p>Undername H-BL / PEB</p>
                                     </a>
                                 </li>
                             </ul>

@@ -105,49 +105,28 @@
                                                 <hr size="100" noshade>
                                             </div>
                                             <div class="container">
-                                                <div class="col-2">
-                                                    <div class="form-group">
-                                                        <label for="inputShipper">Shipper ID</label>
-                                                        <input type="text"
-                                                            class="form-control form-control-sm text-uppercase"
-                                                            name="shipper_id" id="shipper_id" value=""
-                                                            placeholder="Enter Name Shipper">
+                                                <div class="row">
+                                                    <div class="col-2">
+                                                        <div class="form-group">
+                                                            <input type="hidden"
+                                                                class="form-control form-control-sm text-uppercase"
+                                                                name="shipper_id" id="shipper_id"
+                                                                placeholder="Enter ID Shipper" disabled>
+                                                        </div>
                                                     </div>
                                                 </div>
-
-                                                {{-- <div class="row mt-5"> --}}
-                                                    {{-- <div class="col-6">
-                                                        <label for="shipper">Shipper</label>
-                                                        <select name="shipper_name" id="shipper"
-                                                            class="form-control form-control-sm select2"
-                                                            style="width: 100%;" onchange="showDiv(this)">
-                                                            @foreach ($jobSheet as $item)
-                                                                <option value="{{ $item->id }}">{{ $item->name }}
-                                                                </option>
-                                                            @endforeach
-                                                        </select>
-                                                    </div> --}}
-                                                    {{-- <div class="col-6">
-                                                        <label for="shipper">Shipper</label>
-                                                        <select name="name_ship" id="name_ship"
-                                                            class="form-control form-control-sm select2"
-                                                            style="width: 100%;">
-                                                            @foreach ($jobSheet as $item)
-                                                                <option value="{{ $item->id }}">{{ $item->name }}
-                                                                </option>
-                                                            @endforeach
-                                                        </select>
-                                                    </div> --}}
+                                            </div>
+                                            <div class="container">
+                                                <div class="row mt-3">
                                                     <div class="col-6">
                                                         <div class="form-group">
                                                             <label for="inputShipper">Shipper</label>
                                                             <input type="text"
                                                                 class="form-control form-control-sm text-uppercase"
-                                                                name="name_ship" id="name_ship" value=""
+                                                                name="name_ship" id="name_ship"
                                                                 placeholder="Enter Name Shipper">
                                                         </div>
                                                     </div>
-
                                                     <div class="col-2">
                                                         <div class="form-group">
                                                             <label for="inputPhone1Ship">Phone 1</label>
@@ -176,7 +155,7 @@
                                             </div>
                                             <div class="container">
                                                 <div class="row">
-                                                    <div class="col-6">
+                                                    <div class="col-4">
                                                         <div class="form-group">
                                                             <label for="inputAddressShip">Address</label>
                                                             <textarea class="form-control form-control-sm text-uppercase" name="address_ship" id="address_ship" rows="3"
@@ -191,82 +170,198 @@
                                                                 placeholder="Enter Email Shipper" disabled>
                                                         </div>
                                                     </div>
-                                                    <div class="col-3">
+                                                    <div class="col-2 offset-1">
                                                         <div class="form-group">
-                                                            <label for="inputMandatoryTaxShip">ISI TAX</label>
+                                                            <label for="inputMandatoryTaxIdShip">Mandatory Tax</label>
+                                                            <input type="text" name="mandatory_tax_id_ship"
+                                                                class="form-control form-control-sm" id="mandatory_tax_id_ship"
+                                                                placeholder="Enter Mandatory Tax Shipper" disabled>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <div class="form-group">
+                                                            <label for="inputTaxIdShip">Tax ID</label>
                                                             <input type="text" name="tax_id_ship"
                                                                 class="form-control form-control-sm" id="tax_id_ship"
-                                                                value="" disabled>
+                                                                placeholder="Enter Tax ID Shipper" disabled>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <hr size="100" noshade>
                                             </div>
+
                                             <div class="container">
-                                                <div class="row mt-5">
-                                                    <div class="col-6">
+                                                <div class="row">
+                                                    <div class="col-2">
                                                         <div class="form-group">
-                                                            <label for="inputUndername">Undername</label>
                                                             <input type="text"
                                                                 class="form-control form-control-sm text-uppercase"
-                                                                name="undername_id" id="undername_id"
-                                                                placeholder="Enter Undername">
+                                                                name="undername_mbl_id" id="undername_mbl_id"
+                                                                placeholder="Enter ID Undername M-BL" disabled>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="container">
+                                                <div class="row mt-3">
+                                                    <div class="col-6">
+                                                        <div class="form-group">
+                                                            <label for="inputUndMbl">Undername M-BL / Booking</label>
+                                                            <input type="text"
+                                                                class="form-control form-control-sm text-uppercase"
+                                                                name="name_und_mbl" id="name_und_mbl"
+                                                                placeholder="Enter Undername M-BL">
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
                                                         <div class="form-group">
-                                                            <label for="inputPhone1Und">Phone 1</label>
+                                                            <label for="inputPhone1UndMbl">Phone 1</label>
                                                             <input type="number" class="form-control form-control-sm"
-                                                                name="phone_1_und" id="phone_1_und"
-                                                                placeholder="Enter Phone 1 Undername" disabled>
+                                                                name="phone_1_und_mbl" id="phone_1_und_mbl"
+                                                                placeholder="Enter Phone 1 Undername M-BL" disabled>
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
                                                         <div class="form-group">
-                                                            <label for="inputPhone2Und">Phone 2</label>
+                                                            <label for="inputPhone2UndMbl">Phone 2</label>
                                                             <input type="number" class="form-control form-control-sm"
-                                                                name="phone_2_und" id="phone_2_und"
-                                                                placeholder="Enter Phone 2 Undername" disabled>
+                                                                name="phone_2_und_mbl" id="phone_2_und_mbl"
+                                                                placeholder="Enter Phone 2 Undername M-BL" disabled>
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
                                                         <div class="form-group">
-                                                            <label for="inputFaxUnd">Fax</label>
+                                                            <label for="inputFaxUndMbl">Fax</label>
                                                             <input type="number" class="form-control form-control-sm"
-                                                                name="fax_und" id="fax_und"
-                                                                placeholder="Enter Fax Undername" disabled>
+                                                                name="fax_und_mbl" id="fax_und_mbl"
+                                                                placeholder="Enter Fax Undername M-BL" disabled>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="container">
                                                 <div class="row">
-                                                    <div class="col-6">
+                                                    <div class="col-4">
                                                         <div class="form-group">
-                                                            <label for="inputAddressUnd">Address</label>
-                                                            <textarea class="form-control form-control-sm text-uppercase" name="address_und" id="address_und" rows="3"
-                                                                placeholder="Enter Address Undername" disabled></textarea>
+                                                            <label for="inputAddressUndMbl">Address</label>
+                                                            <textarea class="form-control form-control-sm text-uppercase" name="address_und_mbl" id="address_und_mbl" rows="3"
+                                                                placeholder="Enter Address Undername M-BL" disabled></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="col-3">
                                                         <div class="form-group">
-                                                            <label for="inputEmailUnd">Email address</label>
+                                                            <label for="inputEmailUndMbl">Email address</label>
                                                             <input type="email" class="form-control form-control-sm"
-                                                                name="email_und" id="email_und"
-                                                                placeholder="Enter Email Undername" disabled>
+                                                                name="email_und_mbl" id="email_und_mbl"
+                                                                placeholder="Enter Email Undername M-BL" disabled>
                                                         </div>
                                                     </div>
-                                                    <div class="col-3">
+                                                    <div class="col-2 offset-1">
                                                         <div class="form-group">
-                                                            <label for="inputMandatoryTaxUnd">ISI TAX</label>
-                                                            <input type="text" name="tax_id_und"
-                                                                class="form-control form-control-sm" id="tax_id_und"
-                                                                value="" disabled>
+                                                            <label for="inputMandatoryTaxIdUndMbl">Mandatory Tax</label>
+                                                            <input type="text" name="mandatory_tax_id_und_mbl"
+                                                                class="form-control form-control-sm" id="mandatory_tax_id_und_mbl"
+                                                                placeholder="Enter Mandatory Tax Undername M-BL" disabled>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <div class="form-group">
+                                                            <label for="inputTaxIdUndMbl">Tax ID</label>
+                                                            <input type="text" name="tax_id_und_mbl"
+                                                                class="form-control form-control-sm" id="tax_id_und_mbl"
+                                                                placeholder="Enter Tax ID Undername M-BL" disabled>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <hr size="100" noshade>
                                             </div>
+
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-2">
+                                                        <div class="form-group">
+                                                            <input type="text"
+                                                                class="form-control form-control-sm text-uppercase"
+                                                                name="undername_hbl_id" id="undername_hbl_id"
+                                                                placeholder="Enter ID Undername H-BL" disabled>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="container">
+                                                <div class="row mt-3">
+                                                    <div class="col-6">
+                                                        <div class="form-group">
+                                                            <label for="inputUndHbl">Undername H-BL / PEB</label>
+                                                            <input type="text"
+                                                                class="form-control form-control-sm text-uppercase"
+                                                                name="name_und_hbl" id="name_und_hbl"
+                                                                placeholder="Enter Undername H-BL">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <div class="form-group">
+                                                            <label for="inputPhone1UndHbl">Phone 1</label>
+                                                            <input type="number" class="form-control form-control-sm"
+                                                                name="phone_1_und_mbl" id="phone_1_und_mbl"
+                                                                placeholder="Enter Phone 1 Undername H-BL" disabled>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <div class="form-group">
+                                                            <label for="inputPhone2UndHbl">Phone 2</label>
+                                                            <input type="number" class="form-control form-control-sm"
+                                                                name="phone_2_und_hbl" id="phone_2_und_hbl"
+                                                                placeholder="Enter Phone 2 Undername H-BL" disabled>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <div class="form-group">
+                                                            <label for="inputFaxUndHbl">Fax</label>
+                                                            <input type="number" class="form-control form-control-sm"
+                                                                name="fax_und_hbl" id="fax_und_hbl"
+                                                                placeholder="Enter Fax Undername H-BL" disabled>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-4">
+                                                        <div class="form-group">
+                                                            <label for="inputAddressUndHbl">Address</label>
+                                                            <textarea class="form-control form-control-sm text-uppercase" name="address_und_hbl" id="address_und_hbl" rows="3"
+                                                                placeholder="Enter Address Undername H-BL" disabled></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <div class="form-group">
+                                                            <label for="inputEmailUndHbl">Email address</label>
+                                                            <input type="email" class="form-control form-control-sm"
+                                                                name="email_und_hbl" id="email_und_hbl"
+                                                                placeholder="Enter Email Undername H-BL" disabled>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-2 offset-1">
+                                                        <div class="form-group">
+                                                            <label for="inputMandatoryTaxIdUndHbl">Mandatory Tax</label>
+                                                            <input type="text" name="mandatory_tax_id_und_hbl"
+                                                                class="form-control form-control-sm" id="mandatory_tax_id_und_hbl"
+                                                                placeholder="Enter Mandatory Tax Undername H-BL" disabled>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <div class="form-group">
+                                                            <label for="inputTaxIdUndHbl">Tax ID</label>
+                                                            <input type="text" name="tax_id_und_hbl"
+                                                                class="form-control form-control-sm" id="tax_id_und_hbl"
+                                                                placeholder="Enter Tax ID Undername H-BL" disabled>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <hr size="100" noshade>
+                                            </div>
+
                                         </div>
                                         <!-- tab end shipper & undername -->
 
@@ -543,7 +638,8 @@
                                                             <select class="form-control form-control-sm select2"
                                                                 style="width: 100%;">
                                                                 <option selected="selected"></option>
-                                                                <option>20OC - 20' HIGH CUBE OPEN TOP ESPCIALLY FOR COAL
+                                                                <option>20OC - 20' HIGH CUBE OPEN TOP ESPCIALLY FOR
+                                                                    COAL
                                                                 </option>
                                                             </select>
                                                         </div>
@@ -566,7 +662,8 @@
                                                             <select class="form-control form-control-sm select2"
                                                                 style="width: 100%;">
                                                                 <option selected="selected"></option>
-                                                                <option>CONTAINER, NOT OTHERWISE SPECIFIED AS TRANSPORT
+                                                                <option>CONTAINER, NOT OTHERWISE SPECIFIED AS
+                                                                    TRANSPORT
                                                                 </option>
                                                             </select>
                                                         </div>
@@ -615,7 +712,8 @@
                                                     </div>
                                                     <div class="col-3">
                                                         <div class="form-group">
-                                                            <label for="inputBlDeliveryDesc">Enter Email Or Other</label>
+                                                            <label for="inputBlDeliveryDesc">Enter Email Or
+                                                                Other</label>
                                                             <input type="text"
                                                                 class="form-control form-control-sm mb-2 text-uppercase"
                                                                 name="bl_delivery_desc" id="bl_delivery_desc"
@@ -756,7 +854,8 @@
                                                     </div>
                                                     <div class="col-4">
                                                         <div class="form-group">
-                                                            <label for="inputStuffingAddress">Stuffing Address</label>
+                                                            <label for="inputStuffingAddress">Stuffing
+                                                                Address</label>
                                                             <textarea class="form-control form-control-sm text-uppercase" name="stuffing_address" id="stuffing_address"
                                                                 rows="3" placeholder="Enter Stuffing Address"></textarea>
                                                         </div>
@@ -785,7 +884,8 @@
                                                 <div class="row">
                                                     <div class="col-3">
                                                         <div class="form-group">
-                                                            <label for="inputShipper">Term Of Payment (Shipper)</label>
+                                                            <label for="inputShipper">Term Of Payment
+                                                                (Shipper)</label>
                                                             <input type="text"
                                                                 class="form-control form-control-sm text-uppercase"
                                                                 name="top" id="top"
@@ -816,13 +916,15 @@
                                                 <div class="row">
                                                     <div class="col-6">
                                                         <div class="form-group">
-                                                            <label for="fileShippingPath">File Shipping Instruction</label>
+                                                            <label for="fileShippingPath">File Shipping
+                                                                Instruction</label>
                                                             <div class="input-group">
                                                                 <div class="custom-file">
                                                                     <input type="file" class="custom-file-input"
                                                                         id="file_shipping_path">
                                                                     <label class="custom-file-label"
-                                                                        for="file_shipping_path">Choose file</label>
+                                                                        for="file_shipping_path">Choose
+                                                                        file</label>
                                                                 </div>
                                                                 <div class="input-group-append">
                                                                     <span class="input-group-text">Upload</span>

@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    {{-- <meta name="csrf-token" content="{{ csrf_token() }}"> --}}
     <title>@yield('title') | @yield('subtitle')</title>
 
     <!-- Google Font: Source Sans Pro -->
@@ -21,7 +22,7 @@
     <!-- JQVMap -->
     <link rel="stylesheet" href="{{ asset('lte') }}/plugins/jqvmap/jqvmap.min.css">
     <!-- Jquery UI -->
-    {{-- <link rel="stylesheet" href="{{ asset('lte') }}/plugins/jquery-ui/jquery-ui.min.css"> --}}
+    <link rel="stylesheet" href="{{ asset('lte') }}/plugins/jquery-ui/jquery-ui.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('lte') }}/dist/css/adminlte.min.css">
     <!-- overlayScrollbars -->
@@ -159,7 +160,6 @@
 
     <script src="{{ asset('lte') }}/plugins/sweetalert2/sweetalert2.all.min.js"></script>
     <script src="{{ asset('lte') }}/plugins/code.js"></script>
-
 
 </body>
 

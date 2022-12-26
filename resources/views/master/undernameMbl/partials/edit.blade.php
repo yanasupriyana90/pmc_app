@@ -2,8 +2,8 @@
 
 @section('title', 'Master')
 
-@section('subtitle', 'Undername')
-@section('subtitle_2', 'Add Data')
+@section('subtitle', 'Undername M-BL / Booking')
+@section('subtitle_2', 'Edit Data')
 
 @section('content')
     <!-- Content Wrapper. Contains page content -->
@@ -18,7 +18,7 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">@yield('title')</a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('undername') }}">@yield('subtitle')</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('undernameMbl') }}">@yield('subtitle')</a></li>
                             <li class="breadcrumb-item active">@yield('subtitle_2')</li>
                         </ol>
                     </div><!-- /.col -->
@@ -50,47 +50,50 @@
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form action="{{ Route('undername.store') }}" method="POST">
+                            <form action="{{ route('undernameMbl.update', $undernameMbl->id) }}" method="POST">
                                 @csrf
+                                @method('PUT')
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                                <label for="inputCodeUndername">Code Undername</label>
+                                                <label for="inputCodeUndernameMbl">Code Undername M-BL</label>
                                                 <input type="text" class="form-control form-control-sm text-uppercase"
-                                                    name="code_undername" id="code_undername" value="{{ old('code_undername') }}" placeholder="Enter Code Undername">
+                                                    name="code_undername_mbl" id="code_undername_mbl"
+                                                    value="{{ $undernameMbl->code_undername_mbl }}" placeholder="Enter Code Undername M-BL / PEB"
+                                                    readonly>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputName">Name</label>
                                         <input type="text" class="form-control form-control-sm text-uppercase" name="name"
-                                            id="name" value="{{ old('name') }}" placeholder="Enter Name">
+                                            id="name" value="{{ old('name', $undernameMbl->name) }}" placeholder="Enter Name">
                                     </div>
                                     <div class="form-group">
                                         <label for="inputAddress">Address</label>
-                                        <textarea class="form-control form-control-sm text-uppercase" name="address" id="address" placeholder="Enter Address">{{ old('address') }}</textarea>
+                                        <textarea class="form-control form-control-sm text-uppercase" name="address" id="address" placeholder="Enter Address">{{ old('address', $undernameMbl->address) }}</textarea>
                                     </div>
                                     <div class="row">
                                         <div class="col-4">
                                             <div class="form-group">
                                                 <label for="inputPhone_1">Phone 1</label>
                                                 <input type="text" class="form-control form-control-sm" name="phone_1" id="phone_1"
-                                                value="{{ old('phone_1') }}" placeholder="Enter Phone 1">
+                                                    value="{{ old('phone_1', $undernameMbl->phone_1) }}" placeholder="Enter Phone 1">
                                             </div>
                                         </div>
                                         <div class="col-4">
                                             <div class="form-group">
                                                 <label for="inputPhone_2">Phone 2</label>
                                                 <input type="text" class="form-control form-control-sm" name="phone_2" id="phone_2"
-                                                value="{{ old('phone_2') }}" placeholder="Enter Phone 2">
+                                                    value="{{ old('phone_2', $undernameMbl->phone_2) }}" placeholder="Enter Phone 2">
                                             </div>
                                         </div>
                                         <div class="col-4">
                                             <div class="form-group">
                                                 <label for="inputFax">Fax</label>
                                                 <input type="text" class="form-control form-control-sm" name="fax" id="fax"
-                                                value="{{ old('fax') }}" placeholder="Enter Fax">
+                                                    value="{{ old('fax', $undernameMbl->fax) }}" placeholder="Enter Fax">
                                             </div>
                                         </div>
                                     </div>
@@ -99,25 +102,26 @@
                                             <div class="form-group">
                                                 <label for="inputEmail">Email address</label>
                                                 <input type="email" class="form-control form-control-sm" name="email" id="email"
-                                                value="{{ old('email') }}" placeholder="Enter Email">
+                                                    value="{{ old('email', $undernameMbl->email) }}" placeholder="Enter Email">
                                             </div>
                                         </div>
                                         <div class="col-2 ml-5">
                                             <div class="form-group">
-                                                <label for="mandatory_tax">Mandatory Tax</label>
-                                                <select name="mandatory_tax_id" id="mandatory_tax_id" class="form-control form-control-sm select2"
+                                                <label>Mandatory Tax</label>
+                                                <select class="form-control form-control-sm select2" name="mandatory_tax_id" id="mandatory_tax_id"
                                                     style="width: 100%;" onchange="showDiv(this)">
-                                                    @foreach ($undername as $item)
-                                                        <option value="{{ old('mandatory_tax_id', $item->id) }}">{{ $item->name }}</option>
+                                                    <option value="{{ old('mandatory_tax_id', $undernameMbl->mandatoryTax->id) }}">{{ $undernameMbl->mandatoryTax->name }}</option>
+                                                    @foreach ($mandatoryTax as $item)
+                                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="col-3">
-                                            <div class="form-group row" id="tax_id_group" style="display: none;">
+                                            <div class="form-group row" id="tax_id_group">
                                                 <label for="inputTaxId">Tax ID</label>
                                                 <input type="text" class="form-control form-control-sm" name="tax_id" id="tax_id"
-                                                value="{{ old('tax_id') }}" placeholder="Enter TAX ID">
+                                                    value="{{ old('tax_id', $undernameMbl->tax_id) }}" placeholder="Enter TAX ID">
                                             </div>
                                         </div>
                                     </div>
@@ -127,8 +131,9 @@
                                         value="{{ Auth::user()->id }}" placeholder="">
 
                                     <div class="d-grid gap-2 d-md-block">
-                                        <button class="btn btn-primary mr-3" type="submit">SAVE</button>
-                                        <a href="{{ route('undername') }}" class="btn btn-danger" type="button">CANCEL</a>
+                                        <button class="btn btn-primary mr-3" type="submit">UPDATE</button>
+                                        <a class="btn btn-danger" href="{{ route('undernameMbl') }}"
+                                            type="button">CANCEL</a>
                                     </div>
                                 </div>
                                 <!-- /.card-body -->

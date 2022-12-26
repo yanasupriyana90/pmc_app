@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UndernameCreateRequest extends FormRequest
+class UndernameMblCreateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +25,7 @@ class UndernameCreateRequest extends FormRequest
     {
         $rules = [
 
-            'code_undername' => 'required|unique:undernames|max:3',
+            'code_undername_mbl' => 'required|unique:undername_mbls|max:3',
             'name' => 'required|max:255',
             'address' => 'required|max:255',
             'phone_1' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/',
@@ -57,7 +57,7 @@ class UndernameCreateRequest extends FormRequest
     public function attributes()
     {
         return [
-            'code_undername' => 'CODE UNDERNAME',
+            'code_undername_mbl' => 'CODE UNDERNAME M-BL / BOOKING',
             'name' => 'NAME',
             'address' => 'ADDRESS',
             'phone_1' => 'PHONE 1',

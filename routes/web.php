@@ -16,7 +16,8 @@ use App\Http\Controllers\TypePackagingController;
 use App\Http\Controllers\TypeWeightController;
 use App\Http\Controllers\TypeMeasurementController;
 use App\Http\Controllers\TypePaymentController;
-use App\Http\Controllers\UndernameController;
+use App\Http\Controllers\UndernameMBLController;
+use App\Http\Controllers\UndernameHBLController;
 use App\Models\Shipper;
 use App\Models\TypePackaging;
 use App\Models\User;
@@ -60,42 +61,29 @@ Route::middleware('auth')->group(function () {
     });
 });
 
-// Undername Controller
+// Undername M-BL Controller
 Route::middleware('auth')->group(function () {
-    Route::controller(UndernameController::class)->group(function () {
-        Route::get('/undername', 'index')->name('undername');
-        Route::get('/undernameShow/{id}', 'show')->name('undername.show');
-        Route::get('/undernameCreate', 'create')->name('undername.create');
-        Route::post('/undernameStore', 'store')->name('undername.store');
-        Route::get('/undernameEdit/{id}', 'edit')->name('undername.edit');
-        Route::put('/undernameUpdate/{id}', 'update')->name(('undername.update'));
-        Route::get('/undernameDestroy/{id}', 'destroy')->name('undername.destroy');
+    Route::controller(UndernameMblController::class)->group(function () {
+        Route::get('/undernameMbl', 'index')->name('undernameMbl');
+        Route::get('/undernameMblShow/{id}', 'show')->name('undernameMbl.show');
+        Route::get('/undernameMblCreate', 'create')->name('undernameMbl.create');
+        Route::post('/undernameMblStore', 'store')->name('undernameMbl.store');
+        Route::get('/undernameMblEdit/{id}', 'edit')->name('undernameMbl.edit');
+        Route::put('/undernameMblUpdate/{id}', 'update')->name(('undernameMbl.update'));
+        Route::get('/undernameMblDestroy/{id}', 'destroy')->name('undernameMbl.destroy');
     });
 });
 
-// Consignee Controller
+// Undername H-BL Controller
 Route::middleware('auth')->group(function () {
-    Route::controller(ConsigneeController::class)->group(function () {
-        Route::get('/consignee', 'index')->name('consignee');
-        Route::get('/consigneeShow/{id}', 'show')->name('consignee.show');
-        Route::get('/consigneeCreate', 'create')->name('consignee.create');
-        Route::post('/consigneeStore', 'store')->name('consignee.store');
-        Route::get('/consigneeEdit/{id}', 'edit')->name('consignee.edit');
-        Route::put('/consigneeUpdate/{id}', 'update')->name(('consignee.update'));
-        Route::get('/consigneeDestroy/{id}', 'destroy')->name('consignee.destroy');
-    });
-});
-
-// Notify Party Controller
-Route::middleware('auth')->group(function () {
-    Route::controller(NotifyPartyController::class)->group(function () {
-        Route::get('/notifyParty', 'index')->name('notifyParty');
-        Route::get('/notifyPartyShow/{id}', 'show')->name('notifyParty.show');
-        Route::get('/notifyPartyCreate', 'create')->name('notifyParty.create');
-        Route::post('/notifyPartyStore', 'store')->name('notifyParty.store');
-        Route::get('/notifyPartyEdit/{id}', 'edit')->name('notifyParty.edit');
-        Route::put('/notifyPartyUpdate/{id}', 'update')->name(('notifyParty.update'));
-        Route::get('/notifyPartyDestroy/{id}', 'destroy')->name('notifyParty.destroy');
+    Route::controller(UndernameHblController::class)->group(function () {
+        Route::get('/undernameHbl', 'index')->name('undernameHbl');
+        Route::get('/undernameHblShow/{id}', 'show')->name('undernameHbl.show');
+        Route::get('/undernameHblCreate', 'create')->name('undernameHbl.create');
+        Route::post('/undernameHblStore', 'store')->name('undernameHbl.store');
+        Route::get('/undernameHblEdit/{id}', 'edit')->name('undernameHbl.edit');
+        Route::put('/undernameHblUpdate/{id}', 'update')->name(('undernameHbl.update'));
+        Route::get('/undernameHblDestroy/{id}', 'destroy')->name('undernameHbl.destroy');
     });
 });
 
@@ -250,7 +238,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/jobSheet', 'index')->name('jobSheet');
         // Route::get('/jobSheetShow/{id}', 'show')->name('jobSheet.show');
         Route::get('/jobSheetCreate', 'create')->name('jobSheet.create');
-        Route::get('/jobSheetCreate/getShipper', 'getShipper')->name('jobSheet.getShipper');
+        Route::get('/jobSheetCreate/get-shippers/{name}', 'getShippers');
 
         Route::post('/jobSheetStore', 'store')->name('jobSheet.store');
         // Route::get('/jobSheetEdit/{id}', 'edit')->name('jobSheet.edit');

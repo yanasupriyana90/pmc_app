@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('undernames', function (Blueprint $table) {
+        Schema::create('undername_mbls', function (Blueprint $table) {
             $table->id();
-            $table->string('code_undername', 3)->unique();
+            $table->string('code_undername_mbl', 3)->unique();
             $table->string('name');
             $table->string('address');
             $table->string('phone_1', 20);
@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('tax_id', 35)->nullable();
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
+            $table->foreign('mandatory_tax_id')->references('id')->on('mandatory_taxes')->onDelete('restrict');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('restrict');
         });
     }
@@ -37,9 +38,10 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('undernames', function (Blueprint $table) {
+        Schema::table('undername_mbls', function (Blueprint $table) {
+            $table->dropForeign(['mandatory_tax_id']);
             $table->dropForeign(['user_id']);
         });
-        Schema::dropIfExists('undernames');
+        Schema::dropIfExists('undername_mbls');
     }
 };

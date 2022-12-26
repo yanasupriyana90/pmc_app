@@ -66,6 +66,7 @@ class ShipperController extends Controller
         $shipper->code_shipper = strtoupper($request->code_shipper);
         $shipper->name = strtoupper($request->name);
         $shipper->address = strtoupper($request->address);
+        $shipper->email = strtolower($request->email);
         $shipper->save();
 
         $notification = array(

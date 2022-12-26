@@ -42,10 +42,18 @@ class JobSheetController extends Controller
         return view('marketing.jobSheet.partials.create', ['kd' => $kd]);
     }
 
-    public function getShipper(Request $request){
-        if($request->has('term')){
-            return Shipper::where('name','like','%'.$request->input('term').'%')->get();
+    public function getShippers($name)
+    {
+        if (empty($name)) {
+            return [];
         }
+        $shippers = Shipper::with(['mandatoryTax'])
+            ->select('id', 'name', 'address', 'phone_1', 'phone_2', 'fax', 'email', 'mandatory_tax_id', 'tax_id')
+            ->where('name', 'LIKE', "%$name%")
+            ->limit(25)
+            ->get();
+
+        return $shippers;
     }
 
     /**
