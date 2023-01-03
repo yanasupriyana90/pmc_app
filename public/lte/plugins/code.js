@@ -1,42 +1,42 @@
 // Validation Delete
 $(function () {
-  $(document).on('click', '#delete', function (e) {
-    e.preventDefault();
-    var link = $(this).attr("href");
+    $(document).on('click', '#delete', function (e) {
+        e.preventDefault();
+        var link = $(this).attr("href");
 
 
-    Swal.fire({
-      title: 'Are You Sure ?',
-      text: "Delete This Data ?",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, Delete It !'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        window.location.href = link
-        Swal.fire(
-          'Deleted!',
-          'Your file has been deleted.',
-          'success'
-        )
-      }
-    })
+        Swal.fire({
+            title: 'Are You Sure ?',
+            text: "Delete This Data ?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, Delete It !'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = link
+                Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                )
+            }
+        })
 
 
-  });
+    });
 
 });
 
 // Revenue Of Sales / Ocean Freight
 // Selling Rate
 $(function () {
-  $(document).ready(function () {
-    var id = 0;
-    $('#addButtonOceanFreight').click(function () {
-      id++;
-      $('#add_input_ocean_freight').append(`<div class="form-group row" id="formOceanFreight_SellingRate` + id + `" name="formOceanFreight_SellingRateName[` + id + `]">
+    $(document).ready(function () {
+        var id = 0;
+        $('#addButtonOceanFreight').click(function () {
+            id++;
+            $('#add_input_ocean_freight').append(`<div class="form-group row" id="formOceanFreight_SellingRate` + id + `" name="formOceanFreight_SellingRateName[` + id + `]">
       <div class="col-sm-3">
           <div class="form-group">
               <select class="form-control form-control-sm select2"
@@ -92,22 +92,22 @@ $(function () {
       </div>
   </div>
                                             `)
-    })
-    $('#removeButtonOceanFreight').click(function () {
-      $('#formOceanFreight_SellingRate' + id).remove();
-      id--
+        })
+        $('#removeButtonOceanFreight').click(function () {
+            $('#formOceanFreight_SellingRate' + id).remove();
+            id--
+        });
     });
-  });
 });
 
 // Revenue Of Sales / EMKL
 // Selling Rate
 $(function () {
-  $(document).ready(function () {
-    var id = 0;
-    $('#addButtonEmkl').click(function () {
-      id++;
-      $('#add_input_emkl').append(`<div class="form-group row" id="formEmkl_SellingRate` + id + `" name="formEmkl_SellingRateName[` + id + `]">
+    $(document).ready(function () {
+        var id = 0;
+        $('#addButtonEmkl').click(function () {
+            id++;
+            $('#add_input_emkl').append(`<div class="form-group row" id="formEmkl_SellingRate` + id + `" name="formEmkl_SellingRateName[` + id + `]">
       <div class="col-sm-3">
           <div class="form-group">
               <select class="form-control form-control-sm select2"
@@ -153,22 +153,22 @@ $(function () {
       </div>
   </div>
                                             `)
-    })
-    $('#removeButtonEmkl').click(function () {
-      $('#formEmkl_SellingRate' + id).remove();
-      id--
+        })
+        $('#removeButtonEmkl').click(function () {
+            $('#formEmkl_SellingRate' + id).remove();
+            id--
+        });
     });
-  });
 });
 
 // Cost Of Sales
 // Buying Rate
 $(function () {
-  $(document).ready(function () {
-    var id = 0;
-    $('#addButtonCostOfSales').click(function () {
-      id++;
-      $('#add_input_cost_of_sales').append(`<div class="form-group row" id="formCostOfSales_BuyingRate` + id + `" name="formCostOfSales_BuyingRateName[` + id + `]">
+    $(document).ready(function () {
+        var id = 0;
+        $('#addButtonCostOfSales').click(function () {
+            id++;
+            $('#add_input_cost_of_sales').append(`<div class="form-group row" id="formCostOfSales_BuyingRate` + id + `" name="formCostOfSales_BuyingRateName[` + id + `]">
       <div class="col-sm-3">
           <div class="form-group">
               <select class="form-control form-control-sm select2"
@@ -224,22 +224,22 @@ $(function () {
       </div>
   </div>
                                             `)
-    })
-    $('#removeButtonCostOfSales').click(function () {
-      $('#formCostOfSales_BuyingRate' + id).remove();
-      id--
+        })
+        $('#removeButtonCostOfSales').click(function () {
+            $('#formCostOfSales_BuyingRate' + id).remove();
+            id--
+        });
     });
-  });
 });
 
 // Revenue Of Sales / EMKL
 // Buying Rate
 $(function () {
-  $(document).ready(function () {
-    var id = 0;
-    $('#addButtonHandling').click(function () {
-      id++;
-      $('#add_input_handling').append(`<div class="form-group row" id="formHandling_BuyingRate` + id + `" name="formHandling_BuyingRateName[` + id + `]">
+    $(document).ready(function () {
+        var id = 0;
+        $('#addButtonHandling').click(function () {
+            id++;
+            $('#add_input_handling').append(`<div class="form-group row" id="formHandling_BuyingRate` + id + `" name="formHandling_BuyingRateName[` + id + `]">
       <div class="col-sm-3">
           <div class="form-group">
               <select class="form-control form-control-sm select2"
@@ -285,115 +285,337 @@ $(function () {
       </div>
   </div>
                                             `)
-    })
-    $('#removeButtonHandling').click(function () {
-      $('#formHandling_BuyingRate' + id).remove();
-      id--
+        })
+        $('#removeButtonHandling').click(function () {
+            $('#formHandling_BuyingRate' + id).remove();
+            id--
+        });
     });
-  });
 });
 
 
 // Jobsheet Date
 $(function () {
 
-  //Date picker ETD
-  $('#etd').datetimepicker({
-    format: 'L'
-  });
+    //Date picker ETD
+    $('#etd').datetimepicker({
+        // format: 'MM-DD-YYYY',
+        format: 'YYYY-MM-DD',
+        autoclose: true,
+    });
 
-  //Date picker Stuffing Date
-  $('#stuffing_date').datetimepicker({
-    format: 'L'
-  });
+    //Date picker Stuffing Date
+    $('#stuffing_date').datetimepicker({
+        // format: 'MM-DD-YYYY',
+        format: 'YYYY-MM-DD',
+        autoclose: true,
+    });
 
-  $('#issue_date').datetimepicker({
-    format: 'L'
-  });
+    $('#issue_date').datetimepicker({
+        // format: 'MM-DD-YYYY',
+        format: 'YYYY-MM-DD',
+        autoclose: true,
+    });
 
-  $('#due_date').datetimepicker({
-    format: 'L'
-  });
+    $('#due_date').datetimepicker({
+        // format: 'MM-DD-YYYY',
+        format: 'YYYY-MM-DD',
+        autoclose: true,
+    });
 
-  //Date and time picker Open CY
-  $('#open_cy').datetimepicker({
-    format: 'MM/DD/YYYY HH:mm',
-    icons: {
-      time: 'far fa-clock'
-    }
-  });
+    //Date and time picker Open CY
+    $('#open_cy').datetimepicker({
+        // format: 'MM-DD-YYYY HH:mm',
+        format: 'YYYY-MM-DD HH:mm',
+        icons: {
+            time: 'far fa-clock'
+        },
+        autoclose: true,
+    });
 
-  //Date and time picker Open CY
-  $('#closing_doc').datetimepicker({
-    format: 'MM/DD/YYYY HH:mm',
-    icons: {
-      time: 'far fa-clock'
-    }
-  });
+    //Date and time picker Open CY
+    $('#closing_doc').datetimepicker({
+        // format: 'MM-DD-YYYY HH:mm',
+        format: 'YYYY-MM-DD HH:mm',
+        icons: {
+            time: 'far fa-clock'
+        },
+        autoclose: true,
+    });
 
-  // Date and time picker Open CY
-  $('#closing_cy').datetimepicker({
-    format: 'MM/DD/YYYY HH:mm',
-    icons: {
-      time: 'far fa-clock'
-    }
-  });
+    // Date and time picker Open CY
+    $('#closing_cy').datetimepicker({
+        // format: 'MM-DD-YYYY HH:mm',
+        format: 'YYYY-MM-DD HH:mm',
+        icons: {
+            time: 'far fa-clock'
+        },
+        autoclose: true,
+    });
 
 
 });
 
 
 // Search Shipper
-$(document).ready(function(){
-  //Array of Values
-  $("#name_ship").autocomplete({
-      source: function(request, cb){
-          $.ajax({
-              url: '/jobSheetCreate/get-shippers/'+request.term,
-              method: 'GET',
-              dataType: 'json',
-              success: function(res){
-                  var result;
-                  result = [
-                      {
-                          label: 'There Is No Matching Record Found For '+request.term,
-                          value: ''
-                      }
-                  ];
+$(document).ready(function () {
+    //Array of Values
+    $("#name_ship").autocomplete({
+        source: function (request, cb) {
+            $.ajax({
+                url: '/jobSheetCreate/get-shippers/' + request.term,
+                method: 'GET',
+                dataType: 'json',
+                success: function (res) {
+                    var result;
+                    result = [
+                        {
+                            label: 'There Is No Matching Record Found For ' + request.term,
+                            value: ''
+                        }
+                    ];
 
-                  console.log(res);
+                    console.log(res);
 
 
-                  if (res.length) {
-                      result = $.map(res, function(obj){
-                          return {
-                              label: obj.name,
-                              value: obj.name,
-                              data : obj
-                          };
-                      });
-                  }
-                  cb(result);
-              }
-          });
-      },
-      select:function(e, selectedData) {
-          console.log(selectedData);
+                    if (res.length) {
+                        result = $.map(res, function (obj) {
+                            return {
+                                label: obj.name,
+                                value: obj.name,
+                                data: obj
+                            };
+                        });
+                    }
+                    cb(result);
+                }
+            });
+        },
+        select: function (e, selectedData) {
+            console.log(selectedData);
 
-          if (selectedData && selectedData.item && selectedData.item.data){
-              var data = selectedData.item.data;
+            if (selectedData && selectedData.item && selectedData.item.data) {
+                var data = selectedData.item.data;
 
-              $('#shipper_id').val(data.id);
-              $('#name_ship').val(data.name);
-              $('#address_ship').val(data.address);
-              $('#phone_1_ship').val(data.phone_1);
-              $('#phone_2_ship').val(data.phone_2);
-              $('#fax_ship').val(data.fax);
-              $('#email_ship').val(data.email);
-              $('#mandatory_tax_id_ship').val(data.mandatory_tax.name);
-              $('#tax_id_ship').val(data.tax_id_ship);
+                $('#shipper_id').val(data.id);
+                $('#name_ship').val(data.name);
+                $('#address_ship').val(data.address);
+                $('#phone_1_ship').val(data.phone_1);
+                $('#phone_2_ship').val(data.phone_2);
+                $('#fax_ship').val(data.fax);
+                $('#email_ship').val(data.email);
+                $('#mandatory_tax_id_ship').val(data.mandatory_tax.name);
+                $('#tax_id_ship').val(data.tax_id);
 
-          }
-      }
-  });
+            }
+        }
+    });
+});
+
+
+// Search Undername M-BL
+$(document).ready(function () {
+    //Array of Values
+    $("#name_und_mbl").autocomplete({
+        source: function (request, cb) {
+            $.ajax({
+                url: '/jobSheetCreate/get-undernameMbl/' + request.term,
+                method: 'GET',
+                dataType: 'json',
+                success: function (res) {
+                    var result;
+                    result = [
+                        {
+                            label: 'There Is No Matching Record Found For ' + request.term,
+                            value: ''
+                        }
+                    ];
+
+                    console.log(res);
+
+
+                    if (res.length) {
+                        result = $.map(res, function (obj) {
+                            return {
+                                label: obj.name,
+                                value: obj.name,
+                                data: obj
+                            };
+                        });
+                    }
+                    cb(result);
+                }
+            });
+        },
+        select: function (e, selectedData) {
+            console.log(selectedData);
+
+            if (selectedData && selectedData.item && selectedData.item.data) {
+                var data = selectedData.item.data;
+
+                $('#undername_mbl_id').val(data.id);
+                $('#name_und_mbl').val(data.name);
+                $('#address_und_mbl').val(data.address);
+                $('#phone_1_und_mbl').val(data.phone_1);
+                $('#phone_2_und_mbl').val(data.phone_2);
+                $('#fax_und_mbl').val(data.fax);
+                $('#email_und_mbl').val(data.email);
+                $('#mandatory_tax_id_und_mbl').val(data.mandatory_tax.name);
+                $('#tax_id_und_mbl').val(data.tax_id);
+
+            }
+        }
+    });
+});
+
+
+// Search Undername H-BL
+$(document).ready(function () {
+    //Array of Values
+    $("#name_und_hbl").autocomplete({
+        source: function (request, cb) {
+            $.ajax({
+                url: '/jobSheetCreate/get-undernameHbl/' + request.term,
+                method: 'GET',
+                dataType: 'json',
+                success: function (res) {
+                    var result;
+                    result = [
+                        {
+                            label: 'There Is No Matching Record Found For ' + request.term,
+                            value: ''
+                        }
+                    ];
+
+                    console.log(res);
+
+
+                    if (res.length) {
+                        result = $.map(res, function (obj) {
+                            return {
+                                label: obj.name,
+                                value: obj.name,
+                                data: obj
+                            };
+                        });
+                    }
+                    cb(result);
+                }
+            });
+        },
+        select: function (e, selectedData) {
+            console.log(selectedData);
+
+            if (selectedData && selectedData.item && selectedData.item.data) {
+                var data = selectedData.item.data;
+
+                $('#undername_hbl_id').val(data.id);
+                $('#name_und_hbl').val(data.name);
+                $('#address_und_hbl').val(data.address);
+                $('#phone_1_und_hbl').val(data.phone_1);
+                $('#phone_2_und_hbl').val(data.phone_2);
+                $('#fax_und_hbl').val(data.fax);
+                $('#email_und_hbl').val(data.email);
+                $('#mandatory_tax_id_und_hbl').val(data.mandatory_tax.name);
+                $('#tax_id_und_hbl').val(data.tax_id);
+
+            }
+        }
+    });
+});
+
+// Search Container Size Type
+$(document).ready(function () {
+    //Array of Values
+    $("#name_cont_size_type").autocomplete({
+        source: function (request, cb) {
+            $.ajax({
+                url: '/jobSheetCreate/get-sizeTypeCont/' + request.term,
+                method: 'GET',
+                dataType: 'json',
+                success: function (res) {
+                    var result;
+                    result = [
+                        {
+                            label: 'There Is No Matching Record Found For ' + request.term,
+                            value: ''
+                        }
+                    ];
+
+                    console.log(res);
+
+
+                    if (res.length) {
+                        result = $.map(res, function (obj) {
+                            return {
+                                label: obj.name,
+                                value: obj.name,
+                                data: obj
+                            };
+                        });
+                    }
+                    cb(result);
+                }
+            });
+        },
+        select: function (e, selectedData) {
+            console.log(selectedData);
+
+            if (selectedData && selectedData.item && selectedData.item.data) {
+                var data = selectedData.item.data;
+
+                $('#cont_size_type_id').val(data.id);
+                $('#name_cont_size_type').val(data.name);
+
+            }
+        }
+    });
+});
+
+// Search Type Packaging
+$(document).ready(function () {
+    //Array of Values
+    $("#name_type_pack").autocomplete({
+        source: function (request, cb) {
+            $.ajax({
+                url: '/jobSheetCreate/get-typePack/' + request.term,
+                method: 'GET',
+                dataType: 'json',
+                success: function (res) {
+                    var result;
+                    result = [
+                        {
+                            label: 'There Is No Matching Record Found For ' + request.term,
+                            value: ''
+                        }
+                    ];
+
+                    console.log(res);
+
+
+                    if (res.length) {
+                        result = $.map(res, function (obj) {
+                            return {
+                                label: obj.name,
+                                value: obj.name,
+                                data: obj
+                            };
+                        });
+                    }
+                    cb(result);
+                }
+            });
+        },
+        select: function (e, selectedData) {
+            console.log(selectedData);
+
+            if (selectedData && selectedData.item && selectedData.item.data) {
+                var data = selectedData.item.data;
+
+                $('#type_packaging_id').val(data.id);
+                $('#name_type_pack').val(data.name);
+
+            }
+        }
+    });
 });

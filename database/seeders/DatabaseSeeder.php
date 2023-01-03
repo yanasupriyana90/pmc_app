@@ -22,7 +22,6 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             CategoryBuyingSeeder::class,
             CategorySellingSeeder::class,
-            ConsigneeSeeder::class,
             ContainerSizeTypeSeeder::class,
             MandatoryTaxSeeder::class,
             TypeBillOfLadingSeeder::class,
@@ -32,8 +31,8 @@ class DatabaseSeeder extends Seeder
             TypePaymentSeeder::class,
             TypeWeightSeeder::class,
             ShipperSeeder::class,
-            UndernameSeeder::class,
-            NotifyPartySeeder::class,
+            UndernameHblSeeder::class,
+            UndernameMblSeeder::class,
 
             // Marketing
             JobSheetSeeder::class,

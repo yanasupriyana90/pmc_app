@@ -97,6 +97,7 @@
     <script src="{{ asset('lte') }}/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
     <!-- AdminLTE App -->
     <script src="{{ asset('lte') }}/dist/js/adminlte.js"></script>
+    {{-- <script src="{{ asset('lte') }}/dist/js/adminlte.min.js"></script> --}}
     <!-- AdminLTE for demo purposes -->
     {{-- <script src="{{ asset('lte') }}/dist/js/demo.js"></script> --}}
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
@@ -160,6 +161,14 @@
 
     <script src="{{ asset('lte') }}/plugins/sweetalert2/sweetalert2.all.min.js"></script>
     <script src="{{ asset('lte') }}/plugins/code.js"></script>
+
+    <script>
+        // Add the following code if you want the name of the file appear on select
+        $(".custom-file-input").on("change", function() {
+            var fileName = $(this).val().split("\\").pop();
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
+    </script>
 
 </body>
 

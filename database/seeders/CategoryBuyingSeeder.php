@@ -173,7 +173,7 @@ class CategoryBuyingSeeder extends Seeder
                 ],
 
                 [
-                'name' => 'OVERSTAY',
+                'name' => 'OVERTIME TRUCKING',
                 'user_id' => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()

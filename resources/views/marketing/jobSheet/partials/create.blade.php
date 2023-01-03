@@ -74,7 +74,7 @@
                                 </ul>
                             </div>
                             <!-- form start -->
-                            <form action="{{ Route('jobSheet.store') }}" method="POST">
+                            <form action="{{ Route('jobSheet.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="card-body">
                                     <div class="tab-content" id="job_sheet-tabContent">
@@ -89,8 +89,8 @@
                                                             <label for="inputCodeJobSheet">Code Job Sheet</label>
                                                             <input type="text"
                                                                 class="form-control form-control-sm text-uppercase"
-                                                                name="code_jb" id="code_jb"
-                                                                value="{{ 'JB-' . date('dmy') . '-' . $kd }}" disabled>
+                                                                name="code_js" id="code_js"
+                                                                value="{{ 'JS-' . date('mdy') . '-' . $kd }}" readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
@@ -98,7 +98,8 @@
                                                             <label for="inputBookingNo">Booking No.</label>
                                                             <input type="text"
                                                                 class="form-control form-control-sm text-uppercase"
-                                                                name="booking_no" id="booking_no">
+                                                                name="booking_no" id="booking_no"
+                                                                value="{{ old('booking_no') }}">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -111,7 +112,7 @@
                                                             <input type="hidden"
                                                                 class="form-control form-control-sm text-uppercase"
                                                                 name="shipper_id" id="shipper_id"
-                                                                placeholder="Enter ID Shipper" disabled>
+                                                                placeholder="Enter ID Shipper" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -124,31 +125,32 @@
                                                             <input type="text"
                                                                 class="form-control form-control-sm text-uppercase"
                                                                 name="name_ship" id="name_ship"
+                                                                value="{{ old('name_ship') }}""
                                                                 placeholder="Enter Name Shipper">
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
                                                         <div class="form-group">
                                                             <label for="inputPhone1Ship">Phone 1</label>
-                                                            <input type="number" class="form-control form-control-sm"
+                                                            <input type="text" class="form-control form-control-sm"
                                                                 name="phone_1_ship" id="phone_1_ship"
-                                                                placeholder="Enter Phone 1 Shipper" disabled>
+                                                                placeholder="Enter Phone 1 Shipper" readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
                                                         <div class="form-group">
                                                             <label for="inputPhone2Ship">Phone 2</label>
-                                                            <input type="number" class="form-control form-control-sm"
+                                                            <input type="text" class="form-control form-control-sm"
                                                                 name="phone_2_ship" id="phone_2_ship"
-                                                                placeholder="Enter Phone 2 Shipper" disabled>
+                                                                placeholder="Enter Phone 2 Shipper" readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
                                                         <div class="form-group">
                                                             <label for="inputFaxShip">Fax</label>
-                                                            <input type="number" class="form-control form-control-sm"
+                                                            <input type="text" class="form-control form-control-sm"
                                                                 name="fax_ship" id="fax_ship"
-                                                                placeholder="Enter Fax Shipper" disabled>
+                                                                placeholder="Enter Fax Shipper" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -159,7 +161,7 @@
                                                         <div class="form-group">
                                                             <label for="inputAddressShip">Address</label>
                                                             <textarea class="form-control form-control-sm text-uppercase" name="address_ship" id="address_ship" rows="3"
-                                                                placeholder="Enter Address Shipper" disabled></textarea>
+                                                                placeholder="Enter Address Shipper" readonly></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="col-3">
@@ -167,15 +169,16 @@
                                                             <label for="inputEmailShip">Email address</label>
                                                             <input type="email" class="form-control form-control-sm"
                                                                 name="email_ship" id="email_ship"
-                                                                placeholder="Enter Email Shipper" disabled>
+                                                                placeholder="Enter Email Shipper" readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-2 offset-1">
                                                         <div class="form-group">
                                                             <label for="inputMandatoryTaxIdShip">Mandatory Tax</label>
                                                             <input type="text" name="mandatory_tax_id_ship"
-                                                                class="form-control form-control-sm" id="mandatory_tax_id_ship"
-                                                                placeholder="Enter Mandatory Tax Shipper" disabled>
+                                                                class="form-control form-control-sm"
+                                                                id="mandatory_tax_id_ship"
+                                                                placeholder="Enter Mandatory Tax Shipper" readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
@@ -183,7 +186,7 @@
                                                             <label for="inputTaxIdShip">Tax ID</label>
                                                             <input type="text" name="tax_id_ship"
                                                                 class="form-control form-control-sm" id="tax_id_ship"
-                                                                placeholder="Enter Tax ID Shipper" disabled>
+                                                                placeholder="Enter Tax ID Shipper" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -194,10 +197,10 @@
                                                 <div class="row">
                                                     <div class="col-2">
                                                         <div class="form-group">
-                                                            <input type="text"
+                                                            <input type="hidden"
                                                                 class="form-control form-control-sm text-uppercase"
                                                                 name="undername_mbl_id" id="undername_mbl_id"
-                                                                placeholder="Enter ID Undername M-BL" disabled>
+                                                                placeholder="Enter ID Undername M-BL" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -216,25 +219,25 @@
                                                     <div class="col-2">
                                                         <div class="form-group">
                                                             <label for="inputPhone1UndMbl">Phone 1</label>
-                                                            <input type="number" class="form-control form-control-sm"
+                                                            <input type="text" class="form-control form-control-sm"
                                                                 name="phone_1_und_mbl" id="phone_1_und_mbl"
-                                                                placeholder="Enter Phone 1 Undername M-BL" disabled>
+                                                                placeholder="Enter Phone 1 Undername M-BL" readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
                                                         <div class="form-group">
                                                             <label for="inputPhone2UndMbl">Phone 2</label>
-                                                            <input type="number" class="form-control form-control-sm"
+                                                            <input type="text" class="form-control form-control-sm"
                                                                 name="phone_2_und_mbl" id="phone_2_und_mbl"
-                                                                placeholder="Enter Phone 2 Undername M-BL" disabled>
+                                                                placeholder="Enter Phone 2 Undername M-BL" readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
                                                         <div class="form-group">
                                                             <label for="inputFaxUndMbl">Fax</label>
-                                                            <input type="number" class="form-control form-control-sm"
+                                                            <input type="text" class="form-control form-control-sm"
                                                                 name="fax_und_mbl" id="fax_und_mbl"
-                                                                placeholder="Enter Fax Undername M-BL" disabled>
+                                                                placeholder="Enter Fax Undername M-BL" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -244,8 +247,8 @@
                                                     <div class="col-4">
                                                         <div class="form-group">
                                                             <label for="inputAddressUndMbl">Address</label>
-                                                            <textarea class="form-control form-control-sm text-uppercase" name="address_und_mbl" id="address_und_mbl" rows="3"
-                                                                placeholder="Enter Address Undername M-BL" disabled></textarea>
+                                                            <textarea class="form-control form-control-sm text-uppercase" name="address_und_mbl" id="address_und_mbl"
+                                                                rows="3" placeholder="Enter Address Undername M-BL" readonly></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="col-3">
@@ -253,15 +256,16 @@
                                                             <label for="inputEmailUndMbl">Email address</label>
                                                             <input type="email" class="form-control form-control-sm"
                                                                 name="email_und_mbl" id="email_und_mbl"
-                                                                placeholder="Enter Email Undername M-BL" disabled>
+                                                                placeholder="Enter Email Undername M-BL" readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-2 offset-1">
                                                         <div class="form-group">
                                                             <label for="inputMandatoryTaxIdUndMbl">Mandatory Tax</label>
                                                             <input type="text" name="mandatory_tax_id_und_mbl"
-                                                                class="form-control form-control-sm" id="mandatory_tax_id_und_mbl"
-                                                                placeholder="Enter Mandatory Tax Undername M-BL" disabled>
+                                                                class="form-control form-control-sm"
+                                                                id="mandatory_tax_id_und_mbl"
+                                                                placeholder="Enter Mandatory Tax Undername M-BL" readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
@@ -269,7 +273,7 @@
                                                             <label for="inputTaxIdUndMbl">Tax ID</label>
                                                             <input type="text" name="tax_id_und_mbl"
                                                                 class="form-control form-control-sm" id="tax_id_und_mbl"
-                                                                placeholder="Enter Tax ID Undername M-BL" disabled>
+                                                                placeholder="Enter Tax ID Undername M-BL" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -280,10 +284,10 @@
                                                 <div class="row">
                                                     <div class="col-2">
                                                         <div class="form-group">
-                                                            <input type="text"
+                                                            <input type="hidden"
                                                                 class="form-control form-control-sm text-uppercase"
                                                                 name="undername_hbl_id" id="undername_hbl_id"
-                                                                placeholder="Enter ID Undername H-BL" disabled>
+                                                                placeholder="Enter ID Undername H-BL" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -302,25 +306,25 @@
                                                     <div class="col-2">
                                                         <div class="form-group">
                                                             <label for="inputPhone1UndHbl">Phone 1</label>
-                                                            <input type="number" class="form-control form-control-sm"
+                                                            <input type="text" class="form-control form-control-sm"
                                                                 name="phone_1_und_mbl" id="phone_1_und_mbl"
-                                                                placeholder="Enter Phone 1 Undername H-BL" disabled>
+                                                                placeholder="Enter Phone 1 Undername H-BL" readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
                                                         <div class="form-group">
                                                             <label for="inputPhone2UndHbl">Phone 2</label>
-                                                            <input type="number" class="form-control form-control-sm"
+                                                            <input type="text" class="form-control form-control-sm"
                                                                 name="phone_2_und_hbl" id="phone_2_und_hbl"
-                                                                placeholder="Enter Phone 2 Undername H-BL" disabled>
+                                                                placeholder="Enter Phone 2 Undername H-BL" readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
                                                         <div class="form-group">
                                                             <label for="inputFaxUndHbl">Fax</label>
-                                                            <input type="number" class="form-control form-control-sm"
+                                                            <input type="text" class="form-control form-control-sm"
                                                                 name="fax_und_hbl" id="fax_und_hbl"
-                                                                placeholder="Enter Fax Undername H-BL" disabled>
+                                                                placeholder="Enter Fax Undername H-BL" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -330,8 +334,8 @@
                                                     <div class="col-4">
                                                         <div class="form-group">
                                                             <label for="inputAddressUndHbl">Address</label>
-                                                            <textarea class="form-control form-control-sm text-uppercase" name="address_und_hbl" id="address_und_hbl" rows="3"
-                                                                placeholder="Enter Address Undername H-BL" disabled></textarea>
+                                                            <textarea class="form-control form-control-sm text-uppercase" name="address_und_hbl" id="address_und_hbl"
+                                                                rows="3" placeholder="Enter Address Undername H-BL" readonly></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="col-3">
@@ -339,15 +343,16 @@
                                                             <label for="inputEmailUndHbl">Email address</label>
                                                             <input type="email" class="form-control form-control-sm"
                                                                 name="email_und_hbl" id="email_und_hbl"
-                                                                placeholder="Enter Email Undername H-BL" disabled>
+                                                                placeholder="Enter Email Undername H-BL" readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-2 offset-1">
                                                         <div class="form-group">
                                                             <label for="inputMandatoryTaxIdUndHbl">Mandatory Tax</label>
                                                             <input type="text" name="mandatory_tax_id_und_hbl"
-                                                                class="form-control form-control-sm" id="mandatory_tax_id_und_hbl"
-                                                                placeholder="Enter Mandatory Tax Undername H-BL" disabled>
+                                                                class="form-control form-control-sm"
+                                                                id="mandatory_tax_id_und_hbl"
+                                                                placeholder="Enter Mandatory Tax Undername H-BL" readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
@@ -355,7 +360,7 @@
                                                             <label for="inputTaxIdUndHbl">Tax ID</label>
                                                             <input type="text" name="tax_id_und_hbl"
                                                                 class="form-control form-control-sm" id="tax_id_und_hbl"
-                                                                placeholder="Enter Tax ID Undername H-BL" disabled>
+                                                                placeholder="Enter Tax ID Undername H-BL" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -375,43 +380,47 @@
                                                             <label for="inputConsignee">Consignee</label>
                                                             <input type="text"
                                                                 class="form-control form-control-sm text-uppercase"
-                                                                name="consignee_id" id="consignee_id"
+                                                                name="name_cons" id="name_cons"
+                                                                value="{{ old('name_cons') }}"
                                                                 placeholder="Enter Consignee">
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
                                                         <div class="form-group">
                                                             <label for="inputPhone1Cons">Phone 1</label>
-                                                            <input type="number" class="form-control form-control-sm"
+                                                            <input type="text" class="form-control form-control-sm"
                                                                 name="phone_1_cons" id="phone_1_cons"
-                                                                placeholder="Enter Phone 1 Consignee" disabled>
+                                                                value="{{ old('phone_1_cons') }}"
+                                                                placeholder="Enter Phone 1 Consignee">
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
                                                         <div class="form-group">
                                                             <label for="inputPhone2Cons">Phone 2</label>
-                                                            <input type="number" class="form-control form-control-sm"
+                                                            <input type="text" class="form-control form-control-sm"
                                                                 name="phone_2_cons" id="phone_2_cons"
-                                                                placeholder="Enter Phone 2 Consignee" disabled>
+                                                                value="{{ old('phone_2_cons') }}"
+                                                                placeholder="Enter Phone 2 Consignee">
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
                                                         <div class="form-group">
                                                             <label for="inputFaxCons">Fax</label>
-                                                            <input type="number" class="form-control form-control-sm"
+                                                            <input type="text" class="form-control form-control-sm"
                                                                 name="fax_cons" id="fax_cons"
-                                                                placeholder="Enter Fax Consignee" disabled>
+                                                                value="{{ old('fax_cons') }}"
+                                                                placeholder="Enter Fax Consignee">
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="container">
                                                 <div class="row">
-                                                    <div class="col-6">
+                                                    <div class="col-4">
                                                         <div class="form-group">
                                                             <label for="inputAddressCons">Address</label>
                                                             <textarea class="form-control form-control-sm text-uppercase" name="address_cons" id="address_cons" rows="3"
-                                                                placeholder="Enter Address Consignee" disabled></textarea>
+                                                                placeholder="Enter Address Consignee">{{ old('address_cons') }}</textarea>
                                                         </div>
                                                     </div>
                                                     <div class="col-3">
@@ -419,15 +428,33 @@
                                                             <label for="inputEmailCons">Email address</label>
                                                             <input type="email" class="form-control form-control-sm"
                                                                 name="email_cons" id="email_cons"
-                                                                placeholder="Enter Email Consignee" disabled>
+                                                                value="{{ old('email_cons') }}"
+                                                                placeholder="Enter Email Consignee">
                                                         </div>
                                                     </div>
-                                                    <div class="col-3">
+                                                    <div class="col-2 offset-1">
                                                         <div class="form-group">
-                                                            <label for="inputMandatoryTaxCons">ISI TAX</label>
+                                                            <label for="mandatory_tax_cons">Mandatory Tax</label>
+                                                            <select name="mandatory_tax_id_cons"
+                                                                id="mandatory_tax_id_cons"
+                                                                class="form-control form-control-sm select2"
+                                                                style="width: 100%;" onchange="showDivCons(this)">
+                                                                @foreach ($mandatoryTax as $item)
+                                                                    <option
+                                                                        value="{{ old('mandatory_tax_id_cons', $item->id) }}">
+                                                                        {{ $item->name }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <div class="form-group" id="tax_id_group_cons"
+                                                            style="display: none;">
+                                                            <label for="inputTaxIdCons">Tax ID</label>
                                                             <input type="text" name="tax_id_cons"
                                                                 class="form-control form-control-sm" id="tax_id_cons"
-                                                                value="" disabled>
+                                                                value="{{ old('tax_id_cons') }}"
+                                                                placeholder="Enter Tax ID Consignee">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -435,48 +462,62 @@
                                             </div>
                                             <div class="container">
                                                 <div class="row mt-5">
+                                                    <div class="col-4">
+                                                        <div class="custom-control custom-checkbox">
+                                                            <input class="custom-control-input" type="checkbox"
+                                                                id="checkBoxNotify" onclick="showDivNotifyAll()">
+                                                            <label for="checkBoxNotify" class="custom-control-label">SAME
+                                                                AS CONSIGNEE</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="container" id="notify_party_group">
+                                                <div class="row mt-3">
                                                     <div class="col-6">
                                                         <div class="form-group">
                                                             <label for="inputNotifyParty">Notify Party</label>
                                                             <input type="text"
                                                                 class="form-control form-control-sm text-uppercase"
-                                                                name="notify_party_id" id="notify_party_id"
+                                                                name="name_notify" id="name_notify"
+                                                                value="{{ old('name_notify') }}"
                                                                 placeholder="Enter Notify Party">
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
                                                         <div class="form-group">
                                                             <label for="inputPhone1Notify">Phone 1</label>
-                                                            <input type="number" class="form-control form-control-sm"
+                                                            <input type="text" class="form-control form-control-sm"
                                                                 name="phone_1_notify" id="phone_1_notify"
-                                                                placeholder="Enter Phone 1 Notify Party" disabled>
+                                                                value="{{ old('phone_1_notify') }}"
+                                                                placeholder="Enter Phone 1 Notify Party">
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
                                                         <div class="form-group">
                                                             <label for="inputPhone2Notify">Phone 2</label>
-                                                            <input type="number" class="form-control form-control-sm"
+                                                            <input type="text" class="form-control form-control-sm"
                                                                 name="phone_2_notify" id="phone_2_notify"
-                                                                placeholder="Enter Phone 2 Notify Party" disabled>
+                                                                value="{{ old('phone_2_notify') }}"
+                                                                placeholder="Enter Phone 2 Notify Party">
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
                                                         <div class="form-group">
                                                             <label for="inputFaxNotify">Fax</label>
-                                                            <input type="number" class="form-control form-control-sm"
+                                                            <input type="text" class="form-control form-control-sm"
                                                                 name="fax_notify" id="fax_notify"
-                                                                placeholder="Enter Fax Notify Party" disabled>
+                                                                value="{{ old('fax_notify') }}"
+                                                                placeholder="Enter Fax Notify Party">
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="container">
                                                 <div class="row">
-                                                    <div class="col-6">
+                                                    <div class="col-4">
                                                         <div class="form-group">
                                                             <label for="inputAddressNotify">Address</label>
                                                             <textarea class="form-control form-control-sm text-uppercase" name="address_notify" id="address_notify"
-                                                                rows="3" placeholder="Enter Address Notify Party" disabled></textarea>
+                                                                rows="3" placeholder="Enter Address Notify Party">{{ old('address_notify') }}</textarea>
                                                         </div>
                                                     </div>
                                                     <div class="col-3">
@@ -484,18 +525,38 @@
                                                             <label for="inputEmailNotify">Email address</label>
                                                             <input type="email" class="form-control form-control-sm"
                                                                 name="email_notify" id="email_notify"
-                                                                placeholder="Enter Email Notify Party" disabled>
+                                                                value="{{ old('email_notify') }}"
+                                                                placeholder="Enter Email Notify Party">
                                                         </div>
                                                     </div>
-                                                    <div class="col-3">
+                                                    <div class="col-2 offset-1">
                                                         <div class="form-group">
-                                                            <label for="inputMandatoryTaxNotify">ISI TAX</label>
+                                                            <label for="mandatoryTaxNotify">Mandatory Tax</label>
+                                                            <select name="mandatory_tax_id_notify"
+                                                                id="mandatory_tax_id_notify"
+                                                                class="form-control form-control-sm select2"
+                                                                style="width: 100%;" onchange="showDivNotify(this)">
+                                                                @foreach ($mandatoryTax as $item)
+                                                                    <option
+                                                                        value="{{ old('mandatory_tax_id_notify', $item->id) }}">
+                                                                        {{ $item->name }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <div class="form-group" id="tax_id_group_notify"
+                                                            style="display: none;">
+                                                            <label for="inputTaxIdNotify">Tax ID</label>
                                                             <input type="text" name="tax_id_notify"
                                                                 class="form-control form-control-sm" id="tax_id_notify"
-                                                                value="" disabled>
+                                                                value="{{ old('tax_id_notify') }}"
+                                                                placeholder="Enter Tax ID Notify Party">
                                                         </div>
                                                     </div>
                                                 </div>
+                                            </div>
+                                            <div class="container">
                                                 <hr size="100" noshade>
                                             </div>
                                         </div>
@@ -512,15 +573,16 @@
                                                             <input type="text"
                                                                 class="form-control form-control-sm text-uppercase"
                                                                 name="carrier" id="carrier"
-                                                                placeholder="Enter Carrier">
+                                                                value="{{ old('carrier') }}" placeholder="Enter Carrier">
                                                         </div>
                                                     </div>
                                                     <div class="col-3">
                                                         <div class="form-group">
-                                                            <label for="inputVassel">Vessel / Voyage</label>
+                                                            <label for="inputVessel">Vessel / Voyage</label>
                                                             <input type="text"
                                                                 class="form-control form-control-sm text-uppercase"
-                                                                name="vassel" id="vassel" placeholder="Enter Vassel">
+                                                                name="vessel" id="vessel"
+                                                                value="{{ old('vessel') }}" placeholder="Enter Vessel">
                                                         </div>
                                                     </div>
                                                     <div class="col-3">
@@ -528,7 +590,8 @@
                                                             <label>ETD :</label>
                                                             <div class="input-group date" id="etd"
                                                                 data-target-input="nearest">
-                                                                <input type="text"
+                                                                <input type="text" name="etd"
+                                                                    value="{{ old('etd') }}"
                                                                     class="form-control form-control-sm datetimepicker-input"
                                                                     data-target="#etd" />
                                                                 <div class="input-group-append" data-target="#etd"
@@ -546,6 +609,7 @@
                                                             <input type="text"
                                                                 class="form-control form-control-sm text-uppercase"
                                                                 name="pol" id="pol"
+                                                                value="{{ old('pol') }}"
                                                                 placeholder="Enter Port Of Loading">
                                                         </div>
                                                     </div>
@@ -559,6 +623,7 @@
                                                             <input type="text"
                                                                 class="form-control form-control-sm text-uppercase"
                                                                 name="pod" id="pod"
+                                                                value="{{ old('pod') }}"
                                                                 placeholder="Enter Port Of Discharge">
                                                         </div>
                                                     </div>
@@ -567,7 +632,8 @@
                                                             <label>Open CY :</label>
                                                             <div class="input-group date" id="open_cy"
                                                                 data-target-input="nearest">
-                                                                <input type="text"
+                                                                <input type="text" name="open_cy"
+                                                                    value="{{ old('open_cy') }}"
                                                                     class="form-control form-control-sm datetimepicker-input"
                                                                     data-target="#open_cy" />
                                                                 <div class="input-group-append" data-target="#open_cy"
@@ -584,7 +650,8 @@
                                                             <label>Closing Document :</label>
                                                             <div class="input-group date" id="closing_doc"
                                                                 data-target-input="nearest">
-                                                                <input type="text"
+                                                                <input type="text" name="closing_doc"
+                                                                    value="{{ old('closing_doc') }}"
                                                                     class="form-control form-control-sm datetimepicker-input"
                                                                     data-target="#closing_doc" />
                                                                 <div class="input-group-append" data-target="#closing_doc"
@@ -601,7 +668,8 @@
                                                             <label>Closing CY :</label>
                                                             <div class="input-group date" id="closing_cy"
                                                                 data-target-input="nearest">
-                                                                <input type="text"
+                                                                <input type="text" name="closing_cy"
+                                                                    value="{{ old('closing_cy') }}"
                                                                     class="form-control form-control-sm datetimepicker-input"
                                                                     data-target="#closing_cy" />
                                                                 <div class="input-group-append" data-target="#closing_cy"
@@ -629,19 +697,25 @@
                                                             <label for="inputVolume">Volume</label>
                                                             <input type="text"
                                                                 class="form-control form-control-sm text-uppercase"
-                                                                name="volume" id="volume" placeholder="Enter Volume">
+                                                                name="volume" id="volume"
+                                                                value="{{ old('volume') }}" placeholder="Enter Volume">
                                                         </div>
                                                     </div>
                                                     <div class="col-5">
                                                         <div class="form-group">
-                                                            <label>Size / Type Container</label>
-                                                            <select class="form-control form-control-sm select2"
-                                                                style="width: 100%;">
-                                                                <option selected="selected"></option>
-                                                                <option>20OC - 20' HIGH CUBE OPEN TOP ESPCIALLY FOR
-                                                                    COAL
-                                                                </option>
-                                                            </select>
+                                                            <label for="inputNameContSizeType">Size / Type
+                                                                Container</label>
+                                                            <input type="text"
+                                                                class="form-control form-control-sm text-uppercase"
+                                                                name="name_cont_size_type" id="name_cont_size_type"
+                                                                placeholder="Enter Size / Type Container">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <div class="form-group">
+                                                            <input type="hidden"
+                                                                class="form-control form-control-sm text-uppercase"
+                                                                name="cont_size_type_id" id="cont_size_type_id" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -653,21 +727,131 @@
                                                             <label for="inputQty">Quantity</label>
                                                             <input type="text"
                                                                 class="form-control form-control-sm text-uppercase"
-                                                                name="qty" id="qty" placeholder="Enter Qty">
+                                                                name="qty" id="qty"
+                                                                value="{{ old('qty') }}" placeholder="Enter Qty">
                                                         </div>
                                                     </div>
                                                     <div class="col-6">
                                                         <div class="form-group">
-                                                            <label>Type Pack</label>
-                                                            <select class="form-control form-control-sm select2"
+                                                            <label for="inputNameTypePack">Type Pack</label>
+                                                            <input type="text"
+                                                                class="form-control form-control-sm text-uppercase"
+                                                                name="name_type_pack" id="name_type_pack"
+                                                                placeholder="Enter Type Packaging">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <div class="form-group">
+                                                            <input type="hidden"
+                                                                class="form-control form-control-sm text-uppercase"
+                                                                name="type_packaging_id" id="type_packaging_id" readonly>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-2">
+                                                        <div class="form-group">
+                                                            <label for="inputGrossWeight">Gross Weight</label>
+                                                            <input type="text"
+                                                                class="form-control form-control-sm text-uppercase"
+                                                                name="gross_weight" id="gross_weight"
+                                                                value="{{ old('gross_weight') }}"
+                                                                placeholder="Enter Gross Weight">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <div class="form-group">
+                                                            <label for="typeWeight">Type Weight</label>
+                                                            <select name="gross_type_weight_id" id="gross_type_weight_id"
+                                                                class="form-control form-control-sm select2"
                                                                 style="width: 100%;">
-                                                                <option selected="selected"></option>
-                                                                <option>CONTAINER, NOT OTHERWISE SPECIFIED AS
-                                                                    TRANSPORT
-                                                                </option>
+                                                                @foreach ($typeWeight as $item)
+                                                                    <option
+                                                                        value="{{ old('gross_type_weight_id', $item->id) }}">
+                                                                        {{ $item->code_weight }}</option>
+                                                                @endforeach
                                                             </select>
                                                         </div>
                                                     </div>
+                                                    {{-- <div class="col-2">
+                                                        <div class="form-group">
+                                                            <input type="text"
+                                                                class="form-control form-control-sm text-uppercase"
+                                                                name="gross_type_weight_id" id="gross_type_weight_id" readonly>
+                                                        </div>
+                                                    </div> --}}
+                                                </div>
+                                            </div>
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-2">
+                                                        <div class="form-group">
+                                                            <label for="inputNetWeight">Net Weight</label>
+                                                            <input type="text"
+                                                                class="form-control form-control-sm text-uppercase"
+                                                                name="net_weight" id="net_weight"
+                                                                value="{{ old('net_weight') }}"
+                                                                placeholder="Enter Net Weight">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <div class="form-group">
+                                                            <label for="typeWeight">Type Weight</label>
+                                                            <select name="net_type_weight_id" id="net_type_weight_id"
+                                                                class="form-control form-control-sm select2"
+                                                                style="width: 100%;">
+                                                                @foreach ($typeWeight as $item)
+                                                                    <option
+                                                                        value="{{ old('net_type_weight_id', $item->id) }}">
+                                                                        {{ $item->code_weight }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    {{-- <div class="col-2">
+                                                        <div class="form-group">
+                                                            <input type="text"
+                                                                class="form-control form-control-sm text-uppercase"
+                                                                name="net_type_weight_id" id="net_type_weight_id" readonly>
+                                                        </div>
+                                                    </div> --}}
+                                                </div>
+                                            </div>
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-2">
+                                                        <div class="form-group">
+                                                            <label for="inputMeasurement">Measurement</label>
+                                                            <input type="text"
+                                                                class="form-control form-control-sm text-uppercase"
+                                                                name="measurement" id="measurement"
+                                                                value="{{ old('measurement') }}"
+                                                                placeholder="Enter Measurement">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <div class="form-group">
+                                                            <label for="typeMeasurement">Type Measurement</label>
+                                                            <select name="type_measurement_id" id="type_measurement_id"
+                                                                class="form-control form-control-sm select2"
+                                                                style="width: 100%;">
+                                                                @foreach ($typeMeasurement as $item)
+                                                                    <option
+                                                                        value="{{ old('type_measurement_id', $item->id) }}">
+                                                                        {{ $item->code_measurement }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    {{-- <div class="col-2">
+                                                        <div class="form-group">
+                                                            <input type="text"
+                                                                class="form-control form-control-sm text-uppercase"
+                                                                name="type_measurement_id" id="type_measurement_id" readonly>
+                                                        </div>
+                                                    </div> --}}
                                                 </div>
                                             </div>
                                             <div class="container">
@@ -678,22 +862,36 @@
                                                             <input type="text"
                                                                 class="form-control form-control-sm mb-2 text-uppercase"
                                                                 name="commodity_mbl" id="commodity_mbl"
+                                                                value="{{ old('commodity_mbl') }}"
                                                                 placeholder="Enter Commodity M-B/L">
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
                                                         <div class="form-group">
-                                                            <label>M-B/L</label>
-                                                            <select class="form-control form-control-sm mb-2 select2"
+                                                            <label for="inputHsCodeMbl">HS Code M-B/L</label>
+                                                            <input type="text"
+                                                                class="form-control form-control-sm mb-2 text-uppercase"
+                                                                name="hs_code_mbl" id="hs_code_mbl"
+                                                                value="{{ old('hs_code_mbl') }}"
+                                                                placeholder="Enter HS Code M-B/L">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <div class="form-group">
+                                                            <label for="typeBillOfLadingMbl">M-B/L</label>
+                                                            <select name="mbl_type_bl_id" id="mbl_type_bl_id"
+                                                                class="form-control form-control-sm select2"
                                                                 style="width: 100%;">
-                                                                <option selected="selected"></option>
-                                                                <option>ORIGINAL
-                                                                </option>
+                                                                @foreach ($typeBillOfLading as $item)
+                                                                    <option
+                                                                        value="{{ old('mbl_type_bl_id', $item->id) }}">
+                                                                        {{ $item->name }}</option>
+                                                                @endforeach
                                                             </select>
                                                         </div>
                                                     </div>
 
-                                                    <div class="col-3">
+                                                    {{-- <div class="col-3">
                                                         <div class="form-group">
                                                             <label>B/L Delivery</label>
                                                             <select class="form-control form-control-sm mb-2 select2"
@@ -719,10 +917,12 @@
                                                                 name="bl_delivery_desc" id="bl_delivery_desc"
                                                                 placeholder="Enter B/L Delivery Desc">
                                                         </div>
-                                                    </div>
+                                                    </div> --}}
+
                                                 </div>
                                             </div>
-                                            <div class="container">
+
+                                            {{-- <div class="container">
                                                 <div class="row">
                                                     <div class="col-2 offset-md-5">
                                                         <div class="form-group">
@@ -734,7 +934,8 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
+
                                             <div class="container">
                                                 <div class="row">
                                                     <div class="col-3">
@@ -743,90 +944,31 @@
                                                             <input type="text"
                                                                 class="form-control form-control-sm text-uppercase"
                                                                 name="commodity_hbl" id="commodity_hbl"
+                                                                value="{{ old('commodity_hbl') }}"
                                                                 placeholder="Enter Commodity H-B/L">
                                                         </div>
                                                     </div>
-                                                    <div class="col-3">
-                                                        <div class="form-group">
-                                                            <label>H-B/L</label>
-                                                            <select class="form-control form-control-sm select2"
-                                                                style="width: 100%;">
-                                                                <option selected="selected"></option>
-                                                                <option>ORIGINAL
-                                                                </option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                            <div class="container">
-                                                <div class="row">
                                                     <div class="col-2">
                                                         <div class="form-group">
-                                                            <label for="inputGrossWeight">Gross Weight</label>
+                                                            <label for="inputHsCodeHbl">HS Code H-B/L</label>
                                                             <input type="text"
-                                                                class="form-control form-control-sm text-uppercase"
-                                                                name="gross_weight" id="gross_weight"
-                                                                placeholder="Enter Gross Weight">
+                                                                class="form-control form-control-sm mb-2 text-uppercase"
+                                                                name="hs_code_hbl" id="hs_code_hbl"
+                                                                value="{{ old('hs_code_hbl') }}"
+                                                                placeholder="Enter HS Code H-B/L">
                                                         </div>
                                                     </div>
-                                                    <div class="col-3">
-                                                        <div class="form-group">
-                                                            <label>Type Weight</label>
-                                                            <select class="form-control form-control-sm select2"
-                                                                style="width: 100%;">
-                                                                <option selected="selected"></option>
-                                                                <option>KGS
-                                                                </option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="container">
-                                                <div class="row">
                                                     <div class="col-2">
                                                         <div class="form-group">
-                                                            <label for="inputNetWeight">Net Weight</label>
-                                                            <input type="text"
-                                                                class="form-control form-control-sm text-uppercase"
-                                                                name="net_weight" id="net_weight"
-                                                                placeholder="Enter Net Weight">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-3">
-                                                        <div class="form-group">
-                                                            <label>Type Weight</label>
-                                                            <select class="form-control form-control-sm select2"
+                                                            <label for="typeBillOfLadingHbl">H-B/L</label>
+                                                            <select name="hbl_type_bl_id" id="hbl_type_bl_id"
+                                                                class="form-control form-control-sm select2"
                                                                 style="width: 100%;">
-                                                                <option selected="selected"></option>
-                                                                <option>KGS
-                                                                </option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="container">
-                                                <div class="row">
-                                                    <div class="col-2">
-                                                        <div class="form-group">
-                                                            <label for="inputMeasurement">Measurement</label>
-                                                            <input type="text"
-                                                                class="form-control form-control-sm text-uppercase"
-                                                                name="measurement" id="measurement"
-                                                                placeholder="Enter Measurement">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-3">
-                                                        <div class="form-group">
-                                                            <label>Type Measurement</label>
-                                                            <select class="form-control form-control-sm select2"
-                                                                style="width: 100%;">
-                                                                <option selected="selected"></option>
-                                                                <option>CBM
-                                                                </option>
+                                                                @foreach ($typeBillOfLading as $item)
+                                                                    <option
+                                                                        value="{{ old('hbl_type_bl_id', $item->id) }}">
+                                                                        {{ $item->name }}</option>
+                                                                @endforeach
                                                             </select>
                                                         </div>
                                                     </div>
@@ -839,7 +981,8 @@
                                                             <label>Stuffing Date :</label>
                                                             <div class="input-group date" id="stuffing_date"
                                                                 data-target-input="nearest">
-                                                                <input type="text"
+                                                                <input type="text" name="stuffing_date"
+                                                                    value="{{ old('stuffing_date') }}"
                                                                     class="form-control form-control-sm datetimepicker-input"
                                                                     data-target="#stuffing_date" />
                                                                 <div class="input-group-append"
@@ -857,7 +1000,7 @@
                                                             <label for="inputStuffingAddress">Stuffing
                                                                 Address</label>
                                                             <textarea class="form-control form-control-sm text-uppercase" name="stuffing_address" id="stuffing_address"
-                                                                rows="3" placeholder="Enter Stuffing Address"></textarea>
+                                                                rows="3" placeholder="Enter Stuffing Address">{{ old('stuffing_address') }}</textarea>
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
@@ -866,15 +1009,17 @@
                                                             <input type="text"
                                                                 class="form-control form-control-sm text-uppercase"
                                                                 name="pic_name" id="pic_name"
+                                                                value="{{ old('pic_name') }}"
                                                                 placeholder="Enter PIC Name">
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
                                                         <div class="form-group">
                                                             <label for="inputPicPhone">PIC Phone</label>
-                                                            <input type="number"
+                                                            <input type="text"
                                                                 class="form-control form-control-sm text-uppercase"
                                                                 name="pic_phone" id="pic_phone"
+                                                                value="{{ old('pic_phone') }}"
                                                                 placeholder="Enter PIC Phone">
                                                         </div>
                                                     </div>
@@ -884,61 +1029,81 @@
                                                 <div class="row">
                                                     <div class="col-3">
                                                         <div class="form-group">
-                                                            <label for="inputShipper">Term Of Payment
-                                                                (Shipper)</label>
+                                                            <label for="inputTermOfPayment">Term Of Payment</label>
                                                             <input type="text"
                                                                 class="form-control form-control-sm text-uppercase"
                                                                 name="top" id="top"
+                                                                value="{{ old('top') }}"
                                                                 placeholder="Enter Terms Of Payment">
                                                         </div>
                                                     </div>
                                                     <div class="col-3">
                                                         <div class="form-group">
-                                                            <label>Ocean Freight (Carrier)</label>
-                                                            <select class="form-control form-control-sm select2"
+                                                            <label for="freightCharges">Freight & Charges</label>
+                                                            <select name="type_payment_id" id="type_payment_id"
+                                                                class="form-control form-control-sm select2"
                                                                 style="width: 100%;">
-                                                                <option selected="selected"></option>
-                                                                <option>PREPAID
-                                                                </option>
+                                                                @foreach ($typePayment as $item)
+                                                                    <option
+                                                                        value="{{ old('type_payment_id', $item->id) }}">
+                                                                        {{ $item->name }}</option>
+                                                                @endforeach
                                                             </select>
                                                         </div>
                                                     </div>
                                                 </div>
+                                            </div>
+                                            <div class="container">
                                                 <div class="row">
                                                     <div class="col-6">
                                                         <div class="form-group">
-                                                            <label for="inputRemarks">Remaks</label>
-                                                            <textarea class="form-control form-control-sm text-uppercase" name="remaks" id="remaks" rows="5"
-                                                                placeholder="Enter Remarks"></textarea>
+                                                            <label for="inputRemarks">Remarks</label>
+                                                            <textarea class="form-control form-control-sm text-uppercase" name="remarks" id="remarks" rows="5"
+                                                                placeholder="Enter Remarks">{{ old('remarks') }}</textarea>
                                                         </div>
                                                     </div>
                                                 </div>
+                                            </div>
+                                            <div class="container">
                                                 <div class="row">
                                                     <div class="col-6">
                                                         <div class="form-group">
-                                                            <label for="fileShippingPath">File Shipping
+                                                            <label for="inputSiDoc">File Shipping
                                                                 Instruction</label>
                                                             <div class="input-group">
                                                                 <div class="custom-file">
                                                                     <input type="file" class="custom-file-input"
-                                                                        id="file_shipping_path">
-                                                                    <label class="custom-file-label"
-                                                                        for="file_shipping_path">Choose
+                                                                        id="si_doc" name="si_doc">
+                                                                    <label class="custom-file-label" for="si_doc">Choose
                                                                         file</label>
                                                                 </div>
-                                                                <div class="input-group-append">
+                                                                {{-- <div class="input-group-append">
                                                                     <span class="input-group-text">Upload</span>
-                                                                </div>
+                                                                </div> --}}
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <hr size="100" noshade>
                                             </div>
+
+                                            <!-- Start Button Save -->
+                                            <div class="container">
+                                                <!-- Hidden User -->
+                                                <input type="hidden" class="form-control form-control-sm" name="user_id"
+                                                    id="user_id" value="{{ Auth::user()->id }}" placeholder="">
+
+                                                <div class="d-grid gap-2 d-md-block mt-5">
+                                                    <button class="btn btn-primary mr-3" type="submit">SAVE</button>
+                                                    <a href="#" class="btn btn-danger" type="button">CANCEL</a>
+                                                </div>
+                                            </div>
+                                            <!-- End Button Save -->
+
                                         </div>
                                         <!-- tab end description -->
 
-                                        {{-- <!-- tab start selling & buying -->
+                                        <!-- tab start selling & buying -->
                                         <div class="tab-pane fade" id="selling_buying" role="tabpanel"
                                             aria-labelledby="selling_buying-tab">
                                             <!-- start selling -->
@@ -956,7 +1121,7 @@
                                                         <div class="form-group row">
                                                             <label for="inputShipper">Exchange Rate</label>
                                                             <div class="col-md-4">
-                                                                <input type="number"
+                                                                <input type="text"
                                                                     class="form-control form-control-sm text-uppercase"
                                                                     name="undername" id="undername" placeholder="">
                                                             </div>
@@ -1026,7 +1191,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-1">
-                                                        <input type="number"
+                                                        <input type="text"
                                                             class="form-control form-control-sm text-uppercase"
                                                             name="undername" id="undername" placeholder="">
                                                     </div>
@@ -1046,7 +1211,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-1">
-                                                        <input type="number" class="form-control form-control-sm"
+                                                        <input type="text" class="form-control form-control-sm"
                                                             id="input#" placeholder="">
                                                     </div>
                                                     <div class="col-sm-0">
@@ -1055,7 +1220,7 @@
                                                     <div class="col-sm-2">
                                                         <div class="input-group input-group-sm mb-3">
                                                             <input type="text" class="form-control" placeholder=""
-                                                                disabled>
+                                                                readonly>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1086,7 +1251,7 @@
                                                         REVENUE</label>
                                                     <div class="col-md-2 offset-md-5">
                                                         <input type="text" class="form-control form-control-sm"
-                                                            id="inputPassword" disabled>
+                                                            id="inputPassword" readonly>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
@@ -1095,7 +1260,7 @@
                                                         IN IDR</label>
                                                     <div class="col-md-2 offset-md-5">
                                                         <input type="text" class="form-control form-control-sm"
-                                                            id="inputPassword" disabled>
+                                                            id="inputPassword" readonly>
                                                     </div>
                                                 </div>
                                                 <hr size="100" noshade>
@@ -1136,7 +1301,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-1">
-                                                        <input type="number"
+                                                        <input type="text"
                                                             class="form-control form-control-sm text-uppercase"
                                                             name="undername" id="undername" placeholder="">
                                                     </div>
@@ -1155,7 +1320,7 @@
                                                             <div class="input-group-prepend">
                                                                 <span class="input-group-text">IDR</span>
                                                             </div>
-                                                            <input type="text" class="form-control" disabled>
+                                                            <input type="text" class="form-control" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1189,7 +1354,7 @@
                                                             <div class="input-group-prepend">
                                                                 <span class="input-group-text">IDR</span>
                                                             </div>
-                                                            <input type="text" class="form-control" disabled>
+                                                            <input type="text" class="form-control" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1205,7 +1370,7 @@
                                                             <div class="input-group-prepend">
                                                                 <span class="input-group-text">IDR</span>
                                                             </div>
-                                                            <input type="text" class="form-control" disabled>
+                                                            <input type="text" class="form-control" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1217,19 +1382,20 @@
                                                             <div class="input-group-prepend">
                                                                 <span class="input-group-text">IDR</span>
                                                             </div>
-                                                            <input type="text" class="form-control" disabled>
+                                                            <input type="text" class="form-control" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
-                                                    <label for="inputPassword" class="col-sm-4 col-form-label">TOTAL + VAT
+                                                    <label for="inputPassword" class="col-sm-4 col-form-label">TOTAL +
+                                                        VAT
                                                         11%</label>
                                                     <div class="col-md-2 offset-md-5">
                                                         <div class="input-group input-group-sm mb-3">
                                                             <div class="input-group-prepend">
                                                                 <span class="input-group-text">IDR</span>
                                                             </div>
-                                                            <input type="text" class="form-control" disabled>
+                                                            <input type="text" class="form-control" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1241,19 +1407,20 @@
                                                             <div class="input-group-prepend">
                                                                 <span class="input-group-text">IDR</span>
                                                             </div>
-                                                            <input type="text" class="form-control" disabled>
+                                                            <input type="text" class="form-control" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
-                                                    <label for="inputPassword" class="col-sm-4 col-form-label">GRANDTOTAL
+                                                    <label for="inputPassword"
+                                                        class="col-sm-4 col-form-label">GRANDTOTAL
                                                         SELLING RATE</label>
                                                     <div class="col-md-2 offset-md-6">
                                                         <div class="input-group input-group-sm mb-3">
                                                             <div class="input-group-prepend">
                                                                 <span class="input-group-text">IDR</span>
                                                             </div>
-                                                            <input type="text" class="form-control" disabled>
+                                                            <input type="text" class="form-control" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1276,7 +1443,7 @@
                                                         <div class="form-group row">
                                                             <label for="inputShipper">Exchange Rate</label>
                                                             <div class="col-md-4">
-                                                                <input type="number"
+                                                                <input type="text"
                                                                     class="form-control form-control-sm text-uppercase"
                                                                     name="undername" id="undername" placeholder="">
                                                             </div>
@@ -1307,7 +1474,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-1">
-                                                        <input type="number"
+                                                        <input type="text"
                                                             class="form-control form-control-sm text-uppercase"
                                                             name="undername" id="undername" placeholder="">
                                                     </div>
@@ -1327,7 +1494,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-1">
-                                                        <input type="number" class="form-control form-control-sm"
+                                                        <input type="text" class="form-control form-control-sm"
                                                             id="input#" placeholder="">
                                                     </div>
                                                     <div class="col-sm-0">
@@ -1336,7 +1503,7 @@
                                                     <div class="col-sm-2">
                                                         <div class="input-group input-group-sm mb-3">
                                                             <input type="text" class="form-control" placeholder=""
-                                                                disabled>
+                                                                readonly>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1367,15 +1534,16 @@
                                                         COST</label>
                                                     <div class="col-md-2 offset-md-5">
                                                         <input type="text" class="form-control form-control-sm"
-                                                            id="inputPassword" disabled>
+                                                            id="inputPassword" readonly>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
-                                                    <label for="inputPassword" class="col-sm-2 col-form-label">TOTAL COST
+                                                    <label for="inputPassword" class="col-sm-2 col-form-label">TOTAL
+                                                        COST
                                                         IN IDR</label>
                                                     <div class="col-md-2 offset-md-5">
                                                         <input type="text" class="form-control form-control-sm"
-                                                            id="inputPassword" disabled>
+                                                            id="inputPassword" readonly>
                                                     </div>
                                                 </div>
                                                 <hr size="100" noshade>
@@ -1416,7 +1584,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-1">
-                                                        <input type="number"
+                                                        <input type="text"
                                                             class="form-control form-control-sm text-uppercase"
                                                             name="undername" id="undername" placeholder="">
                                                     </div>
@@ -1435,7 +1603,7 @@
                                                             <div class="input-group-prepend">
                                                                 <span class="input-group-text">IDR</span>
                                                             </div>
-                                                            <input type="text" class="form-control" disabled>
+                                                            <input type="text" class="form-control" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1469,7 +1637,7 @@
                                                             <div class="input-group-prepend">
                                                                 <span class="input-group-text">IDR</span>
                                                             </div>
-                                                            <input type="text" class="form-control" disabled>
+                                                            <input type="text" class="form-control" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1485,7 +1653,7 @@
                                                             <div class="input-group-prepend">
                                                                 <span class="input-group-text">IDR</span>
                                                             </div>
-                                                            <input type="text" class="form-control" disabled>
+                                                            <input type="text" class="form-control" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1497,19 +1665,20 @@
                                                             <div class="input-group-prepend">
                                                                 <span class="input-group-text">IDR</span>
                                                             </div>
-                                                            <input type="text" class="form-control" disabled>
+                                                            <input type="text" class="form-control" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
-                                                    <label for="inputPassword" class="col-sm-4 col-form-label">TOTAL + VAT
+                                                    <label for="inputPassword" class="col-sm-4 col-form-label">TOTAL +
+                                                        VAT
                                                         11%</label>
                                                     <div class="col-md-2 offset-md-5">
                                                         <div class="input-group input-group-sm mb-3">
                                                             <div class="input-group-prepend">
                                                                 <span class="input-group-text">IDR</span>
                                                             </div>
-                                                            <input type="text" class="form-control" disabled>
+                                                            <input type="text" class="form-control" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1521,7 +1690,7 @@
                                                             <div class="input-group-prepend">
                                                                 <span class="input-group-text">IDR</span>
                                                             </div>
-                                                            <input type="text" class="form-control" disabled>
+                                                            <input type="text" class="form-control" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1534,7 +1703,7 @@
                                                             <div class="input-group-prepend">
                                                                 <span class="input-group-text">IDR</span>
                                                             </div>
-                                                            <input type="text" class="form-control" disabled>
+                                                            <input type="text" class="form-control" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1552,7 +1721,7 @@
                                                             <div class="input-group-prepend">
                                                                 <span class="input-group-text">IDR</span>
                                                             </div>
-                                                            <input type="text" class="form-control" disabled>
+                                                            <input type="text" class="form-control" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1570,7 +1739,7 @@
                                                             <div class="input-group-prepend">
                                                                 <span class="input-group-text">IDR</span>
                                                             </div>
-                                                            <input type="text" class="form-control" disabled>
+                                                            <input type="text" class="form-control" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1593,7 +1762,7 @@
                                             <!-- End Button Save -->
 
                                         </div>
-                                        <!-- tab end selling & buying --> --}}
+                                        <!-- tab end selling & buying -->
                                     </div>
                                 </div>
                             </form>
@@ -1609,43 +1778,35 @@
     <!-- /.content-wrapper -->
 @endsection
 
-{{-- <script>
-    $(function () {
-        $('#shipper_id').autocomplete({
-            source: function(request, response) {
+<script>
+    function showDivCons(select) {
+        // console.log(select.options[select.selectedIndex].text);
+        if (select.options[select.selectedIndex].text != "NONE TAX") {
+            document.getElementById('tax_id_cons').value = "";
+            document.getElementById('tax_id_group_cons').style.display = "block";
+        } else {
+            document.getElementById('tax_id_group_cons').style.display = "none";
+        }
+    }
 
-                $.getJSON('?term=' + request.term, function(data) {
-                    var array = $.map(data, function(row) {
-                        return {
-                            value: row.id,
-                            label: row.name,
-                            name: row.name,
-                            address: row.address_ship,
-                            phone_1: row.phone_1_ship,
-                            phone_2: row.phone_2_ship,
-                            fax: row.fax_ship,
-                            email: row.email_ship,
-                            mandatory_tax_id: row.mandatory_tax_id,
-                            tax_id: row.tax_id_ship,
-                        }
-                    })
+    function showDivNotify(select) {
+        // console.log(select.options[select.selectedIndex].text);
+        if (select.options[select.selectedIndex].text != "NONE TAX") {
+            document.getElementById('tax_id_notify').value = "";
+            document.getElementById('tax_id_group_notify').style.display = "block";
+        } else {
+            document.getElementById('tax_id_group_notify').style.display = "none";
+        }
+    }
 
-                    response($.ui.autocomplete.filter(array, request.term));
-                })
-            },
-            minLength: 1,
-            delay: 500,
-            select: function(event, ui) {
-                $('#shipper_id').val(ui.item.shipper_id)
-                $('#name_ship').val(ui.item.name_ship)
-                $('#address_ship').val(ui.item.address_ship)
-                $('#phone_1_ship').val(ui.item.phone_1_ship)
-                $('#phone_2_ship').val(ui.item.phone_2_ship)
-                $('#fax_ship').val(ui.item.fax_ship)
-                $('#email_ship').val(ui.item.email_ship)
-                $('#mandatory_tax_id_ship').val(ui.item.mandatory_tax_id_ship)
-                $('#tax_id_ship').val(ui.item.tax_id_ship)
-            }
-        })
-    })
-</script> --}}
+    function showDivNotifyAll() {
+        if (document.getElementById('checkBoxNotify').checked) {
+            document.getElementById('notify_party_group').style.display = 'none';
+        } else {
+            document.getElementById('notify_party_group').style.display = 'block';
+        }
+    }
+</script>
+
+
+

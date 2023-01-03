@@ -238,7 +238,11 @@ Route::middleware('auth')->group(function () {
         Route::get('/jobSheet', 'index')->name('jobSheet');
         // Route::get('/jobSheetShow/{id}', 'show')->name('jobSheet.show');
         Route::get('/jobSheetCreate', 'create')->name('jobSheet.create');
-        Route::get('/jobSheetCreate/get-shippers/{name}', 'getShippers');
+        Route::get('/jobSheetCreate/get-shippers/{nameShip}', 'getShippers');
+        Route::get('/jobSheetCreate/get-undernameMbl/{nameUndMbl}', 'getUndernameMbls');
+        Route::get('/jobSheetCreate/get-undernameHbl/{nameUndHbl}', 'getUndernameHbls');
+        Route::get('/jobSheetCreate/get-sizeTypeCont/{nameSizeTypeCont}', 'getSizeTypeConts');
+        Route::get('/jobSheetCreate/get-typePack/{nameTypePack}', 'getTypePack');
 
         Route::post('/jobSheetStore', 'store')->name('jobSheet.store');
         // Route::get('/jobSheetEdit/{id}', 'edit')->name('jobSheet.edit');

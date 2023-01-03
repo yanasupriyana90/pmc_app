@@ -2,8 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\JobSheetCreateRequest;
+use App\Models\ContainerSizeType;
 use App\Models\JobSheet;
+use App\Models\MandatoryTax;
 use App\Models\Shipper;
+use App\Models\TypeBillOfLading;
+use App\Models\TypeMeasurement;
+use App\Models\TypePackaging;
+use App\Models\TypePayment;
+use App\Models\TypeWeight;
+use App\Models\UndernameHbl;
+use App\Models\UndernameMbl;
+use DateTime;
+// use Carbon\Carbon;
+use Illuminate\Support\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -16,7 +29,24 @@ class JobSheetController extends Controller
      */
     public function index()
     {
-        return view('marketing.jobSheet.index');
+        $jobSheetHead = JobSheet::with(
+            'user',
+            'shipper',
+            'typePayment',
+            'typePack',
+            'containerSizeType',
+            'undernameHbl',
+            'mandatoryTaxCons',
+            'mandatoryTaxNotify',
+            'undernameMbl',
+            'typeWeightGross',
+            'typeWeightNet',
+            'typeMeasurement',
+            'typeBillOfLadingHbl',
+            'typeBillOfLadingMbl',
+        )->orderBy('id', 'desc')->get();
+        // dd($jobSheetHead);
+        return view('marketing.jobSheet.index', ['jobSheetHeadList' => $jobSheetHead]);
     }
 
     /**
@@ -28,7 +58,7 @@ class JobSheetController extends Controller
     {
         // $shipper = Shipper::select('id', 'na me', 'address','phone_1', 'phone_2', 'fax', 'email', 'mandatory_tax_id', 'tax_id')->get();
         // dd($shipper);
-        $q = DB::table('job_sheet_heads')->select(DB::raw('MAX(RIGHT(code_job_sheet,4)) as kode'));
+        $q = DB::table('job_sheet_heads')->select(DB::raw('MAX(RIGHT(code_js,4)) as kode'));
         $kd = "";
         if ($q->count() > 0) {
             foreach ($q->get() as $k) {
@@ -36,24 +66,93 @@ class JobSheetController extends Controller
                 $kd = sprintf("%04s", $tmp);
             }
         } else {
-            $kd = "0001";
+            $kd = "0007";
         }
-        // return view('marketing.jobSheet.partials.create', ['jobSheet' => $shipper], ['kd' => $kd]);
-        return view('marketing.jobSheet.partials.create', ['kd' => $kd]);
+        $mandatory_tax = MandatoryTax::select('id', 'name')->get();
+        $type_weight = TypeWeight::select('id', 'code_weight')->get();
+        $type_measurement = TypeMeasurement::select('id', 'code_measurement')->get();
+        $type_bill_of_lading = TypeBillOfLading::select('id', 'name')->get();
+        $type_payment = TypePayment::select('id', 'name')->get();
+
+        return view(
+            'marketing.jobSheet.partials.create',
+            [
+                'kd' => $kd,
+                'mandatoryTax' => $mandatory_tax,
+                'typeWeight' => $type_weight,
+                'typeMeasurement' => $type_measurement,
+                'typeBillOfLading' => $type_bill_of_lading,
+                'typePayment' => $type_payment,
+            ]
+        );
     }
 
-    public function getShippers($name)
+    public function getShippers($nameShip)
     {
-        if (empty($name)) {
+        if (empty($nameShip)) {
             return [];
         }
         $shippers = Shipper::with(['mandatoryTax'])
             ->select('id', 'name', 'address', 'phone_1', 'phone_2', 'fax', 'email', 'mandatory_tax_id', 'tax_id')
-            ->where('name', 'LIKE', "%$name%")
+            ->where('name', 'LIKE', "%$nameShip%")
             ->limit(25)
             ->get();
 
         return $shippers;
+    }
+
+    public function getUndernameMbls($nameUndMbl)
+    {
+        if (empty($nameUndMbl)) {
+            return [];
+        }
+        $undernameMbls = UndernameMbl::with(['mandatoryTax'])
+            ->select('id', 'name', 'address', 'phone_1', 'phone_2', 'fax', 'email', 'mandatory_tax_id', 'tax_id')
+            ->where('name', 'LIKE', "%$nameUndMbl%")
+            ->limit(25)
+            ->get();
+
+        return $undernameMbls;
+    }
+
+    public function getUndernameHbls($nameUndHbl)
+    {
+        if (empty($nameUndHbl)) {
+            return [];
+        }
+        $undernameHbls = UndernameHbl::with(['mandatoryTax'])
+            ->select('id', 'name', 'address', 'phone_1', 'phone_2', 'fax', 'email', 'mandatory_tax_id', 'tax_id')
+            ->where('name', 'LIKE', "%$nameUndHbl%")
+            ->limit(25)
+            ->get();
+
+        return $undernameHbls;
+    }
+
+    public function getSizeTypeConts($nameSizeTypeCont)
+    {
+        if (empty($nameSizeTypeCont)) {
+            return [];
+        }
+        $sizeTypeConts = ContainerSizeType::select('id', 'name')
+            ->where('name', 'LIKE', "%$nameSizeTypeCont%")
+            ->limit(25)
+            ->get();
+
+        return $sizeTypeConts;
+    }
+
+    public function getTypePack($nameTypePack)
+    {
+        if (empty($nameTypePack)) {
+            return [];
+        }
+        $typePacks = TypePackaging::select('id', 'name')
+            ->where('name', 'LIKE', "%$nameTypePack%")
+            ->limit(25)
+            ->get();
+
+        return $typePacks;
     }
 
     /**
@@ -63,9 +162,49 @@ class JobSheetController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function store(Request $request)
+    public function store(JobSheetCreateRequest $request)
     {
-        //
+
+        // dd($request->all());
+        $nm = $request->si_doc;
+        $namaFile = 'si_'.uniqid().'.'.$nm->extension();
+
+        $jobsheet = new JobSheet();
+        $jobsheet = JobSheet::create($request->all());
+
+        $jobsheet->booking_no = strtoupper($request->booking_no);
+        $jobsheet->name_cons = strtoupper($request->name_cons);
+        $jobsheet->address_cons = strtoupper($request->address_cons);
+        $jobsheet->email_cons = strtolower($request->email_cons);
+        $jobsheet->name_notify = strtoupper($request->name_notify);
+        $jobsheet->address_notify = strtoupper($request->address_notify);
+        $jobsheet->email_notify = strtolower($request->email_notify);
+        $jobsheet->carrier = strtoupper($request->carrier);
+        $jobsheet->vessel = strtoupper($request->vessel);
+        $jobsheet->pol = strtoupper($request->pol);
+        $jobsheet->pod = strtoupper($request->pod);
+        $jobsheet->commodity_mbl = strtoupper($request->commodity_mbl);
+        $jobsheet->commodity_hbl = strtoupper($request->commodity_hbl);
+        $jobsheet->stuffing_address = strtoupper($request->stuffing_address);
+        $jobsheet->pic_name = strtoupper($request->pic_name);
+        $jobsheet->top = strtoupper($request->top);
+        $jobsheet->remarks = strtoupper($request->remarks);
+        $jobsheet->si_doc = $namaFile;
+
+        $nm->move(public_path().'/si_doc', $namaFile);
+        // $jobsheet->si_doc = $request->file('');
+
+        $jobsheet->save();
+
+
+        // dd($request);
+
+        $notification = array(
+            'message' => 'Job Sheet Inserted Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('jobSheet')->with($notification);
     }
 
     /**
@@ -112,4 +251,5 @@ class JobSheetController extends Controller
     {
         //
     }
+
 }
