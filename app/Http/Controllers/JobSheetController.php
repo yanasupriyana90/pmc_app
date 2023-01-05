@@ -14,9 +14,6 @@ use App\Models\TypePayment;
 use App\Models\TypeWeight;
 use App\Models\UndernameHbl;
 use App\Models\UndernameMbl;
-use DateTime;
-// use Carbon\Carbon;
-use Illuminate\Support\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -48,6 +45,52 @@ class JobSheetController extends Controller
         // dd($jobSheetHead);
         return view('marketing.jobSheet.index', ['jobSheetHeadList' => $jobSheetHead]);
     }
+
+    public function changeStatus($id)
+    {
+        $getStatus = JobSheet::select('status')->where('id', $id)->first();
+        if($getStatus->status == 0) {
+            $status = 1;
+        }elseif($getStatus->status == 1) {
+            $status = 2;
+        // }else{
+        //     $status = 2;
+        }elseif($getStatus->status == 2) {
+            $status = 0;
+        }
+
+        $notification = array(
+            'message' => 'Status Successfully Change',
+            'alert-type' => 'success'
+        );
+
+        JobSheet::where('id', $id)->update(['status' => $status]);
+
+        return redirect()->back()->with($notification);
+
+    }
+
+    // public function updateJobSheetStatus($js_id, $status)
+    // {
+    //     $js = JobSheet::find($js_id);
+    //     $js->status = $status;
+    //     if($status == "APPROVED")
+    //     {
+    //         $js->status = DB::raw('status');
+    //     }
+    //     elseif($status == "CANCELED")
+    //     {
+    //         $js->status = DB::raw('status');
+    //     }
+    //     $js->save();
+    //     // session()->flash('success', 'Jobsheet Status Has Been Updated Successdully !');
+    //     $notification = array(
+    //         'message' => 'Jobsheet Status Has Been Updated Successdully !',
+    //         'alert-type' => 'success'
+    //     );
+
+    //     return ($notification);
+    // }
 
     /**
      * Show the form for creating a new resource.
@@ -167,7 +210,7 @@ class JobSheetController extends Controller
 
         // dd($request->all());
         $nm = $request->si_doc;
-        $namaFile = 'si_'.uniqid().'.'.$nm->extension();
+        $fileName = 'si_'.uniqid().'.'.$nm->extension();
 
         $jobsheet = new JobSheet();
         $jobsheet = JobSheet::create($request->all());
@@ -189,10 +232,8 @@ class JobSheetController extends Controller
         $jobsheet->pic_name = strtoupper($request->pic_name);
         $jobsheet->top = strtoupper($request->top);
         $jobsheet->remarks = strtoupper($request->remarks);
-        $jobsheet->si_doc = $namaFile;
-
-        $nm->move(public_path().'/si_doc', $namaFile);
-        // $jobsheet->si_doc = $request->file('');
+        $jobsheet->si_doc = $fileName;
+        $nm->move(public_path().'/si_doc', $fileName);
 
         $jobsheet->save();
 

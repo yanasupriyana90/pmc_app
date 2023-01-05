@@ -92,8 +92,10 @@
                             <th>Type Payment</th>
                             <th>Remaks</th>
                             <th>SI Doc</th>
+                            <th>Status</th>
                             <th>User</th>
                             <th>Action</th>
+                            <th>Status Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -111,7 +113,7 @@
                                 <td class="align-middle">{{ $jobSheetHead->phone_2_cons }}</td>
                                 <td class="align-middle">{{ $jobSheetHead->fax_cons }}</td>
                                 <td class="align-middle">{{ $jobSheetHead->email_cons }}</td>
-                                <td class="align-middle">{{ $jobSheetHead->mandatoryTaxCons['name']}}</td>
+                                <td class="align-middle">{{ $jobSheetHead->mandatoryTaxCons['name'] }}</td>
                                 <td class="align-middle">{{ $jobSheetHead->tax_id_cons }}</td>
                                 <td class="align-middle">{{ $jobSheetHead->same_as_consignee }}</td>
                                 <td class="align-middle">{{ $jobSheetHead->name_notify }}</td>
@@ -153,16 +155,52 @@
                                 <td class="align-middle">{{ $jobSheetHead->top }}</td>
                                 <td class="align-middle">{{ $jobSheetHead->typePayment['name'] }}</td>
                                 <td class="align-middle">{{ $jobSheetHead->remarks }}</td>
-                                {{-- <td class="align-middle">{{ $jobSheetHead->si_doc }}</td> --}}
                                 <td class="align-middle">
-                                    <a href="{{ asset('si_doc/'. $jobSheetHead->si_doc ) }}" target="_blank" rel="nooperner noreferrer">{{ $jobSheetHead->si_doc }}</a>
+                                    <a href="{{ asset('si_doc/' . $jobSheetHead->si_doc) }}" target="_blank"
+                                        rel="nooperner noreferrer">{{ $jobSheetHead->si_doc }}</a>
+                                </td>
+                                <td class="align-middle">
+                                    @if ($jobSheetHead->status == 0)
+                                    <a class="text-warning">PENDING</a>
+                                    @elseif ($jobSheetHead->status == 1)
+                                    <a class="text-success">APPROVED</a>
+                                    @else
+                                    <a class="text-danger">REJECTED</a>
+                                    @endif
                                 </td>
                                 <td class="align-middle" style="text-align:center">{{ $jobSheetHead->user['name'] }}</td>
                                 <td class="align-middle" style="text-align:center">
-                                    <a class="btn btn-primary btn-xs" href="#"><i
-                                            class="fa fa-eye"></i> Detail & Edit</a>
-                                    <a class="btn btn-danger btn-xs" href="#"
-                                        id="delete"><i class="fa fa-trash"></i> Delete</a>
+                                    <a class="btn btn-primary btn-xs" href="#"><i class="fa fa-eye"></i> Detail &
+                                        Edit</a>
+                                    <a class="btn btn-danger btn-xs" href="#" id="delete"><i
+                                            class="fa fa-trash"></i> Delete</a>
+                                </td>
+                                <td>
+                                    @if ($jobSheetHead->status == 0)
+                                    <a href="{{ url('jobSheetStatus/'.$jobSheetHead->id) }}" class="btn btn-xs btn-warning" id="changeStatus">PENDING</a>
+                                    {{-- <a href="{{ Route('jobSheet.changeStatus') }}" class="btn btn-xs btn-warning">PENDING</a> --}}
+                                    @elseif ($jobSheetHead->status == 1)
+                                    <a href="{{ url('jobSheetStatus/'.$jobSheetHead->id) }}" class="btn btn-xs btn-success" id="changeStatus">APPROVED</a>
+                                    @else
+                                    <a href="{{ url('jobSheetStatus/'.$jobSheetHead->id) }}" class="btn btn-xs btn-danger" id="changeStatus">REJECTED</a>
+                                    @endif
+                                    {{-- <div class="dropdown">
+                                            <button type="button" class="btn btn-sm dropdown-toggle"
+                                                data-toggle="dropdown">
+                                                @if ($jobSheetHead->status == 0)
+                                                <label>PENDING</label>
+                                                @elseif ($jobSheetHead->status == 1)
+                                                <label>APPROVED</label>
+                                                @else
+                                                <label>REJECTED</label>
+                                                @endif
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li class="dropdown-item"><a href="{{ url('jobSheetStatus/'.$jobSheetHead->id) }}">PENDING</a></li>
+                                                <li class="dropdown-item"><a href="{{ url('jobSheetStatus/'.$jobSheetHead->id) }}">APPROVED</a></li>
+                                                <li class="dropdown-item"><a href="{{ url('jobSheetStatus/'.$jobSheetHead->id) }}">REJECTED</a></li>
+                                            </ul>
+                                    </div> --}}
                                 </td>
 
                             </tr>

@@ -67,7 +67,7 @@ class TypePackagingSeeder extends Seeder
             ],
 
             [
-                'name' => 'BALE NON-COMPRESSED',
+                'name' => 'BALE-COMPRESSED',
                 'user_id' => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
@@ -207,7 +207,7 @@ class TypePackagingSeeder extends Seeder
             ],
 
             [
-                'name' => 'BOX, NATURAL WOODBOX, NATURAL WOOD',
+                'name' => 'BOX, NATURAL WOOD',
                 'user_id' => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
@@ -221,7 +221,7 @@ class TypePackagingSeeder extends Seeder
             ],
 
             [
-                'name' => 'AEROSOLBOX, RECONSTITUTED WOOD',
+                'name' => 'BOX, RECONSTITUTED WOOD',
                 'user_id' => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
@@ -249,7 +249,7 @@ class TypePackagingSeeder extends Seeder
             ],
 
             [
-                'name' => 'BULK, LIQUEFUED GAS (AT ABNORMAL ',
+                'name' => 'BULK, LIQUEFUED GAS (AT ABNORMAL TEMPERATURE/PRESSURE)',
                 'user_id' => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
@@ -452,7 +452,7 @@ class TypePackagingSeeder extends Seeder
             ],
 
             [
-                'name' => 'CONTAINER, NOT OTHERWISE SPECIFIED AS  TRANSPORT ',
+                'name' => 'CONTAINER, NOT OTHERWISE SPECIFIED AS TRANSPORT EQUIPMENT',
                 'user_id' => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
@@ -837,7 +837,7 @@ class TypePackagingSeeder extends Seeder
             ],
 
             [
-                'name' => 'PALLET, MODULAR, COLLARS 80CMS * 120CMS',
+                'name' => 'PALLET, MODULAR, COLLARS 80CMS x 120CMS',
                 'user_id' => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()

@@ -236,6 +236,7 @@ Route::middleware('auth')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::controller(JobSheetController::class)->group(function () {
         Route::get('/jobSheet', 'index')->name('jobSheet');
+        Route::get('jobSheetStatus/{id}', 'changeStatus')->name('jobSheet.changeStatus');
         // Route::get('/jobSheetShow/{id}', 'show')->name('jobSheet.show');
         Route::get('/jobSheetCreate', 'create')->name('jobSheet.create');
         Route::get('/jobSheetCreate/get-shippers/{nameShip}', 'getShippers');

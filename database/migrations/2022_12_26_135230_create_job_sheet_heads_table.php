@@ -73,7 +73,7 @@ return new class extends Migration
             $table->unsignedBigInteger('type_payment_id');
             $table->text('remarks')->nullable();
             $table->string('si_doc', 100);
-            // $table->integer('status');
+            $table->integer('status');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
             $table->foreign('shipper_id')->references('id')->on('shippers')->onDelete('restrict');

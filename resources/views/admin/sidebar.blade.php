@@ -2,7 +2,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="{{ route('dashboard') }}" class="brand-link">
-        <img src="{{ asset('lte') }}/dist/img/Logo.png" alt="AdminLTE Logo" class="brand-image" style="opacity: .8">
+        <img src="{{ asset('lte') }}/dist/img/LOGO PMC NEW Putih.png" alt="AdminLTE Logo" class="brand-image" style="opacity: .8">
         <span class="brand-text font-weight-light">App</span>
     </a>
 

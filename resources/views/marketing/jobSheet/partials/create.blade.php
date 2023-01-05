@@ -701,7 +701,7 @@
                                                                 value="{{ old('volume') }}" placeholder="Enter Volume">
                                                         </div>
                                                     </div>
-                                                    <div class="col-5">
+                                                    <div class="col-4 mr-5">
                                                         <div class="form-group">
                                                             <label for="inputNameContSizeType">Size / Type
                                                                 Container</label>
@@ -711,17 +711,7 @@
                                                                 placeholder="Enter Size / Type Container">
                                                         </div>
                                                     </div>
-                                                    <div class="col-2">
-                                                        <div class="form-group">
-                                                            <input type="hidden"
-                                                                class="form-control form-control-sm text-uppercase"
-                                                                name="cont_size_type_id" id="cont_size_type_id" readonly>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="container">
-                                                <div class="row">
+
                                                     <div class="col-1">
                                                         <div class="form-group">
                                                             <label for="inputQty">Quantity</label>
@@ -731,7 +721,7 @@
                                                                 value="{{ old('qty') }}" placeholder="Enter Qty">
                                                         </div>
                                                     </div>
-                                                    <div class="col-6">
+                                                    <div class="col-4">
                                                         <div class="form-group">
                                                             <label for="inputNameTypePack">Type Pack</label>
                                                             <input type="text"
@@ -740,11 +730,22 @@
                                                                 placeholder="Enter Type Packaging">
                                                         </div>
                                                     </div>
-                                                    <div class="col-2">
-                                                        <div class="form-group">
-                                                            <input type="hidden"
-                                                                class="form-control form-control-sm text-uppercase"
-                                                                name="type_packaging_id" id="type_packaging_id" readonly>
+                                                    <div class="row">
+                                                        <div class="col-1">
+                                                            <div class="form-group">
+                                                                <input type="hidden"
+                                                                    class="form-control form-control-sm text-uppercase"
+                                                                    name="cont_size_type_id" id="cont_size_type_id"
+                                                                    readonly>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-1">
+                                                            <div class="form-group">
+                                                                <input type="hidden"
+                                                                    class="form-control form-control-sm text-uppercase"
+                                                                    name="type_packaging_id" id="type_packaging_id"
+                                                                    readonly>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -761,9 +762,9 @@
                                                                 placeholder="Enter Gross Weight">
                                                         </div>
                                                     </div>
-                                                    <div class="col-2">
+                                                    <div class="col-2 mr-4">
                                                         <div class="form-group">
-                                                            <label for="typeWeight">Type Weight</label>
+                                                            <label for="typeWeight">Type</label>
                                                             <select name="gross_type_weight_id" id="gross_type_weight_id"
                                                                 class="form-control form-control-sm select2"
                                                                 style="width: 100%;">
@@ -775,17 +776,6 @@
                                                             </select>
                                                         </div>
                                                     </div>
-                                                    {{-- <div class="col-2">
-                                                        <div class="form-group">
-                                                            <input type="text"
-                                                                class="form-control form-control-sm text-uppercase"
-                                                                name="gross_type_weight_id" id="gross_type_weight_id" readonly>
-                                                        </div>
-                                                    </div> --}}
-                                                </div>
-                                            </div>
-                                            <div class="container">
-                                                <div class="row">
                                                     <div class="col-2">
                                                         <div class="form-group">
                                                             <label for="inputNetWeight">Net Weight</label>
@@ -796,9 +786,9 @@
                                                                 placeholder="Enter Net Weight">
                                                         </div>
                                                     </div>
-                                                    <div class="col-2">
+                                                    <div class="col-2 mr-4">
                                                         <div class="form-group">
-                                                            <label for="typeWeight">Type Weight</label>
+                                                            <label for="typeWeight">Type</label>
                                                             <select name="net_type_weight_id" id="net_type_weight_id"
                                                                 class="form-control form-control-sm select2"
                                                                 style="width: 100%;">
@@ -810,17 +800,6 @@
                                                             </select>
                                                         </div>
                                                     </div>
-                                                    {{-- <div class="col-2">
-                                                        <div class="form-group">
-                                                            <input type="text"
-                                                                class="form-control form-control-sm text-uppercase"
-                                                                name="net_type_weight_id" id="net_type_weight_id" readonly>
-                                                        </div>
-                                                    </div> --}}
-                                                </div>
-                                            </div>
-                                            <div class="container">
-                                                <div class="row">
                                                     <div class="col-2">
                                                         <div class="form-group">
                                                             <label for="inputMeasurement">Measurement</label>
@@ -831,9 +810,9 @@
                                                                 placeholder="Enter Measurement">
                                                         </div>
                                                     </div>
-                                                    <div class="col-2">
+                                                    <div class="col-1">
                                                         <div class="form-group">
-                                                            <label for="typeMeasurement">Type Measurement</label>
+                                                            <label for="typeMeasurement">Type</label>
                                                             <select name="type_measurement_id" id="type_measurement_id"
                                                                 class="form-control form-control-sm select2"
                                                                 style="width: 100%;">
@@ -845,13 +824,11 @@
                                                             </select>
                                                         </div>
                                                     </div>
-                                                    {{-- <div class="col-2">
-                                                        <div class="form-group">
-                                                            <input type="text"
-                                                                class="form-control form-control-sm text-uppercase"
-                                                                name="type_measurement_id" id="type_measurement_id" readonly>
-                                                        </div>
-                                                    </div> --}}
+                                                </div>
+                                            </div>
+                                            <div class="container">
+                                                <div class="row">
+
                                                 </div>
                                             </div>
                                             <div class="container">
@@ -1081,6 +1058,14 @@
                                                                     <span class="input-group-text">Upload</span>
                                                                 </div> --}}
                                                             </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-2 ml-5">
+                                                        <div class="form-group">
+                                                            <label for="inputStatus">Status</label>
+                                                            <input type="text"
+                                                                class="form-control form-control-sm text-uppercase"
+                                                                name="status" id="status" value="0" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1807,6 +1792,3 @@
         }
     }
 </script>
-
-
-

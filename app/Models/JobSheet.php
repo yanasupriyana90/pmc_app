@@ -120,7 +120,6 @@ class JobSheet extends Model
         return $this->belongsTo(TypePayment::class);
     }
 
-
     public function typeWeightGross()
     {
         return $this->belongsTo(TypeWeight::class, 'gross_type_weight_id', 'id');

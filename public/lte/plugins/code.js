@@ -29,6 +29,37 @@ $(function () {
 
 });
 
+// Validation Change Status
+$(function () {
+  $(document).on('click', '#changeStatus', function (e) {
+      e.preventDefault();
+      var link = $(this).attr("href");
+
+
+      Swal.fire({
+          title: 'Are You Sure ?',
+          text: "Change This Status ?",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, Change It !'
+      }).then((result) => {
+          if (result.isConfirmed) {
+              window.location.href = link
+              Swal.fire(
+                  'Updated !',
+                  'Your file has been updated.',
+                  'success'
+              )
+          }
+      })
+
+
+  });
+
+});
+
 // Revenue Of Sales / Ocean Freight
 // Selling Rate
 $(function () {
