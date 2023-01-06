@@ -70,28 +70,6 @@ class JobSheetController extends Controller
 
     }
 
-    // public function updateJobSheetStatus($js_id, $status)
-    // {
-    //     $js = JobSheet::find($js_id);
-    //     $js->status = $status;
-    //     if($status == "APPROVED")
-    //     {
-    //         $js->status = DB::raw('status');
-    //     }
-    //     elseif($status == "CANCELED")
-    //     {
-    //         $js->status = DB::raw('status');
-    //     }
-    //     $js->save();
-    //     // session()->flash('success', 'Jobsheet Status Has Been Updated Successdully !');
-    //     $notification = array(
-    //         'message' => 'Jobsheet Status Has Been Updated Successdully !',
-    //         'alert-type' => 'success'
-    //     );
-
-    //     return ($notification);
-    // }
-
     /**
      * Show the form for creating a new resource.
      *

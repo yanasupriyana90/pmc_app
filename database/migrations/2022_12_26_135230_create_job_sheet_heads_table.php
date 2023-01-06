@@ -29,7 +29,7 @@ return new class extends Migration
             $table->string('email_cons')->nullable();
             $table->unsignedBigInteger('mandatory_tax_id_cons');
             $table->string('tax_id_cons', 35)->nullable();
-            $table->string('same_as_consignee', 30)->nullable();
+            $table->string('same_as_consignee', 20)->nullable();
             $table->string('name_notify')->nullable();
             $table->string('address_notify')->nullable();
             $table->string('phone_1_notify', 20)->nullable();
@@ -62,7 +62,7 @@ return new class extends Migration
             // $table->string('bl_delivery', 30);
             // $table->string('bl_delivery_desc', 50)->nullable();
             // $table->string('issue_loc', 30);
-            $table->string('commodity_hbl', 50);
+            $table->string('commodity_hbl', 50)->nullable();
             $table->string('hs_code_hbl', 15)->nullable();
             $table->unsignedBigInteger('hbl_type_bl_id');
             $table->date('stuffing_date')->nullable();

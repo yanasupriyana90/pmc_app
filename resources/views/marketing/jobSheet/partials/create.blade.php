@@ -111,8 +111,7 @@
                                                         <div class="form-group">
                                                             <input type="hidden"
                                                                 class="form-control form-control-sm text-uppercase"
-                                                                name="shipper_id" id="shipper_id"
-                                                                placeholder="Enter ID Shipper" readonly>
+                                                                name="shipper_id" id="shipper_id" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -125,32 +124,28 @@
                                                             <input type="text"
                                                                 class="form-control form-control-sm text-uppercase"
                                                                 name="name_ship" id="name_ship"
-                                                                value="{{ old('name_ship') }}""
-                                                                placeholder="Enter Name Shipper">
+                                                                value="{{ old('name_ship') }}">
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
                                                         <div class="form-group">
                                                             <label for="inputPhone1Ship">Phone 1</label>
                                                             <input type="text" class="form-control form-control-sm"
-                                                                name="phone_1_ship" id="phone_1_ship"
-                                                                placeholder="Enter Phone 1 Shipper" readonly>
+                                                                name="phone_1_ship" id="phone_1_ship" readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
                                                         <div class="form-group">
                                                             <label for="inputPhone2Ship">Phone 2</label>
                                                             <input type="text" class="form-control form-control-sm"
-                                                                name="phone_2_ship" id="phone_2_ship"
-                                                                placeholder="Enter Phone 2 Shipper" readonly>
+                                                                name="phone_2_ship" id="phone_2_ship" readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
                                                         <div class="form-group">
                                                             <label for="inputFaxShip">Fax</label>
                                                             <input type="text" class="form-control form-control-sm"
-                                                                name="fax_ship" id="fax_ship"
-                                                                placeholder="Enter Fax Shipper" readonly>
+                                                                name="fax_ship" id="fax_ship" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -161,15 +156,14 @@
                                                         <div class="form-group">
                                                             <label for="inputAddressShip">Address</label>
                                                             <textarea class="form-control form-control-sm text-uppercase" name="address_ship" id="address_ship" rows="3"
-                                                                placeholder="Enter Address Shipper" readonly></textarea>
+                                                                readonly></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="col-3">
                                                         <div class="form-group">
                                                             <label for="inputEmailShip">Email address</label>
                                                             <input type="email" class="form-control form-control-sm"
-                                                                name="email_ship" id="email_ship"
-                                                                placeholder="Enter Email Shipper" readonly>
+                                                                name="email_ship" id="email_ship" readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-2 offset-1">
@@ -177,8 +171,7 @@
                                                             <label for="inputMandatoryTaxIdShip">Mandatory Tax</label>
                                                             <input type="text" name="mandatory_tax_id_ship"
                                                                 class="form-control form-control-sm"
-                                                                id="mandatory_tax_id_ship"
-                                                                placeholder="Enter Mandatory Tax Shipper" readonly>
+                                                                id="mandatory_tax_id_ship" readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
@@ -186,7 +179,7 @@
                                                             <label for="inputTaxIdShip">Tax ID</label>
                                                             <input type="text" name="tax_id_ship"
                                                                 class="form-control form-control-sm" id="tax_id_ship"
-                                                                placeholder="Enter Tax ID Shipper" readonly>
+                                                                readonly>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -199,8 +192,7 @@
                                                         <div class="form-group">
                                                             <input type="hidden"
                                                                 class="form-control form-control-sm text-uppercase"
-                                                                name="undername_mbl_id" id="undername_mbl_id"
-                                                                placeholder="Enter ID Undername M-BL" readonly>
+                                                                name="undername_mbl_id" id="undername_mbl_id" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -212,32 +204,28 @@
                                                             <label for="inputUndMbl">Undername M-BL / Booking</label>
                                                             <input type="text"
                                                                 class="form-control form-control-sm text-uppercase"
-                                                                name="name_und_mbl" id="name_und_mbl"
-                                                                placeholder="Enter Undername M-BL">
+                                                                name="name_und_mbl" id="name_und_mbl">
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
                                                         <div class="form-group">
                                                             <label for="inputPhone1UndMbl">Phone 1</label>
                                                             <input type="text" class="form-control form-control-sm"
-                                                                name="phone_1_und_mbl" id="phone_1_und_mbl"
-                                                                placeholder="Enter Phone 1 Undername M-BL" readonly>
+                                                                name="phone_1_und_mbl" id="phone_1_und_mbl" readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
                                                         <div class="form-group">
                                                             <label for="inputPhone2UndMbl">Phone 2</label>
                                                             <input type="text" class="form-control form-control-sm"
-                                                                name="phone_2_und_mbl" id="phone_2_und_mbl"
-                                                                placeholder="Enter Phone 2 Undername M-BL" readonly>
+                                                                name="phone_2_und_mbl" id="phone_2_und_mbl" readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
                                                         <div class="form-group">
                                                             <label for="inputFaxUndMbl">Fax</label>
                                                             <input type="text" class="form-control form-control-sm"
-                                                                name="fax_und_mbl" id="fax_und_mbl"
-                                                                placeholder="Enter Fax Undername M-BL" readonly>
+                                                                name="fax_und_mbl" id="fax_und_mbl" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -248,15 +236,14 @@
                                                         <div class="form-group">
                                                             <label for="inputAddressUndMbl">Address</label>
                                                             <textarea class="form-control form-control-sm text-uppercase" name="address_und_mbl" id="address_und_mbl"
-                                                                rows="3" placeholder="Enter Address Undername M-BL" readonly></textarea>
+                                                                rows="3" readonly></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="col-3">
                                                         <div class="form-group">
                                                             <label for="inputEmailUndMbl">Email address</label>
                                                             <input type="email" class="form-control form-control-sm"
-                                                                name="email_und_mbl" id="email_und_mbl"
-                                                                placeholder="Enter Email Undername M-BL" readonly>
+                                                                name="email_und_mbl" id="email_und_mbl" readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-2 offset-1">
@@ -264,8 +251,7 @@
                                                             <label for="inputMandatoryTaxIdUndMbl">Mandatory Tax</label>
                                                             <input type="text" name="mandatory_tax_id_und_mbl"
                                                                 class="form-control form-control-sm"
-                                                                id="mandatory_tax_id_und_mbl"
-                                                                placeholder="Enter Mandatory Tax Undername M-BL" readonly>
+                                                                id="mandatory_tax_id_und_mbl" readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
@@ -273,7 +259,7 @@
                                                             <label for="inputTaxIdUndMbl">Tax ID</label>
                                                             <input type="text" name="tax_id_und_mbl"
                                                                 class="form-control form-control-sm" id="tax_id_und_mbl"
-                                                                placeholder="Enter Tax ID Undername M-BL" readonly>
+                                                                readonly>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -286,64 +272,71 @@
                                                         <div class="form-group">
                                                             <input type="hidden"
                                                                 class="form-control form-control-sm text-uppercase"
-                                                                name="undername_hbl_id" id="undername_hbl_id"
-                                                                placeholder="Enter ID Undername H-BL" readonly>
+                                                                name="undername_hbl_id" id="undername_hbl_id" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="container">
                                                 <div class="row mt-3">
+                                                    <div class="col-4">
+                                                        <div class="custom-control custom-checkbox">
+                                                            <input class="custom-control-input" type="checkbox"
+                                                                name="use_und_hbl" id="checkBoxUndHbl"
+                                                                onclick="showDivUndHblAll()">
+                                                            <label for="checkBoxUndHbl" class="custom-control-label">Use
+                                                                Undername H-BL / PEB</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="container" id="und_hbl_group" style="display: none;">
+                                                <div class="row mt-3">
                                                     <div class="col-6">
                                                         <div class="form-group">
                                                             <label for="inputUndHbl">Undername H-BL / PEB</label>
                                                             <input type="text"
                                                                 class="form-control form-control-sm text-uppercase"
-                                                                name="name_und_hbl" id="name_und_hbl"
-                                                                placeholder="Enter Undername H-BL">
+                                                                name="name_und_hbl" id="name_und_hbl">
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
                                                         <div class="form-group">
                                                             <label for="inputPhone1UndHbl">Phone 1</label>
                                                             <input type="text" class="form-control form-control-sm"
-                                                                name="phone_1_und_mbl" id="phone_1_und_mbl"
-                                                                placeholder="Enter Phone 1 Undername H-BL" readonly>
+                                                                name="phone_1_und_mbl" id="phone_1_und_mbl" readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
                                                         <div class="form-group">
                                                             <label for="inputPhone2UndHbl">Phone 2</label>
                                                             <input type="text" class="form-control form-control-sm"
-                                                                name="phone_2_und_hbl" id="phone_2_und_hbl"
-                                                                placeholder="Enter Phone 2 Undername H-BL" readonly>
+                                                                name="phone_2_und_hbl" id="phone_2_und_hbl" readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
                                                         <div class="form-group">
                                                             <label for="inputFaxUndHbl">Fax</label>
                                                             <input type="text" class="form-control form-control-sm"
-                                                                name="fax_und_hbl" id="fax_und_hbl"
-                                                                placeholder="Enter Fax Undername H-BL" readonly>
+                                                                name="fax_und_hbl" id="fax_und_hbl" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="container">
+
+
                                                 <div class="row">
                                                     <div class="col-4">
                                                         <div class="form-group">
                                                             <label for="inputAddressUndHbl">Address</label>
                                                             <textarea class="form-control form-control-sm text-uppercase" name="address_und_hbl" id="address_und_hbl"
-                                                                rows="3" placeholder="Enter Address Undername H-BL" readonly></textarea>
+                                                                rows="3" readonly></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="col-3">
                                                         <div class="form-group">
                                                             <label for="inputEmailUndHbl">Email address</label>
                                                             <input type="email" class="form-control form-control-sm"
-                                                                name="email_und_hbl" id="email_und_hbl"
-                                                                placeholder="Enter Email Undername H-BL" readonly>
+                                                                name="email_und_hbl" id="email_und_hbl" readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-2 offset-1">
@@ -351,8 +344,7 @@
                                                             <label for="inputMandatoryTaxIdUndHbl">Mandatory Tax</label>
                                                             <input type="text" name="mandatory_tax_id_und_hbl"
                                                                 class="form-control form-control-sm"
-                                                                id="mandatory_tax_id_und_hbl"
-                                                                placeholder="Enter Mandatory Tax Undername H-BL" readonly>
+                                                                id="mandatory_tax_id_und_hbl" readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
@@ -360,7 +352,7 @@
                                                             <label for="inputTaxIdUndHbl">Tax ID</label>
                                                             <input type="text" name="tax_id_und_hbl"
                                                                 class="form-control form-control-sm" id="tax_id_und_hbl"
-                                                                placeholder="Enter Tax ID Undername H-BL" readonly>
+                                                                readonly>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -381,8 +373,7 @@
                                                             <input type="text"
                                                                 class="form-control form-control-sm text-uppercase"
                                                                 name="name_cons" id="name_cons"
-                                                                value="{{ old('name_cons') }}"
-                                                                placeholder="Enter Consignee">
+                                                                value="{{ old('name_cons') }}">
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
@@ -390,8 +381,7 @@
                                                             <label for="inputPhone1Cons">Phone 1</label>
                                                             <input type="text" class="form-control form-control-sm"
                                                                 name="phone_1_cons" id="phone_1_cons"
-                                                                value="{{ old('phone_1_cons') }}"
-                                                                placeholder="Enter Phone 1 Consignee">
+                                                                value="{{ old('phone_1_cons') }}">
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
@@ -399,8 +389,7 @@
                                                             <label for="inputPhone2Cons">Phone 2</label>
                                                             <input type="text" class="form-control form-control-sm"
                                                                 name="phone_2_cons" id="phone_2_cons"
-                                                                value="{{ old('phone_2_cons') }}"
-                                                                placeholder="Enter Phone 2 Consignee">
+                                                                value="{{ old('phone_2_cons') }}">
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
@@ -408,8 +397,7 @@
                                                             <label for="inputFaxCons">Fax</label>
                                                             <input type="text" class="form-control form-control-sm"
                                                                 name="fax_cons" id="fax_cons"
-                                                                value="{{ old('fax_cons') }}"
-                                                                placeholder="Enter Fax Consignee">
+                                                                value="{{ old('fax_cons') }}">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -419,8 +407,7 @@
                                                     <div class="col-4">
                                                         <div class="form-group">
                                                             <label for="inputAddressCons">Address</label>
-                                                            <textarea class="form-control form-control-sm text-uppercase" name="address_cons" id="address_cons" rows="3"
-                                                                placeholder="Enter Address Consignee">{{ old('address_cons') }}</textarea>
+                                                            <textarea class="form-control form-control-sm text-uppercase" name="address_cons" id="address_cons" rows="3">{{ old('address_cons') }}</textarea>
                                                         </div>
                                                     </div>
                                                     <div class="col-3">
@@ -428,8 +415,7 @@
                                                             <label for="inputEmailCons">Email address</label>
                                                             <input type="email" class="form-control form-control-sm"
                                                                 name="email_cons" id="email_cons"
-                                                                value="{{ old('email_cons') }}"
-                                                                placeholder="Enter Email Consignee">
+                                                                value="{{ old('email_cons') }}">
                                                         </div>
                                                     </div>
                                                     <div class="col-2 offset-1">
@@ -453,8 +439,7 @@
                                                             <label for="inputTaxIdCons">Tax ID</label>
                                                             <input type="text" name="tax_id_cons"
                                                                 class="form-control form-control-sm" id="tax_id_cons"
-                                                                value="{{ old('tax_id_cons') }}"
-                                                                placeholder="Enter Tax ID Consignee">
+                                                                value="{{ old('tax_id_cons') }}">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -465,7 +450,8 @@
                                                     <div class="col-4">
                                                         <div class="custom-control custom-checkbox">
                                                             <input class="custom-control-input" type="checkbox"
-                                                                id="checkBoxNotify" onclick="showDivNotifyAll()">
+                                                                name="same_as_consignee" id="checkBoxNotify"
+                                                                onclick="showDivNotifyAll()" value="SAME AS CONSIGNEE">
                                                             <label for="checkBoxNotify" class="custom-control-label">SAME
                                                                 AS CONSIGNEE</label>
                                                         </div>
@@ -480,8 +466,7 @@
                                                             <input type="text"
                                                                 class="form-control form-control-sm text-uppercase"
                                                                 name="name_notify" id="name_notify"
-                                                                value="{{ old('name_notify') }}"
-                                                                placeholder="Enter Notify Party">
+                                                                value="{{ old('name_notify') }}">
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
@@ -489,8 +474,7 @@
                                                             <label for="inputPhone1Notify">Phone 1</label>
                                                             <input type="text" class="form-control form-control-sm"
                                                                 name="phone_1_notify" id="phone_1_notify"
-                                                                value="{{ old('phone_1_notify') }}"
-                                                                placeholder="Enter Phone 1 Notify Party">
+                                                                value="{{ old('phone_1_notify') }}">
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
@@ -498,8 +482,7 @@
                                                             <label for="inputPhone2Notify">Phone 2</label>
                                                             <input type="text" class="form-control form-control-sm"
                                                                 name="phone_2_notify" id="phone_2_notify"
-                                                                value="{{ old('phone_2_notify') }}"
-                                                                placeholder="Enter Phone 2 Notify Party">
+                                                                value="{{ old('phone_2_notify') }}">
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
@@ -507,8 +490,7 @@
                                                             <label for="inputFaxNotify">Fax</label>
                                                             <input type="text" class="form-control form-control-sm"
                                                                 name="fax_notify" id="fax_notify"
-                                                                value="{{ old('fax_notify') }}"
-                                                                placeholder="Enter Fax Notify Party">
+                                                                value="{{ old('fax_notify') }}">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -517,7 +499,7 @@
                                                         <div class="form-group">
                                                             <label for="inputAddressNotify">Address</label>
                                                             <textarea class="form-control form-control-sm text-uppercase" name="address_notify" id="address_notify"
-                                                                rows="3" placeholder="Enter Address Notify Party">{{ old('address_notify') }}</textarea>
+                                                                rows="3">{{ old('address_notify') }}</textarea>
                                                         </div>
                                                     </div>
                                                     <div class="col-3">
@@ -525,8 +507,7 @@
                                                             <label for="inputEmailNotify">Email address</label>
                                                             <input type="email" class="form-control form-control-sm"
                                                                 name="email_notify" id="email_notify"
-                                                                value="{{ old('email_notify') }}"
-                                                                placeholder="Enter Email Notify Party">
+                                                                value="{{ old('email_notify') }}">
                                                         </div>
                                                     </div>
                                                     <div class="col-2 offset-1">
@@ -550,8 +531,7 @@
                                                             <label for="inputTaxIdNotify">Tax ID</label>
                                                             <input type="text" name="tax_id_notify"
                                                                 class="form-control form-control-sm" id="tax_id_notify"
-                                                                value="{{ old('tax_id_notify') }}"
-                                                                placeholder="Enter Tax ID Notify Party">
+                                                                value="{{ old('tax_id_notify') }}">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -573,7 +553,7 @@
                                                             <input type="text"
                                                                 class="form-control form-control-sm text-uppercase"
                                                                 name="carrier" id="carrier"
-                                                                value="{{ old('carrier') }}" placeholder="Enter Carrier">
+                                                                value="{{ old('carrier') }}">
                                                         </div>
                                                     </div>
                                                     <div class="col-3">
@@ -582,7 +562,7 @@
                                                             <input type="text"
                                                                 class="form-control form-control-sm text-uppercase"
                                                                 name="vessel" id="vessel"
-                                                                value="{{ old('vessel') }}" placeholder="Enter Vessel">
+                                                                value="{{ old('vessel') }}">
                                                         </div>
                                                     </div>
                                                     <div class="col-3">
@@ -609,8 +589,7 @@
                                                             <input type="text"
                                                                 class="form-control form-control-sm text-uppercase"
                                                                 name="pol" id="pol"
-                                                                value="{{ old('pol') }}"
-                                                                placeholder="Enter Port Of Loading">
+                                                                value="{{ old('pol') }}">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -623,8 +602,7 @@
                                                             <input type="text"
                                                                 class="form-control form-control-sm text-uppercase"
                                                                 name="pod" id="pod"
-                                                                value="{{ old('pod') }}"
-                                                                placeholder="Enter Port Of Discharge">
+                                                                value="{{ old('pod') }}">
                                                         </div>
                                                     </div>
                                                     <div class="col-3">
@@ -698,7 +676,7 @@
                                                             <input type="text"
                                                                 class="form-control form-control-sm text-uppercase"
                                                                 name="volume" id="volume"
-                                                                value="{{ old('volume') }}" placeholder="Enter Volume">
+                                                                value="{{ old('volume') }}">
                                                         </div>
                                                     </div>
                                                     <div class="col-4 mr-5">
@@ -707,8 +685,7 @@
                                                                 Container</label>
                                                             <input type="text"
                                                                 class="form-control form-control-sm text-uppercase"
-                                                                name="name_cont_size_type" id="name_cont_size_type"
-                                                                placeholder="Enter Size / Type Container">
+                                                                name="name_cont_size_type" id="name_cont_size_type">
                                                         </div>
                                                     </div>
 
@@ -718,7 +695,7 @@
                                                             <input type="text"
                                                                 class="form-control form-control-sm text-uppercase"
                                                                 name="qty" id="qty"
-                                                                value="{{ old('qty') }}" placeholder="Enter Qty">
+                                                                value="{{ old('qty') }}">
                                                         </div>
                                                     </div>
                                                     <div class="col-4">
@@ -726,8 +703,7 @@
                                                             <label for="inputNameTypePack">Type Pack</label>
                                                             <input type="text"
                                                                 class="form-control form-control-sm text-uppercase"
-                                                                name="name_type_pack" id="name_type_pack"
-                                                                placeholder="Enter Type Packaging">
+                                                                name="name_type_pack" id="name_type_pack">
                                                         </div>
                                                     </div>
                                                     <div class="row">
@@ -755,11 +731,10 @@
                                                     <div class="col-2">
                                                         <div class="form-group">
                                                             <label for="inputGrossWeight">Gross Weight</label>
-                                                            <input type="text"
+                                                            <input type="number" min=0 step=0.01
                                                                 class="form-control form-control-sm text-uppercase"
                                                                 name="gross_weight" id="gross_weight"
-                                                                value="{{ old('gross_weight') }}"
-                                                                placeholder="Enter Gross Weight">
+                                                                value="{{ old('gross_weight') }}">
                                                         </div>
                                                     </div>
                                                     <div class="col-2 mr-4">
@@ -782,8 +757,7 @@
                                                             <input type="text"
                                                                 class="form-control form-control-sm text-uppercase"
                                                                 name="net_weight" id="net_weight"
-                                                                value="{{ old('net_weight') }}"
-                                                                placeholder="Enter Net Weight">
+                                                                value="{{ old('net_weight') }}">
                                                         </div>
                                                     </div>
                                                     <div class="col-2 mr-4">
@@ -806,8 +780,7 @@
                                                             <input type="text"
                                                                 class="form-control form-control-sm text-uppercase"
                                                                 name="measurement" id="measurement"
-                                                                value="{{ old('measurement') }}"
-                                                                placeholder="Enter Measurement">
+                                                                value="{{ old('measurement') }}">
                                                         </div>
                                                     </div>
                                                     <div class="col-1">
@@ -825,13 +798,14 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <hr size="100" noshade>
                                             </div>
                                             <div class="container">
                                                 <div class="row">
 
                                                 </div>
                                             </div>
-                                            <div class="container">
+                                            <div class="container mt-5">
                                                 <div class="row">
                                                     <div class="col-3">
                                                         <div class="form-group">
@@ -839,8 +813,7 @@
                                                             <input type="text"
                                                                 class="form-control form-control-sm mb-2 text-uppercase"
                                                                 name="commodity_mbl" id="commodity_mbl"
-                                                                value="{{ old('commodity_mbl') }}"
-                                                                placeholder="Enter Commodity M-B/L">
+                                                                value="{{ old('commodity_mbl') }}">
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
@@ -849,8 +822,7 @@
                                                             <input type="text"
                                                                 class="form-control form-control-sm mb-2 text-uppercase"
                                                                 name="hs_code_mbl" id="hs_code_mbl"
-                                                                value="{{ old('hs_code_mbl') }}"
-                                                                placeholder="Enter HS Code M-B/L">
+                                                                value="{{ old('hs_code_mbl') }}">
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
@@ -891,8 +863,7 @@
                                                                 Other</label>
                                                             <input type="text"
                                                                 class="form-control form-control-sm mb-2 text-uppercase"
-                                                                name="bl_delivery_desc" id="bl_delivery_desc"
-                                                                placeholder="Enter B/L Delivery Desc">
+                                                                name="bl_delivery_desc" id="bl_delivery_desc">
                                                         </div>
                                                     </div> --}}
 
@@ -906,23 +877,34 @@
                                                             <label for="inputIssueLoc">Issue Location</label>
                                                             <input type="text"
                                                                 class="form-control form-control-sm mb-2 text-uppercase"
-                                                                name="issue_loc" id="issue_loc"
-                                                                placeholder="Enter Issue Location">
+                                                                name="issue_loc" id="issue_loc">
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div> --}}
 
                                             <div class="container">
-                                                <div class="row">
+                                                <div class="row mt-3">
+                                                    <div class="col-4">
+                                                        <div class="custom-control custom-checkbox">
+                                                            <input class="custom-control-input" type="checkbox"
+                                                                name="use_commodity_hbl" id="checkBoxCommodityHbl"
+                                                                onclick="showDivCommodityHblAll()">
+                                                            <label for="checkBoxCommodityHbl"
+                                                                class="custom-control-label">Use Commodity H-BL</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="container" id="commodity_hbl_group" style="display: none;">
+                                                <div class="row mt-3">
                                                     <div class="col-3">
                                                         <div class="form-group">
                                                             <label for="inputCommodityHbl">Commodity H-B/L</label>
                                                             <input type="text"
                                                                 class="form-control form-control-sm text-uppercase"
                                                                 name="commodity_hbl" id="commodity_hbl"
-                                                                value="{{ old('commodity_hbl') }}"
-                                                                placeholder="Enter Commodity H-B/L">
+                                                                value="{{ old('commodity_hbl') }}">
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
@@ -931,8 +913,7 @@
                                                             <input type="text"
                                                                 class="form-control form-control-sm mb-2 text-uppercase"
                                                                 name="hs_code_hbl" id="hs_code_hbl"
-                                                                value="{{ old('hs_code_hbl') }}"
-                                                                placeholder="Enter HS Code H-B/L">
+                                                                value="{{ old('hs_code_hbl') }}">
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
@@ -952,6 +933,9 @@
                                                 </div>
                                             </div>
                                             <div class="container">
+                                                <hr size="100" noshade>
+                                            </div>
+                                            <div class="container mt-5">
                                                 <div class="row">
                                                     <div class="col-3">
                                                         <div class="form-group">
@@ -977,7 +961,7 @@
                                                             <label for="inputStuffingAddress">Stuffing
                                                                 Address</label>
                                                             <textarea class="form-control form-control-sm text-uppercase" name="stuffing_address" id="stuffing_address"
-                                                                rows="3" placeholder="Enter Stuffing Address">{{ old('stuffing_address') }}</textarea>
+                                                                rows="3">{{ old('stuffing_address') }}</textarea>
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
@@ -986,8 +970,7 @@
                                                             <input type="text"
                                                                 class="form-control form-control-sm text-uppercase"
                                                                 name="pic_name" id="pic_name"
-                                                                value="{{ old('pic_name') }}"
-                                                                placeholder="Enter PIC Name">
+                                                                value="{{ old('pic_name') }}">
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
@@ -996,8 +979,7 @@
                                                             <input type="text"
                                                                 class="form-control form-control-sm text-uppercase"
                                                                 name="pic_phone" id="pic_phone"
-                                                                value="{{ old('pic_phone') }}"
-                                                                placeholder="Enter PIC Phone">
+                                                                value="{{ old('pic_phone') }}">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1010,8 +992,7 @@
                                                             <input type="text"
                                                                 class="form-control form-control-sm text-uppercase"
                                                                 name="top" id="top"
-                                                                value="{{ old('top') }}"
-                                                                placeholder="Enter Terms Of Payment">
+                                                                value="{{ old('top') }}">
                                                         </div>
                                                     </div>
                                                     <div class="col-3">
@@ -1029,14 +1010,14 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <hr size="100" noshade>
                                             </div>
-                                            <div class="container">
+                                            <div class="container mt-5">
                                                 <div class="row">
                                                     <div class="col-6">
                                                         <div class="form-group">
                                                             <label for="inputRemarks">Remarks</label>
-                                                            <textarea class="form-control form-control-sm text-uppercase" name="remarks" id="remarks" rows="5"
-                                                                placeholder="Enter Remarks">{{ old('remarks') }}</textarea>
+                                                            <textarea class="form-control form-control-sm text-uppercase" name="remarks" id="remarks" rows="5">{{ old('remarks') }}</textarea>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1062,8 +1043,7 @@
                                                     </div>
                                                     <div class="col-2 ml-5">
                                                         <div class="form-group">
-                                                            <label for="inputStatus">Status</label>
-                                                            <input type="text"
+                                                            <input type="hidden"
                                                                 class="form-control form-control-sm text-uppercase"
                                                                 name="status" id="status" value="0" readonly>
                                                         </div>
@@ -1076,7 +1056,7 @@
                                             <div class="container">
                                                 <!-- Hidden User -->
                                                 <input type="hidden" class="form-control form-control-sm" name="user_id"
-                                                    id="user_id" value="{{ Auth::user()->id }}" placeholder="">
+                                                    id="user_id" value="{{ Auth::user()->id }}">
 
                                                 <div class="d-grid gap-2 d-md-block mt-5">
                                                     <button class="btn btn-primary mr-3" type="submit">SAVE</button>
@@ -1108,7 +1088,7 @@
                                                             <div class="col-md-4">
                                                                 <input type="text"
                                                                     class="form-control form-control-sm text-uppercase"
-                                                                    name="undername" id="undername" placeholder="">
+                                                                    name="undername" id="undername">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1178,7 +1158,7 @@
                                                     <div class="col-sm-1">
                                                         <input type="text"
                                                             class="form-control form-control-sm text-uppercase"
-                                                            name="undername" id="undername" placeholder="">
+                                                            name="undername" id="undername">
                                                     </div>
                                                     <div class="col-sm-0">
                                                         <p style="text-align: center">X</p>
@@ -1197,15 +1177,14 @@
                                                     </div>
                                                     <div class="col-sm-1">
                                                         <input type="text" class="form-control form-control-sm"
-                                                            id="input#" placeholder="">
+                                                            id="input#">
                                                     </div>
                                                     <div class="col-sm-0">
                                                         <p style="text-align: center">=</p>
                                                     </div>
                                                     <div class="col-sm-2">
                                                         <div class="input-group input-group-sm mb-3">
-                                                            <input type="text" class="form-control" placeholder=""
-                                                                readonly>
+                                                            <input type="text" class="form-control" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1288,7 +1267,7 @@
                                                     <div class="col-sm-1">
                                                         <input type="text"
                                                             class="form-control form-control-sm text-uppercase"
-                                                            name="undername" id="undername" placeholder="">
+                                                            name="undername" id="undername">
                                                     </div>
                                                     <div class="col-sm-0 mr-2">
                                                         <p style="text-align: center">X</p>
@@ -1430,7 +1409,7 @@
                                                             <div class="col-md-4">
                                                                 <input type="text"
                                                                     class="form-control form-control-sm text-uppercase"
-                                                                    name="undername" id="undername" placeholder="">
+                                                                    name="undername" id="undername">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1461,7 +1440,7 @@
                                                     <div class="col-sm-1">
                                                         <input type="text"
                                                             class="form-control form-control-sm text-uppercase"
-                                                            name="undername" id="undername" placeholder="">
+                                                            name="undername" id="undername">
                                                     </div>
                                                     <div class="col-sm-0">
                                                         <p style="text-align: center">X</p>
@@ -1480,21 +1459,20 @@
                                                     </div>
                                                     <div class="col-sm-1">
                                                         <input type="text" class="form-control form-control-sm"
-                                                            id="input#" placeholder="">
+                                                            id="input#">
                                                     </div>
                                                     <div class="col-sm-0">
                                                         <p style="text-align: center">=</p>
                                                     </div>
                                                     <div class="col-sm-2">
                                                         <div class="input-group input-group-sm mb-3">
-                                                            <input type="text" class="form-control" placeholder=""
-                                                                readonly>
+                                                            <input type="text" class="form-control" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
 
                                                 <div id="add_input_cost_of_sales">
-
+                                                    `
                                                 </div>
 
                                                 <div class="container">
@@ -1571,7 +1549,7 @@
                                                     <div class="col-sm-1">
                                                         <input type="text"
                                                             class="form-control form-control-sm text-uppercase"
-                                                            name="undername" id="undername" placeholder="">
+                                                            name="undername" id="undername">
                                                     </div>
                                                     <div class="col-sm-0 mr-2">
                                                         <p style="text-align: center">X</p>
@@ -1736,8 +1714,7 @@
                                             <div class="container">
                                                 <!-- Hidden User -->
                                                 <input type="hidden" class="form-control form-control-sm"
-                                                    name="user_id" id="user_id" value="{{ Auth::user()->id }}"
-                                                    placeholder="">
+                                                    name="user_id" id="user_id" value="{{ Auth::user()->id }}">
 
                                                 <div class="d-grid gap-2 d-md-block mt-5">
                                                     <button class="btn btn-primary mr-3" type="submit">SAVE</button>
@@ -1789,6 +1766,22 @@
             document.getElementById('notify_party_group').style.display = 'none';
         } else {
             document.getElementById('notify_party_group').style.display = 'block';
+        }
+    }
+
+    function showDivUndHblAll() {
+        if (document.getElementById('checkBoxUndHbl').checked) {
+            document.getElementById('und_hbl_group').style.display = 'block';
+        } else {
+            document.getElementById('und_hbl_group').style.display = 'none';
+        }
+    }
+
+    function showDivCommodityHblAll() {
+        if (document.getElementById('checkBoxCommodityHbl').checked) {
+            document.getElementById('commodity_hbl_group').style.display = 'block';
+        } else {
+            document.getElementById('commodity_hbl_group').style.display = 'none';
         }
     }
 </script>
