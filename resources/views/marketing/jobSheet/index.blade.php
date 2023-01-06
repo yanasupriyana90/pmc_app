@@ -41,7 +41,7 @@
                             <th>Code Job Sheet</th>
                             <th>Booking No</th>
                             <th>Shipper</th>
-                            <th>Undername M-BL</th>
+                            {{-- <th>Undername M-BL</th>
                             <th>Undername H-BL</th>
                             <th>Consignee</th>
                             <th>Address Cons</th>
@@ -90,7 +90,7 @@
                             <th>PIC Phone</th>
                             <th>T.O.P</th>
                             <th>Type Payment</th>
-                            <th>Remaks</th>
+                            <th>Remaks</th> --}}
                             <th>SI Doc</th>
                             <th>Status</th>
                             <th>User</th>
@@ -105,7 +105,7 @@
                                 <td class="align-middle">{{ $jobSheetHead->code_js }}</td>
                                 <td class="align-middle">{{ $jobSheetHead->booking_no }}</td>
                                 <td class="align-middle">{{ $jobSheetHead->shipper['name'] }}</td>
-                                <td class="align-middle">{{ $jobSheetHead->undernameMbl['name'] }}</td>
+                                {{-- <td class="align-middle">{{ $jobSheetHead->undernameMbl['name'] }}</td>
                                 <td class="align-middle">{{ $jobSheetHead->undernameHbl['name'] }}</td>
                                 <td class="align-middle">{{ $jobSheetHead->name_cons }}</td>
                                 <td class="align-middle">{{ $jobSheetHead->address_cons }}</td>
@@ -154,12 +154,12 @@
                                 <td class="align-middle">{{ $jobSheetHead->pic_phone }}</td>
                                 <td class="align-middle">{{ $jobSheetHead->top }}</td>
                                 <td class="align-middle">{{ $jobSheetHead->typePayment['name'] }}</td>
-                                <td class="align-middle">{{ $jobSheetHead->remarks }}</td>
+                                <td class="align-middle">{{ $jobSheetHead->remarks }}</td> --}}
                                 <td class="align-middle">
                                     <a href="{{ asset('si_doc/' . $jobSheetHead->si_doc) }}" target="_blank"
                                         rel="nooperner noreferrer">{{ $jobSheetHead->si_doc }}</a>
                                 </td>
-                                <td class="align-middle">
+                                <td class="align-middle" style="text-align:center">
                                     @if ($jobSheetHead->status == 0)
                                     <a class="text-warning">PENDING</a>
                                     @elseif ($jobSheetHead->status == 1)
@@ -175,7 +175,7 @@
                                     <a class="btn btn-danger btn-xs" href="#" id="delete"><i
                                             class="fa fa-trash"></i> Delete</a>
                                 </td>
-                                <td>
+                                <td class="align-middle" style="text-align:center">
                                     @if ($jobSheetHead->status == 0)
                                     <a href="{{ url('jobSheetStatus/'.$jobSheetHead->id) }}" class="btn btn-xs btn-warning" id="changeStatus">PENDING</a>
                                     {{-- <a href="{{ Route('jobSheet.changeStatus') }}" class="btn btn-xs btn-warning">PENDING</a> --}}

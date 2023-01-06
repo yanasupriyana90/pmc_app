@@ -1,13 +1,9 @@
 <?php
 
-use App\Http\Controllers\CategoryBuyingController;
-use App\Http\Controllers\CategorySellingController;
-use App\Http\Controllers\ConsigneeController;
 use App\Http\Controllers\ContainerSizeTypeController;
 use App\Http\Controllers\DivisionController;
 use App\Http\Controllers\JobSheetController;
 use App\Http\Controllers\MandatoryTaxController;
-use App\Http\Controllers\NotifyPartyController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ShipperController;
 use App\Http\Controllers\TypeBillOfLadingController;
@@ -18,8 +14,7 @@ use App\Http\Controllers\TypeMeasurementController;
 use App\Http\Controllers\TypePaymentController;
 use App\Http\Controllers\UndernameMBLController;
 use App\Http\Controllers\UndernameHBLController;
-use App\Models\Shipper;
-use App\Models\TypePackaging;
+use App\Http\Controllers\CategoryBuySellController;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
@@ -206,33 +201,20 @@ Route::middleware('auth')->group(function () {
     });
 });
 
-// Category Buying
+// Category Buy & Sell
 Route::middleware('auth')->group(function () {
-    Route::controller(CategoryBuyingController::class)->group(function () {
-        Route::get('/categoryBuying', 'index')->name('categoryBuying');
-        Route::get('/categoryBuyingShow/{id}', 'show')->name('categoryBuying.show');
-        Route::get('/categoryBuyingCreate', 'create')->name('categoryBuying.create');
-        Route::post('/categoryBuyingStore', 'store')->name('categoryBuying.store');
-        Route::get('/categoryBuyingEdit/{id}', 'edit')->name('categoryBuying.edit');
-        Route::put('/categoryBuyingUpdate/{id}', 'update')->name(('categoryBuying.update'));
-        Route::get('/categoryBuyingDestroy/{id}', 'destroy')->name('categoryBuying.destroy');
+    Route::controller(CategoryBuySellController::class)->group(function () {
+        Route::get('/categoryBuySell', 'index')->name('categoryBuySell');
+        Route::get('/categoryBuySellShow/{id}', 'show')->name('categoryBuySell.show');
+        Route::get('/categoryBuySellCreate', 'create')->name('categoryBuySell.create');
+        Route::post('/categoryBuySellStore', 'store')->name('categoryBuySell.store');
+        Route::get('/categoryBuySellEdit/{id}', 'edit')->name('categoryBuySell.edit');
+        Route::put('/categoryBuySellUpdate/{id}', 'update')->name(('categoryBuySell.update'));
+        Route::get('/categoryBuySellDestroy/{id}', 'destroy')->name('categoryBuySell.destroy');
     });
 });
 
-// Category Selling
-Route::middleware('auth')->group(function () {
-    Route::controller(CategorySellingController::class)->group(function () {
-        Route::get('/categorySelling', 'index')->name('categorySelling');
-        Route::get('/categorySellingShow/{id}', 'show')->name('categorySelling.show');
-        Route::get('/categorySellingCreate', 'create')->name('categorySelling.create');
-        Route::post('/categorySellingStore', 'store')->name('categorySelling.store');
-        Route::get('/categorySellingEdit/{id}', 'edit')->name('categorySelling.edit');
-        Route::put('/categorySellingUpdate/{id}', 'update')->name(('categorySelling.update'));
-        Route::get('/categorySellingDestroy/{id}', 'destroy')->name('categorySelling.destroy');
-    });
-});
-
-
+// Jobsheet
 Route::middleware('auth')->group(function () {
     Route::controller(JobSheetController::class)->group(function () {
         Route::get('/jobSheet', 'index')->name('jobSheet');

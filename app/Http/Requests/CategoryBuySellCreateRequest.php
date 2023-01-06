@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CategoryBuyingCreateRequest extends FormRequest
+class CategoryBuySellCreateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +25,7 @@ class CategoryBuyingCreateRequest extends FormRequest
     {
         return [
 
-            'name' => 'unique:category_buyings|max:255|required',
+            'name' => 'unique:category_buy_sells|max:255|required',
 
         ];
     }
@@ -38,5 +38,4 @@ class CategoryBuyingCreateRequest extends FormRequest
 
         ];
     }
-
 }

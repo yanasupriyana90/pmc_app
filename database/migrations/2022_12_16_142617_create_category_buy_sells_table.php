@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('category_buyings', function (Blueprint $table) {
+        Schema::create('category_buy_sells', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->unsignedBigInteger('user_id');
@@ -29,9 +29,9 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('category_buyings', function (Blueprint $table) {
+        Schema::table('category_buy_sells', function (Blueprint $table) {
             $table->dropForeign(['user_id']);
         });
-        Schema::dropIfExists('category_buyings');
+        Schema::dropIfExists('category_buy_sells');
     }
 };

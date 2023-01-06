@@ -2,7 +2,7 @@
 
 @section('title', 'Master')
 
-@section('subtitle', 'Category Buying')
+@section('subtitle', 'Category Buy & Sell')
 
 @section('content')
     <!-- Content Wrapper. Contains page content -->
@@ -29,7 +29,7 @@
 
         <div class="card">
             <div class="card-header">
-                <a class="btn btn-primary pull-right" href="{{ Route('categoryBuying.create') }}" role="button"><i
+                <a class="btn btn-primary pull-right" href="{{ Route('categoryBuySell.create') }}" role="button"><i
                         class="fa fa-plus"></i> Add Data</a>
             </div>
             <!-- /.card-header -->
@@ -44,18 +44,17 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($categoryBuyingList as $categoryBuying)
+                        @foreach ($categoryBuySellList as $categoryBuySell)
                             <tr>
                                 <td class="align-middle" style="text-align:center">{{ $loop->iteration }}</td>
-                                <td class="align-middle">{{ $categoryBuying->name }}</td>
-                                <td class="align-middle" style="text-align:center">{{ $categoryBuying->user['name'] }}</td>
+                                <td class="align-middle">{{ $categoryBuySell->name }}</td>
+                                <td class="align-middle" style="text-align:center">{{ $categoryBuySell->user['name'] }}</td>
                                 <td class="align-middle" style="text-align:center">
-                                    <a class="btn btn-primary btn-xs" href="{{ route('categoryBuying.show', $categoryBuying->id) }}"><i
+                                    <a class="btn btn-primary btn-xs" href="{{ route('categoryBuySell.show', $categoryBuySell->id) }}"><i
                                             class="fa fa-eye"></i> Detail & Edit</a>
-                                    <a class="btn btn-danger btn-xs" href="{{ route('categoryBuying.destroy', $categoryBuying->id) }}"
+                                    <a class="btn btn-danger btn-xs" href="{{ route('categoryBuySell.destroy', $categoryBuySell->id) }}"
                                         id="delete"><i class="fa fa-trash"></i> Delete</a>
                                 </td>
-
                             </tr>
                         @endforeach
                     </tbody>

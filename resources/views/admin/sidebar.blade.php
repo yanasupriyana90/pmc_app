@@ -160,27 +160,10 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="fas fa-ellipsis-h nav-icon"></i>
-                                <p>
-                                    Category Buy & Sell
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
+                            <a href="{{ Route('categoryBuySell') }}" class="nav-link">
+                                <i class="fas fa-shopping-cart nav-icon"></i>
+                                <p>Category Buy & Sell</p>
                             </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{ Route('categoryBuying') }}" class="nav-link">
-                                        <i class="fas fa-cart-plus nav-icon"></i>
-                                        <p>Buying</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ Route('categorySelling') }}" class="nav-link">
-                                        <i class="fas fa-cart-arrow-down nav-icon"></i>
-                                        <p>Selling</p>
-                                    </a>
-                                </li>
-                            </ul>
                         </li>
                     </ul>
                 </li>

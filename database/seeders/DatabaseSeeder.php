@@ -20,8 +20,7 @@ class DatabaseSeeder extends Seeder
             // Master
             DivisionSeeder::class,
             UserSeeder::class,
-            CategoryBuyingSeeder::class,
-            CategorySellingSeeder::class,
+            CategoryBuySellSeeder::class,
             ContainerSizeTypeSeeder::class,
             MandatoryTaxSeeder::class,
             TypeBillOfLadingSeeder::class,

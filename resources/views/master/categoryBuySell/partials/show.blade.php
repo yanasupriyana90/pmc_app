@@ -2,7 +2,7 @@
 
 @section('title', 'Master')
 
-@section('subtitle', 'Category Selling')
+@section('subtitle', 'Category Buy & Sell')
 @section('subtitle_2', 'Show Data')
 
 @section('content')
@@ -18,7 +18,7 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">@yield('title')</a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('categorySelling') }}">@yield('subtitle')</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('categoryBuySell') }}">@yield('subtitle')</a></li>
                             <li class="breadcrumb-item active">@yield('subtitle_2')</li>
                         </ol>
                     </div><!-- /.col -->
@@ -45,12 +45,12 @@
                                     <div class="form-group">
                                         <label for="inputName">Name</label>
                                         <input type="text" name="name" class="form-control" id="name"
-                                            value="{{ $categorySelling->name }}" disabled>
+                                            value="{{ $categoryBuySell->name }}" disabled>
                                     </div>
 
                                     <div class="d-grid gap-2 d-md-block">
-                                        <a href="{{ route('categorySelling') }}" class="btn btn-success" type="button">OK</a>
-                                        <a class="btn btn-primary" href="{{ route('categorySelling.edit', $categorySelling->id) }}"><i
+                                        <a href="{{ route('categoryBuySell') }}" class="btn btn-success" type="button">OK</a>
+                                        <a class="btn btn-primary" href="{{ route('categoryBuySell.edit', $categoryBuySell->id) }}"><i
                                                 class="fa fa-edit"></i> Edit</a>
                                     </div>
                                 </div>

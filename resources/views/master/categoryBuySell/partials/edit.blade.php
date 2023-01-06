@@ -2,8 +2,8 @@
 
 @section('title', 'Master')
 
-@section('subtitle', 'Category Selling')
-@section('subtitle_2', 'Add Data')
+@section('subtitle', 'Category Buy & Sell')
+@section('subtitle_2', 'Edit Data')
 
 @section('content')
     <!-- Content Wrapper. Contains page content -->
@@ -18,21 +18,11 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">@yield('title')</a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('categorySelling') }}">@yield('subtitle')</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('categoryBuySell') }}">@yield('subtitle')</a></li>
                             <li class="breadcrumb-item active">@yield('subtitle_2')</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-
-                    </div>
-                @endif
             </div><!-- /.container-fluid -->
         </div>
         <!-- /.content-header -->
@@ -50,13 +40,14 @@
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form action="{{ Route('categorySelling.store') }}" method="POST">
+                            <form action="{{ route('categoryBuySell.update', $categoryBuySell->id) }}" method="POST">
                                 @csrf
+                                @method('PUT')
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="inputName">Name</label>
                                         <input type="text" class="form-control text-uppercase" name="name"
-                                            id="name" placeholder="Enter Name">
+                                            id="name" value="{{ $categoryBuySell->name }}" placeholder="Enter Name" required>
                                     </div>
 
                                     {{-- Hidden User --}}
@@ -64,8 +55,9 @@
                                         value="{{ Auth::user()->id }}" placeholder="">
 
                                     <div class="d-grid gap-2 d-md-block">
-                                        <button class="btn btn-primary" type="submit">SAVE</button>
-                                        <a href="{{ route('categorySelling') }}" class="btn btn-danger" type="button">CANCEL</a>
+                                        <button class="btn btn-primary" type="submit">UPDATE</button>
+                                        <a class="btn btn-danger" href="{{ route('categoryBuySell') }}"
+                                            type="button">CANCEL</a>
                                     </div>
                                 </div>
                                 <!-- /.card-body -->
