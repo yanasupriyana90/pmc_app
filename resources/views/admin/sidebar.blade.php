@@ -100,13 +100,13 @@
                                 <li class="nav-item">
                                     <a href="{{ Route('undernameMbl') }}" class="nav-link">
                                         <i class="fas fa-file-signature nav-icon"></i>
-                                        <p>Undername M-BL / Booking</p>
+                                        <p>M-BL / Booking</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{ Route('undernameHbl') }}" class="nav-link">
                                         <i class="fas fa-file-signature nav-icon"></i>
-                                        <p>Undername H-BL / PEB</p>
+                                        <p>H-BL / PEB</p>
                                     </a>
                                 </li>
                             </ul>

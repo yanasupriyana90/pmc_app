@@ -650,3 +650,100 @@ $(document).ready(function () {
         }
     });
 });
+
+// Revenue Of Sales / Ocean Freight
+// Selling Rate
+$(function () {
+  $(document).ready(function () {
+      var id = 0;
+      $('#addButtonContSeal').click(function () {
+          id++;
+          $('#add_input_cont_seal').append(`<div class="form-group row" id="formContSeal` + id + `"form_cont_seal_name[` + id + `]">
+          <div class="container">
+            <div class="row">
+                <div class="col-2 mr-3">
+                    <div class="form-group">
+                        <label for="inputContSeal">Container & Seal</label>
+                        <input type="text"
+                            class="form-control form-control-sm text-uppercase"
+                            name="cont_seal" id="cont_seal">
+                    </div>
+                </div>
+                <div class="col-1">
+                    <div class="form-group">
+                        <label for="inputGrossWeight">G.W</label>
+                        <input type="text"
+                            class="form-control form-control-sm text-uppercase"
+                            name="gross_weight" id="gross_weight">
+                    </div>
+                </div>
+                <div class="col-1 mr-3">
+                    <div class="form-group">
+                        <label for="typeWeight">Type</label>
+                        <select name="gross_type_weight_id"
+                            id="gross_type_weight_id"
+                            class="form-control form-control-sm select2"
+                            style="width: 100%;">
+                            @foreach ($typeWeight as $item)
+                                <option
+                                    value="{{ old('gross_type_weight_id', $item->id) }}">
+                                    {{ $item->code_weight }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="col-1">
+                    <div class="form-group">
+                        <label for="inputNetWeight">N.W</label>
+                        <input type="text"
+                            class="form-control form-control-sm text-uppercase"
+                            name="net_weight" id="net_weight">
+                    </div>
+                </div>
+                <div class="col-1 mr-3">
+                    <div class="form-group">
+                        <label for="typeWeight">Type</label>
+                        <select name="net_type_weight_id" id="net_type_weight_id"
+                            class="form-control form-control-sm select2"
+                            style="width: 100%;">
+                            @foreach ($typeWeight as $item)
+                                <option
+                                    value="{{ old('net_type_weight_id', $item->id) }}">
+                                    {{ $item->code_weight }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="col-1 mr-4">
+                    <div class="form-group">
+                        <label for="inputMeasurement">Measurement</label>
+                        <input type="text"
+                            class="form-control form-control-sm text-uppercase"
+                            name="measurement" id="measurement">
+                    </div>
+                </div>
+                <div class="col-1">
+                    <div class="form-group">
+                        <label for="typeMeasurement">Type</label>
+                        <select name="type_measurement_id"
+                            id="type_measurement_id"
+                            class="form-control form-control-sm select2"
+                            style="width: 100%;">
+                            @foreach ($typeMeasurement as $item)
+                                <option
+                                    value="{{ old('type_measurement_id', $item->id) }}">
+                                    {{ $item->code_measurement }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+            </div>
+            </div>
+      </div>`)
+      })
+      $('#removeButtonContSeal').click(function () {
+          $('#formContSeal' + id).remove();
+          id--
+      });
+  });
+});

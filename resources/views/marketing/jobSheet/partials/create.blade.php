@@ -185,7 +185,6 @@
                                                 </div>
                                                 <hr size="100" noshade>
                                             </div>
-
                                             <div class="container">
                                                 <div class="row">
                                                     <div class="col-2">
@@ -201,7 +200,7 @@
                                                 <div class="row mt-3">
                                                     <div class="col-6">
                                                         <div class="form-group">
-                                                            <label for="inputUndMbl">Undername M-BL / Booking</label>
+                                                            <label for="inputUndMbl">M-BL / Booking</label>
                                                             <input type="text"
                                                                 class="form-control form-control-sm text-uppercase"
                                                                 name="name_und_mbl" id="name_und_mbl">
@@ -265,7 +264,6 @@
                                                 </div>
                                                 <hr size="100" noshade>
                                             </div>
-
                                             <div class="container">
                                                 <div class="row">
                                                     <div class="col-2">
@@ -285,7 +283,7 @@
                                                                 name="use_und_hbl" id="checkBoxUndHbl"
                                                                 onclick="showDivUndHblAll()">
                                                             <label for="checkBoxUndHbl" class="custom-control-label">Use
-                                                                Undername H-BL / PEB</label>
+                                                                H-BL / PEB</label>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -294,7 +292,7 @@
                                                 <div class="row mt-3">
                                                     <div class="col-6">
                                                         <div class="form-group">
-                                                            <label for="inputUndHbl">Undername H-BL / PEB</label>
+                                                            <label for="inputUndHbl">H-BL / PEB</label>
                                                             <input type="text"
                                                                 class="form-control form-control-sm text-uppercase"
                                                                 name="name_und_hbl" id="name_und_hbl">
@@ -322,8 +320,6 @@
                                                         </div>
                                                     </div>
                                                 </div>
-
-
                                                 <div class="row">
                                                     <div class="col-4">
                                                         <div class="form-group">
@@ -358,7 +354,6 @@
                                                 </div>
                                                 <hr size="100" noshade>
                                             </div>
-
                                         </div>
                                         <!-- tab end shipper & undername -->
 
@@ -688,7 +683,6 @@
                                                                 name="name_cont_size_type" id="name_cont_size_type">
                                                         </div>
                                                     </div>
-
                                                     <div class="col-1">
                                                         <div class="form-group">
                                                             <label for="inputQty">Quantity</label>
@@ -706,105 +700,135 @@
                                                                 name="name_type_pack" id="name_type_pack">
                                                         </div>
                                                     </div>
-                                                    <div class="row">
-                                                        <div class="col-1">
-                                                            <div class="form-group">
-                                                                <input type="hidden"
-                                                                    class="form-control form-control-sm text-uppercase"
-                                                                    name="cont_size_type_id" id="cont_size_type_id"
-                                                                    readonly>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-1">
-                                                            <div class="form-group">
-                                                                <input type="hidden"
-                                                                    class="form-control form-control-sm text-uppercase"
-                                                                    name="type_packaging_id" id="type_packaging_id"
-                                                                    readonly>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="container">
-                                                <div class="row">
-                                                    <div class="col-2">
-                                                        <div class="form-group">
-                                                            <label for="inputGrossWeight">Gross Weight</label>
-                                                            <input type="number" min=0 step=0.01
-                                                                class="form-control form-control-sm text-uppercase"
-                                                                name="gross_weight" id="gross_weight"
-                                                                value="{{ old('gross_weight') }}">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-2 mr-4">
-                                                        <div class="form-group">
-                                                            <label for="typeWeight">Type</label>
-                                                            <select name="gross_type_weight_id" id="gross_type_weight_id"
-                                                                class="form-control form-control-sm select2"
-                                                                style="width: 100%;">
-                                                                @foreach ($typeWeight as $item)
-                                                                    <option
-                                                                        value="{{ old('gross_type_weight_id', $item->id) }}">
-                                                                        {{ $item->code_weight }}</option>
-                                                                @endforeach
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-2">
-                                                        <div class="form-group">
-                                                            <label for="inputNetWeight">Net Weight</label>
-                                                            <input type="text"
-                                                                class="form-control form-control-sm text-uppercase"
-                                                                name="net_weight" id="net_weight"
-                                                                value="{{ old('net_weight') }}">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-2 mr-4">
-                                                        <div class="form-group">
-                                                            <label for="typeWeight">Type</label>
-                                                            <select name="net_type_weight_id" id="net_type_weight_id"
-                                                                class="form-control form-control-sm select2"
-                                                                style="width: 100%;">
-                                                                @foreach ($typeWeight as $item)
-                                                                    <option
-                                                                        value="{{ old('net_type_weight_id', $item->id) }}">
-                                                                        {{ $item->code_weight }}</option>
-                                                                @endforeach
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-2">
-                                                        <div class="form-group">
-                                                            <label for="inputMeasurement">Measurement</label>
-                                                            <input type="text"
-                                                                class="form-control form-control-sm text-uppercase"
-                                                                name="measurement" id="measurement"
-                                                                value="{{ old('measurement') }}">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-1">
-                                                        <div class="form-group">
-                                                            <label for="typeMeasurement">Type</label>
-                                                            <select name="type_measurement_id" id="type_measurement_id"
-                                                                class="form-control form-control-sm select2"
-                                                                style="width: 100%;">
-                                                                @foreach ($typeMeasurement as $item)
-                                                                    <option
-                                                                        value="{{ old('type_measurement_id', $item->id) }}">
-                                                                        {{ $item->code_measurement }}</option>
-                                                                @endforeach
-                                                            </select>
-                                                        </div>
-                                                    </div>
                                                 </div>
                                                 <hr size="100" noshade>
                                             </div>
                                             <div class="container">
                                                 <div class="row">
-
+                                                    <div class="col-1">
+                                                        <div class="form-group">
+                                                            <input type="hidden"
+                                                                class="form-control form-control-sm text-uppercase"
+                                                                name="cont_size_type_id" id="cont_size_type_id" readonly>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-1">
+                                                        <div class="form-group">
+                                                            <input type="hidden"
+                                                                class="form-control form-control-sm text-uppercase"
+                                                                name="type_packaging_id" id="type_packaging_id" readonly>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
+                                            <div class="container">
+                                            <div class="form-group row" id="formContSeal" name="form_cont_seal_name[0]">
+                                                    <div class="row">
+                                                        <div class="col-2 mr-3">
+                                                            <div class="form-group">
+                                                                <label for="inputContSeal">Container & Seal</label>
+                                                                <input type="text"
+                                                                    class="form-control form-control-sm text-uppercase"
+                                                                    name="cont_seal" id="cont_seal"
+                                                                    value="{{ old('cont_seal') }}">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-1">
+                                                            <div class="form-group">
+                                                                <label for="inputGrossWeight">G.W</label>
+                                                                <input type="text"
+                                                                    class="form-control form-control-sm text-uppercase"
+                                                                    name="gross_weight" id="gross_weight"
+                                                                    value="{{ old('gross_weight') }}">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-1 mr-3">
+                                                            <div class="form-group">
+                                                                <label for="typeWeight">Type</label>
+                                                                <select name="gross_type_weight_id"
+                                                                    id="gross_type_weight_id"
+                                                                    class="form-control form-control-sm select2"
+                                                                    style="width: 100%;">
+                                                                    @foreach ($typeWeight as $item)
+                                                                        <option
+                                                                            value="{{ old('gross_type_weight_id', $item->id) }}">
+                                                                            {{ $item->code_weight }}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-1">
+                                                            <div class="form-group">
+                                                                <label for="inputNetWeight">N.W</label>
+                                                                <input type="text"
+                                                                    class="form-control form-control-sm text-uppercase"
+                                                                    name="net_weight" id="net_weight"
+                                                                    value="{{ old('net_weight') }}">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-1 mr-3">
+                                                            <div class="form-group">
+                                                                <label for="typeWeight">Type</label>
+                                                                <select name="net_type_weight_id" id="net_type_weight_id"
+                                                                    class="form-control form-control-sm select2"
+                                                                    style="width: 100%;">
+                                                                    @foreach ($typeWeight as $item)
+                                                                        <option
+                                                                            value="{{ old('net_type_weight_id', $item->id) }}">
+                                                                            {{ $item->code_weight }}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-1 mr-4">
+                                                            <div class="form-group">
+                                                                <label for="inputMeasurement">Measurement</label>
+                                                                <input type="text"
+                                                                    class="form-control form-control-sm text-uppercase"
+                                                                    name="measurement" id="measurement"
+                                                                    value="{{ old('measurement') }}">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-1">
+                                                            <div class="form-group">
+                                                                <label for="typeMeasurement">Type</label>
+                                                                <select name="type_measurement_id"
+                                                                    id="type_measurement_id"
+                                                                    class="form-control form-control-sm select2"
+                                                                    style="width: 100%;">
+                                                                    @foreach ($typeMeasurement as $item)
+                                                                        <option
+                                                                            value="{{ old('type_measurement_id', $item->id) }}">
+                                                                            {{ $item->code_measurement }}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div id="add_input_cont_seal">
+                                            </div>
+
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-sm-0 mr-2">
+                                                        <button class="btn btn-sm btn-success" type="button"
+                                                            id="addButtonContSeal">
+                                                            <i class="fas fa-plus nav-icon"></i>
+                                                        </button>
+                                                    </div>
+                                                    <div class="col-sm-0">
+                                                        <button class="btn btn-sm btn-danger" type="button"
+                                                            id="removeButtonContSeal">
+                                                            <i class="fas fa-minus nav-icon"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <hr size="100" noshade>
+                                            </div>
+
                                             <div class="container mt-5">
                                                 <div class="row">
                                                     <div class="col-3">
@@ -891,7 +915,8 @@
                                                                 name="use_commodity_hbl" id="checkBoxCommodityHbl"
                                                                 onclick="showDivCommodityHblAll()">
                                                             <label for="checkBoxCommodityHbl"
-                                                                class="custom-control-label">Use Commodity H-BL</label>
+                                                                class="custom-control-label">Use
+                                                                Commodity H-BL</label>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1190,7 +1215,6 @@
                                                 </div>
 
                                                 <div id="add_input_ocean_freight">
-
                                                 </div>
 
                                                 <div class="container">

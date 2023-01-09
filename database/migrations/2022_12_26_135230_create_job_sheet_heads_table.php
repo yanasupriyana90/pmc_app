@@ -50,6 +50,7 @@ return new class extends Migration
             $table->unsignedBigInteger('cont_size_type_id');
             $table->float('qty', 8, 2);
             $table->unsignedBigInteger('type_packaging_id');
+            $table->string('cont_seal', 30)->nullable();
             $table->float('gross_weight', 8, 2);
             $table->unsignedBigInteger('gross_type_weight_id');
             $table->float('net_weight', 8, 2);
