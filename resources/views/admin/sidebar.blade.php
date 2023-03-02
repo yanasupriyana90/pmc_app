@@ -194,6 +194,12 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
+                            <a href="{{ route('dailySalesReport') }}" class="nav-link">
+                                <i class="fas fa-chart-line nav-icon"></i>
+                                <p>Daily Sales Report</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="{{ route('jobSheet') }}" class="nav-link">
                                 <i class="far fa-file-alt nav-icon"></i>
                                 <p>Job Sheet</p>

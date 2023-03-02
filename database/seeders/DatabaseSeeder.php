@@ -32,6 +32,7 @@ class DatabaseSeeder extends Seeder
             ShipperSeeder::class,
             UndernameHblSeeder::class,
             UndernameMblSeeder::class,
+            // DailySalesReportSeeder::class,
 
             // Marketing
             JobSheetSeeder::class,

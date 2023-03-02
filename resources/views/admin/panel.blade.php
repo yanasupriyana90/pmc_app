@@ -161,6 +161,7 @@
 
     <script src="{{ asset('lte') }}/plugins/sweetalert2/sweetalert2.all.min.js"></script>
     <script src="{{ asset('lte') }}/plugins/code.js"></script>
+    <script src="{{ asset('lte') }}/plugins/multiJobsheet.js"></script>
 
     <script>
         // Add the following code if you want the name of the file appear on select
@@ -168,6 +169,103 @@
             var fileName = $(this).val().split("\\").pop();
             $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
         });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            let baris = 1
+
+            $(document).on('click', '#tambah_cont_seal_detail', function () {
+                baris = baris + 1
+                var html = "<tr id= 'baris'" +baris+ ">"
+                    html += "<td>"+baris+"</td>"
+                    html += "<td contenteditable='true' class='cont_seal' ></td>"
+                    html += "<td contenteditable='true' class='qty' ></td>"
+                    // html += "<td contenteditable='true' class='type_pack' ></td>"
+                    html += "<td contenteditable='true' class='net_weight' ></td>"
+                    html += "<td contenteditable='true' class='net_type_weight' ></td>"
+                    html += "<td contenteditable='true' class='gross_weight' ></td>"
+                    html += "<td contenteditable='true' class='gross_type_weight' ></td>"
+                    html += "<td contenteditable='true' class='measurement' ></td>"
+                    html += "<td contenteditable='true' class='type_measurement' ></td>"
+                    // html += "<td contenteditable='true' class='job_sheet_head_id' ></td>"
+                    html += "<td><button class='btn-sm btn-danger' data-row='baris'"+baris+" id='hapus_cont_seal_detail' >Remove</button></td>"
+                    html += "</tr"
+
+                    $('#tbl_cont_seal_detail').append(html)
+            })
+        })
+
+        $(document).on('click', '#hapus_cont_seal_detail', function () {
+            let hapus = $(this).data('row')
+            $('#' + hapus).remove()
+        })
+
+        $(document).on('click', '#simpan_cont_seal_detail', function () {
+            let cont_seal = []
+            let qty = []
+            // let type_pack = []
+            let net_weight = []
+            let net_type_weight = []
+            let gross_weight = []
+            let gross_type_weight = []
+            let measurement = []
+            let type_measurement = []
+            // let job_sheet_head_id = []
+
+            $('cont_seal').each(function() {
+                cont_seal.push($(this).text())
+            })
+            $('qty').each(function() {
+                qty.push($(this).text())
+            })
+            // $('type_pack').each(function() {
+            //     type_pack.push($(this).text())
+            // })
+            $('net_weight').each(function() {
+                net_weight.push($(this).text())
+            })
+            $('net_type_weight').each(function() {
+                net_type.push($(this).text())
+            })
+            $('gross_weight').each(function() {
+                gross_weight.push($(this).text())
+            })
+            $('gross_type_weight').each(function() {
+                gross_type.push($(this).text())
+            })
+            $('measurement').each(function() {
+                measurement.push($(this).text())
+            })
+            $('type_measurement').each(function() {
+                measurement_type.push($(this).text())
+            })
+            // $('job_sheet_head_id').each(function() {
+            //     job_sheet_head_id.push($(this).text())
+            // })
+
+            $.ajax({
+                url : "{{ route('simpan_cont_seal') }}",
+                type : "post",
+                data : {
+                    cont_seal : cont_seal,
+                    qty : qty,
+                    // type_pack : type_pack,
+                    net_weight : net_weight,
+                    net_type_weight : net_type_weight,
+                    gross_weight : gross_weight,
+                    gross_type_weight : gross_type_weight,
+                    measurement : measurement,
+                    type_measurement : type_measurement,
+                    // job_sheet_head_id : job_sheet_head_id,
+                    "_token" : "{{ csrf_token() }}"
+                },success : function (res) {
+                    console.log(res);
+                },error : function (xhr) {
+                    console.error(xhr);
+                }
+            })
+        })
     </script>
 
 </body>

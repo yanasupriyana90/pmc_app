@@ -49,11 +49,11 @@ class JobSheet extends Model
         'qty',
         'type_packaging_id',
         'gross_weight',
-        'gross_type_weight_id',
-        'net_weight',
-        'net_type_weight_id',
-        'measurement',
-        'type_measurement_id',
+        // 'type_gross',
+        // 'net_weight',
+        // 'type_net',
+        // 'measurement',
+        // 'type_measurement',
         'commodity_mbl',
         'hs_code_mbl',
         'mbl_type_bl_id',
@@ -120,20 +120,20 @@ class JobSheet extends Model
         return $this->belongsTo(TypePayment::class);
     }
 
-    public function typeWeightGross()
-    {
-        return $this->belongsTo(TypeWeight::class, 'gross_type_weight_id', 'id');
-    }
+    // public function typeWeightGross()
+    // {
+    //     return $this->belongsTo(TypeWeight::class, 'gross_type_weight_id', 'id');
+    // }
 
-    public function typeWeightNet()
-    {
-        return $this->belongsTo(TypeWeight::class, 'net_type_weight_id', 'id');
-    }
+    // public function typeWeightNet()
+    // {
+    //     return $this->belongsTo(TypeWeight::class, 'net_type_weight_id', 'id');
+    // }
 
-    public function typeMeasurement()
-    {
-        return $this->belongsTo(TypeMeasurement::class);
-    }
+    // public function typeMeasurement()
+    // {
+    //     return $this->belongsTo(TypeMeasurement::class);
+    // }
 
     public function typeBillOfLadingMbl()
     {

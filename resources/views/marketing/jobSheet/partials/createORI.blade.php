@@ -67,11 +67,6 @@
                                             role="tab" aria-controls="description" aria-selected="false">Description</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" id="contSeal-tab" data-toggle="pill" href="#cont_seal"
-                                            role="tab" aria-controls="contSeal" aria-selected="false">Container &
-                                            Seal</a>
-                                    </li>
-                                    <li class="nav-item">
                                         <a class="nav-link" id="selling_buying-tab" data-toggle="pill"
                                             href="#selling_buying" role="tab" aria-controls="selling_buying"
                                             aria-selected="false">Selling & Buying</a>
@@ -708,6 +703,173 @@
                                                 </div>
                                                 <hr size="100" noshade>
                                             </div>
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-1">
+                                                        <div class="form-group">
+                                                            <input type="hidden"
+                                                                class="form-control form-control-sm text-uppercase"
+                                                                name="cont_size_type_id" id="cont_size_type_id" readonly>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-1">
+                                                        <div class="form-group">
+                                                            <input type="hidden"
+                                                                class="form-control form-control-sm text-uppercase"
+                                                                name="type_packaging_id" id="type_packaging_id" readonly>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="container">
+                                                <div class="form-group row" id="formContSeal"
+                                                    name="form_cont_seal_name[0]">
+                                                    <div class="row">
+                                                        <div class="col-2 mr-3">
+                                                            <div class="form-group">
+                                                                <label for="inputContSeal">Container & Seal</label>
+                                                                <input type="text"
+                                                                    class="form-control form-control-sm text-uppercase"
+                                                                    name="cont_seal" id="cont_seal"
+                                                                    value="{{ old('cont_seal') }}">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-1">
+                                                            <div class="form-group">
+                                                                <label for="inputGrossWeight">G.W</label>
+                                                                <input type="text"
+                                                                    class="form-control form-control-sm text-uppercase"
+                                                                    name="gross_weight" id="gross_weight"
+                                                                    value="{{ old('gross_weight') }}">
+                                                            </div>
+                                                        </div>
+
+
+                                                        <div class="form-group">
+                                                            <input type="hidden"
+                                                                class="form-control form-control-sm text-uppercase"
+                                                                name="gross_type_weight_id" id="gross_type_weight_id"
+                                                                readonly>
+                                                        </div>
+                                                        <div class="col-1 mr-3">
+                                                            <div class="form-group">
+                                                                <label for="inputTypeWeight">Type</label>
+                                                                <input type="text"
+                                                                    class="form-control form-control-sm text-uppercase"
+                                                                    name="gross_code_weight" id="gross_code_weight"
+                                                                    value="{{ old('gross_code_weight') }}">
+                                                            </div>
+                                                        </div>
+
+
+                                                        {{-- <div class="col-1 mr-3">
+                                                            <div class="form-group">
+                                                                <label for="typeWeight">Type</label>
+                                                                <select name="gross_type_weight_id"
+                                                                    id="gross_type_weight_id"
+                                                                    class="form-control form-control-sm select2"
+                                                                    style="width: 100%;">
+                                                                    @foreach ($typeWeight as $item)
+                                                                        <option
+                                                                            value="{{ old('gross_type_weight_id', $item->id) }}">
+                                                                            {{ $item->code_weight }}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                            </div>
+                                                        </div> --}}
+
+
+
+
+                                                        <div class="col-1">
+                                                            <div class="form-group">
+                                                                <label for="inputNetWeight">N.W</label>
+                                                                <input type="text"
+                                                                    class="form-control form-control-sm text-uppercase"
+                                                                    name="net_weight" id="net_weight"
+                                                                    value="{{ old('net_weight') }}">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <input type="hidden"
+                                                                class="form-control form-control-sm text-uppercase"
+                                                                name="net_type_weight_id" id="net_type_weight_id"
+                                                                readonly>
+                                                        </div>
+                                                        <div class="col-1 mr-3">
+                                                            <div class="form-group">
+                                                                <label for="inputTypeWeight">Type</label>
+                                                                <input type="text"
+                                                                    class="form-control form-control-sm text-uppercase"
+                                                                    name="net_code_weight" id="net_code_weight"
+                                                                    value="{{ old('net_code_weight') }}">
+                                                            </div>
+                                                        </div>
+
+                                                        {{-- <div class="col-1 mr-3">
+                                                            <div class="form-group">
+                                                                <label for="typeWeight">Type</label>
+                                                                <select name="net_type_weight_id" id="net_type_weight_id"
+                                                                    class="form-control form-control-sm select2"
+                                                                    style="width: 100%;">
+                                                                    @foreach ($typeWeight as $item)
+                                                                        <option
+                                                                            value="{{ old('net_type_weight_id', $item->id) }}">
+                                                                            {{ $item->code_weight }}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                            </div>
+                                                        </div> --}}
+                                                        <div class="col-1 mr-4">
+                                                            <div class="form-group">
+                                                                <label for="inputMeasurement">Measurement</label>
+                                                                <input type="text"
+                                                                    class="form-control form-control-sm text-uppercase"
+                                                                    name="measurement" id="measurement"
+                                                                    value="{{ old('measurement') }}">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-1">
+                                                            <div class="form-group">
+                                                                <label for="typeMeasurement">Type</label>
+                                                                <select name="type_measurement_id"
+                                                                    id="type_measurement_id"
+                                                                    class="form-control form-control-sm select2"
+                                                                    style="width: 100%;">
+                                                                    @foreach ($typeMeasurement as $item)
+                                                                        <option
+                                                                            value="{{ old('type_measurement_id', $item->id) }}">
+                                                                            {{ $item->code_measurement }}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div id="add_input_cont_seal">
+                                            </div>
+
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-sm-0 mr-2">
+                                                        <button class="btn btn-sm btn-success" type="button"
+                                                            id="addButtonContSeal">
+                                                            <i class="fas fa-plus nav-icon"></i>
+                                                        </button>
+                                                    </div>
+                                                    <div class="col-sm-0">
+                                                        <button class="btn btn-sm btn-danger" type="button"
+                                                            id="removeButtonContSeal">
+                                                            <i class="fas fa-minus nav-icon"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <hr size="100" noshade>
+                                            </div>
+
                                             <div class="container mt-5">
                                                 <div class="row">
                                                     <div class="col-3">
@@ -742,8 +904,50 @@
                                                             </select>
                                                         </div>
                                                     </div>
+
+                                                    {{-- <div class="col-3">
+                                                        <div class="form-group">
+                                                            <label>B/L Delivery</label>
+                                                            <select class="form-control form-control-sm mb-2 select2"
+                                                                style="width: 100%;">
+                                                                <option selected="selected"></option>
+                                                                <option>EMAIL
+                                                                </option>
+                                                                <option>HARD COPY BY COURIER
+                                                                </option>
+                                                                <option>TELEX
+                                                                </option>
+                                                                <option>OTHER
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <div class="form-group">
+                                                            <label for="inputBlDeliveryDesc">Enter Email Or
+                                                                Other</label>
+                                                            <input type="text"
+                                                                class="form-control form-control-sm mb-2 text-uppercase"
+                                                                name="bl_delivery_desc" id="bl_delivery_desc">
+                                                        </div>
+                                                    </div> --}}
+
                                                 </div>
                                             </div>
+
+                                            {{-- <div class="container">
+                                                <div class="row">
+                                                    <div class="col-2 offset-md-5">
+                                                        <div class="form-group">
+                                                            <label for="inputIssueLoc">Issue Location</label>
+                                                            <input type="text"
+                                                                class="form-control form-control-sm mb-2 text-uppercase"
+                                                                name="issue_loc" id="issue_loc">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div> --}}
+
                                             <div class="container">
                                                 <div class="row mt-3">
                                                     <div class="col-4">
@@ -926,74 +1130,666 @@
                                                 </div>
                                             </div>
                                             <!-- End Button Save -->
+
                                         </div>
                                         <!-- tab end description -->
 
-                                        <!-- tab start Container & Seal -->
-                                        <div class="tab-pane fade" id="cont_seal" role="tabpanel"
-                                            aria-labelledby="contSeal-tab">
+                                        <!-- tab start selling & buying -->
+                                        <div class="tab-pane fade" id="selling_buying" role="tabpanel"
+                                            aria-labelledby="selling_buying-tab">
+                                            <!-- start selling -->
                                             <div class="container">
                                                 <div class="row">
-                                                    <div class="col-1">
-                                                        <div class="form-group">
-                                                            <input type="hidden"
-                                                                class="form-control form-control-sm text-uppercase"
-                                                                name="cont_size_type_id" id="cont_size_type_id" readonly>
+                                                    <div class="col-4">
+                                                        <H5><strong>Revenue Of Sales / Ocean Freight</strong></H5>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md">
+                                                        <p><strong>Selling Rate</strong></p>
+                                                    </div>
+                                                    <div class="col-md">
+                                                        <div class="form-group row">
+                                                            <label for="inputShipper">Exchange Rate</label>
+                                                            <div class="col-md-4">
+                                                                <input type="text"
+                                                                    class="form-control form-control-sm text-uppercase"
+                                                                    name="undername" id="undername">
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-1">
-                                                        <div class="form-group">
-                                                            <input type="hidden"
-                                                                class="form-control form-control-sm text-uppercase"
-                                                                name="type_packaging_id" id="type_packaging_id" readonly>
+                                                    <div class="col-md">
+                                                        <div class="form-group row">
+                                                            <label>Issue Date</label>
+                                                            <div class="col-md-6">
+                                                                <div class="input-group date" id="issue_date"
+                                                                    data-target-input="nearest">
+                                                                    <input type="text"
+                                                                        class="form-control form-control-sm datetimepicker-input"
+                                                                        data-target="#issue_date" />
+                                                                    <div class="input-group-append"
+                                                                        data-target="#issue_date"
+                                                                        data-toggle="datetimepicker">
+                                                                        <div class="input-group-text"><i
+                                                                                class="fa fa-calendar"></i>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md">
+                                                        <div class="form-group row">
+                                                            <label>Due Date</label>
+                                                            <div class="col-md-6">
+                                                                <div class="input-group date" id="due_date"
+                                                                    data-target-input="nearest">
+                                                                    <input type="text"
+                                                                        class="form-control form-control-sm datetimepicker-input"
+                                                                        data-target="#due_date" />
+                                                                    <div class="input-group-append"
+                                                                        data-target="#due_date"
+                                                                        data-toggle="datetimepicker">
+                                                                        <div class="input-group-text"><i
+                                                                                class="fa fa-calendar"></i>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <div class="form-group row" id="formOceanFreight_SellingRate"
+                                                    name="formOceanFreight_SellingRateName[0]">
+                                                    <div class="col-sm-3">
+                                                        <div class="form-group">
+                                                            <select class="form-control form-control-sm select2"
+                                                                style="width: 100%;">
+                                                                <option selected="selected"></option>
+                                                                <option>OCEAN FREIGHT ALL IN
+                                                                </option>
+                                                                <option>EMKL / OVERNIGHT TRUCKING (ESPU)
+                                                                </option>
+                                                                <option>UNDERNAME
+                                                                </option>
+                                                                <option>LATE PAYMENT
+                                                                </option>
+                                                                <option>SEAL FEE
+                                                                </option>
+                                                                <option>TELEX / SWB FEE
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-1">
+                                                        <input type="text"
+                                                            class="form-control form-control-sm text-uppercase"
+                                                            name="undername" id="undername">
+                                                    </div>
+                                                    <div class="col-sm-0">
+                                                        <p style="text-align: center">X</p>
+                                                    </div>
+                                                    <div class="col-sm-1">
+                                                        <div class="form-group">
+                                                            <select class="form-control form-control-sm select2"
+                                                                style="width: 100%;">
+                                                                <option selected="selected"></option>
+                                                                <option>USD
+                                                                </option>
+                                                                <option>IDR
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-1">
+                                                        <input type="text" class="form-control form-control-sm"
+                                                            id="input#">
+                                                    </div>
+                                                    <div class="col-sm-0">
+                                                        <p style="text-align: center">=</p>
+                                                    </div>
+                                                    <div class="col-sm-2">
+                                                        <div class="input-group input-group-sm mb-3">
+                                                            <input type="text" class="form-control" readonly>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div id="add_input_ocean_freight">
+                                                </div>
+
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <div class="col-sm-0 mr-2">
+                                                            <button class="btn btn-sm btn-success" type="button"
+                                                                id="addButtonOceanFreight">
+                                                                <i class="fas fa-plus nav-icon"></i>
+                                                            </button>
+                                                        </div>
+                                                        <div class="col-sm-0">
+                                                            <button class="btn btn-sm btn-danger" type="button"
+                                                                id="removeButtonOceanFreight">
+                                                                <i class="fas fa-minus nav-icon"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row mt-5">
+                                                    <label for="inputPassword" class="col-sm-2 col-form-label">TOTAL
+                                                        REVENUE</label>
+                                                    <div class="col-md-2 offset-md-5">
+                                                        <input type="text" class="form-control form-control-sm"
+                                                            id="inputPassword" readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="inputPassword" class="col-sm-2 col-form-label">TOTAL
+                                                        REVENUE
+                                                        IN IDR</label>
+                                                    <div class="col-md-2 offset-md-5">
+                                                        <input type="text" class="form-control form-control-sm"
+                                                            id="inputPassword" readonly>
+                                                    </div>
+                                                </div>
+                                                <hr size="100" noshade>
                                             </div>
 
-                                            <div class="col-sm-12 flex">
-                                                <table class="table table-striped" width="75%"
-                                                    id="tbl_cont_seal_detail">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>No.</th>
-                                                            <th>Container & Seal</th>
-                                                            <th>Qty</th>
-                                                            {{-- <th>Type Pack</th> --}}
-                                                            <th>Net Weight</th>
-                                                            <th>Net Type</th>
-                                                            <th>Gross Weight</th>
-                                                            <th>Gross Type</th>
-                                                            <th>Measurement</th>
-                                                            <th>Measurement Type</th>
-                                                            {{-- <th>Jobsheet Head ID</th> --}}
-                                                            <th>Action</th>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>1</td>
-                                                            <td contenteditable="true" class="cont_seal"></td>
-                                                            <td contenteditable="true" class="qty"></td>
-                                                            {{-- <td contenteditable="true" class="type_pack" ></td> --}}
-                                                            <td contenteditable="true" class="net_weight"></td>
-                                                            <td contenteditable="true" class="net_type_weight"></td>
-                                                            <td contenteditable="true" class="gross_weight"></td>
-                                                            <td contenteditable="true" class="gross_type_weight"></td>
-                                                            <td contenteditable="true" class="measurement"></td>
-                                                            <td contenteditable="true" class="type_measurement"></td>
-                                                            {{-- <td contenteditable="true" class="job_sheet_head_id" ></td> --}}
-                                                            <td><button class="btn-sm btn-danger"
-                                                                    id="hapus_cont_seal_detail">Remove</button></td>
+                                            <div class="container">
+                                                <div class="row mt-5">
+                                                    <div class="col-6">
+                                                        <H5><strong>Revenue Of Sales / EMKL</strong></H5>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <p><strong>Selling Rate</strong></p>
+                                                    </div>
+                                                </div>
 
-                                                        </tr>
-                                                    </thead>
-                                                </table>
-                                                <button class="btn btn-success" id="tambah_cont_seal_detail"
-                                                    type="button">Add</button>
-                                                <button class="btn btn-primary" id="simpan_cont_seal_detail">Save</button>
+                                                <div class="form-group row" id="formEmkl_SellingRate"
+                                                    name="formEmkl_SellingRateName[0]">
+                                                    <div class="col-sm-3">
+                                                        <div class="form-group">
+                                                            <select class="form-control form-control-sm select2"
+                                                                style="width: 100%;">
+                                                                <option selected="selected"></option>
+                                                                <option>OCEAN FREIGHT ALL IN
+                                                                </option>
+                                                                <option>EMKL / OVERNIGHT TRUCKING (ESPU)
+                                                                </option>
+                                                                <option>UNDERNAME
+                                                                </option>
+                                                                <option>LATE PAYMENT
+                                                                </option>
+                                                                <option>SEAL FEE
+                                                                </option>
+                                                                <option>TELEX / SWB FEE
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-1">
+                                                        <input type="text"
+                                                            class="form-control form-control-sm text-uppercase"
+                                                            name="undername" id="undername">
+                                                    </div>
+                                                    <div class="col-sm-0 mr-2">
+                                                        <p style="text-align: center">X</p>
+                                                    </div>
+                                                    <div class="col-sm-0 mr-4">
+                                                        <p style="text-align: center">VOLUME</p>
+                                                    </div>
+
+                                                    <div class="col-sm-0">
+                                                        <p style="text-align: center">=</p>
+                                                    </div>
+                                                    <div class="col-sm-2">
+                                                        <div class="input-group input-group-sm mb-3">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">IDR</span>
+                                                            </div>
+                                                            <input type="text" class="form-control" readonly>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div id="add_input_emkl">
+
+                                                </div>
+
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <div class="col-sm-0 mr-2">
+                                                            <button class="btn btn-sm btn-success" type="button"
+                                                                id="addButtonEmkl">
+                                                                <i class="fas fa-plus nav-icon"></i>
+                                                            </button>
+                                                        </div>
+                                                        <div class="col-sm-0">
+                                                            <button class="btn btn-sm btn-danger" type="button"
+                                                                id="removeButtonEmkl">
+                                                                <i class="fas fa-minus nav-icon"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row mt-5">
+                                                    <label for="inputPassword" class="col-sm-2 col-form-label">TOTAL
+                                                        REVENUE</label>
+                                                    <div class="col-md-2 offset-md-5">
+                                                        <div class="input-group input-group-sm mb-3">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">IDR</span>
+                                                            </div>
+                                                            <input type="text" class="form-control" readonly>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <hr size="100" noshade>
                                             </div>
+
+                                            <div class="container">
+                                                <div class="form-group row mt-5">
+                                                    <label for="inputPassword" class="col-sm-2 col-form-label">TOTAL
+                                                        SELLING RATE</label>
+                                                    <div class="col-md-2 offset-md-6">
+                                                        <div class="input-group input-group-sm mb-3">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">IDR</span>
+                                                            </div>
+                                                            <input type="text" class="form-control" readonly>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="inputPassword" class="col-sm-2 col-form-label">PPN
+                                                        11%</label>
+                                                    <div class="col-md-2 offset-md-6">
+                                                        <div class="input-group input-group-sm mb-3">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">IDR</span>
+                                                            </div>
+                                                            <input type="text" class="form-control" readonly>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="inputPassword" class="col-sm-4 col-form-label">TOTAL +
+                                                        VAT
+                                                        11%</label>
+                                                    <div class="col-md-2 offset-md-5">
+                                                        <div class="input-group input-group-sm mb-3">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">IDR</span>
+                                                            </div>
+                                                            <input type="text" class="form-control" readonly>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="inputPassword" class="col-sm-2 col-form-label">PPH23
+                                                        2%</label>
+                                                    <div class="col-md-2 offset-md-7">
+                                                        <div class="input-group input-group-sm mb-3">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">IDR</span>
+                                                            </div>
+                                                            <input type="text" class="form-control" readonly>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="inputPassword"
+                                                        class="col-sm-4 col-form-label">GRANDTOTAL
+                                                        SELLING RATE</label>
+                                                    <div class="col-md-2 offset-md-6">
+                                                        <div class="input-group input-group-sm mb-3">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">IDR</span>
+                                                            </div>
+                                                            <input type="text" class="form-control" readonly>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <hr size="100" noshade>
+                                            </div>
+                                            <!-- end selling -->
+
+                                            <!-- start buying -->
+                                            <div class="container mt-5">
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <H5><strong>Cost Of Sales</strong></H5>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <p><strong>Buying Rate</strong></p>
+                                                    </div>
+                                                    <div class="col-md-4 offset-md-3">
+                                                        <div class="form-group row">
+                                                            <label for="inputShipper">Exchange Rate</label>
+                                                            <div class="col-md-4">
+                                                                <input type="text"
+                                                                    class="form-control form-control-sm text-uppercase"
+                                                                    name="undername" id="undername">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row" id="formCostOfSales_BuyingRate"
+                                                    name="formCostOfSales_BuyingRateName[0]">
+                                                    <div class="col-sm-3">
+                                                        <div class="form-group">
+                                                            <select class="form-control form-control-sm select2"
+                                                                style="width: 100%;">
+                                                                <option selected="selected"></option>
+                                                                <option>OCEAN FREIGHT ALL IN
+                                                                </option>
+                                                                <option>EMKL / OVERNIGHT TRUCKING (ESPU)
+                                                                </option>
+                                                                <option>UNDERNAME
+                                                                </option>
+                                                                <option>LATE PAYMENT
+                                                                </option>
+                                                                <option>SEAL FEE
+                                                                </option>
+                                                                <option>TELEX / SWB FEE
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-1">
+                                                        <input type="text"
+                                                            class="form-control form-control-sm text-uppercase"
+                                                            name="undername" id="undername">
+                                                    </div>
+                                                    <div class="col-sm-0">
+                                                        <p style="text-align: center">X</p>
+                                                    </div>
+                                                    <div class="col-sm-1">
+                                                        <div class="form-group">
+                                                            <select class="form-control form-control-sm select2"
+                                                                style="width: 100%;">
+                                                                <option selected="selected"></option>
+                                                                <option>USD
+                                                                </option>
+                                                                <option>IDR
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-1">
+                                                        <input type="text" class="form-control form-control-sm"
+                                                            id="input#">
+                                                    </div>
+                                                    <div class="col-sm-0">
+                                                        <p style="text-align: center">=</p>
+                                                    </div>
+                                                    <div class="col-sm-2">
+                                                        <div class="input-group input-group-sm mb-3">
+                                                            <input type="text" class="form-control" readonly>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div id="add_input_cost_of_sales">
+                                                    `
+                                                </div>
+
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <div class="col-sm-0 mr-2">
+                                                            <button class="btn btn-sm btn-success" type="button"
+                                                                id="addButtonCostOfSales">
+                                                                <i class="fas fa-plus nav-icon"></i>
+                                                            </button>
+                                                        </div>
+                                                        <div class="col-sm-0">
+                                                            <button class="btn btn-sm btn-danger" type="button"
+                                                                id="removeButtonCostOfSales">
+                                                                <i class="fas fa-minus nav-icon"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row mt-5">
+                                                    <label for="inputPassword" class="col-sm-2 col-form-label">TOTAL
+                                                        COST</label>
+                                                    <div class="col-md-2 offset-md-5">
+                                                        <input type="text" class="form-control form-control-sm"
+                                                            id="inputPassword" readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="inputPassword" class="col-sm-2 col-form-label">TOTAL
+                                                        COST
+                                                        IN IDR</label>
+                                                    <div class="col-md-2 offset-md-5">
+                                                        <input type="text" class="form-control form-control-sm"
+                                                            id="inputPassword" readonly>
+                                                    </div>
+                                                </div>
+                                                <hr size="100" noshade>
+                                            </div>
+
+                                            <div class="container">
+                                                <div class="row mt-5">
+                                                    <div class="col-6">
+                                                        <H5><strong>Cost Of Sales (Handling)</strong></H5>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <p><strong>Buying Rate</strong></p>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row" id="formCostOfSales_BuyingRate"
+                                                    name="formCostOfSales_BuyingRateName[0]">
+                                                    <div class="col-sm-3">
+                                                        <div class="form-group">
+                                                            <select class="form-control form-control-sm select2"
+                                                                style="width: 100%;">
+                                                                <option selected="selected"></option>
+                                                                <option>OCEAN FREIGHT ALL IN
+                                                                </option>
+                                                                <option>EMKL / OVERNIGHT TRUCKING (ESPU)
+                                                                </option>
+                                                                <option>UNDERNAME
+                                                                </option>
+                                                                <option>LATE PAYMENT
+                                                                </option>
+                                                                <option>SEAL FEE
+                                                                </option>
+                                                                <option>TELEX / SWB FEE
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-1">
+                                                        <input type="text"
+                                                            class="form-control form-control-sm text-uppercase"
+                                                            name="undername" id="undername">
+                                                    </div>
+                                                    <div class="col-sm-0 mr-2">
+                                                        <p style="text-align: center">X</p>
+                                                    </div>
+                                                    <div class="col-sm-0 mr-4">
+                                                        <p style="text-align: center">VOLUME</p>
+                                                    </div>
+
+                                                    <div class="col-sm-0">
+                                                        <p style="text-align: center">=</p>
+                                                    </div>
+                                                    <div class="col-sm-2">
+                                                        <div class="input-group input-group-sm mb-3">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">IDR</span>
+                                                            </div>
+                                                            <input type="text" class="form-control" readonly>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div id="add_input_handling">
+
+                                                </div>
+
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <div class="col-sm-0 mr-2">
+                                                            <button class="btn btn-sm btn-success" type="button"
+                                                                id="addButtonHandling">
+                                                                <i class="fas fa-plus nav-icon"></i>
+                                                            </button>
+                                                        </div>
+                                                        <div class="col-sm-0">
+                                                            <button class="btn btn-sm btn-danger" type="button"
+                                                                id="removeButtonHandling">
+                                                                <i class="fas fa-minus nav-icon"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row mt-5">
+                                                    <label for="inputPassword" class="col-sm-2 col-form-label">TOTAL
+                                                        COST HANDLING</label>
+                                                    <div class="col-md-2 offset-md-5">
+                                                        <div class="input-group input-group-sm mb-3">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">IDR</span>
+                                                            </div>
+                                                            <input type="text" class="form-control" readonly>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <hr size="100" noshade>
+                                            </div>
+
+                                            <div class="container">
+                                                <div class="form-group row mt-5">
+                                                    <label for="inputPassword" class="col-sm-2 col-form-label">TOTAL
+                                                        BUYING RATE</label>
+                                                    <div class="col-md-2 offset-md-6">
+                                                        <div class="input-group input-group-sm mb-3">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">IDR</span>
+                                                            </div>
+                                                            <input type="text" class="form-control" readonly>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="inputPassword" class="col-sm-2 col-form-label">PPN
+                                                        11%</label>
+                                                    <div class="col-md-2 offset-md-6">
+                                                        <div class="input-group input-group-sm mb-3">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">IDR</span>
+                                                            </div>
+                                                            <input type="text" class="form-control" readonly>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="inputPassword" class="col-sm-4 col-form-label">TOTAL +
+                                                        VAT
+                                                        11%</label>
+                                                    <div class="col-md-2 offset-md-5">
+                                                        <div class="input-group input-group-sm mb-3">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">IDR</span>
+                                                            </div>
+                                                            <input type="text" class="form-control" readonly>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="inputPassword" class="col-sm-2 col-form-label">PPH23
+                                                        2%</label>
+                                                    <div class="col-md-2 offset-md-7">
+                                                        <div class="input-group input-group-sm mb-3">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">IDR</span>
+                                                            </div>
+                                                            <input type="text" class="form-control" readonly>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="inputPassword"
+                                                        class="col-sm-4 col-form-label">GRANDTOTAL
+                                                        BUYING RATE</label>
+                                                    <div class="col-md-2 offset-md-6">
+                                                        <div class="input-group input-group-sm mb-3">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">IDR</span>
+                                                            </div>
+                                                            <input type="text" class="form-control" readonly>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <hr size="100" noshade>
+                                            </div>
+                                            <!-- end buying -->
+
+                                            <!-- start Grandtotal -->
+                                            <div class="container mt-5">
+                                                <div class="form-group row">
+                                                    <label for="inputPassword"
+                                                        class="col-sm-4 col-form-label">GRANDTOTAL</label>
+                                                    <div class="col-md-2 offset-md-6">
+                                                        <div class="input-group input-group-sm mb-3">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">IDR</span>
+                                                            </div>
+                                                            <input type="text" class="form-control" readonly>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <hr size="100" noshade>
+                                            </div>
+                                            <!-- end Grandtotal -->
+
+                                            <!-- start Grandtotal -->
+                                            <div class="container mt-5">
+                                                <div class="form-group row">
+                                                    <label for="inputPassword" class="col-sm-4 col-form-label">PROFIT /
+                                                        LOSS</label>
+                                                    <div class="col-md-2 offset-md-6">
+                                                        <div class="input-group input-group-sm mb-3">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">IDR</span>
+                                                            </div>
+                                                            <input type="text" class="form-control" readonly>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <hr size="100" noshade>
+                                            </div>
+                                            <!-- end Grandtotal -->
+
+                                            <!-- Start Button Save -->
+                                            <div class="container">
+                                                <!-- Hidden User -->
+                                                <input type="hidden" class="form-control form-control-sm"
+                                                    name="user_id" id="user_id" value="{{ Auth::user()->id }}">
+
+                                                <div class="d-grid gap-2 d-md-block mt-5">
+                                                    <button class="btn btn-primary mr-3" type="submit">SAVE</button>
+                                                    <a href="#" class="btn btn-danger" type="button">CANCEL</a>
+                                                </div>
+                                            </div>
+                                            <!-- End Button Save -->
+
                                         </div>
-                                        <!-- tab end Container & Seal -->
-
+                                        <!-- tab end selling & buying -->
                                     </div>
                                 </div>
                             </form>

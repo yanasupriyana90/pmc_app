@@ -50,13 +50,17 @@ return new class extends Migration
             $table->unsignedBigInteger('cont_size_type_id');
             $table->float('qty', 8, 2);
             $table->unsignedBigInteger('type_packaging_id');
-            $table->string('cont_seal', 30)->nullable();
-            $table->float('gross_weight', 8, 2);
-            $table->unsignedBigInteger('gross_type_weight_id');
-            $table->float('net_weight', 8, 2);
-            $table->unsignedBigInteger('net_type_weight_id');
-            $table->float('measurement', 8 ,2);
-            $table->unsignedBigInteger('type_measurement_id');
+
+            // $table->string('cont_seal', 30)->nullable();
+            // $table->integer('qty');
+            // $table->unsignedBigInteger('type_pack_id');
+            // $table->float('net_weight', 8, 2);
+            // $table->string('net_type_weight', 15);
+            // $table->float('gross_weight', 8, 2);
+            // $table->string('gross_type_weight', 15);
+            // $table->float('measurement', 8 ,2);
+            // $table->string('type_measurement', 5);
+
             $table->string('commodity_mbl', 50);
             $table->string('hs_code_mbl', 15)->nullable();
             $table->unsignedBigInteger('mbl_type_bl_id');
@@ -82,9 +86,11 @@ return new class extends Migration
             $table->foreign('undername_hbl_id')->references('id')->on('undername_hbls')->onDelete('restrict');
             $table->foreign('cont_size_type_id')->references('id')->on('container_size_types')->onDelete('restrict');
             $table->foreign('type_packaging_id')->references('id')->on('type_packagings')->onDelete('restrict');
-            $table->foreign('gross_type_weight_id')->references('id')->on('type_weights')->onDelete('restrict');
-            $table->foreign('net_type_weight_id')->references('id')->on('type_weights')->onDelete('restrict');
-            $table->foreign('type_measurement_id')->references('id')->on('type_measurements')->onDelete('restrict');
+
+            // $table->foreign('gross_type_weight_id')->references('id')->on('type_weights')->onDelete('restrict');
+            // $table->foreign('net_type_weight_id')->references('id')->on('type_weights')->onDelete('restrict');
+            // $table->foreign('type_measurement_id')->references('id')->on('type_measurements')->onDelete('restrict');
+
             $table->foreign('mbl_type_bl_id')->references('id')->on('type_bill_of_ladings')->onDelete('restrict');
             $table->foreign('hbl_type_bl_id')->references('id')->on('type_bill_of_ladings')->onDelete('restrict');
             $table->foreign('type_payment_id')->references('id')->on('type_payments')->onDelete('restrict');
@@ -105,9 +111,11 @@ return new class extends Migration
             $table->dropForeign(['undername_hbl_id']);
             $table->dropForeign(['cont_size_type_id']);
             $table->dropForeign(['type_packaging_id']);
-            $table->dropForeign(['gross_type_weight_id']);
-            $table->dropForeign(['net_type_weight_id']);
-            $table->dropForeign(['type_measurement_id']);
+
+            // $table->dropForeign(['gross_type_weight_id']);
+            // $table->dropForeign(['net_type_weight_id']);
+            // $table->dropForeign(['type_measurement_id']);
+
             $table->dropForeign(['mbl_type_bl_id']);
             $table->dropForeign(['hbl_type_bl_id']);
             $table->dropForeign(['type_payment_id']);

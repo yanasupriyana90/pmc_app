@@ -15,6 +15,8 @@ use App\Http\Controllers\TypePaymentController;
 use App\Http\Controllers\UndernameMBLController;
 use App\Http\Controllers\UndernameHBLController;
 use App\Http\Controllers\CategoryBuySellController;
+use App\Http\Controllers\ContSealDetailController;
+use App\Http\Controllers\DailySalesReportController;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
@@ -226,6 +228,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/jobSheetCreate/get-undernameHbl/{nameUndHbl}', 'getUndernameHbls');
         Route::get('/jobSheetCreate/get-sizeTypeCont/{nameSizeTypeCont}', 'getSizeTypeConts');
         Route::get('/jobSheetCreate/get-typePack/{nameTypePack}', 'getTypePack');
+        // Route::get('/jobSheetCreate/get-typeWeights/{codeWeight}', 'getTypeWeights');
+        Route::get('/jobSheetCreate/get-typePackConts', 'getTypePackConts');
 
         Route::post('/jobSheetStore', 'store')->name('jobSheet.store');
         // Route::get('/jobSheetEdit/{id}', 'edit')->name('jobSheet.edit');
@@ -234,3 +238,19 @@ Route::middleware('auth')->group(function () {
     });
 });
 
+
+Route::post('simpan_cont_seal', [ContSealDetailController::class, 'simpan_cont_seal'])->name('simpan_cont_seal');
+
+
+// Daily Sales Report
+Route::middleware('auth')->group(function () {
+    Route::controller(DailySalesReportController::class)->group(function () {
+        Route::get('/dailySalesReport', 'index')->name('dailySalesReport');
+        Route::get('/dailySalesReportShow/{daily_sales_report_show}', 'show')->name('dailySalesReport.show');
+        Route::get('/dailySalesReportCreate', 'create')->name('dailySalesReport.create');
+        // Route::post('/dailySalesReportStore', 'store')->name('dailySalesReport.store');
+        // Route::get('/dailySalesReportEdit/{id}', 'edit')->name('dailySalesReport.edit');
+        // Route::put('/dailySalesReportUpdate/{id}', 'update')->name(('dailySalesReport.update'));
+        // Route::get('/dailySalesReportDestroy/{id}', 'destroy')->name('dailySalesReport.destroy');
+    });
+});
