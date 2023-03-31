@@ -86,6 +86,29 @@
                             <a href="#" class="nav-link">
                                 <i class="fas fa-ellipsis-h nav-icon"></i>
                                 <p>
+                                    Accounting Master
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('bankAccount') }}" class="nav-link">
+                                        <i class="fas fa-landmark nav-icon"></i>
+                                        <p>Bank Account</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('chartOfAccountHead1') }}" class="nav-link">
+                                        <i class="fas fa-chart-area nav-icon"></i>
+                                        <p>Chart Of Account</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-ellipsis-h nav-icon"></i>
+                                <p>
                                     Company Name
                                     <i class="fas fa-angle-left right"></i>
                                 </p>
@@ -178,9 +201,26 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Dashboard v1</p>
+                                <i class="fas fa-ellipsis-h nav-icon"></i>
+                                <p>
+                                    Transaction
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
                             </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('cashInBank') }}" class="nav-link">
+                                        <i class="fas fa-wallet nav-icon"></i>
+                                        <p>Cash In Bank</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ Route('pettyCash') }}" class="nav-link">
+                                        <i class="fas fa-wallet nav-icon"></i>
+                                        <p>Petty Cash</p>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </li>

@@ -657,3 +657,17 @@ $(document).ready(function () {
         }
     });
 });
+
+// Cash In Bank
+  // Start Cash In Bank
+  $(function () {
+
+    //Date picker Transaction Date
+    $('#date_trans').datetimepicker({
+        // format: 'MM-DD-YYYY',
+        format: 'YYYY-MM-DD',
+        autoclose: true,
+    });
+
+  });
+  // End Cash In Bank

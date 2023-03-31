@@ -352,9 +352,19 @@ class JobSheetController extends Controller
      * @param  \App\Models\JobSheet  $jobSheet
      * @return \Illuminate\Http\Response
      */
-    public function show(JobSheet $jobSheet)
+    public function show($id)
     {
-        //
+        $jobSheetHead = JobSheet::with(['user', 'shipper', 'undernameMbl', 'undernameHbl'])->findorFail($id);
+        // dd($jobSheetHead->undername_mbl_id);
+        return view('marketing.jobSheet.partials.show', ['jobSheetHead' => $jobSheetHead]);
+
+        // $undernameHbl = UndernameHbl::with(['user', 'mandatoryTax'])->findOrFail($id);
+    }
+
+    public function sellingBuyingCreate($id) {
+        $jobSheetHead = JobSheet::with(['user', 'shipper', 'undernameMbl', 'undernameHbl'])->findorFail($id);
+        // dd($jobSheetHead->undername_mbl_id);
+        return view('marketing.jobSheet.partials.sellingBuyingCreate', ['jobSheetHead' => $jobSheetHead]);
     }
 
     /**
@@ -390,4 +400,6 @@ class JobSheetController extends Controller
     {
         //
     }
+
+
 }

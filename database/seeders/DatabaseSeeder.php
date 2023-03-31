@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\BankAccount;
 use Illuminate\Database\Seeder;
 
 
@@ -32,6 +33,8 @@ class DatabaseSeeder extends Seeder
             ShipperSeeder::class,
             UndernameHblSeeder::class,
             UndernameMblSeeder::class,
+            BankAccountSeeder::class,
+            ChartOfAccountHead1Seeder::class,
             // DailySalesReportSeeder::class,
 
             // Marketing

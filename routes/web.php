@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\BankAccountController;
+use App\Http\Controllers\CashInBankController;
 use App\Http\Controllers\ContainerSizeTypeController;
 use App\Http\Controllers\DivisionController;
 use App\Http\Controllers\JobSheetController;
@@ -15,8 +17,12 @@ use App\Http\Controllers\TypePaymentController;
 use App\Http\Controllers\UndernameMBLController;
 use App\Http\Controllers\UndernameHBLController;
 use App\Http\Controllers\CategoryBuySellController;
+use App\Http\Controllers\ChartOfAccountHead1Controller;
 use App\Http\Controllers\ContSealDetailController;
 use App\Http\Controllers\DailySalesReportController;
+use App\Http\Controllers\PettyCashController;
+use App\Models\BankAccount;
+use App\Models\pettyCash;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
@@ -216,12 +222,39 @@ Route::middleware('auth')->group(function () {
     });
 });
 
+// Bank Account
+Route::middleware('auth')->group(function () {
+    Route::controller(BankAccountController::class)->group(function () {
+        Route::get('/bankAccount', 'index')->name('bankAccount');
+        Route::get('/bankAccountShow/{id}', 'show')->name('bankAccount.show');
+        Route::get('/bankAccountCreate', 'create')->name('bankAccount.create');
+        Route::post('/bankAccountStore', 'store')->name('bankAccount.store');
+        Route::get('/bankAccountEdit/{id}', 'edit')->name('bankAccount.edit');
+        Route::put('/bankAccountUpdate/{id}', 'update')->name(('bankAccount.update'));
+        Route::get('/bankAccountDestroy/{id}', 'destroy')->name('bankAccount.destroy');
+    });
+});
+
+// Chart Of Account Head 1 (COA)
+Route::middleware('auth')->group(function () {
+    Route::controller(ChartOfAccountHead1Controller::class)->group(function () {
+        Route::get('/chartOfAccountHead1', 'index')->name('chartOfAccountHead1');
+        Route::get('/chartOfAccountHead1Show/{id}', 'show')->name('chartOfAccountHead1.show');
+        Route::get('/chartOfAccountHead1Create', 'create')->name('chartOfAccountHead1.create');
+        Route::post('/chartOfAccountHead1Store', 'store')->name('chartOfAccountHead1.store');
+        Route::get('/chartOfAccountHead1Edit/{id}', 'edit')->name('chartOfAccountHead1.edit');
+        Route::put('/chartOfAccountHead1Update/{id}', 'update')->name(('chartOfAccountHead1.update'));
+        Route::get('/chartOfAccountHead1Destroy/{id}', 'destroy')->name('chartOfAccountHead1.destroy');
+    });
+});
+
+
 // Jobsheet
 Route::middleware('auth')->group(function () {
     Route::controller(JobSheetController::class)->group(function () {
         Route::get('/jobSheet', 'index')->name('jobSheet');
         Route::get('jobSheetStatus/{id}', 'changeStatus')->name('jobSheet.changeStatus');
-        // Route::get('/jobSheetShow/{id}', 'show')->name('jobSheet.show');
+        Route::get('/jobSheetShow/{id}', 'show')->name('jobSheet.show');
         Route::get('/jobSheetCreate', 'create')->name('jobSheet.create');
         Route::get('/jobSheetCreate/get-shippers/{nameShip}', 'getShippers');
         Route::get('/jobSheetCreate/get-undernameMbl/{nameUndMbl}', 'getUndernameMbls');
@@ -232,6 +265,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/jobSheetCreate/get-typePackConts', 'getTypePackConts');
 
         Route::post('/jobSheetStore', 'store')->name('jobSheet.store');
+        Route::get('/jobSheet/SellingBuyingCreate/{id}', 'sellingBuyingCreate')->name('jobSheet.sellingBuyingCreate');
         // Route::get('/jobSheetEdit/{id}', 'edit')->name('jobSheet.edit');
         // Route::put('/jobSheetUpdate/{id}', 'update')->name(('jobSheet.update'));
         // Route::get('/jobSheetDestroy/{id}', 'destroy')->name('jobSheet.destroy');
@@ -254,3 +288,38 @@ Route::middleware('auth')->group(function () {
         // Route::get('/dailySalesReportDestroy/{id}', 'destroy')->name('dailySalesReport.destroy');
     });
 });
+
+// Accounting
+    // Transaction
+        // Cash In Bank
+        Route::middleware('auth')->group(function () {
+            Route::controller(CashInBankController::class)->group(function () {
+                Route::get('/cashInBank', 'index')->name('cashInBank');
+                Route::get('cashInBankShow/{id}', 'show')->name('cashInBank.show');
+                Route::get('/cashInBankShowPayable/{id}', 'showPayable')->name('cashInBank.showPayable');
+                Route::get('/cashInBankShowReceivable/{id}', 'showReceivable')->name('cashInBank.showReceivable');
+                Route::get('/cashInBankCreateReceivable', 'createReceivable')->name('cashInBank.createReceivable');
+                Route::get('/cashInBankCreatePayable', 'createPayable')->name('cashInBank.createPayable');
+                Route::post('/cashInBankStore', 'store')->name('cashInBank.store');
+                Route::get('/cashInBankEdit/{id}', 'edit')->name('cashInBank.edit');
+                Route::put('/cashInBankUpdate/{id}', 'update')->name(('cashInBank.update'));
+                Route::get('/cashInBankDestroy/{id}', 'destroy')->name('cashInBank.destroy');
+            });
+        });
+
+        // Petty Cash
+        Route::middleware('auth')->group(function () {
+            Route::controller(PettyCashController::class)->group(function () {
+                Route::get('/pettyCash', 'index')->name('pettyCash');
+                Route::get('pettyCashShow/{id}', 'show')->name('pettyCash.show');
+                Route::get('/pettyCashShowPayable/{id}', 'showPayable')->name('pettyCash.showPayable');
+                Route::get('/pettyCashShowReceivable/{id}', 'showReceivable')->name('pettyCash.showReceivable');
+                Route::get('/pettyCashCreateReceivable', 'createReceivable')->name('pettyCash.createReceivable');
+                Route::get('/pettyCashCreatePayable', 'createPayable')->name('pettyCash.createPayable');
+                Route::post('/pettyCashStore', 'store')->name('pettyCash.store');
+                Route::get('/pettyCashEdit/{id}', 'edit')->name('pettyCash.edit');
+                Route::put('/pettyCashUpdate/{id}', 'update')->name(('pettyCash.update'));
+                Route::get('/pettyCashDestroy/{id}', 'destroy')->name('pettyCash.destroy');
+            });
+        });
+

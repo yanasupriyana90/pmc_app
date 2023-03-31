@@ -3,7 +3,7 @@
 @section('title', 'Marketing')
 
 @section('subtitle', 'Job Sheet')
-@section('subtitle_2', 'Add Data')
+@section('subtitle_2', 'Show Data')
 
 @section('content')
     <!-- Content Wrapper. Contains page content -->
@@ -23,16 +23,6 @@
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-
-                    </div>
-                @endif
             </div><!-- /.container-fluid -->
         </div>
         <!-- /.content-header -->
@@ -79,8 +69,7 @@
                                 </ul>
                             </div>
                             <!-- form start -->
-                            <form action="{{ Route('jobSheet.store') }}" method="POST" enctype="multipart/form-data">
-                                @csrf
+                            <form>
                                 <div class="card-body">
                                     <div class="tab-content" id="job_sheet-tabContent">
 
@@ -95,7 +84,7 @@
                                                             <input type="text"
                                                                 class="form-control form-control-sm text-uppercase"
                                                                 name="code_js" id="code_js"
-                                                                value="{{ 'JS-' . date('mdy') . '-' . $kd }}" readonly>
+                                                                value="{{ $jobSheetHead->code_js }}" readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
@@ -104,7 +93,7 @@
                                                             <input type="text"
                                                                 class="form-control form-control-sm text-uppercase"
                                                                 name="booking_no" id="booking_no"
-                                                                value="{{ old('booking_no') }}" disabled>
+                                                                value="{{ $jobSheetHead->booking_no }}" disabled>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -116,7 +105,8 @@
                                                         <div class="form-group">
                                                             <input type="hidden"
                                                                 class="form-control form-control-sm text-uppercase"
-                                                                name="shipper_id" id="shipper_id" readonly>
+                                                                name="shipper_id" id="shipper_id"
+                                                                value="{{ $jobSheetHead->shipper_id }}" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -129,28 +119,31 @@
                                                             <input type="text"
                                                                 class="form-control form-control-sm text-uppercase"
                                                                 name="name_ship" id="name_ship"
-                                                                value="{{ old('name_ship') }}">
+                                                                value="{{ $jobSheetHead->shipper['name'] }}" readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
                                                         <div class="form-group">
                                                             <label for="inputPhone1Ship">Phone 1</label>
                                                             <input type="text" class="form-control form-control-sm"
-                                                                name="phone_1_ship" id="phone_1_ship" readonly>
+                                                                name="phone_1_ship" id="phone_1_ship"
+                                                                value="{{ $jobSheetHead->shipper['phone_1'] }}" readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
                                                         <div class="form-group">
                                                             <label for="inputPhone2Ship">Phone 2</label>
                                                             <input type="text" class="form-control form-control-sm"
-                                                                name="phone_2_ship" id="phone_2_ship" readonly>
+                                                                name="phone_2_ship" id="phone_2_ship"
+                                                                value="{{ $jobSheetHead->shipper['phone_2'] }}" readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
                                                         <div class="form-group">
                                                             <label for="inputFaxShip">Fax</label>
                                                             <input type="text" class="form-control form-control-sm"
-                                                                name="fax_ship" id="fax_ship" readonly>
+                                                                name="fax_ship" id="fax_ship"
+                                                                value="{{ $jobSheetHead->shipper['fax'] }}" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -161,14 +154,15 @@
                                                         <div class="form-group">
                                                             <label for="inputAddressShip">Address</label>
                                                             <textarea class="form-control form-control-sm text-uppercase" name="address_ship" id="address_ship" rows="3"
-                                                                readonly></textarea>
+                                                                readonly>{{ $jobSheetHead->shipper['address'] }}</textarea>
                                                         </div>
                                                     </div>
                                                     <div class="col-3">
                                                         <div class="form-group">
                                                             <label for="inputEmailShip">Email address</label>
                                                             <input type="email" class="form-control form-control-sm"
-                                                                name="email_ship" id="email_ship" readonly>
+                                                                name="email_ship" id="email_ship"
+                                                                value="{{ $jobSheetHead->shipper['email'] }}" readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-2 offset-1">
@@ -176,7 +170,9 @@
                                                             <label for="inputMandatoryTaxIdShip">Mandatory Tax</label>
                                                             <input type="text" name="mandatory_tax_id_ship"
                                                                 class="form-control form-control-sm"
-                                                                id="mandatory_tax_id_ship" readonly>
+                                                                id="mandatory_tax_id_ship"
+                                                                value="{{ $jobSheetHead->shipper['mandatory_tax_id'] }}"
+                                                                readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
@@ -184,7 +180,7 @@
                                                             <label for="inputTaxIdShip">Tax ID</label>
                                                             <input type="text" name="tax_id_ship"
                                                                 class="form-control form-control-sm" id="tax_id_ship"
-                                                                readonly>
+                                                                value="{{ $jobSheetHead->shipper['tax_id'] }}" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -196,7 +192,8 @@
                                                         <div class="form-group">
                                                             <input type="hidden"
                                                                 class="form-control form-control-sm text-uppercase"
-                                                                name="undername_mbl_id" id="undername_mbl_id" readonly>
+                                                                name="undername_mbl_id" id="undername_mbl_id"
+                                                                value="{{ $jobSheetHead->undername_mbl_id }}" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -208,28 +205,35 @@
                                                             <label for="inputUndMbl">M-BL / Booking</label>
                                                             <input type="text"
                                                                 class="form-control form-control-sm text-uppercase"
-                                                                name="name_und_mbl" id="name_und_mbl">
+                                                                name="name_und_mbl" id="name_und_mbl"
+                                                                value="{{ $jobSheetHead->undernameMbl['name'] }}"
+                                                                readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
                                                         <div class="form-group">
                                                             <label for="inputPhone1UndMbl">Phone 1</label>
                                                             <input type="text" class="form-control form-control-sm"
-                                                                name="phone_1_und_mbl" id="phone_1_und_mbl" readonly>
+                                                                name="phone_1_und_mbl" id="phone_1_und_mbl"
+                                                                value="{{ $jobSheetHead->undernameMbl['phone_1'] }}"
+                                                                readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
                                                         <div class="form-group">
                                                             <label for="inputPhone2UndMbl">Phone 2</label>
                                                             <input type="text" class="form-control form-control-sm"
-                                                                name="phone_2_und_mbl" id="phone_2_und_mbl" readonly>
+                                                                name="phone_2_und_mbl" id="phone_2_und_mbl"
+                                                                value="{{ $jobSheetHead->undernameMbl['phone_2'] }}"
+                                                                readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
                                                         <div class="form-group">
                                                             <label for="inputFaxUndMbl">Fax</label>
                                                             <input type="text" class="form-control form-control-sm"
-                                                                name="fax_und_mbl" id="fax_und_mbl" readonly>
+                                                                name="fax_und_mbl" id="fax_und_mbl"
+                                                                value="{{ $jobSheetHead->undernameMbl['fax'] }}" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -240,14 +244,16 @@
                                                         <div class="form-group">
                                                             <label for="inputAddressUndMbl">Address</label>
                                                             <textarea class="form-control form-control-sm text-uppercase" name="address_und_mbl" id="address_und_mbl"
-                                                                rows="3" readonly></textarea>
+                                                                rows="3" readonly>{{ $jobSheetHead->undernameMbl['address'] }}</textarea>
                                                         </div>
                                                     </div>
                                                     <div class="col-3">
                                                         <div class="form-group">
                                                             <label for="inputEmailUndMbl">Email address</label>
                                                             <input type="email" class="form-control form-control-sm"
-                                                                name="email_und_mbl" id="email_und_mbl" readonly>
+                                                                name="email_und_mbl" id="email_und_mbl"
+                                                                value="{{ $jobSheetHead->undernameMbl['email'] }}"
+                                                                readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-2 offset-1">
@@ -255,7 +261,9 @@
                                                             <label for="inputMandatoryTaxIdUndMbl">Mandatory Tax</label>
                                                             <input type="text" name="mandatory_tax_id_und_mbl"
                                                                 class="form-control form-control-sm"
-                                                                id="mandatory_tax_id_und_mbl" readonly>
+                                                                id="mandatory_tax_id_und_mbl"
+                                                                value="{{ $jobSheetHead->undernameMbl['mandatory_tax_id'] }}"
+                                                                readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
@@ -263,6 +271,7 @@
                                                             <label for="inputTaxIdUndMbl">Tax ID</label>
                                                             <input type="text" name="tax_id_und_mbl"
                                                                 class="form-control form-control-sm" id="tax_id_und_mbl"
+                                                                value="{{ $jobSheetHead->undernameMbl['tax_id'] }}"
                                                                 readonly>
                                                         </div>
                                                     </div>
@@ -275,53 +284,48 @@
                                                         <div class="form-group">
                                                             <input type="hidden"
                                                                 class="form-control form-control-sm text-uppercase"
-                                                                name="undername_hbl_id" id="undername_hbl_id" readonly>
+                                                                name="undername_hbl_id" id="undername_hbl_id"
+                                                                value="{{ $jobSheetHead->undername_hbl_id }}" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="container">
-                                                <div class="row mt-3">
-                                                    <div class="col-4">
-                                                        <div class="custom-control custom-checkbox">
-                                                            <input class="custom-control-input" type="checkbox"
-                                                                name="use_und_hbl" id="checkBoxUndHbl"
-                                                                onclick="showDivUndHblAll()">
-                                                            <label for="checkBoxUndHbl" class="custom-control-label">Use
-                                                                H-BL / PEB</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="container" id="und_hbl_group" style="display: none;">
+                                            <div class="container" id="und_hbl_group">
                                                 <div class="row mt-3">
                                                     <div class="col-6">
                                                         <div class="form-group">
                                                             <label for="inputUndHbl">H-BL / PEB</label>
                                                             <input type="text"
                                                                 class="form-control form-control-sm text-uppercase"
-                                                                name="name_und_hbl" id="name_und_hbl">
+                                                                name="name_und_hbl" id="name_und_hbl"
+                                                                value="{{ $jobSheetHead->undernameHbl['name'] }}"
+                                                                readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
                                                         <div class="form-group">
                                                             <label for="inputPhone1UndHbl">Phone 1</label>
                                                             <input type="text" class="form-control form-control-sm"
-                                                                name="phone_1_und_mbl" id="phone_1_und_mbl" readonly>
+                                                                name="phone_1_und_mbl" id="phone_1_und_mbl"
+                                                                value="{{ $jobSheetHead->undernameHbl['phone_1'] }}"
+                                                                readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
                                                         <div class="form-group">
                                                             <label for="inputPhone2UndHbl">Phone 2</label>
                                                             <input type="text" class="form-control form-control-sm"
-                                                                name="phone_2_und_hbl" id="phone_2_und_hbl" readonly>
+                                                                name="phone_2_und_hbl" id="phone_2_und_hbl"
+                                                                value="{{ $jobSheetHead->undernameHbl['phone_2'] }}"
+                                                                readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
                                                         <div class="form-group">
                                                             <label for="inputFaxUndHbl">Fax</label>
                                                             <input type="text" class="form-control form-control-sm"
-                                                                name="fax_und_hbl" id="fax_und_hbl" readonly>
+                                                                name="fax_und_hbl" id="fax_und_hbl"
+                                                                value="{{ $jobSheetHead->undernameHbl['fax'] }}" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -330,14 +334,16 @@
                                                         <div class="form-group">
                                                             <label for="inputAddressUndHbl">Address</label>
                                                             <textarea class="form-control form-control-sm text-uppercase" name="address_und_hbl" id="address_und_hbl"
-                                                                rows="3" readonly></textarea>
+                                                                rows="3" readonly>{{ $jobSheetHead->undernameHbl['address'] }}</textarea>
                                                         </div>
                                                     </div>
                                                     <div class="col-3">
                                                         <div class="form-group">
                                                             <label for="inputEmailUndHbl">Email address</label>
                                                             <input type="email" class="form-control form-control-sm"
-                                                                name="email_und_hbl" id="email_und_hbl" readonly>
+                                                                name="email_und_hbl" id="email_und_hbl"
+                                                                value="{{ $jobSheetHead->undernameHbl['email'] }}"
+                                                                readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-2 offset-1">
@@ -345,7 +351,9 @@
                                                             <label for="inputMandatoryTaxIdUndHbl">Mandatory Tax</label>
                                                             <input type="text" name="mandatory_tax_id_und_hbl"
                                                                 class="form-control form-control-sm"
-                                                                id="mandatory_tax_id_und_hbl" readonly>
+                                                                id="mandatory_tax_id_und_hbl"
+                                                                value="{{ $jobSheetHead->undernameHbl['mandatory_tax_id'] }}"
+                                                                readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
@@ -353,6 +361,7 @@
                                                             <label for="inputTaxIdUndHbl">Tax ID</label>
                                                             <input type="text" name="tax_id_und_hbl"
                                                                 class="form-control form-control-sm" id="tax_id_und_hbl"
+                                                                value="{{ $jobSheetHead->undernameHbl['tax_id'] }}"
                                                                 readonly>
                                                         </div>
                                                     </div>
@@ -373,7 +382,7 @@
                                                             <input type="text"
                                                                 class="form-control form-control-sm text-uppercase"
                                                                 name="name_cons" id="name_cons"
-                                                                value="{{ old('name_cons') }}">
+                                                                value="{{ $jobSheetHead->name_cons }}" readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
@@ -381,7 +390,7 @@
                                                             <label for="inputPhone1Cons">Phone 1</label>
                                                             <input type="text" class="form-control form-control-sm"
                                                                 name="phone_1_cons" id="phone_1_cons"
-                                                                value="{{ old('phone_1_cons') }}">
+                                                                value="{{ $jobSheetHead->phone_1_cons }}" readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
@@ -389,7 +398,7 @@
                                                             <label for="inputPhone2Cons">Phone 2</label>
                                                             <input type="text" class="form-control form-control-sm"
                                                                 name="phone_2_cons" id="phone_2_cons"
-                                                                value="{{ old('phone_2_cons') }}">
+                                                                value="{{ $jobSheetHead->phone_2_cons }}" readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
@@ -397,7 +406,7 @@
                                                             <label for="inputFaxCons">Fax</label>
                                                             <input type="text" class="form-control form-control-sm"
                                                                 name="fax_cons" id="fax_cons"
-                                                                value="{{ old('fax_cons') }}">
+                                                                value="{{ $jobSheetHead->fax_cons }}" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -407,7 +416,8 @@
                                                     <div class="col-4">
                                                         <div class="form-group">
                                                             <label for="inputAddressCons">Address</label>
-                                                            <textarea class="form-control form-control-sm text-uppercase" name="address_cons" id="address_cons" rows="3">{{ old('address_cons') }}</textarea>
+                                                            <textarea class="form-control form-control-sm text-uppercase" name="address_cons" id="address_cons" rows="3"
+                                                                readonly>{{ $jobSheetHead->address_cons }}</textarea>
                                                         </div>
                                                     </div>
                                                     <div class="col-3">
@@ -415,48 +425,28 @@
                                                             <label for="inputEmailCons">Email address</label>
                                                             <input type="email" class="form-control form-control-sm"
                                                                 name="email_cons" id="email_cons"
-                                                                value="{{ old('email_cons') }}">
+                                                                value="{{ $jobSheetHead->email_cons }}" readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-2 offset-1">
                                                         <div class="form-group">
                                                             <label for="mandatory_tax_cons">Mandatory Tax</label>
-                                                            <select name="mandatory_tax_id_cons"
-                                                                id="mandatory_tax_id_cons"
-                                                                class="form-control form-control-sm select2"
-                                                                style="width: 100%;" onchange="showDivCons(this)">
-                                                                @foreach ($mandatoryTax as $item)
-                                                                    <option
-                                                                        value="{{ old('mandatory_tax_id_cons', $item->id) }}">
-                                                                        {{ $item->name }}</option>
-                                                                @endforeach
-                                                            </select>
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                name="mandatory_tax_id_cons" id="mandatory_tax_id_cons"
+                                                                value="{{ $jobSheetHead->mandatory_tax_id_cons }}"
+                                                                readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
-                                                        <div class="form-group" id="tax_id_group_cons"
-                                                            style="display: none;">
+                                                        <div class="form-group" id="tax_id_group_cons">
                                                             <label for="inputTaxIdCons">Tax ID</label>
                                                             <input type="text" name="tax_id_cons"
                                                                 class="form-control form-control-sm" id="tax_id_cons"
-                                                                value="{{ old('tax_id_cons') }}">
+                                                                value="{{ $jobSheetHead->tax_id_cons }}" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <hr size="100" noshade>
-                                            </div>
-                                            <div class="container">
-                                                <div class="row mt-5">
-                                                    <div class="col-4">
-                                                        <div class="custom-control custom-checkbox">
-                                                            <input class="custom-control-input" type="checkbox"
-                                                                name="same_as_consignee" id="checkBoxNotify"
-                                                                onclick="showDivNotifyAll()" value="SAME AS CONSIGNEE">
-                                                            <label for="checkBoxNotify" class="custom-control-label">SAME
-                                                                AS CONSIGNEE</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
                                             </div>
                                             <div class="container" id="notify_party_group">
                                                 <div class="row mt-3">
@@ -466,7 +456,7 @@
                                                             <input type="text"
                                                                 class="form-control form-control-sm text-uppercase"
                                                                 name="name_notify" id="name_notify"
-                                                                value="{{ old('name_notify') }}">
+                                                                value="{{ $jobSheetHead->name_notify }}" readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
@@ -474,7 +464,7 @@
                                                             <label for="inputPhone1Notify">Phone 1</label>
                                                             <input type="text" class="form-control form-control-sm"
                                                                 name="phone_1_notify" id="phone_1_notify"
-                                                                value="{{ old('phone_1_notify') }}">
+                                                                value="{{ $jobSheetHead->phone_1_notify }}" readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
@@ -482,7 +472,7 @@
                                                             <label for="inputPhone2Notify">Phone 2</label>
                                                             <input type="text" class="form-control form-control-sm"
                                                                 name="phone_2_notify" id="phone_2_notify"
-                                                                value="{{ old('phone_2_notify') }}">
+                                                                value="{{ $jobSheetHead->phone_2_notify }}" readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
@@ -490,7 +480,7 @@
                                                             <label for="inputFaxNotify">Fax</label>
                                                             <input type="text" class="form-control form-control-sm"
                                                                 name="fax_notify" id="fax_notify"
-                                                                value="{{ old('fax_notify') }}">
+                                                                value="{{ $jobSheetHead->fax_notify }}" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -499,7 +489,7 @@
                                                         <div class="form-group">
                                                             <label for="inputAddressNotify">Address</label>
                                                             <textarea class="form-control form-control-sm text-uppercase" name="address_notify" id="address_notify"
-                                                                rows="3">{{ old('address_notify') }}</textarea>
+                                                                rows="3" readonly>{{ $jobSheetHead->address_notify }}</textarea>
                                                         </div>
                                                     </div>
                                                     <div class="col-3">
@@ -507,31 +497,25 @@
                                                             <label for="inputEmailNotify">Email address</label>
                                                             <input type="email" class="form-control form-control-sm"
                                                                 name="email_notify" id="email_notify"
-                                                                value="{{ old('email_notify') }}">
+                                                                value="{{ $jobSheetHead->email_notify }}" readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-2 offset-1">
                                                         <div class="form-group">
                                                             <label for="mandatoryTaxNotify">Mandatory Tax</label>
-                                                            <select name="mandatory_tax_id_notify"
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                name="mandatory_tax_id_notify"
                                                                 id="mandatory_tax_id_notify"
-                                                                class="form-control form-control-sm select2"
-                                                                style="width: 100%;" onchange="showDivNotify(this)">
-                                                                @foreach ($mandatoryTax as $item)
-                                                                    <option
-                                                                        value="{{ old('mandatory_tax_id_notify', $item->id) }}">
-                                                                        {{ $item->name }}</option>
-                                                                @endforeach
-                                                            </select>
+                                                                value="{{ $jobSheetHead->mandatory_tax_id_notify }}"
+                                                                readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
-                                                        <div class="form-group" id="tax_id_group_notify"
-                                                            style="display: none;">
+                                                        <div class="form-group" id="tax_id_group_notify">
                                                             <label for="inputTaxIdNotify">Tax ID</label>
                                                             <input type="text" name="tax_id_notify"
                                                                 class="form-control form-control-sm" id="tax_id_notify"
-                                                                value="{{ old('tax_id_notify') }}">
+                                                                value="{{ $jobSheetHead->tax_id_notify }}" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -553,7 +537,7 @@
                                                             <input type="text"
                                                                 class="form-control form-control-sm text-uppercase"
                                                                 name="carrier" id="carrier"
-                                                                value="{{ old('carrier') }}">
+                                                                value="{{ $jobSheetHead->carrier }}" readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-3">
@@ -562,7 +546,7 @@
                                                             <input type="text"
                                                                 class="form-control form-control-sm text-uppercase"
                                                                 name="vessel" id="vessel"
-                                                                value="{{ old('vessel') }}">
+                                                                value="{{ $jobSheetHead->vessel }}" readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-3">
@@ -571,9 +555,9 @@
                                                             <div class="input-group date" id="etd"
                                                                 data-target-input="nearest">
                                                                 <input type="text" name="etd"
-                                                                    value="{{ old('etd') }}"
+                                                                    value="{{ $jobSheetHead->etd }}"
                                                                     class="form-control form-control-sm datetimepicker-input"
-                                                                    data-target="#etd" />
+                                                                    data-target="#etd" disabled />
                                                                 <div class="input-group-append" data-target="#etd"
                                                                     data-toggle="datetimepicker">
                                                                     <div class="input-group-text"><i
@@ -589,7 +573,7 @@
                                                             <input type="text"
                                                                 class="form-control form-control-sm text-uppercase"
                                                                 name="pol" id="pol"
-                                                                value="{{ old('pol') }}">
+                                                                value="{{ $jobSheetHead->pol }}" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -602,7 +586,7 @@
                                                             <input type="text"
                                                                 class="form-control form-control-sm text-uppercase"
                                                                 name="pod" id="pod"
-                                                                value="{{ old('pod') }}">
+                                                                value="{{ $jobSheetHead->pod }}" readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-3">
@@ -611,7 +595,7 @@
                                                             <div class="input-group date" id="open_cy"
                                                                 data-target-input="nearest">
                                                                 <input type="text" name="open_cy"
-                                                                    value="{{ old('open_cy') }}"
+                                                                    value="{{ $jobSheetHead->open_cy }}"
                                                                     class="form-control form-control-sm datetimepicker-input"
                                                                     data-target="#open_cy" disabled />
                                                                 <div class="input-group-append" data-target="#open_cy"
@@ -629,7 +613,7 @@
                                                             <div class="input-group date" id="closing_doc"
                                                                 data-target-input="nearest">
                                                                 <input type="text" name="closing_doc"
-                                                                    value="{{ old('closing_doc') }}"
+                                                                    value="{{ $jobSheetHead->closing_doc }}"
                                                                     class="form-control form-control-sm datetimepicker-input"
                                                                     data-target="#closing_doc" disabled />
                                                                 <div class="input-group-append" data-target="#closing_doc"
@@ -647,7 +631,7 @@
                                                             <div class="input-group date" id="closing_cy"
                                                                 data-target-input="nearest">
                                                                 <input type="text" name="closing_cy"
-                                                                    value="{{ old('closing_cy') }}"
+                                                                    value="{{ $jobSheetHead->closing_cy }}"
                                                                     class="form-control form-control-sm datetimepicker-input"
                                                                     data-target="#closing_cy" disabled />
                                                                 <div class="input-group-append" data-target="#closing_cy"
@@ -676,7 +660,7 @@
                                                             <input type="text"
                                                                 class="form-control form-control-sm text-uppercase"
                                                                 name="volume" id="volume"
-                                                                value="{{ old('volume') }}">
+                                                                value="{{ $jobSheetHead->volume }}" readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-4 mr-5">
@@ -685,7 +669,9 @@
                                                                 Container</label>
                                                             <input type="text"
                                                                 class="form-control form-control-sm text-uppercase"
-                                                                name="name_cont_size_type" id="name_cont_size_type">
+                                                                name="name_cont_size_type" id="name_cont_size_type"
+                                                                value="{{ $jobSheetHead->containerSizeType['name'] }}"
+                                                                readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-1">
@@ -694,7 +680,7 @@
                                                             <input type="text"
                                                                 class="form-control form-control-sm text-uppercase"
                                                                 name="qty" id="qty"
-                                                                value="{{ old('qty') }}">
+                                                                value="{{ $jobSheetHead->qty }}" readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-4">
@@ -702,7 +688,7 @@
                                                             <label for="inputNameTypePack">Type Pack</label>
                                                             <input type="text"
                                                                 class="form-control form-control-sm text-uppercase"
-                                                                name="name_type_pack" id="name_type_pack">
+                                                                name="name_type_pack" id="name_type_pack" value="{{ $jobSheetHead->typePack['name'] }}" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -714,14 +700,14 @@
                                                         <div class="form-group">
                                                             <input type="hidden"
                                                                 class="form-control form-control-sm text-uppercase"
-                                                                name="cont_size_type_id" id="cont_size_type_id" readonly>
+                                                                name="cont_size_type_id" id="cont_size_type_id" value="{{ $jobSheetHead->cont_size_type_id }}" readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-1">
                                                         <div class="form-group">
                                                             <input type="hidden"
                                                                 class="form-control form-control-sm text-uppercase"
-                                                                name="type_packaging_id" id="type_packaging_id" readonly>
+                                                                name="type_packaging_id" id="type_packaging_id" value="{{ $jobSheetHead->type_packaging_id }}" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -735,7 +721,7 @@
                                                             <input type="text"
                                                                 class="form-control form-control-sm mb-2 text-uppercase"
                                                                 name="commodity_mbl" id="commodity_mbl"
-                                                                value="{{ old('commodity_mbl') }}">
+                                                                value="{{ $jobSheetHead->commodity_mbl }}" readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
@@ -744,26 +730,21 @@
                                                             <input type="text"
                                                                 class="form-control form-control-sm mb-2 text-uppercase"
                                                                 name="hs_code_mbl" id="hs_code_mbl"
-                                                                value="{{ old('hs_code_mbl') }}">
+                                                                value="{{ $jobSheetHead->hs_code_mbl }}" readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
                                                         <div class="form-group">
                                                             <label for="typeBillOfLadingMbl">M-B/L</label>
-                                                            <select name="mbl_type_bl_id" id="mbl_type_bl_id"
-                                                                class="form-control form-control-sm select2"
-                                                                style="width: 100%;">
-                                                                @foreach ($typeBillOfLading as $item)
-                                                                    <option
-                                                                        value="{{ old('mbl_type_bl_id', $item->id) }}">
-                                                                        {{ $item->name }}</option>
-                                                                @endforeach
-                                                            </select>
+                                                            <input type="text"
+                                                                class="form-control form-control-sm mb-2 text-uppercase"
+                                                                name="mbl_type_bl_id" id="mbl_type_bl_id"
+                                                                value="{{ $jobSheetHead->mbl_type_bl_id }}" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="container">
+                                            {{-- <div class="container">
                                                 <div class="row mt-3">
                                                     <div class="col-4">
                                                         <div class="custom-control custom-checkbox">
@@ -776,8 +757,8 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="container" id="commodity_hbl_group" style="display: none;">
+                                            </div> --}}
+                                            <div class="container" id="commodity_hbl_group">
                                                 <div class="row mt-3">
                                                     <div class="col-3">
                                                         <div class="form-group">
@@ -785,7 +766,7 @@
                                                             <input type="text"
                                                                 class="form-control form-control-sm text-uppercase"
                                                                 name="commodity_hbl" id="commodity_hbl"
-                                                                value="{{ old('commodity_hbl') }}">
+                                                                value="{{ $jobSheetHead->commodity_hbl }}" readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
@@ -794,21 +775,16 @@
                                                             <input type="text"
                                                                 class="form-control form-control-sm mb-2 text-uppercase"
                                                                 name="hs_code_hbl" id="hs_code_hbl"
-                                                                value="{{ old('hs_code_hbl') }}">
+                                                                value="{{ $jobSheetHead->hs_code_hbl }}" readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
                                                         <div class="form-group">
                                                             <label for="typeBillOfLadingHbl">H-B/L</label>
-                                                            <select name="hbl_type_bl_id" id="hbl_type_bl_id"
-                                                                class="form-control form-control-sm select2"
-                                                                style="width: 100%;">
-                                                                @foreach ($typeBillOfLading as $item)
-                                                                    <option
-                                                                        value="{{ old('hbl_type_bl_id', $item->id) }}">
-                                                                        {{ $item->name }}</option>
-                                                                @endforeach
-                                                            </select>
+                                                            <input type="text"
+                                                                class="form-control form-control-sm mb-2 text-uppercase"
+                                                                name="hbl_type_bl_id" id="hbl_type_bl_id"
+                                                                value="{{ $jobSheetHead->hbl_type_bl_id }}" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -824,9 +800,9 @@
                                                             <div class="input-group date" id="stuffing_date"
                                                                 data-target-input="nearest">
                                                                 <input type="text" name="stuffing_date"
-                                                                    value="{{ old('stuffing_date') }}"
+                                                                    value="{{ $jobSheetHead->stuffing_date }}"
                                                                     class="form-control form-control-sm datetimepicker-input"
-                                                                    data-target="#stuffing_date" />
+                                                                    data-target="#stuffing_date" disabled/>
                                                                 <div class="input-group-append"
                                                                     data-target="#stuffing_date"
                                                                     data-toggle="datetimepicker">
@@ -842,7 +818,7 @@
                                                             <label for="inputStuffingAddress">Stuffing
                                                                 Address</label>
                                                             <textarea class="form-control form-control-sm text-uppercase" name="stuffing_address" id="stuffing_address"
-                                                                rows="3">{{ old('stuffing_address') }}</textarea>
+                                                                rows="3" readonly>{{ $jobSheetHead->stuffing_address }}</textarea>
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
@@ -851,7 +827,7 @@
                                                             <input type="text"
                                                                 class="form-control form-control-sm text-uppercase"
                                                                 name="pic_name" id="pic_name"
-                                                                value="{{ old('pic_name') }}">
+                                                                value="{{ $jobSheetHead->pic_name }}" readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
@@ -860,7 +836,7 @@
                                                             <input type="text"
                                                                 class="form-control form-control-sm text-uppercase"
                                                                 name="pic_phone" id="pic_phone"
-                                                                value="{{ old('pic_phone') }}">
+                                                                value="{{ $jobSheetHead->pic_phone }}" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -873,21 +849,16 @@
                                                             <input type="text"
                                                                 class="form-control form-control-sm text-uppercase"
                                                                 name="top" id="top"
-                                                                value="{{ old('top') }}">
+                                                                value="{{ $jobSheetHead->top }}" readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-3">
                                                         <div class="form-group">
                                                             <label for="freightCharges">Freight & Charges</label>
-                                                            <select name="type_payment_id" id="type_payment_id"
-                                                                class="form-control form-control-sm select2"
-                                                                style="width: 100%;">
-                                                                @foreach ($typePayment as $item)
-                                                                    <option
-                                                                        value="{{ old('type_payment_id', $item->id) }}">
-                                                                        {{ $item->name }}</option>
-                                                                @endforeach
-                                                            </select>
+                                                            <input type="text"
+                                                                class="form-control form-control-sm text-uppercase"
+                                                                name="type_payment_id" id="type_payment_id"
+                                                                value="{{ $jobSheetHead->type_payment_id }}" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -898,7 +869,7 @@
                                                     <div class="col-6">
                                                         <div class="form-group">
                                                             <label for="inputRemarks">Remarks</label>
-                                                            <textarea class="form-control form-control-sm text-uppercase" name="remarks" id="remarks" rows="5">{{ old('remarks') }}</textarea>
+                                                            <textarea class="form-control form-control-sm text-uppercase" name="remarks" id="remarks" rows="5" readonly>{{ $jobSheetHead->remarks }}</textarea>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -912,9 +883,8 @@
                                                             <div class="input-group">
                                                                 <div class="custom-file">
                                                                     <input type="file" class="custom-file-input"
-                                                                        id="si_doc" name="si_doc">
-                                                                    <label class="custom-file-label" for="si_doc">Choose
-                                                                        file</label>
+                                                                        id="si_doc" name="si_doc" value="{{ $jobSheetHead->si_doc }}" disabled>
+                                                                    <label class="custom-file-label" for="si_doc">{{ $jobSheetHead->si_doc }}</label>
                                                                 </div>
                                                                 {{-- <div class="input-group-append">
                                                                     <span class="input-group-text">Upload</span>
@@ -924,9 +894,23 @@
                                                     </div>
                                                     <div class="col-2 ml-5">
                                                         <div class="form-group">
-                                                            <input type="hidden"
+                                                            <input type="text"
                                                                 class="form-control form-control-sm text-uppercase"
-                                                                name="status" id="status" value="0" readonly>
+                                                                name="status" id="status" value="{{ $jobSheetHead->status }}" readonly>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-2 ml-5">
+                                                        <div class="form-group">
+                                                            <input type="text"
+                                                                class="form-control form-control-sm text-uppercase"
+                                                                name="user_name" id="user_name" value="{{ $jobSheetHead->user['name'] }}" readonly>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-2 ml-5">
+                                                        <div class="form-group">
+                                                            <input type="text"
+                                                                class="form-control form-control-sm text-uppercase"
+                                                                name="user_id" id="user_id" value="{{ $jobSheetHead->user_id }}" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -948,6 +932,8 @@
                                         </div>
                                         <!-- tab end description -->
 
+
+
                                     </div>
                                 </div>
                             </form>
@@ -962,49 +948,3 @@
     </div>
     <!-- /.content-wrapper -->
 @endsection
-
-<script>
-    function showDivCons(select) {
-        // console.log(select.options[select.selectedIndex].text);
-        if (select.options[select.selectedIndex].text != "NONE TAX") {
-            document.getElementById('tax_id_cons').value = "";
-            document.getElementById('tax_id_group_cons').style.display = "block";
-        } else {
-            document.getElementById('tax_id_group_cons').style.display = "none";
-        }
-    }
-
-    function showDivNotify(select) {
-        // console.log(select.options[select.selectedIndex].text);
-        if (select.options[select.selectedIndex].text != "NONE TAX") {
-            document.getElementById('tax_id_notify').value = "";
-            document.getElementById('tax_id_group_notify').style.display = "block";
-        } else {
-            document.getElementById('tax_id_group_notify').style.display = "none";
-        }
-    }
-
-    function showDivNotifyAll() {
-        if (document.getElementById('checkBoxNotify').checked) {
-            document.getElementById('notify_party_group').style.display = 'none';
-        } else {
-            document.getElementById('notify_party_group').style.display = 'block';
-        }
-    }
-
-    function showDivUndHblAll() {
-        if (document.getElementById('checkBoxUndHbl').checked) {
-            document.getElementById('und_hbl_group').style.display = 'block';
-        } else {
-            document.getElementById('und_hbl_group').style.display = 'none';
-        }
-    }
-
-    function showDivCommodityHblAll() {
-        if (document.getElementById('checkBoxCommodityHbl').checked) {
-            document.getElementById('commodity_hbl_group').style.display = 'block';
-        } else {
-            document.getElementById('commodity_hbl_group').style.display = 'none';
-        }
-    }
-</script>

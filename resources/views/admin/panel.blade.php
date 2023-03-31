@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {{-- <meta name="csrf-token" content="{{ csrf_token() }}"> --}}
-    <title>@yield('title') | @yield('subtitle')</title>
+    <title>@yield('title') | @yield('subtitle') | @yield('subtitle_2')</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -161,6 +161,7 @@
 
     <script src="{{ asset('lte') }}/plugins/sweetalert2/sweetalert2.all.min.js"></script>
     <script src="{{ asset('lte') }}/plugins/code.js"></script>
+    {{-- <script src="{{ asset('lte') }}/plugins/casInBank.js"></script> --}}
     <script src="{{ asset('lte') }}/plugins/multiJobsheet.js"></script>
 
     <script>
@@ -168,6 +169,14 @@
         $(".custom-file-input").on("change", function() {
             var fileName = $(this).val().split("\\").pop();
             $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
+    </script>
+
+    <script>
+        // Add the following code if you want the name of the file appear on select
+        $(".custom-file-input").on("change", function() {
+            var fileNameTrDoc = $(this).val().split("\\").pop();
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileNameTrDoc);
         });
     </script>
 

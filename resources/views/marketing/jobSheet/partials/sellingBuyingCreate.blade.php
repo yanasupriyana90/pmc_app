@@ -3,7 +3,7 @@
 @section('title', 'Marketing')
 
 @section('subtitle', 'Job Sheet')
-@section('subtitle_2', 'Show Data')
+@section('subtitle_2', 'Selling & Buying')
 
 @section('content')
     <!-- Content Wrapper. Contains page content -->
@@ -13,7 +13,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">@yield('subtitle')</h1>
+                        <h1 class="m-0">@yield('subtitle') (@yield('subtitle_2'))</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -60,12 +60,12 @@
                                         <a class="nav-link" id="contSeal-tab" data-toggle="pill" href="#cont_seal"
                                             role="tab" aria-controls="contSeal" aria-selected="false">Container &
                                             Seal</a>
-                                    </li>
+                                    </li> --}}
                                     <li class="nav-item">
                                         <a class="nav-link" id="selling_buying-tab" data-toggle="pill"
                                             href="#selling_buying" role="tab" aria-controls="selling_buying"
                                             aria-selected="false">Selling & Buying</a>
-                                    </li> --}}
+                                    </li>
                                 </ul>
                             </div>
                             <!-- form start -->
