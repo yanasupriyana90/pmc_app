@@ -361,10 +361,11 @@ class JobSheetController extends Controller
         // $undernameHbl = UndernameHbl::with(['user', 'mandatoryTax'])->findOrFail($id);
     }
 
-    public function sellingBuyingCreate($id) {
-        $jobSheetHead = JobSheet::with(['user', 'shipper', 'undernameMbl', 'undernameHbl'])->findorFail($id);
+    public function sellingBuyingCreate()
+    {
+        // $jobSheetHead = JobSheet::with(['user', 'shipper', 'undernameMbl', 'undernameHbl'])->findorFail($id);
         // dd($jobSheetHead->undername_mbl_id);
-        return view('marketing.jobSheet.partials.sellingBuyingCreate', ['jobSheetHead' => $jobSheetHead]);
+        return view('marketing.jobSheet.partials.sellingBuyingCreate');
     }
 
     /**

@@ -265,7 +265,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/jobSheetCreate/get-typePackConts', 'getTypePackConts');
 
         Route::post('/jobSheetStore', 'store')->name('jobSheet.store');
-        Route::get('/jobSheet/SellingBuyingCreate/{id}', 'sellingBuyingCreate')->name('jobSheet.sellingBuyingCreate');
+        // Route::get('/jobSheet/SellingBuyingCreate/{id}', 'sellingBuyingCreate')->name('jobSheet.sellingBuyingCreate');
+        Route::get('/jobSheet/SellingBuyingCreate', 'sellingBuyingCreate')->name('jobSheet.sellingBuyingCreate');
         // Route::get('/jobSheetEdit/{id}', 'edit')->name('jobSheet.edit');
         // Route::put('/jobSheetUpdate/{id}', 'update')->name(('jobSheet.update'));
         // Route::get('/jobSheetDestroy/{id}', 'destroy')->name('jobSheet.destroy');

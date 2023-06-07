@@ -171,7 +171,8 @@
                                 <td class="align-middle" style="text-align:center">{{ $jobSheetHead->user['name'] }}</td>
                                 <td class="align-middle" style="text-align:center">
                                     <a class="btn btn-primary btn-xs" href="{{ route('jobSheet.show', $jobSheetHead->id) }}"><i class="fa fa-eye"></i> Show Detail</a>
-                                    <a class="btn btn-primary btn-xs" href="{{ route('jobSheet.sellingBuyingCreate',  $jobSheetHead->id) }}"><i class="fa fa-exchange-alt"></i> Selling & Buying</a>
+                                    {{-- <a class="btn btn-primary btn-xs" href="{{ route('jobSheet.sellingBuyingCreate',  $jobSheetHead->id) }}"><i class="fa fa-exchange-alt"></i> Selling & Buying</a> --}}
+                                    <a class="btn btn-primary btn-xs" href="{{ route('jobSheet.sellingBuyingCreate') }}"><i class="fa fa-exchange-alt"></i> Selling & Buying</a>
                                     <a class="btn btn-danger btn-xs" href="#" id="delete"><i
                                             class="fa fa-trash"></i> Delete</a>
                                 </td>
