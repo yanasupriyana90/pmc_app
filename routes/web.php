@@ -23,6 +23,7 @@ use App\Http\Controllers\DailySalesReportController;
 use App\Http\Controllers\PettyCashController;
 use App\Models\BankAccount;
 use App\Models\pettyCash;
+use App\Models\SellingBuying;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
@@ -266,12 +267,19 @@ Route::middleware('auth')->group(function () {
 
         Route::post('/jobSheetStore', 'store')->name('jobSheet.store');
         // Route::get('/jobSheet/SellingBuyingCreate/{id}', 'sellingBuyingCreate')->name('jobSheet.sellingBuyingCreate');
-        Route::get('/jobSheet/SellingBuyingCreate', 'sellingBuyingCreate')->name('jobSheet.sellingBuyingCreate');
+        Route::get('/jobSheet/SellingBuyingCreate/{id}', 'sellingBuyingCreate')->name('jobSheet.sellingBuyingCreate');
         // Route::get('/jobSheetEdit/{id}', 'edit')->name('jobSheet.edit');
         // Route::put('/jobSheetUpdate/{id}', 'update')->name(('jobSheet.update'));
         // Route::get('/jobSheetDestroy/{id}', 'destroy')->name('jobSheet.destroy');
     });
 });
+
+// Selling Buying
+// Route::middleware('auth')->group(function () {
+//     Route::controller(SellingBuying::class)->group(function () {
+//         Route::get('/sellingBuyingCreate/{job_sheet_head_id}', 'create')->name('sellingBuying.create');
+//     });
+// });
 
 
 Route::post('simpan_cont_seal', [ContSealDetailController::class, 'simpan_cont_seal'])->name('simpan_cont_seal');
