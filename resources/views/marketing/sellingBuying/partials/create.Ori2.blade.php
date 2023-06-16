@@ -25,16 +25,6 @@
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-
-                    </div>
-                @endif
             </div><!-- /.container-fluid -->
         </div>
         <!-- /.content-header -->
@@ -129,42 +119,28 @@
                                 <h3 class="card-title">@yield('subtitle_3')</h3>
                                 <h4 class="card-text">@yield('subtitle_4')</h4>
                             </div>
-                            <form action="{{ route('jobSheet.sellingBuyingStore') }}" method="POST">
+                            <form action="" method="POST">
                                 @csrf
                                 <div class="row">
                                     <div class="container">
-                                        <div class="col-sm-1" hidden>
-                                            <div class="form-group">
-                                                <label>Job Sheet Head ID</label>
-                                                <input class="form-control" type="number" id="jobSheetHeadId"
-                                                    name="jobSheetHeadId" value="{{ $jobSheetHeadList->id }}" readonly>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-1" hidden>
-                                            <div class="form-group">
-                                                <label>User ID</label>
-                                                <input class="form-control" type="number" id="userId"
-                                                    name="userId" value="{{ $jobSheetHeadList->user_id }}" readonly>
-                                            </div>
-                                        </div>
                                         <div class="col-sm-6 col-md-3">
                                             <div class="form-group">
                                                 <label>Exchange Rate</label>
-                                                <input class="form-control" type="number" id="exchangeRate"
-                                                    name="exchangeRate">
+                                                <input class="form-control" type="email" id="email" name="email">
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-12 col-sm-12">
                                                 <div class="table-responsive">
-                                                    <table class="table table-hover table-white" id="tableEstimate">
+                                                    <table class="table table-hover table-white"
+                                                        id="tableRos">
                                                         <thead>
                                                             <tr>
                                                                 <th style="width: 20px">#</th>
-                                                                <th class="col-sm-2">Category</th>
-                                                                <th class="col-md-6">Remarks</th>
-                                                                <th style="width:100px;">Unit Cost</th>
+                                                                {{-- <th class="col-sm-2">Item</th> --}}
+                                                                <th class="col-md-6">Category</th>
                                                                 <th style="width:80px;">Qty</th>
+                                                                <th style="width:100px;">Unit Cost</th>
                                                                 <th>Amount</th>
                                                                 <th> </th>
                                                             </tr>
@@ -172,19 +148,17 @@
                                                         <tbody>
                                                             <tr>
                                                                 <td>1</td>
-                                                                <td><input class="form-control" style="min-width:150px"
-                                                                        type="text" id="categoryRos"
-                                                                        name="categoryRos[]"></td>
+                                                                {{-- <td><input class="form-control" style="min-width:150px" type="text" id="item" name="item[]"></td> --}}
                                                                 <td><input class="form-control"style="min-width:150px"
-                                                                        type="text" id="remarksRos" name="remarksRos[]">
-                                                                </td>
+                                                                        type="text" id="description"
+                                                                        name="description[]"></td>
+                                                                <td><input class="form-control qty" style="width:80px"
+                                                                        type="text" id="qty" name="qty[]" value="{{ $jobSheetHeadList->volume }}" readonly></td>
                                                                 <td><input class="form-control unit_price"
                                                                         style="width:100px" type="text" id="unit_cost"
                                                                         name="unit_cost[]"></td>
-                                                                <td><input class="form-control qty" style="width:80px"
-                                                                        type="text" id="qty" name="qty[]"></td>
                                                                 <td><input class="form-control total" style="width:120px"
-                                                                        type="text" id="amount" name="amount[]"
+                                                                        type="" id="amount" name="amount[]"
                                                                         value="0" readonly></td>
                                                                 <td><a href="javascript:void(0)"
                                                                         class="text-success font-18" title="Add"
@@ -201,31 +175,21 @@
                                                                 <td></td>
                                                                 <td></td>
                                                                 <td></td>
-                                                                <td class="text-right">Total</td>
+                                                                <td class="text-right">Total Revenue</td>
                                                                 <td>
                                                                     <input class="form-control text-right total"
-                                                                        type="text" id="sum_total" name="total"
+                                                                        type="text" id="sum_total_ros" name="total"
                                                                         value="0" readonly>
                                                                 </td>
                                                             </tr>
-                                                            <tr>
+                                                            {{-- <tr>
                                                                 <td colspan="5" class="text-right">Tax</td>
                                                                 <td>
                                                                     <input class="form-control text-right"type="text"
                                                                         id="tax_1" name="tax_1" value="0"
                                                                         readonly>
                                                                 </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td colspan="5" class="text-right">
-                                                                    Discount %
-                                                                </td>
-                                                                <td>
-                                                                    <input class="form-control text-right discount"
-                                                                        type="text" id="discount" name="discount"
-                                                                        value="10">
-                                                                </td>
-                                                            </tr>
+                                                            </tr> --}}
                                                             <tr>
                                                                 <td colspan="5"
                                                                     style="text-align: right; font-weight: bold">
@@ -239,14 +203,6 @@
                                                             </tr>
                                                         </tbody>
                                                     </table>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="form-group">
-                                                            <label>Other Information</label>
-                                                            <textarea class="form-control" rows="3" id="other_information" name="other_information"></textarea>
-                                                        </div>
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -273,18 +229,17 @@
         var rowIdx = 1;
         $("#addBtn").on("click", function() {
             // Adding a row inside the tbody.
-            $("#tableEstimate tbody").append(`
+            $("#tableRos tbody").append(`
                 <tr id="R${++rowIdx}">
                     <td class="row-index text-center"><p> ${rowIdx}</p></td>
-                    <td><input class="form-control" type="text" style="min-width:150px" id="categoryRos" name="categoryRos[]"></td>
-                    <td><input class="form-control" type="text" style="min-width:150px" id="remarksRos" name="remarksRos[]"></td>
+                    <td><input class="form-control" type="text" style="min-width:150px" id="description" name="description[]"></td>
+                    <td><input class="form-control qty" style="width:80px" type="text" id="qty" name="qty[]" value="{{ $jobSheetHeadList->volume }}" readonly></td>
                     <td><input class="form-control unit_price" style="width:100px" type="text" id="unit_cost" name="unit_cost[]"></td>
-                    <td><input class="form-control qty" style="width:80px" type="text" id="qty" name="qty[]"></td>
                     <td><input class="form-control total" style="width:120px" type="text" id="amount" name="amount[]" value="0" readonly></td>
-                    <td><a href="javascript:void(0)" class="text-danger font-18 remove" title="Remove"><i class="fa fa-trash-alt"></i></a></td>
+                    <td><a href="javascript:void(0)" class="text-danger font-18 remove" title="Remove"><i class="fa fa-trash"></i></a></td>
                 </tr>`);
         });
-        $("#tableEstimate tbody").on("click", ".remove", function() {
+        $("#tableRos tbody").on("click", ".remove", function() {
             // Getting all the rows next to the row
             // containing the clicked button
             var child = $(this).closest("tr").nextAll();
@@ -314,7 +269,7 @@
             rowIdx--;
         });
 
-        $("#tableEstimate tbody").on("input", ".unit_price", function() {
+        $("#tableRos tbody").on("input", ".unit_price", function() {
             var unit_price = parseFloat($(this).val());
             var qty = parseFloat($(this).closest("tr").find(".qty").val());
             var total = $(this).closest("tr").find(".total");
@@ -323,7 +278,7 @@
             calc_total();
         });
 
-        $("#tableEstimate tbody").on("input", ".qty", function() {
+        $("#tableRos tbody").on("input", ".qty", function() {
             var qty = parseFloat($(this).val());
             var unit_price = parseFloat($(this).closest("tr").find(".unit_price").val());
             var total = $(this).closest("tr").find(".total");
@@ -339,17 +294,35 @@
             $(".subtotal").text(sum);
 
             var amounts = sum;
-            var tax = 100;
+            // var tax = 100;
             $(document).on("change keyup blur", "#qty", function() {
                 var qty = $("#qty").val();
-                var discount = $(".discount").val();
+                // var discount = $(".discount").val();
                 $(".total").val(amounts * qty);
-                $("#sum_total").val(amounts * qty);
-                $("#tax_1").val((amounts * qty) / tax);
-                $("#grand_total").val((parseInt(amounts)) - (parseInt(discount)));
+                $("#sum_total_ros").val(amounts * qty);
+                // $("#tax_1").val((amounts * qty) / tax);
+                // $("#grand_total").val((parseInt(amounts)) - (parseInt(discount)));
             });
         }
+
+        // function calc_total() {
+        //     var sum = 0;
+        //     $(".total").each(function() {
+        //         sum += parseFloat($(this).val());
+        //     });
+        //     $(".subtotal").text(sum);
+
+        //     var amounts = sum;
+        //     var tax = 100;
+        //     $(document).on("change keyup blur", "#qty", function() {
+        //         var qty = $("#qty").val();
+        //         var discount = $(".discount").val();
+        //         $(".total").val(amounts * qty);
+        //         $("#sum_total_ros").val(amounts * qty);
+        //         $("#tax_1").val((amounts * qty) / tax);
+        //         $("#grand_total").val((parseInt(amounts)) - (parseInt(discount)));
+        //     });
+        // }
     </script>
 @endsection
-
 @endsection

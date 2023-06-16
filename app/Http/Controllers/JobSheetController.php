@@ -7,6 +7,8 @@ use App\Models\ContainerSizeType;
 use App\Models\ContSealDetail;
 use App\Models\JobSheet;
 use App\Models\MandatoryTax;
+use App\Models\RevenueOfSale;
+use App\Models\SellingBuying;
 use App\Models\Shipper;
 use App\Models\TypeBillOfLading;
 use App\Models\TypeMeasurement;
@@ -366,6 +368,50 @@ class JobSheetController extends Controller
         $jobSheetHead = JobSheet::with(['shipper', 'undernameMbl', 'undernameHbl', 'containerSizeType', 'typePayment'])->findorFail($id);
         return view('marketing.sellingBuying.partials.create', ['jobSheetHeadList' => $jobSheetHead]);
         // dd($jobSheetHead);
+    }
+
+    public function sellingBuyingStore(Request $request)
+    {
+        $data = $request->all();
+        // dd($data);
+        $sellingBuying = new SellingBuying;
+        $sellingBuying->job_sheet_head_id = $data['jobSheetHeadId'];
+        $sellingBuying->exchange_rate = $data['exchangeRate'];
+        $sellingBuying->user_id = $data['userId'];
+        $sellingBuying->save();
+
+        // $ros = new RevenueOfSale;
+        // $ros->category = $data['categoryRos'];
+        // $ros->volume = $data['qty'];
+        // $ros->unit_cost = $data['unit_cost'];
+        // $ros->amount = $data['amount'];
+        // $ros->remarks = $data['remarksRos'];
+        // $ros->selling_buying_id = $sellingBuying['id'];
+        // $ros->user_id = $sellingBuying['user_id'];
+        // $ros->save();
+
+        if (count($data['categoryRos']) > 0) {
+            foreach ($data['categoryRos'] as $item => $value) {
+                $data2 = array(
+                    'category' => $data['categoryRos'][$item],
+                    'volume' => $data['qty'][$item],
+                    'unit_cost' => $data['unit_cost'][$item],
+                    'amount' => $data['amount'][$item],
+                    'remarks' => $data['remarksRos'][$item],
+                    'selling_buying_id' => $sellingBuying -> id,
+                    'user_id' => $sellingBuying -> user_id,
+                );
+                RevenueOfSale::create($data2);
+            }
+        }
+
+        $notification = array(
+            'message' => 'Selling & Buying Inserted Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('jobSheet')->with($notification);
+
     }
 
     /**

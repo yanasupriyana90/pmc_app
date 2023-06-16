@@ -266,8 +266,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/jobSheetCreate/get-typePackConts', 'getTypePackConts');
 
         Route::post('/jobSheetStore', 'store')->name('jobSheet.store');
-        // Route::get('/jobSheet/SellingBuyingCreate/{id}', 'sellingBuyingCreate')->name('jobSheet.sellingBuyingCreate');
         Route::get('/jobSheet/SellingBuyingCreate/{id}', 'sellingBuyingCreate')->name('jobSheet.sellingBuyingCreate');
+        Route::post('/jobSheet/SellingBuyingStore', 'sellingBuyingStore')->name('jobSheet.sellingBuyingStore');
         // Route::get('/jobSheetEdit/{id}', 'edit')->name('jobSheet.edit');
         // Route::put('/jobSheetUpdate/{id}', 'update')->name(('jobSheet.update'));
         // Route::get('/jobSheetDestroy/{id}', 'destroy')->name('jobSheet.destroy');
@@ -275,11 +275,11 @@ Route::middleware('auth')->group(function () {
 });
 
 // Selling Buying
-// Route::middleware('auth')->group(function () {
-//     Route::controller(SellingBuying::class)->group(function () {
-//         Route::get('/sellingBuyingCreate/{job_sheet_head_id}', 'create')->name('sellingBuying.create');
-//     });
-// });
+Route::middleware('auth')->group(function () {
+    Route::controller(SellingBuying::class)->group(function () {
+
+    });
+});
 
 
 Route::post('simpan_cont_seal', [ContSealDetailController::class, 'simpan_cont_seal'])->name('simpan_cont_seal');
