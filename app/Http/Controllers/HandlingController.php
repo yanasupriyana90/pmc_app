@@ -2,14 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\JobSheet;
-use App\Models\RevenueOfSale;
-use App\Models\SellingBuying;
+use App\Models\Handling;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
-
-class SellingBuyingController extends Controller
+class HandlingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -42,18 +38,13 @@ class SellingBuyingController extends Controller
         //
     }
 
-    public function createRosSaveRecord(Request $request)
-    {
-
-    }
-
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\SellingBuying  $sellingBuying
+     * @param  \App\Models\Handling  $handling
      * @return \Illuminate\Http\Response
      */
-    public function show(SellingBuying $sellingBuying)
+    public function show(Handling $handling)
     {
         //
     }
@@ -61,10 +52,10 @@ class SellingBuyingController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\SellingBuying  $sellingBuying
+     * @param  \App\Models\Handling  $handling
      * @return \Illuminate\Http\Response
      */
-    public function edit(SellingBuying $sellingBuying)
+    public function edit(Handling $handling)
     {
         //
     }
@@ -73,10 +64,10 @@ class SellingBuyingController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\SellingBuying  $sellingBuying
+     * @param  \App\Models\Handling  $handling
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, SellingBuying $sellingBuying)
+    public function update(Request $request, Handling $handling)
     {
         //
     }
@@ -84,10 +75,10 @@ class SellingBuyingController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\SellingBuying  $sellingBuying
+     * @param  \App\Models\Handling  $handling
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SellingBuying $sellingBuying)
+    public function destroy(Handling $handling)
     {
         //
     }

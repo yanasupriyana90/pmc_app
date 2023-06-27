@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('selling_buyings', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('job_sheet_head_id');
-            $table->decimal('exchange_rate', 11,2);
+            $table->decimal('exchange_rate_ros', 11,2);
+            $table->decimal('exchange_rate_cos', 11,2);
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
             $table->foreign('job_sheet_head_id')->references('id')->on('job_sheet_heads')->onDelete('restrict');

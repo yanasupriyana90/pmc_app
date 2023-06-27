@@ -66,7 +66,8 @@
     <!-- ./wrapper -->
 
     <!-- jQuery -->
-    <script src="{{ asset('lte') }}/plugins/jquery/jquery.min.js"></script>
+    <script src="{{ asset('lte') }}/plugins/jquery/jquery.js"></script>
+    {{-- <script src="{{ asset('lte') }}/plugins/jquery/jquery.min.js"></script> --}}
     <!-- jQuery UI 1.11.4 -->
     <script src="{{ asset('lte') }}/plugins/jquery-ui/jquery-ui.min.js"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
@@ -80,13 +81,15 @@
     <!-- Sparkline -->
     <script src="{{ asset('lte') }}/plugins/sparklines/sparkline.js"></script>
     <!-- JQVMap -->
-    <script src="{{ asset('lte') }}/plugins/jqvmap/jquery.vmap.min.js"></script>
-    <script src="{{ asset('lte') }}/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+    {{-- <script src="{{ asset('lte') }}/plugins/jqvmap/jquery.vmap.min.js"></script> --}}
+    {{-- <script src="{{ asset('lte') }}/plugins/jqvmap/maps/jquery.vmap.usa.js"></script> --}}
     <!-- jQuery Knob Chart -->
     <script src="{{ asset('lte') }}/plugins/jquery-knob/jquery.knob.min.js"></script>
     <!-- InputMask -->
     <script src="{{ asset('lte') }}/plugins/moment/moment.min.js"></script>
-    <script src="{{ asset('lte') }}/plugins/inputmask/jquery.inputmask.min.js"></script>
+    <script src="{{ asset('lte') }}/plugins/inputmask/jquery.inputmask.js"></script>
+    {{-- <script src="{{ asset('lte') }}/plugins/inputmask/jquery.inputmask.min.js"></script> --}}
+    <script src="{{ asset('lte') }}/plugins/inputmask/jquery.mask.min.js"></script>
     <!-- daterangepicker -->
     <script src="{{ asset('lte') }}/plugins/daterangepicker/daterangepicker.js"></script>
     <!-- Tempusdominus Bootstrap 4 -->

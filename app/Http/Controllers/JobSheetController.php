@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\JobSheetCreateRequest;
 use App\Models\ContainerSizeType;
 use App\Models\ContSealDetail;
+use App\Models\CostOfSale;
+use App\Models\Emkl;
+use App\Models\Handling;
 use App\Models\JobSheet;
 use App\Models\MandatoryTax;
 use App\Models\RevenueOfSale;
@@ -376,7 +379,8 @@ class JobSheetController extends Controller
         // dd($data);
         $sellingBuying = new SellingBuying;
         $sellingBuying->job_sheet_head_id = $data['jobSheetHeadId'];
-        $sellingBuying->exchange_rate = $data['exchangeRate'];
+        $sellingBuying->exchange_rate_ros = $data['exchangeRateRos'];
+        $sellingBuying->exchange_rate_cos = $data['exchangeRateCos'];
         $sellingBuying->user_id = $data['userId'];
         $sellingBuying->save();
 
@@ -390,18 +394,69 @@ class JobSheetController extends Controller
         // $ros->user_id = $sellingBuying['user_id'];
         // $ros->save();
 
-        if (count($data['categoryRos']) > 0) {
-            foreach ($data['categoryRos'] as $item => $value) {
-                $data2 = array(
-                    'category' => $data['categoryRos'][$item],
-                    'volume' => $data['qty'][$item],
-                    'unit_cost' => $data['unit_cost'][$item],
-                    'amount' => $data['amount'][$item],
-                    'remarks' => $data['remarksRos'][$item],
+        if (count($data['itemNameRos']) > 0) {
+            foreach ($data['itemNameRos'] as $item => $value) {
+                $dataRos = array(
+                    'item_name' => $data['itemNameRos'][$item],
+                    'volume' => $data['volRos'][$item],
+                    'price' => $data['priceRos'][$item],
+                    'actual_amt' => $data['actualAmountRos'][$item],
+                    'tax_rate' => $data['taxRateRos'][$item],
+                    'tax_amt' => $data['taxAmountRos'][$item],
+                    'final_amount' => $data['itemFinalAmountRos'][$item],
                     'selling_buying_id' => $sellingBuying -> id,
                     'user_id' => $sellingBuying -> user_id,
                 );
-                RevenueOfSale::create($data2);
+                RevenueOfSale::create($dataRos);
+            }
+        }
+
+        if (count($data['itemNameEmkl']) > 0) {
+            foreach ($data['itemNameEmkl'] as $item => $value) {
+                $dataEmkl = array(
+                    'item_name' => $data['itemNameEmkl'][$item],
+                    'price' => $data['priceEmkl'][$item],
+                    'tax_rate' => $data['taxRateEmkl'][$item],
+                    'tax_amt' => $data['taxAmountEmkl'][$item],
+                    'final_amount' => $data['itemFinalAmountEmkl'][$item],
+                    'selling_buying_id' => $sellingBuying -> id,
+                    'user_id' => $sellingBuying -> user_id,
+                );
+                Emkl::create($dataEmkl);
+            }
+        }
+
+        if (count($data['itemNameCos']) > 0) {
+            foreach ($data['itemNameCos'] as $item => $value) {
+                $dataCos = array(
+                    'item_name' => $data['itemNameCos'][$item],
+                    'volume' => $data['volCos'][$item],
+                    'price' => $data['priceCos'][$item],
+                    'actual_amt' => $data['actualAmountCos'][$item],
+                    'tax_rate' => $data['taxRateCos'][$item],
+                    'tax_amt' => $data['taxAmountCos'][$item],
+                    'final_amount' => $data['itemFinalAmountCos'][$item],
+                    'selling_buying_id' => $sellingBuying -> id,
+                    'user_id' => $sellingBuying -> user_id,
+                );
+                CostOfSale::create($dataCos);
+            }
+        }
+
+        if (count($data['itemNameHand']) > 0) {
+            foreach ($data['itemNameHand'] as $item => $value) {
+                $dataHand = array(
+                    'item_name' => $data['itemNameHand'][$item],
+                    'volume' => $data['volHand'][$item],
+                    'price' => $data['priceHand'][$item],
+                    'actual_amt' => $data['actualAmountHand'][$item],
+                    'tax_rate' => $data['taxRateHand'][$item],
+                    'tax_amt' => $data['taxAmountHand'][$item],
+                    'final_amount' => $data['itemFinalAmountHand'][$item],
+                    'selling_buying_id' => $sellingBuying -> id,
+                    'user_id' => $sellingBuying -> user_id,
+                );
+                Handling::create($dataHand);
             }
         }
 

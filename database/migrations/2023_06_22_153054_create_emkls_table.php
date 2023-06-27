@@ -13,12 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('revenue_of_sales', function (Blueprint $table) {
+        Schema::create('emkls', function (Blueprint $table) {
             $table->id();
             $table->string('item_name');
-            $table->integer('volume');
             $table->decimal('price', 11, 2);
-            $table->decimal('actual_amt', 11, 2);
             $table->float('tax_rate', 5, 2);
             $table->decimal('tax_amt', 11, 2);
             $table->decimal('final_amount', 11, 2);
@@ -37,10 +35,10 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('revenue_of_sales', function (Blueprint $table) {
+        Schema::table('emkls', function (Blueprint $table) {
             $table->dropForeign(['selling_buying_id']);
             $table->dropForeign(['user_id']);
         });
-        Schema::dropIfExists('revenue_of_sales');
+        Schema::dropIfExists('emkls');
     }
 };

@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('revenue_of_sales', function (Blueprint $table) {
+        Schema::create('cost_of_sales', function (Blueprint $table) {
             $table->id();
             $table->string('item_name');
             $table->integer('volume');
@@ -37,10 +37,10 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('revenue_of_sales', function (Blueprint $table) {
+        Schema::table('cost_of_sales', function (Blueprint $table) {
             $table->dropForeign(['selling_buying_id']);
             $table->dropForeign(['user_id']);
         });
-        Schema::dropIfExists('revenue_of_sales');
+        Schema::dropIfExists('cost_of_sales');
     }
 };
