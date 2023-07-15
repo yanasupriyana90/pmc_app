@@ -145,4 +145,14 @@ class JobSheet extends Model
         return $this->belongsTo(TypeBillOfLading::class, 'hbl_type_bl_id', 'id');
     }
 
+    public function contSealDetail()
+    {
+        return $this->hasMany(ContSealDetail::class, 'job_sheet_head_id', 'id');
+    }
+
+    public function sellingBuying()
+    {
+        return $this->hasOne(SellingBuying::class, 'job_sheet_head_id', 'id');
+    }
+
 }

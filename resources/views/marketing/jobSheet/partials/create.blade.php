@@ -104,7 +104,7 @@
                                                             <input type="text"
                                                                 class="form-control form-control-sm text-uppercase"
                                                                 name="booking_no" id="booking_no"
-                                                                value="{{ old('booking_no') }}" disabled>
+                                                                value="{{ old('booking_no') }}">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -613,7 +613,7 @@
                                                                 <input type="text" name="open_cy"
                                                                     value="{{ old('open_cy') }}"
                                                                     class="form-control form-control-sm datetimepicker-input"
-                                                                    data-target="#open_cy" disabled />
+                                                                    data-target="#open_cy" />
                                                                 <div class="input-group-append" data-target="#open_cy"
                                                                     data-toggle="datetimepicker">
                                                                     <div class="input-group-text"><i
@@ -631,7 +631,7 @@
                                                                 <input type="text" name="closing_doc"
                                                                     value="{{ old('closing_doc') }}"
                                                                     class="form-control form-control-sm datetimepicker-input"
-                                                                    data-target="#closing_doc" disabled />
+                                                                    data-target="#closing_doc" />
                                                                 <div class="input-group-append" data-target="#closing_doc"
                                                                     data-toggle="datetimepicker">
                                                                     <div class="input-group-text"><i
@@ -649,7 +649,7 @@
                                                                 <input type="text" name="closing_cy"
                                                                     value="{{ old('closing_cy') }}"
                                                                     class="form-control form-control-sm datetimepicker-input"
-                                                                    data-target="#closing_cy" disabled />
+                                                                    data-target="#closing_cy" />
                                                                 <div class="input-group-append" data-target="#closing_cy"
                                                                     data-toggle="datetimepicker">
                                                                     <div class="input-group-text"><i
@@ -706,6 +706,58 @@
                                                         </div>
                                                     </div>
                                                 </div>
+
+                                                <div class="row">
+                                                    <div class="col-md-12 col-sm-12">
+                                                        <div class="table-responsive">
+                                                            <table class="table table-bordered">
+                                                                <tr>
+                                                                    <td colspan="2">
+                                                                        <table id="tableContSeal" class="table table-bordered">
+                                                                            <tr>
+                                                                                <th class="text text-center" width="5%">
+                                                                                    No.</th>
+                                                                                <th class="text text-center" width="45%">
+                                                                                    Container
+                                                                                    No.</th>
+                                                                                <th class="text text-center" width="45%">
+                                                                                    Seal
+                                                                                    No.</th>
+                                                                                <th class="text text-center" width="5%"
+                                                                                rowspan="2"></th>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td class="text text-center"><span
+                                                                                        id="cont_seal_no">1</span></td>
+                                                                                <td><input type="text" name="contName[]"
+                                                                                        id="contName1"
+                                                                                        class="form-control form-control-sm input-sm text-uppercase" value="{{ old('contName') }}"/>
+                                                                                </td>
+                                                                                <td><input type="text" name="sealName[]"
+                                                                                        id="sealName1"
+                                                                                        class="form-control form-control-sm input-sm text-uppercase" value="{{ old('sealName') }}"/>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+                                                                        <div align="right">
+                                                                            <button type="button" name="add_row_cont_seal"
+                                                                                id="add_row_cont_seal"
+                                                                                class="btn btn-success btn-xs mr-3"><i
+                                                                                    class="fa fa-plus"></i></button>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr hidden>
+                                                                    <td colspan="2" align="center">
+                                                                        <input type="text" name="totalContSeal"
+                                                                            id="totalContSeal" value="1" readonly/>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                                 <hr size="100" noshade>
                                             </div>
                                             <div class="container">
@@ -961,6 +1013,49 @@
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
+
+    @section('script')
+    <!-- REVENUE OF SALES SCRIPT -->
+    <script>
+        $(document).ready(function() {
+            // var finalTotalAmountRos = $('#finalTotalAmountRos').val();
+            // var finalTotalExRateAmountRos = $('#finalTotalAmountExRateRos').text();
+            var count = 1;
+
+            $(document).on('click', '#add_row_cont_seal', function() {
+                count++;
+                $('#totalContSeal').val(count);
+                var html_code = '';
+                html_code += '<tr id="row_id_cont_seal_' + count + '">';
+                html_code += '<td class="text text-center"><span id="cont_seal_no">' + count + '</span></td>';
+
+                html_code += '<td><input type="text" name="contName[]" id="contName' + count +
+                    '" class="form-control form-control-sm input-sm text-uppercase" /></td>';
+                html_code += '<td><input type="text" name="sealName[]" id="sealName' + count +
+                    '" class="form-control form-control-sm input-sm text-uppercase" /></td>';
+                html_code += '<td class="text-center align-middle"><button type="button" name="remove_row_cont_seal" id="' + count +
+                    '" class="btn btn-danger btn-xs remove_row_cont_seal"><i class="fa fa-trash-alt"></i></button></td>';
+                html_code += '</tr>';
+                $('#tableContSeal').append(html_code);
+            });
+
+            $(document).on('click', '.remove_row_cont_seal', function() {
+                var row_id_cont_seal = $(this).attr("id");
+                // var total_item_amount_ros = $('#itemFinalAmountRos' + row_id_ros).val();
+                // var final_amount_ros = $('#finalTotalAmountRos').val();
+                // var result_amount_ros = parseFloat(final_amount_ros) - parseFloat(total_item_amount_ros);
+                // var ex_rate_ros = $('#exchangeRateRos').val();
+                // final_item_total_ex_rate_ros = parseFloat(result_amount_ros) * parseFloat(ex_rate_ros);
+                // $('#finalTotalAmountRos').val(result_amount_ros);
+                // $('#finalTotalAmountExRateRos').val(final_item_total_ex_rate_ros.toFixed(4));
+                $('#row_id_cont_seal_' + row_id_cont_seal).remove();
+                count--;
+                $('#totalContSeal').val(count);
+            });
+        });
+    </script>
+    <!-- END REVENUE OF SALES SCRIPT -->
+@endsection
 @endsection
 
 <script>

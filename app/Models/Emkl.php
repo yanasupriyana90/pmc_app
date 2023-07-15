@@ -10,12 +10,19 @@ class Emkl extends Model
     use HasFactory;
 
     protected $fillable = [
+        'selling_buying_id',
         'item_name',
+        'volume',
         'price',
+        'actual_amt',
         'tax_rate',
         'tax_amt',
         'final_amount',
-        'selling_buying_id',
         'user_id',
     ];
+
+    public function sellingBuying()
+    {
+        return $this->belongsTo(SellingBuying::class, 'selling_buying_id', 'id');
+    }
 }

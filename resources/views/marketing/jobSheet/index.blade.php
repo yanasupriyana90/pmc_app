@@ -92,6 +92,8 @@
                             <th>Type Payment</th>
                             <th>Remaks</th> --}}
                             <th>SI Doc</th>
+                            <th>Grand Total Selling</th>
+                            <th>Grand Total Buying</th>
                             <th>Status</th>
                             <th>User</th>
                             <th>Action</th>
@@ -159,6 +161,8 @@
                                     <a href="{{ asset('si_doc/' . $jobSheetHead->si_doc) }}" target="_blank"
                                         rel="nooperner noreferrer">{{ $jobSheetHead->si_doc }}</a>
                                 </td>
+                                <td class="align-middle text-right">{{ $jobSheetHead->sellingBuying['grand_total_selling'] ?? 0 }}</td>
+                                <td class="align-middle text-right">{{ $jobSheetHead->sellingBuying['grand_total_buying'] ?? 0 }}</td>
                                 <td class="align-middle" style="text-align:center">
                                     @if ($jobSheetHead->status == 0)
                                     <a class="text-warning">PENDING</a>

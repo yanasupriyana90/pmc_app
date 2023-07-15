@@ -15,14 +15,14 @@ return new class extends Migration
     {
         Schema::create('handlings', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('selling_buying_id');
             $table->string('item_name');
             $table->integer('volume');
-            $table->decimal('price', 11, 2);
-            $table->decimal('actual_amt', 11, 2);
-            $table->float('tax_rate', 5, 2);
-            $table->decimal('tax_amt', 11, 2);
-            $table->decimal('final_amount', 11, 2);
-            $table->unsignedBigInteger('selling_buying_id');
+            $table->decimal('price', 13, 4);
+            $table->decimal('actual_amt', 13, 4);
+            $table->tinyInteger('tax_rate');
+            $table->decimal('tax_amt', 13, 4);
+            $table->decimal('final_amount', 13, 4);
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
             $table->foreign('selling_buying_id')->references('id')->on('selling_buyings')->onDelete('restrict');

@@ -18,7 +18,9 @@ class SellingBuyingController extends Controller
      */
     public function index()
     {
-        //
+        $sellingBuying = SellingBuying::with('user', 'jobSheetHead')->get();
+        dd($sellingBuying);
+        return view('marketing.sellingBuying.partials.index');
     }
 
     /**
@@ -57,6 +59,7 @@ class SellingBuyingController extends Controller
     {
         //
     }
+
 
     /**
      * Show the form for editing the specified resource.

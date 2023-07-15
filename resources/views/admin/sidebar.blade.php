@@ -282,6 +282,12 @@
                                 <p>Job Sheet</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ route('sellingBuying') }}" class="nav-link">
+                                <i class="far fa-file-alt nav-icon"></i>
+                                <p>Selling Buying</p>
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 <li class="nav-item">

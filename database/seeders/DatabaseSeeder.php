@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Exceptions\Handler;
 use App\Models\BankAccount;
 use Illuminate\Database\Seeder;
 
@@ -39,6 +40,11 @@ class DatabaseSeeder extends Seeder
 
             // Marketing
             JobSheetSeeder::class,
+            SellingBuyingSeeder::class,
+            RevenueOfSaleSeeder::class,
+            EmklSeeder::class,
+            CostOfSaleSeeder::class,
+            HandlingSeeder::class,
         ]);
     }
 }

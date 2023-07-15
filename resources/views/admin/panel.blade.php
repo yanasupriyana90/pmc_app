@@ -87,7 +87,7 @@
     <script src="{{ asset('lte') }}/plugins/jquery-knob/jquery.knob.min.js"></script>
     <!-- InputMask -->
     <script src="{{ asset('lte') }}/plugins/moment/moment.min.js"></script>
-    <script src="{{ asset('lte') }}/plugins/inputmask/jquery.inputmask.js"></script>
+    {{-- <script src="{{ asset('lte') }}/plugins/inputmask/jquery.inputmask.js"></script> --}}
     {{-- <script src="{{ asset('lte') }}/plugins/inputmask/jquery.inputmask.min.js"></script> --}}
     <script src="{{ asset('lte') }}/plugins/inputmask/jquery.mask.min.js"></script>
     <!-- daterangepicker -->
@@ -119,6 +119,7 @@
     <script src="{{ asset('lte') }}/plugins/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="{{ asset('lte') }}/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
     @yield('script')
+    @yield('scriptContSealDetail')
     <script>
         $(function() {
             $("#example1").DataTable({

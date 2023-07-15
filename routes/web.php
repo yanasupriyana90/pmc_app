@@ -277,7 +277,7 @@ Route::middleware('auth')->group(function () {
 // Selling Buying
 Route::middleware('auth')->group(function () {
     Route::controller(SellingBuying::class)->group(function () {
-
+        Route::get('/SellingBuying', 'index')->name('sellingBuying');
     });
 });
 

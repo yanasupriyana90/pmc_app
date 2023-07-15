@@ -10,15 +10,23 @@ class ContSealDetail extends Model
     use HasFactory;
 
     protected $fillable = [
-        'cont_seal',
-        'qty',
+        'job_sheet_head_id',
+        'cont_name',
+        'seal_name',
+        // 'qty',
         // 'type_pack_id ',
-        'net_weight',
-        'net_type_weight',
-        'gross_weight',
-        'gross_type_weight',
-        'measurement',
-        'type_measurement',
+        // 'net_weight',
+        // 'net_type_weight',
+        // 'gross_weight',
+        // 'gross_type_weight',
+        // 'measurement',
+        // 'type_measurement',
         // 'job_sheet_head_id',
     ];
+
+
+    public function jobSheet()
+    {
+        return $this->hasOne(JobSheet::class, 'job_sheet_head_id', 'id');
+    }
 }

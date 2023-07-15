@@ -171,7 +171,7 @@
                                                 <div class="form-group">
                                                     <label>Exchange Rate</label>
                                                     <input class="form-control form-control-sm input_sm number_only"
-                                                        type="text" id="exchangeRateRos" name="exchangeRateRos">
+                                                        type="text" id="exchangeRateRos" name="exchangeRateRos" value="{{ old('exchangeRateRos') }}">
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -220,7 +220,7 @@
                                                                                     id="ros_no">1</span></td>
                                                                             <td><input type="text" name="itemNameRos[]"
                                                                                     id="itemNameRos1"
-                                                                                    class="form-control form-control-sm input-sm text-uppercase" />
+                                                                                    class="form-control form-control-sm input-sm text-uppercase" value="{{ old('itemNameRos') }}"/>
                                                                             </td>
                                                                             <td><input type="text" name="volRos[]"
                                                                                     id="volRos1" data-ros-no="1"
@@ -230,28 +230,28 @@
                                                                             </td>
                                                                             <td><input type="text" name="priceRos[]"
                                                                                     id="priceRos1" data-ros-no="1"
-                                                                                    class="form-control form-control-sm input-sm number_only priceRos" />
+                                                                                    class="form-control form-control-sm input-sm number_only priceRos rupiah" value="{{ old('priceRos') }}" />
                                                                             </td>
                                                                             <td><input type="text"
                                                                                     name="actualAmountRos[]"
                                                                                     id="actualAmountRos1" data-ros-no="1"
-                                                                                    class="form-control form-control-sm input-sm actualAmountRos"
+                                                                                    class="form-control form-control-sm input-sm actualAmountRos" value="{{ old('actualAmountRos') }}"
                                                                                     readonly /></td>
                                                                             <td><input type="text" name="taxRateRos[]"
                                                                                     id="taxRateRos1" data-ros-no="1"
-                                                                                    class="form-control form-control-sm input-sm number_only taxRateRos" />
+                                                                                    class="form-control form-control-sm input-sm number_only taxRateRos" value="{{ old('taxRateRos') }}"/>
                                                                             </td>
                                                                             <td><input type="text"
                                                                                     name="taxAmountRos[]"
                                                                                     id="taxAmountRos1" data-ros-no="1"
                                                                                     readonly
-                                                                                    class="form-control form-control-sm input-sm taxAmountRos" />
+                                                                                    class="form-control form-control-sm input-sm taxAmountRos" value="{{ old('taxAmountRos') }}"/>
                                                                             </td>
                                                                             <td><input type="text"
                                                                                     name="itemFinalAmountRos[]"
                                                                                     id="itemFinalAmountRos1"
                                                                                     data-ros-no="1" readonly
-                                                                                    class="form-control form-control-sm input-sm itemFinalAmountRos" />
+                                                                                    class="form-control form-control-sm input-sm itemFinalAmountRos" value="{{ old('itemFinalAmountRos') }}"/>
                                                                             </td>
                                                                             <td></td>
                                                                         </tr>
@@ -266,8 +266,12 @@
                                                             </tr>
                                                             <tr>
                                                                 <td align="right"><b>Total ($)</td>
-                                                                <td align="right"><b><span
+                                                                {{-- <td align="right"><b><span
                                                                             id="finalTotalAmountRos"></span></b>
+                                                                </td> --}}
+                                                                <td align="right"><input type="text"
+                                                                    id="finalTotalAmountRos"
+                                                                    name="finalTotalAmountRos" readonly>
                                                                 </td>
                                                             </tr>
                                                             <tr>
@@ -275,10 +279,16 @@
                                                                 {{-- <td align="right"><b><span
                                                                             id="finalTotalAmountExRateRos"></span></b>
                                                                 </td> --}}
+                                                                {{-- <td align="right"><input type="text"
+                                                                        id="finalTotalAmountExRateRos"
+                                                                        name="finalTotalAmountExRateRos"
+                                                                        class="finalTotalAmountExRateRos" onkeyup="sum();"
+                                                                        readonly>
+                                                                </td> --}}
                                                                 <td align="right"><input type="text"
                                                                         id="finalTotalAmountExRateRos"
-                                                                        name="finalTotalAmountExRateRos" onkeyup="sum();"
-                                                                        readonly></td>
+                                                                        name="finalTotalAmountExRateRos" readonly>
+                                                                </td>
 
                                                             </tr>
                                                             {{-- <tr>
@@ -378,37 +388,37 @@
                                                                             <td><input type="text"
                                                                                     name="itemNameEmkl[]"
                                                                                     id="itemNameEmkl1"
-                                                                                    class="form-control form-control-sm input-sm text-uppercase" />
+                                                                                    class="form-control form-control-sm input-sm text-uppercase" value="{{ old('itemNameEmkl') }}"/>
                                                                             </td>
                                                                             <td><input type="text" name="volEmkl[]"
                                                                                     id="volEmkl1" data-emkl-no="1"
-                                                                                    class="form-control form-control-sm input-sm number_only volEmkl" />
+                                                                                    class="form-control form-control-sm input-sm number_only volEmkl" value="{{ old('volEmkl') }}"/>
                                                                             </td>
                                                                             <td><input type="text" name="priceEmkl[]"
                                                                                     id="priceEmkl1" data-emkl-no="1"
-                                                                                    class="form-control form-control-sm input-sm number_only priceEmkl" />
+                                                                                    class="form-control form-control-sm input-sm number_only priceEmkl" value="{{ old('priceEmkl') }}"/>
                                                                             </td>
                                                                             <td><input type="text"
                                                                                     name="actualAmountEmkl[]"
                                                                                     id="actualAmountEmkl1"
                                                                                     data-emkl-no="1"
-                                                                                    class="form-control form-control-sm input-sm actualAmountEmkl"
+                                                                                    class="form-control form-control-sm input-sm actualAmountEmkl" value="{{ old('actualAmountEmkl') }}"
                                                                                     readonly /></td>
                                                                             <td><input type="text" name="taxRateEmkl[]"
                                                                                     id="taxRateEmkl1" data-emkl-no="1"
-                                                                                    class="form-control form-control-sm input-sm number_only taxRateEmkl" />
+                                                                                    class="form-control form-control-sm input-sm number_only taxRateEmkl" value="{{ old('taxRateEmkl') }}"/>
                                                                             </td>
                                                                             <td><input type="text"
                                                                                     name="taxAmountEmkl[]"
                                                                                     id="taxAmountEmkl1" data-emkl-no="1"
                                                                                     readonly
-                                                                                    class="form-control form-control-sm input-sm taxAmountEmkl" />
+                                                                                    class="form-control form-control-sm input-sm taxAmountEmkl" value="{{ old('taxAmountEmkl') }}"/>
                                                                             </td>
                                                                             <td><input type="text"
                                                                                     name="itemFinalAmountEmkl[]"
                                                                                     id="itemFinalAmountEmkl1"
                                                                                     data-emkl-no="1" readonly
-                                                                                    class="form-control form-control-sm input-sm itemFinalAmountEmkl" />
+                                                                                    class="form-control form-control-sm input-sm itemFinalAmountEmkl" value="{{ old('itemFinalAmountEmkl') }}"/>
                                                                             </td>
                                                                             <td></td>
                                                                         </tr>
@@ -426,9 +436,15 @@
                                                                 {{-- <td align="right"><b><span
                                                                             id="finalTotalAmountEmkl" onkeyup="sum();"></span></b>
                                                                 </td> --}}
-                                                                <td align="right"><b><span><input type="text"
-                                                                                id="finalTotalAmountEmkl" onkeyup="sum();"
-                                                                                readonly></span></b>
+                                                                {{-- <td align="right"><input type="text"
+                                                                        id="finalTotalAmountEmkl"
+                                                                        name="finalTotalAmountEmkl"
+                                                                        class="finalTotalAmountEmkl" onkeyup="sum();"
+                                                                        readonly>
+                                                                </td> --}}
+                                                                <td align="right"><input type="text"
+                                                                        id="finalTotalAmountEmkl"
+                                                                        name="finalTotalAmountEmkl" readonly>
                                                                 </td>
                                                             </tr>
                                                             {{-- <tr>
@@ -480,7 +496,7 @@
                                                 <div class="form-group">
                                                     <label>Exchange Rate</label>
                                                     <input class="form-control form-control-sm input-sm number_only"
-                                                        type="text" id="exchangeRateCos" name="exchangeRateCos">
+                                                        type="text" id="exchangeRateCos" name="exchangeRateCos" value="{{ old('exchangeRateRos') }}">
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -529,7 +545,7 @@
                                                                                     id="cos_no">1</span></td>
                                                                             <td><input type="text" name="itemNameCos[]"
                                                                                     id="itemNameCos1"
-                                                                                    class="form-control form-control-sm input-sm text-uppercase" />
+                                                                                    class="form-control form-control-sm input-sm text-uppercase" value="{{ old('itemNameCos') }}"/>
                                                                             </td>
                                                                             <td><input type="text" name="volCos[]"
                                                                                     id="volCos1" data-cos-no="1"
@@ -539,28 +555,28 @@
                                                                             </td>
                                                                             <td><input type="text" name="priceCos[]"
                                                                                     id="priceCos1" data-cos-no="1"
-                                                                                    class="form-control form-control-sm input-sm number_only priceCos" />
+                                                                                    class="form-control form-control-sm input-sm number_only priceCos" value="{{ old('priceCos') }}"/>
                                                                             </td>
                                                                             <td><input type="text"
                                                                                     name="actualAmountCos[]"
                                                                                     id="actualAmountCos1" data-cos-no="1"
-                                                                                    class="form-control form-control-sm input-sm actualAmountCos"
+                                                                                    class="form-control form-control-sm input-sm actualAmountCos" value="{{ old('actualAmountCos') }}"
                                                                                     readonly /></td>
                                                                             <td><input type="text" name="taxRateCos[]"
                                                                                     id="taxRateCos1" data-cos-no="1"
-                                                                                    class="form-control form-control-sm input-sm number_only taxRateCos" />
+                                                                                    class="form-control form-control-sm input-sm number_only taxRateCos" value="{{ old('taxRateCos') }}"/>
                                                                             </td>
                                                                             <td><input type="text"
                                                                                     name="taxAmountCos[]"
                                                                                     id="taxAmountCos1" data-cos-no="1"
                                                                                     readonly
-                                                                                    class="form-control form-control-sm input-sm taxAmountCos" />
+                                                                                    class="form-control form-control-sm input-sm taxAmountCos" value="{{ old('taxAmountCos') }}"/>
                                                                             </td>
                                                                             <td><input type="text"
                                                                                     name="itemFinalAmountCos[]"
                                                                                     id="itemFinalAmountCos1"
                                                                                     data-cos-no="1" readonly
-                                                                                    class="form-control form-control-sm input-sm itemFinalAmountCos" />
+                                                                                    class="form-control form-control-sm input-sm itemFinalAmountCos" value="{{ old('itemFinalAmountCos') }}"/>
                                                                             </td>
                                                                             <td></td>
                                                                         </tr>
@@ -574,16 +590,31 @@
                                                                 </td>
                                                             </tr>
                                                             <tr>
-                                                                <td align="right"><b>Total</td>
-                                                                <td align="right"><b><span
+                                                                <td align="right"><b>Total ($)</td>
+                                                                {{-- <td align="right"><b><span
                                                                             id="finalTotalAmountCos"></span></b>
+                                                                </td> --}}
+                                                                <td align="right"><input type="text"
+                                                                    id="finalTotalAmountCos"
+                                                                    name="finalTotalAmountCos" readonly>
                                                                 </td>
                                                             </tr>
                                                             <tr>
                                                                 <td align="right"><b>Total (Rp.)</td>
-                                                                <td align="right"><b><span
+                                                                {{-- <td align="right"><b><span
                                                                             id="finalTotalAmountExRateCos"></span></b>
+                                                                </td> --}}
+                                                                {{-- <td align="right"><input type="text"
+                                                                        id="finalTotalAmountExRateCos"
+                                                                        name="finalTotalAmountExRateCos"
+                                                                        class="finalTotalAmountExRateCos" onkeyup="sum();"
+                                                                        readonly>
+                                                                </td> --}}
+                                                                <td align="right"><input type="text"
+                                                                        id="finalTotalAmountExRateCos"
+                                                                        name="finalTotalAmountExRateCos" readonly>
                                                                 </td>
+
                                                             </tr>
                                                             {{-- <tr>
                                                                 <td colspan="2"></td>
@@ -682,29 +713,29 @@
                                                                             <td><input type="text"
                                                                                     name="itemNameHand[]"
                                                                                     id="itemNameHand1"
-                                                                                    class="form-control form-control-sm input-sm text-uppercase" />
+                                                                                    class="form-control form-control-sm input-sm text-uppercase" value="{{ old('itemNameHand') }}" />
                                                                             </td>
                                                                             <td><input type="text" name="volHand[]"
                                                                                     id="volHand1" data-hand-no="1"
-                                                                                    class="form-control form-control-sm input-sm number_only volHand" />
+                                                                                    class="form-control form-control-sm input-sm number_only volHand" value="{{ old('volHand') }}"/>
                                                                             </td>
                                                                             <td><input type="text" name="priceHand[]"
                                                                                     id="priceHand1" data-hand-no="1"
-                                                                                    class="form-control form-control-sm input-sm number_only rupiah priceHand" />
+                                                                                    class="form-control form-control-sm input-sm number_only priceHand" value="{{ old('priceHand') }}"/>
                                                                             </td>
                                                                             <td><input type="text"
                                                                                     name="actualAmountHand[]"
                                                                                     id="actualAmountHand1"
                                                                                     data-hand-no="1"
-                                                                                    class="form-control form-control-sm input-sm rupiah actualAmountHand"
+                                                                                    class="form-control form-control-sm input-sm actualAmountHand" value="{{ old('actualAmountHand') }}"
                                                                                     readonly /></td>
                                                                             <td><input type="text" name="taxRateHand[]"
                                                                                     id="taxRateHand1" data-hand-no="1"
-                                                                                    class="form-control form-control-sm input-sm number_only taxRateHand" />
+                                                                                    class="form-control form-control-sm input-sm number_only taxRateHand" value="{{ old('taxRateHand') }}"/>
                                                                             </td>
                                                                             <td><input type="text"
                                                                                     name="taxAmountHand[]"
-                                                                                    id="taxAmountHand1" data-hand-no="1"
+                                                                                    id="taxAmountHand1" data-hand-no="1" value="{{ old('taxAmountHand') }}"
                                                                                     readonly
                                                                                     class="form-control form-control-sm input-sm taxAmountHand" />
                                                                             </td>
@@ -712,7 +743,7 @@
                                                                                     name="itemFinalAmountHand[]"
                                                                                     id="itemFinalAmountHand1"
                                                                                     data-hand-no="1" readonly
-                                                                                    class="form-control form-control-sm input-sm itemFinalAmountHand" />
+                                                                                    class="form-control form-control-sm input-sm itemFinalAmountHand" value="{{ old('itemFinalAmountHand') }}" />
                                                                             </td>
                                                                             <td></td>
                                                                         </tr>
@@ -727,8 +758,18 @@
                                                             </tr>
                                                             <tr>
                                                                 <td align="right"><b>Total</td>
-                                                                <td align="right"><b><span
-                                                                            id="finalTotalAmountHand"></span></b>
+                                                                {{-- <td align="right"><b><span
+                                                                            id="finalTotalAmountHand" onkeyup="sum();"></span></b>
+                                                                </td> --}}
+                                                                {{-- <td align="right"><input type="text"
+                                                                        id="finalTotalAmountHand"
+                                                                        name="finalTotalAmountHand"
+                                                                        class="finalTotalAmountHand" onkeyup="sum();"
+                                                                        readonly>
+                                                                </td> --}}
+                                                                <td align="right"><input type="text"
+                                                                        id="finalTotalAmountHand"
+                                                                        name="finalTotalAmountHand" readonly>
                                                                 </td>
                                                             </tr>
                                                             {{-- <tr>
@@ -768,7 +809,7 @@
                         <div class="col-6">
                             <p class="lead">Remarks:</p>
 
-                            <textarea class="form-control" rows="5" id="remarks" name="remarks"></textarea>
+                            <textarea class="form-control form-control-sm input-sm text-uppercase" rows="7" id="remarks" name="remarks">{{ old('remarks') }}</textarea>
                         </div>
                         <!-- /.col -->
                         <div class="col-6">
@@ -779,24 +820,30 @@
                                     <tr>
                                         <th style="width:50%">Grand Total Selling :</th>
                                         <td>
-                                            <input type="text" name="grandTotalSelling" id="grandTotalSelling"readonly
-                                                class="form-control form-control-sm input-sm grandTotalSelling" />
+                                            <input type="text" name="grandTotalSelling" id="grandTotalSelling" readonly
+                                                class="form-control form-control-sm input-sm rupiah" />
                                         </td>
                                     </tr>
                                     <tr>
                                         <th style="width:50%">Grand Total Buying :</th>
                                         <td>
                                             <input type="text" name="grandTotalBuying" id="grandTotalBuying"readonly
-                                                class="form-control form-control-sm input-sm grandTotalBuying" />
+                                                class="form-control form-control-sm input-sm rupiah" />
                                         </td>
                                     </tr>
                                     <tr>
                                         <th style="width:50%">Profit/Loss :</th>
                                         <td>
                                             <input type="text" name="profitLoss" id="profitLoss"readonly
-                                                class="form-control form-control-sm input-sm profitLoss" />
+                                                class="form-control form-control-sm input-sm rupiah" />
                                         </td>
                                     </tr>
+                                    {{-- <tr>
+                                        <th style="width:50%"></th>
+                                        <td>
+                                            <button class="btn btn-success" style="width: 100%" id="calculate">Calculate</button>
+                                        </td>
+                                    </tr> --}}
                                 </table>
                             </div>
                         </div>
@@ -805,9 +852,18 @@
 
 
                     <!-- /.container-fluid -->
-                    <div class="submit-section">
-                        <button class="btn btn-primary submit-btn m-r-10">Save & Send</button>
-                        <button type="submit" class="btn btn-primary submit-btn">Save</button>
+                    <div class="container">
+
+                        {{-- <div class="submit-section">
+                            <button class="btn btn-primary submit-btn m-r-10">Save & Send</button>
+                            <button type="submit" class="btn btn-primary submit-btn justify-content-center">Save</button>
+                        </div> --}}
+                        <div class="row justify-content-md-center">
+                            <div class="d-grid gap-2 d-md-block">
+                                <button class="btn btn-primary" type="submit">SAVE</button>
+                                <a href="{{ route('jobSheet') }}" class="btn btn-danger" type="button">CANCEL</a>
+                            </div>
+                        </div>
                     </div>
                 </form>
         </section>
@@ -819,8 +875,8 @@
     <!-- REVENUE OF SALES SCRIPT -->
     <script>
         $(document).ready(function() {
-            var finalTotalAmountRos = $('#finalTotalAmountRos').text();
-            var finalTotalExRateAmountRos = $('#finalTotalAmountExRateRos').text();
+            var finalTotalAmountRos = $('#finalTotalAmountRos').val();
+            // var finalTotalExRateAmountRos = $('#finalTotalAmountExRateRos').text();
             var count = 1;
 
             $(document).on('click', '#add_row_ros', function() {
@@ -834,7 +890,7 @@
                     '" class="form-control form-control-sm input-sm text-uppercase" /></td>';
                 html_code += '<td><input type="text" name="volRos[]" id="volRos' + count +
                     '" data-ros-no="' + count +
-                    '"class="form-control form-control-sm input-sm number_only volRos" value="{{ $jobSheetHeadList->volume }}" readonly /></td>';
+                    '"class="form-control form-control-sm input-sm number_only volRos" value="{{ $jobSheetHeadList->volume }}" readonly/></td>';
                 html_code += '<td><input type="text" name="priceRos[]" id="priceRos' + count +
                     '" data-ros-no="' + count +
                     '" class="form-control form-control-sm input-sm number_only priceRos" /></td>';
@@ -862,12 +918,12 @@
             $(document).on('click', '.remove_row_ros', function() {
                 var row_id_ros = $(this).attr("id");
                 var total_item_amount_ros = $('#itemFinalAmountRos' + row_id_ros).val();
-                var final_amount_ros = $('#finalTotalAmountRos').text();
+                var final_amount_ros = $('#finalTotalAmountRos').val();
                 var result_amount_ros = parseFloat(final_amount_ros) - parseFloat(total_item_amount_ros);
                 var ex_rate_ros = $('#exchangeRateRos').val();
                 final_item_total_ex_rate_ros = parseFloat(result_amount_ros) * parseFloat(ex_rate_ros);
-                $('#finalTotalAmountRos').text(result_amount_ros.toFixed(2));
-                $('#finalTotalAmountExRateRos').text(final_item_total_ex_rate_ros.toFixed(2));
+                $('#finalTotalAmountRos').val(result_amount_ros);
+                $('#finalTotalAmountExRateRos').val(final_item_total_ex_rate_ros.toFixed(4));
                 $('#row_id_ros_' + row_id_ros).remove();
                 count--;
                 $('#totalItemRos').val(count);
@@ -876,7 +932,7 @@
             function cal_final_total_ros(count) {
                 var final_item_total_ros = 0;
                 var final_item_total_ex_rate_ros = 0;
-                for (j = 1; j <= count; j++) {
+                for (rowRos = 1; rowRos <= count; rowRos++) {
                     var ex_rate_ros = 0;
                     var vol_ros = 0;
                     var price_ros = 0;
@@ -885,37 +941,69 @@
                     var tax_amount_ros = 0;
                     var item_total_ros = 0;
                     ex_rate_ros = $('#exchangeRateRos').val();
-                    vol_ros = $('#volRos' + j).val();
+                    // final_item_total_emkl = $('#finalTotalAmountEmkl').val();
+                    // if (isNaN(final_item_total_emkl)
+                    //     final_item_total_emkl = 0
+                    // );
+                    // console.log(final_item_total_emkl);
+                    vol_ros = $('#volRos' + rowRos).val();
                     if (vol_ros > 0) {
-                        price_ros = $('#priceRos' + j).val();
+                        price_ros = $('#priceRos' + rowRos).val();
                         if (price_ros > 0) {
                             actual_amount_ros = parseFloat(vol_ros) * parseFloat(price_ros);
-                            $('#actualAmountRos' + j).val(actual_amount_ros);
-                            tax_rate_ros = $('#taxRateRos' + j).val();
+                            $('#actualAmountRos' + rowRos).val(actual_amount_ros);
+                            tax_rate_ros = $('#taxRateRos' + rowRos).val();
                             if (tax_rate_ros >= 0) {
                                 tax_amount_ros = parseFloat(actual_amount_ros) * parseFloat(tax_rate_ros) / 100;
-                                $('#taxAmountRos' + j).val(tax_amount_ros.toFixed(2));
+                                $('#taxAmountRos' + rowRos).val(tax_amount_ros.toFixed(4));
                             }
                             item_total_ros = parseFloat(actual_amount_ros) + parseFloat(tax_amount_ros);
                             final_item_total_ros = parseFloat(final_item_total_ros) + parseFloat(item_total_ros);
                             final_item_total_ex_rate_ros = parseFloat(final_item_total_ros) * parseFloat(
                                 ex_rate_ros);
-                            $('#itemFinalAmountRos' + j).val(item_total_ros);
+                            // grand_total_selling = parseFloat(final_item_total_ex_rate_ros) + parseFloat(final_item_total_emkl);
+                            //     console.log(grand_total_selling);
+                            $('#itemFinalAmountRos' + rowRos).val(item_total_ros);
                         }
                     }
                 }
-                $('#finalTotalAmountRos').text(final_item_total_ros.toFixed(2));
-                $('#finalTotalAmountExRateRos').text(final_item_total_ex_rate_ros.toFixed(2));
+                $('#finalTotalAmountRos').val(final_item_total_ros.toFixed(4));
+                // console.log(final_item_total_ros);
+                $('#finalTotalAmountExRateRos').val(final_item_total_ex_rate_ros.toFixed(4));
+                // $('#grandTotalSelling').val(grand_total_selling.toFixed(4));
+            }
+
+            function grand_total() {
+                var total_ros = $('#finalTotalAmountExRateRos').val();
+                var total_emkl = $('#finalTotalAmountEmkl').val();
+                var total_cos = $('#finalTotalAmountExRateCos').val();
+                var total_hand = $('#finalTotalAmountHand').val();
+                var total_selling = 0;
+                var total_buying = 0;
+                var profit_loss = 0;
+                if (!isNaN(total_ros, total_emkl)) {
+                    total_selling = parseFloat(total_ros) + parseFloat(total_emkl);
+                }
+                if (!isNaN(total_cos, total_emkl)) {
+                    total_buying = parseFloat(total_cos) + parseFloat(total_hand);
+                }
+                if (!isNaN(total_buying, total_selling)) {
+                    profit_loss = parseFloat(total_selling) - parseFloat(total_buying);
+                }
+                $('#grandTotalSelling').val(total_selling.toFixed(4));
+                $('#grandTotalBuying').val(total_buying.toFixed(4));
+                $('#profitLoss').val(profit_loss.toFixed(4));
             }
 
             $(document).on('blur', '.priceRos', function() {
                 cal_final_total_ros(count);
+                grand_total();
             });
 
             $(document).on('blur', '.taxRateRos', function() {
                 cal_final_total_ros(count);
+                grand_total();
             });
-
         });
     </script>
     <!-- END REVENUE OF SALES SCRIPT -->
@@ -935,12 +1023,13 @@
 
                 html_code += '<td><input type="text" name="itemNameEmkl[]" id="itemNameEmkl' + count +
                     '" class="form-control form-control-sm input-sm text-uppercase" /></td>';
+
                 html_code += '<td><input type="text" name="volEmkl[]" id="volEmkl' + count +
                     '" data-emkl-no="' + count +
                     '"class="form-control form-control-sm input-sm number_only volEmkl" /></td>';
                 html_code += '<td><input type="text" name="priceEmkl[]" id="priceEmkl' + count +
                     '" data-emkl-no="' + count +
-                    '" class="form-control form-control-sm input-sm number_only priceEmkl" /></td>';
+                    '" class="form-control form-control-sm input-sm number_only rupiah priceEmkl" /></td>'
                 html_code +=
                     '<td><input type="text" name="actualAmountEmkl[]" id="actualAmountEmkl' + count +
                     '" data-emkl-no="' + count +
@@ -965,9 +1054,9 @@
             $(document).on('click', '.remove_row_emkl', function() {
                 var row_id_emkl = $(this).attr("id");
                 var total_item_amount_emkl = $('#itemFinalAmountEmkl' + row_id_emkl).val();
-                var final_amount_emkl = $('#finalTotalAmountEmkl').text();
+                var final_amount_emkl = $('#finalTotalAmountEmkl').val();
                 var result_amount_emkl = parseFloat(final_amount_emkl) - parseFloat(total_item_amount_emkl);
-                $('#finalTotalAmountEmkl').text(result_amount_emkl);
+                $('#finalTotalAmountEmkl').val(result_amount_emkl.toFixed(4));
                 $('#row_id_emkl_' + row_id_emkl).remove();
                 count--;
                 $('#totalItemEmkl').val(count);
@@ -975,49 +1064,78 @@
 
             function cal_final_total_emkl(count) {
                 var final_item_total_emkl = 0;
-                for (k = 1; k <= count; k++) {
+                for (rowEmkl = 1; rowEmkl <= count; rowEmkl++) {
                     var vol_emkl = 0;
                     var price_emkl = 0;
                     var actual_amount_emkl = 0;
                     var tax_rate_emkl = 0;
                     var tax_amount_emkl = 0;
                     var item_total_emkl = 0;
-                    vol_emkl = $('#volEmkl' + k).val();
+                    var final_item_total_ex_rate_ros = 0
+                    // final_item_total_ex_rate_ros = $('#finalTotalAmountExRateRos').val();
+                    vol_emkl = $('#volEmkl' + rowEmkl).val();
                     if (vol_emkl > 0) {
-                        price_emkl = $('#priceEmkl' + k).val();
+                        price_emkl = $('#priceEmkl' + rowEmkl).val();
                         if (price_emkl > 0) {
                             actual_amount_emkl = parseFloat(vol_emkl) * parseFloat(price_emkl);
-                            $('#actualAmountEmkl' + k).val(actual_amount_emkl);
-                            tax_rate_emkl = $('#taxRateEmkl' + k).val();
+                            $('#actualAmountEmkl' + rowEmkl).val(actual_amount_emkl);
+                            tax_rate_emkl = $('#taxRateEmkl' + rowEmkl).val();
                             if (tax_rate_emkl >= 0) {
                                 tax_amount_emkl = parseFloat(actual_amount_emkl) * parseFloat(tax_rate_emkl) / 100;
-                                $('#taxAmountEmkl' + k).val(tax_amount_emkl.toFixed(2));
+                                $('#taxAmountEmkl' + rowEmkl).val(tax_amount_emkl.toFixed(4));
                             }
                             item_total_emkl = parseFloat(actual_amount_emkl) + parseFloat(tax_amount_emkl);
                             final_item_total_emkl = parseFloat(final_item_total_emkl) + parseFloat(item_total_emkl);
-                            $('#itemFinalAmountEmkl' + k).val(item_total_emkl);
+                            // grand_total_selling = parseFloat(final_item_total_ex_rate_ros) + parseFloat(final_item_total_emkl);
+                            $('#itemFinalAmountEmkl' + rowEmkl).val(item_total_emkl);
                         }
                     }
                 }
-                $('#finalTotalAmountEmkl').text(final_item_total_emkl.toFixed(2));
+                $('#finalTotalAmountEmkl').val(final_item_total_emkl.toFixed(4));
+                // $('#grandTotalSelling').val(grand_total_selling.toFixed(4));
+            }
+
+            function grand_total() {
+                var total_ros = $('#finalTotalAmountExRateRos').val();
+                var total_emkl = $('#finalTotalAmountEmkl').val();
+                var total_cos = $('#finalTotalAmountExRateCos').val();
+                var total_hand = $('#finalTotalAmountHand').val();
+                var total_selling = 0;
+                var total_buying = 0;
+                var profit_loss = 0;
+                if (!isNaN(total_ros, total_emkl)) {
+                    total_selling = parseFloat(total_ros) + parseFloat(total_emkl);
+                }
+                if (!isNaN(total_cos, total_emkl)) {
+                    total_buying = parseFloat(total_cos) + parseFloat(total_hand);
+                }
+                if (!isNaN(total_buying, total_selling)) {
+                    profit_loss = parseFloat(total_selling) - parseFloat(total_buying);
+                }
+                $('#grandTotalSelling').val(total_selling.toFixed(4));
+                $('#grandTotalBuying').val(total_buying.toFixed(4));
+                $('#profitLoss').val(profit_loss.toFixed(4));
             }
 
             $(document).on('blur', '.priceEmkl', function() {
                 cal_final_total_emkl(count);
+                grand_total();
             });
 
             $(document).on('blur', '.taxRateEmkl', function() {
                 cal_final_total_emkl(count);
+                grand_total();
             });
         });
     </script>
+
     <!-- END EMKL SCRIPT -->
 
     <!-- COST OF SALES SCRIPT -->
     <script>
         $(document).ready(function() {
-            var finalTotalAmountCos = $('#finalTotalAmountCos').text();
-            var finalTotalExRateAmountCos = $('#finalTotalAmountExRateCos').text();
+            var finalTotalAmountCos = $('#finalTotalAmountCos').val();
+            // var finalTotalExRateAmountCos = $('#finalTotalAmountExRateCos').text();
             var count = 1;
 
             $(document).on('click', '#add_row_cos', function() {
@@ -1031,7 +1149,7 @@
                     '" class="form-control form-control-sm input-sm text-uppercase" /></td>';
                 html_code += '<td><input type="text" name="volCos[]" id="volCos' + count +
                     '" data-cos-no="' + count +
-                    '"class="form-control form-control-sm input-sm number_only volCos" value="{{ $jobSheetHeadList->volume }}" readonly /></td>';
+                    '"class="form-control form-control-sm input-sm number_only volCos" value="{{ $jobSheetHeadList->volume }}" readonly/></td>';
                 html_code += '<td><input type="text" name="priceCos[]" id="priceCos' + count +
                     '" data-cos-no="' + count +
                     '" class="form-control form-control-sm input-sm number_only priceCos" /></td>';
@@ -1059,12 +1177,12 @@
             $(document).on('click', '.remove_row_cos', function() {
                 var row_id_cos = $(this).attr("id");
                 var total_item_amount_cos = $('#itemFinalAmountCos' + row_id_cos).val();
-                var final_amount_cos = $('#finalTotalAmountCos').text();
+                var final_amount_cos = $('#finalTotalAmountCos').val();
                 var result_amount_cos = parseFloat(final_amount_cos) - parseFloat(total_item_amount_cos);
                 var ex_rate_cos = $('#exchangeRateCos').val();
                 final_item_total_ex_rate_cos = parseFloat(result_amount_cos) * parseFloat(ex_rate_cos);
-                $('#finalTotalAmountCos').text(result_amount_cos);
-                $('#finalTotalAmountExRateCos').text(final_item_total_ex_rate_Cos.toFixed(2));
+                $('#finalTotalAmountCos').val(result_amount_cos);
+                $('#finalTotalAmountExRateCos').val(final_item_total_ex_rate_cos.toFixed(4));
                 $('#row_id_cos_' + row_id_cos).remove();
                 count--;
                 $('#totalItemCos').val(count);
@@ -1073,7 +1191,7 @@
             function cal_final_total_cos(count) {
                 var final_item_total_cos = 0;
                 var final_item_total_ex_rate_cos = 0;
-                for (l = 1; l <= count; l++) {
+                for (rowCos = 1; rowCos <= count; rowCos++) {
                     var ex_rate_cos = 0;
                     var vol_cos = 0;
                     var price_cos = 0;
@@ -1082,35 +1200,68 @@
                     var tax_amount_cos = 0;
                     var item_total_cos = 0;
                     ex_rate_cos = $('#exchangeRateCos').val();
-                    vol_cos = $('#volCos' + l).val();
+                    // final_item_total_emkl = $('#finalTotalAmountEmkl').val();
+                    // if (isNaN(final_item_total_emkl)
+                    //     final_item_total_emkl = 0
+                    // );
+                    // console.log(final_item_total_emkl);
+                    vol_cos = $('#volCos' + rowCos).val();
                     if (vol_cos > 0) {
-                        price_cos = $('#priceCos' + l).val();
+                        price_cos = $('#priceCos' + rowCos).val();
                         if (price_cos > 0) {
                             actual_amount_cos = parseFloat(vol_cos) * parseFloat(price_cos);
-                            $('#actualAmountCos' + l).val(actual_amount_cos);
-                            tax_rate_cos = $('#taxRateCos' + l).val();
+                            $('#actualAmountCos' + rowCos).val(actual_amount_cos);
+                            tax_rate_cos = $('#taxRateCos' + rowCos).val();
                             if (tax_rate_cos >= 0) {
                                 tax_amount_cos = parseFloat(actual_amount_cos) * parseFloat(tax_rate_cos) / 100;
-                                $('#taxAmountCos' + l).val(tax_amount_cos.toFixed(2));
+                                $('#taxAmountCos' + rowCos).val(tax_amount_cos.toFixed(4));
                             }
                             item_total_cos = parseFloat(actual_amount_cos) + parseFloat(tax_amount_cos);
                             final_item_total_cos = parseFloat(final_item_total_cos) + parseFloat(item_total_cos);
                             final_item_total_ex_rate_cos = parseFloat(final_item_total_cos) * parseFloat(
                                 ex_rate_cos);
-                            $('#itemFinalAmountCos' + l).val(item_total_cos);
+                            // grand_total_selling = parseFloat(final_item_total_ex_rate_cos) + parseFloat(final_item_total_emkl);
+                            //     console.log(grand_total_selling);
+                            $('#itemFinalAmountCos' + rowCos).val(item_total_cos);
                         }
                     }
                 }
-                $('#finalTotalAmountCos').text(final_item_total_cos.toFixed(2));
-                $('#finalTotalAmountExRateCos').text(final_item_total_ex_rate_cos.toFixed(2));
+                $('#finalTotalAmountCos').val(final_item_total_cos.toFixed(4));
+                // console.log(final_item_total_ros);
+                $('#finalTotalAmountExRateCos').val(final_item_total_ex_rate_cos.toFixed(4));
+                // $('#grandTotalSelling').val(grand_total_selling.toFixed(4));
+            }
+
+            function grand_total() {
+                var total_ros = $('#finalTotalAmountExRateRos').val();
+                var total_emkl = $('#finalTotalAmountEmkl').val();
+                var total_cos = $('#finalTotalAmountExRateCos').val();
+                var total_hand = $('#finalTotalAmountHand').val();
+                var total_selling = 0;
+                var total_buying = 0;
+                var profit_loss = 0;
+                if (!isNaN(total_ros, total_emkl)) {
+                    total_selling = parseFloat(total_ros) + parseFloat(total_emkl);
+                }
+                if (!isNaN(total_cos, total_emkl)) {
+                    total_buying = parseFloat(total_cos) + parseFloat(total_hand);
+                }
+                if (!isNaN(total_buying, total_selling)) {
+                    profit_loss = parseFloat(total_selling) - parseFloat(total_buying);
+                }
+                $('#grandTotalSelling').val(total_selling.toFixed(4));
+                $('#grandTotalBuying').val(total_buying.toFixed(4));
+                $('#profitLoss').val(profit_loss.toFixed(4));
             }
 
             $(document).on('blur', '.priceCos', function() {
                 cal_final_total_cos(count);
+                grand_total();
             });
 
             $(document).on('blur', '.taxRateCos', function() {
                 cal_final_total_cos(count);
+                grand_total();
             });
         });
     </script>
@@ -1162,9 +1313,9 @@
             $(document).on('click', '.remove_row_hand', function() {
                 var row_id_hand = $(this).attr("id");
                 var total_item_amount_hand = $('#itemFinalAmountHand' + row_id_hand).val();
-                var final_amount_hand = $('#finalTotalAmountHand').text();
+                var final_amount_hand = $('#finalTotalAmountHand').val();
                 var result_amount_hand = parseFloat(final_amount_hand) - parseFloat(total_item_amount_hand);
-                $('#finalTotalAmountHand').text(result_amount_hand);
+                $('#finalTotalAmountHand').val(result_amount_hand.toFixed(4));
                 $('#row_id_hand_' + row_id_hand).remove();
                 count--;
                 $('#totalItemHand').val(count);
@@ -1172,39 +1323,67 @@
 
             function cal_final_total_hand(count) {
                 var final_item_total_hand = 0;
-                for (m = 1; m <= count; m++) {
+                for (rowHand = 1; rowHand <= count; rowHand++) {
                     var vol_hand = 0;
                     var price_hand = 0;
                     var actual_amount_hand = 0;
                     var tax_rate_hand = 0;
                     var tax_amount_hand = 0;
                     var item_total_hand = 0;
-                    vol_hand = $('#volHand' + m).val();
+                    var final_item_total_ex_rate_ros = 0
+                    // final_item_total_ex_rate_ros = $('#finalTotalAmountExRateRos').val();
+                    vol_hand = $('#volHand' + rowHand).val();
                     if (vol_hand > 0) {
-                        price_hand = $('#priceHand' + m).val();
+                        price_hand = $('#priceHand' + rowHand).val();
                         if (price_hand > 0) {
                             actual_amount_hand = parseFloat(vol_hand) * parseFloat(price_hand);
-                            $('#actualAmountHand' + m).val(actual_amount_hand);
-                            tax_rate_hand = $('#taxRateHand' + m).val();
+                            $('#actualAmountHand' + rowHand).val(actual_amount_hand);
+                            tax_rate_hand = $('#taxRateHand' + rowHand).val();
                             if (tax_rate_hand >= 0) {
                                 tax_amount_hand = parseFloat(actual_amount_hand) * parseFloat(tax_rate_hand) / 100;
-                                $('#taxAmountHand' + m).val(tax_amount_hand.toFixed(2));
+                                $('#taxAmountHand' + rowHand).val(tax_amount_hand.toFixed(4));
                             }
                             item_total_hand = parseFloat(actual_amount_hand) + parseFloat(tax_amount_hand);
                             final_item_total_hand = parseFloat(final_item_total_hand) + parseFloat(item_total_hand);
-                            $('#itemFinalAmountHand' + m).val(item_total_hand);
+                            // grand_total_selling = parseFloat(final_item_total_ex_rate_ros) + parseFloat(final_item_total_emkl);
+                            $('#itemFinalAmountHand' + rowHand).val(item_total_hand);
                         }
                     }
                 }
-                $('#finalTotalAmountHand').text(final_item_total_hand.toFixed(2));
+                $('#finalTotalAmountHand').val(final_item_total_hand.toFixed(4));
+                // $('#grandTotalSelling').val(grand_total_selling.toFixed(4));
+            }
+
+            function grand_total() {
+                var total_ros = $('#finalTotalAmountExRateRos').val();
+                var total_emkl = $('#finalTotalAmountEmkl').val();
+                var total_cos = $('#finalTotalAmountExRateCos').val();
+                var total_hand = $('#finalTotalAmountHand').val();
+                var total_selling = 0;
+                var total_buying = 0;
+                var profit_loss = 0;
+                if (!isNaN(total_ros, total_emkl)) {
+                    total_selling = parseFloat(total_ros) + parseFloat(total_emkl);
+                }
+                if (!isNaN(total_cos, total_emkl)) {
+                    total_buying = parseFloat(total_cos) + parseFloat(total_hand);
+                }
+                if (!isNaN(total_buying, total_selling)) {
+                    profit_loss = parseFloat(total_selling) - parseFloat(total_buying);
+                }
+                $('#grandTotalSelling').val(total_selling.toFixed(4));
+                $('#grandTotalBuying').val(total_buying.toFixed(4));
+                $('#profitLoss').val(profit_loss.toFixed(4));
             }
 
             $(document).on('blur', '.priceHand', function() {
                 cal_final_total_hand(count);
+                grand_total();
             });
 
             $(document).on('blur', '.taxRateHand', function() {
                 cal_final_total_hand(count);
+                grand_total();
             });
         });
     </script>
@@ -1229,7 +1408,7 @@
     </script>
     <!-- END NUMBER ONLY -->
 
-    <!-- DOLLAR -->
+    {{-- <!-- DOLLAR -->
     <script>
         $(document).ready(function() {
             $('.rupiah').mask("#.##0,00", {
@@ -1237,35 +1416,14 @@
             });
         });
     </script>
-    <!-- END DOLLAR -->
-
+    <!-- END DOLLAR --> --}}
     {{-- <script>
-        $(document).ready(function() {
-            var total_ros = parseInt(document.getElementById('finalTotalAmountExRateRos').value);
-            var total_emkl = parseInt(document.getElementById('finalTotalAmountEmkl').value);
-            var grand_total_selling = total_ros + total_emkl;
-            document.getElementById('grandTotalSelling').value =grand_total_selling;
+        $(document).ready(function(){
+            $(.rupiah).inputmask("99-9999999");  //static mask
+            $(selector).inputmask({"mask": "(999) 999-9999"}); //specifying options
+            $(selector).inputmask("9-a{1,3}9{1,3}"); //mask with dynamic syntax
         });
     </script> --}}
-
-    <script>
-        function sum() {
-            var total_ros = document.getElementById('finalTotalAmountExRateRos').value;
-            var total_emkl = document.getElementById('finalTotalAmountEmkl').value;
-            var result = parseFloat(total_ros) + parseFloat(total_emkl);
-            console.log(result);
-            if (!isNan(result)) {
-                document.getElementById('grandTotalSelling').value = result;
-            }
-        }
-    </script>
-
-    <script>
-        $(document).ready(function() {
-
-        })
-    </script>
-
 @endsection
 
 @endsection
