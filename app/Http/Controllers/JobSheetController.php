@@ -320,6 +320,7 @@ class JobSheetController extends Controller
 
         $jobsheet = new JobSheet;
         $jobsheet->code_js = $data['code_js'];
+        $jobsheet->sales_name = $data['sales_name'];
         $jobsheet->booking_no = strtoupper($data['booking_no']);
         $jobsheet->shipper_id = $data['shipper_id'];
         $jobsheet->undername_mbl_id = $data['undername_mbl_id'];
@@ -372,6 +373,7 @@ class JobSheetController extends Controller
         $jobsheet->pic_phone = $data['pic_phone'];
         $jobsheet->top = strtoupper($data['top']);
         $jobsheet->type_payment_id = $data['type_payment_id'];
+        $jobsheet->due_date_inv = $data['due_date_inv'];
         $jobsheet->remarks = strtoupper($data['remarks']);
         $jobsheet->si_doc = $data['si_doc'];
         $jobsheet->status = $data['status'];

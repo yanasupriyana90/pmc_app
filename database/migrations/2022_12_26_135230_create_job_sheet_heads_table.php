@@ -17,6 +17,7 @@ return new class extends Migration
         Schema::create('job_sheet_heads', function (Blueprint $table) {
             $table->id();
             $table->string('code_js', 20);
+            $table->string('sales_name', 50);
             $table->string('booking_no', 20)->nullable();
             $table->unsignedBigInteger('shipper_id');
             $table->unsignedBigInteger('undername_mbl_id')->nullable();
@@ -76,6 +77,7 @@ return new class extends Migration
             $table->string('pic_phone', 20);
             $table->string('top', 30);
             $table->unsignedBigInteger('type_payment_id');
+            $table->date('due_date_inv');
             $table->text('remarks')->nullable();
             $table->string('si_doc', 100);
             $table->integer('status');

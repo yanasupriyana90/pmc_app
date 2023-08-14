@@ -67,10 +67,19 @@
 
     <!-- jQuery -->
     <script src="{{ asset('lte') }}/plugins/jquery/jquery.js"></script>
+    {{-- <script src="{{ asset('lte') }}/plugins/jquery/simple.money.format.js"></script> --}}
+    {{-- <script src="{{ asset('lte') }}/plugins/jquery/style.js"></script> --}}
+    {{-- <script src="{{ asset('resources') }}/js/style.js"></script> --}}
+
     {{-- <script src="{{ asset('lte') }}/plugins/jquery/jquery.min.js"></script> --}}
     <!-- jQuery UI 1.11.4 -->
     <script src="{{ asset('lte') }}/plugins/jquery-ui/jquery-ui.min.js"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+
+    <!-- app.js -->
+    {{-- <script src="{{ asset('js/app.js') }}"></script> --}}
+    {{-- <script src="{{ asset('resources') }}/js/rupiah-input.js"></script> --}}
+
     <script>
         $.widget.bridge('uibutton', $.ui.button)
     </script>
@@ -85,11 +94,14 @@
     {{-- <script src="{{ asset('lte') }}/plugins/jqvmap/maps/jquery.vmap.usa.js"></script> --}}
     <!-- jQuery Knob Chart -->
     <script src="{{ asset('lte') }}/plugins/jquery-knob/jquery.knob.min.js"></script>
-    <!-- InputMask -->
     <script src="{{ asset('lte') }}/plugins/moment/moment.min.js"></script>
-    {{-- <script src="{{ asset('lte') }}/plugins/inputmask/jquery.inputmask.js"></script> --}}
-    {{-- <script src="{{ asset('lte') }}/plugins/inputmask/jquery.inputmask.min.js"></script> --}}
-    <script src="{{ asset('lte') }}/plugins/inputmask/jquery.mask.min.js"></script>
+
+    <!-- InputMask -->
+        <!-- Robin Herbots -->
+        <script src="{{ asset('lte') }}/plugins/inputmask/jquery.inputmask.min.js"></script>
+        <!-- Igor Escobar -->
+        {{-- <script src="{{ asset('lte') }}/plugins/inputmask/jquery.mask.js"></script> --}}
+
     <!-- daterangepicker -->
     <script src="{{ asset('lte') }}/plugins/daterangepicker/daterangepicker.js"></script>
     <!-- Tempusdominus Bootstrap 4 -->
@@ -118,7 +130,9 @@
     <script src="{{ asset('lte') }}/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
     <script src="{{ asset('lte') }}/plugins/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="{{ asset('lte') }}/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-    @yield('script')
+    @yield('scriptCreateJobsheet')
+    @yield('scriptIndexJobsheet')
+    @yield('scriptShowDetailJobsheet')
     @yield('scriptContSealDetail')
     <script>
         $(function() {
@@ -138,6 +152,7 @@
                 "responsive": true,
             });
         });
+
     </script>
 
     <script src="{{ asset('lte') }}/plugins/toastr/toastr.min.js"></script>
@@ -167,7 +182,7 @@
     <script src="{{ asset('lte') }}/plugins/sweetalert2/sweetalert2.all.min.js"></script>
     <script src="{{ asset('lte') }}/plugins/code.js"></script>
     {{-- <script src="{{ asset('lte') }}/plugins/casInBank.js"></script> --}}
-    <script src="{{ asset('lte') }}/plugins/multiJobsheet.js"></script>
+    {{-- <script src="{{ asset('lte') }}/plugins/multiJobsheet.js"></script> --}}
 
     <script>
         // Add the following code if you want the name of the file appear on select
@@ -185,7 +200,7 @@
         });
     </script>
 
-    <script>
+    {{-- <script>
         $(document).ready(function () {
             let baris = 1
 
@@ -280,7 +295,7 @@
                 }
             })
         })
-    </script>
+    </script> --}}
 
 </body>
 

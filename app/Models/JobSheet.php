@@ -15,6 +15,7 @@ class JobSheet extends Model
 
     protected $fillable = [
         'code_js',
+        'sales_name',
         'booking_no',
         'shipper_id',
         'undername_mbl_id',
@@ -69,6 +70,7 @@ class JobSheet extends Model
         'pic_phone',
         'top',
         'type_payment_id',
+        'due-date-inv',
         'remarks',
         'si_doc',
         'status',

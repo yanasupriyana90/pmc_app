@@ -38,7 +38,7 @@
         <!-- /.content-header -->
 
         <!-- Main content -->
-        <section class="content">
+        <section class="content text-sm">
             <div class="container-fluid">
                 <div class="row">
                     <!-- left column -->
@@ -105,6 +105,15 @@
                                                                 class="form-control form-control-sm text-uppercase"
                                                                 name="booking_no" id="booking_no"
                                                                 value="{{ old('booking_no') }}">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label for="inputSalesName">Sales Name</label>
+                                                            <input type="text"
+                                                                class="form-control form-control-sm text-uppercase"
+                                                                name="sales_name" id="sales_name"
+                                                                value="{{ Auth::user()->name }}" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -583,6 +592,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
+
                                                     <div class="col-3">
                                                         <div class="form-group">
                                                             <label for="inputPol">Port Of Loading</label>
@@ -707,24 +717,24 @@
                                                     </div>
                                                 </div>
 
+                                                <!-- CONT SEAL DETAIL -->
                                                 <div class="row">
-                                                    <div class="col-md-12 col-sm-12">
+                                                    <div class="col-md-6 col-sm-6">
                                                         <div class="table-responsive">
-                                                            <table class="table table-bordered">
+                                                            <table class="table table-bordered table-sm">
                                                                 <tr>
                                                                     <td colspan="2">
-                                                                        <table id="tableContSeal" class="table table-bordered">
+                                                                        <table id="tableContSeal" class="table table-bordered text-center">
                                                                             <tr>
-                                                                                <th class="text text-center" width="5%">
+                                                                                <th class="text text-center" width="3%">
                                                                                     No.</th>
-                                                                                <th class="text text-center" width="45%">
-                                                                                    Container
-                                                                                    No.</th>
-                                                                                <th class="text text-center" width="45%">
-                                                                                    Seal
-                                                                                    No.</th>
-                                                                                <th class="text text-center" width="5%"
-                                                                                rowspan="2"></th>
+                                                                                <th class="text">
+                                                                                    Container No.</th>
+                                                                                <th class="text">
+                                                                                    Seal No.</th>
+
+                                                                                <th class="text" width="7%"
+                                                                                    rowspan="2"></th>
                                                                             </tr>
                                                                             <tr>
                                                                                 <td class="text text-center"><span
@@ -742,7 +752,7 @@
                                                                         <div align="right">
                                                                             <button type="button" name="add_row_cont_seal"
                                                                                 id="add_row_cont_seal"
-                                                                                class="btn btn-success btn-xs mr-3"><i
+                                                                                class="btn btn-success btn-xs mr-1 mb-2"><i
                                                                                     class="fa fa-plus"></i></button>
                                                                         </div>
                                                                     </td>
@@ -750,13 +760,17 @@
                                                                 <tr hidden>
                                                                     <td colspan="2" align="center">
                                                                         <input type="text" name="totalContSeal"
-                                                                            id="totalContSeal" value="1" readonly/>
+                                                                            id="totalContSeal" value="1" />
+                                                                        {{-- <input type="submit" name="create_invoice"
+                                                                            id="create_invoice" class="btn btn-info"
+                                                                            value="Create" /> --}}
                                                                     </td>
                                                                 </tr>
                                                             </table>
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <!-- END CONT SEAL DETAIL -->
 
                                                 <hr size="100" noshade>
                                             </div>
@@ -942,6 +956,25 @@
                                                             </select>
                                                         </div>
                                                     </div>
+                                                    <div class="col-3">
+                                                        <div class="form-group">
+                                                            <label>Due Date Invoice :</label>
+                                                            <div class="input-group date" id="due_date_inv"
+                                                                data-target-input="nearest">
+                                                                <input type="text" name="due_date_inv"
+                                                                    value="{{ old('due_date_inv') }}"
+                                                                    class="form-control form-control-sm datetimepicker-input"
+                                                                    data-target="#due_date_inv" />
+                                                                <div class="input-group-append"
+                                                                    data-target="#due_date_inv"
+                                                                    data-toggle="datetimepicker">
+                                                                    <div class="input-group-text"><i
+                                                                            class="fa fa-calendar"></i>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 <hr size="100" noshade>
                                             </div>
@@ -1014,47 +1047,49 @@
     </div>
     <!-- /.content-wrapper -->
 
-    @section('script')
-    <!-- REVENUE OF SALES SCRIPT -->
-    <script>
-        $(document).ready(function() {
-            // var finalTotalAmountRos = $('#finalTotalAmountRos').val();
-            // var finalTotalExRateAmountRos = $('#finalTotalAmountExRateRos').text();
-            var count = 1;
+    @section('scriptCreateJobsheet')
 
-            $(document).on('click', '#add_row_cont_seal', function() {
-                count++;
-                $('#totalContSeal').val(count);
-                var html_code = '';
-                html_code += '<tr id="row_id_cont_seal_' + count + '">';
-                html_code += '<td class="text text-center"><span id="cont_seal_no">' + count + '</span></td>';
+        <!-- CONT SEAL DETAIL SCRIPT -->
+        <script>
+            $(document).ready(function() {
+                // var finalTotalAmountRos = $('#finalTotalAmountRos').val();
+                // var finalTotalExRateAmountRos = $('#finalTotalAmountExRateRos').text();
+                var count = 1;
 
-                html_code += '<td><input type="text" name="contName[]" id="contName' + count +
-                    '" class="form-control form-control-sm input-sm text-uppercase" /></td>';
-                html_code += '<td><input type="text" name="sealName[]" id="sealName' + count +
-                    '" class="form-control form-control-sm input-sm text-uppercase" /></td>';
-                html_code += '<td class="text-center align-middle"><button type="button" name="remove_row_cont_seal" id="' + count +
-                    '" class="btn btn-danger btn-xs remove_row_cont_seal"><i class="fa fa-trash-alt"></i></button></td>';
-                html_code += '</tr>';
-                $('#tableContSeal').append(html_code);
+                $(document).on('click', '#add_row_cont_seal', function() {
+                    count++;
+                    $('#totalItemRos').val(count);
+                    var html_code = '';
+                    html_code += '<tr id="row_id_cont_seal_' + count + '">';
+                    html_code += '<td class="text text-center"><span id="cont_seal_no">' + count + '</span></td>';
+
+                    html_code += '<td><input type="text" name="contName[]" id="contName' + count +
+                        '" class="form-control form-control-sm input-sm text-uppercase" /></td>';
+                    html_code += '<td><input type="text" name="sealName[]" id="sealName' + count +
+                        '" class="form-control form-control-sm input-sm text-uppercase" /></td>';
+
+                    html_code += '<td><button type="button" name="remove_row_cont_seal" id="' + count +
+                        '" class="btn btn-danger btn-xs remove_row_cont_seal align-middle"><i class="fa fa-trash-alt"></i></button></td>';
+                    html_code += '</tr>';
+                    $('#tableContSeal').append(html_code);
+                });
+
+                $(document).on('click', '.remove_row_cont_seal', function() {
+                    var row_id_cont_seal = $(this).attr("id");
+                    // var total_item_amount_ros = $('#itemFinalAmountRos' + row_id_ros).val();
+                    // var final_amount_ros = $('#finalTotalAmountRos').val();
+                    // var result_amount_ros = parseFloat(final_amount_ros) - parseFloat(total_item_amount_ros);
+                    // var ex_rate_ros = $('#exchangeRateRos').val();
+                    // final_item_total_ex_rate_ros = parseFloat(result_amount_ros) * parseFloat(ex_rate_ros);
+                    // $('#finalTotalAmountRos').val(result_amount_ros);
+                    // $('#finalTotalAmountExRateRos').val(final_item_total_ex_rate_ros.toFixed(4));
+                    $('#row_id_cont_seal_' + row_id_cont_seal).remove();
+                    count--;
+                    $('#totalContSeal').val(count);
+                });
             });
-
-            $(document).on('click', '.remove_row_cont_seal', function() {
-                var row_id_cont_seal = $(this).attr("id");
-                // var total_item_amount_ros = $('#itemFinalAmountRos' + row_id_ros).val();
-                // var final_amount_ros = $('#finalTotalAmountRos').val();
-                // var result_amount_ros = parseFloat(final_amount_ros) - parseFloat(total_item_amount_ros);
-                // var ex_rate_ros = $('#exchangeRateRos').val();
-                // final_item_total_ex_rate_ros = parseFloat(result_amount_ros) * parseFloat(ex_rate_ros);
-                // $('#finalTotalAmountRos').val(result_amount_ros);
-                // $('#finalTotalAmountExRateRos').val(final_item_total_ex_rate_ros.toFixed(4));
-                $('#row_id_cont_seal_' + row_id_cont_seal).remove();
-                count--;
-                $('#totalContSeal').val(count);
-            });
-        });
-    </script>
-    <!-- END REVENUE OF SALES SCRIPT -->
+        </script>
+        <!-- END CONT SEAL DETAIL SCRIPT -->
 @endsection
 @endsection
 

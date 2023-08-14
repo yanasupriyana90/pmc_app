@@ -40,6 +40,7 @@ class DatabaseSeeder extends Seeder
 
             // Marketing
             JobSheetSeeder::class,
+            ContSealDetailSeeder::class,
             SellingBuyingSeeder::class,
             RevenueOfSaleSeeder::class,
             EmklSeeder::class,

@@ -53,41 +53,41 @@
                                 </div>
                             </div>
                             <!-- info row -->
-                            <div class="row">
+                            <div class="row text-sm">
                                 <div class="col-sm-6">
                                     <dl class="row">
-                                        <dt class="col-sm-4 text-sm">Jobsheet Code</dt>
-                                        <dd class="col-sm-8 text-sm">{{ $jobSheetHeadList->code_js }}</dd>
-                                        <dt class="col-sm-4 text-sm">Booking No.</dt>
-                                        <dd class="col-sm-8 text-sm">
+                                        <dt class="col-sm-4">Jobsheet Code</dt>
+                                        <dd class="col-sm-8">{{ $jobSheetHeadList->code_js }}</dd>
+                                        <dt class="col-sm-4">Booking No.</dt>
+                                        <dd class="col-sm-8">
                                             @if (empty($jobSheetHeadList->booking_no))
                                                 <p>-</p>
                                             @else
                                                 <p>{{ $jobSheetHeadList->booking_no }}</p>
                                             @endif
                                         </dd>
-                                        <dt class="col-sm-4 text-sm">Shipper</dt>
-                                        <dd class="col-sm-8 text-sm">{{ $jobSheetHeadList->shipper['name'] }}</dd>
-                                        <dt class="col-sm-4 text-sm">Undername MBL</dt>
-                                        <dd class="col-sm-8 text-sm">
+                                        <dt class="col-sm-4">Shipper</dt>
+                                        <dd class="col-sm-8">{{ $jobSheetHeadList->shipper['name'] }}</dd>
+                                        <dt class="col-sm-4">Undername MBL</dt>
+                                        <dd class="col-sm-8">
                                             @if (empty($jobSheetHeadList->undernameMbl))
                                                 <p>-</p>
                                             @else
                                                 <p>{{ $jobSheetHeadList->undernameMbl['name'] }}</p>
                                             @endif
                                         </dd>
-                                        <dt class="col-sm-4 text-sm">Undername HBL</dt>
-                                        <dd class="col-sm-8 text-sm">
+                                        <dt class="col-sm-4">Undername HBL</dt>
+                                        <dd class="col-sm-8">
                                             @if (empty($jobSheetHeadList->undernameHbl))
                                                 <p>-</p>
                                             @else
                                                 <p>{{ $jobSheetHeadList->undernameHbl['name'] }}</p>
                                             @endif
                                         </dd>
-                                        <dt class="col-sm-4 text-sm">Container Type</dt>
-                                        <dd class="col-sm-8 text-sm">{{ $jobSheetHeadList->containerSizeType['name'] }}</dd>
-                                        <dt class="col-sm-4 text-sm">Port Of Discharge</dt>
-                                        <dd class="col-sm-8 text-sm">{{ $jobSheetHeadList->pod }}</dd>
+                                        <dt class="col-sm-4">Container Type</dt>
+                                        <dd class="col-sm-8">{{ $jobSheetHeadList->containerSizeType['name'] }}</dd>
+                                        <dt class="col-sm-4">Port Of Discharge</dt>
+                                        <dd class="col-sm-8">{{ $jobSheetHeadList->pod }}</dd>
                                     </dl>
                                 </div>
                                 <!-- /.col -->
@@ -104,23 +104,23 @@
                                 <!-- /.col -->
                                 <div class="col-sm-6 invoice-col">
                                     <dl class="row">
-                                        <dt class="col-sm-4 text-sm">Carrier</dt>
-                                        <dd class="col-sm-8 text-sm">{{ $jobSheetHeadList->carrier }}</dd>
-                                        <dt class="col-sm-4 text-sm">Vessel</dt>
-                                        <dd class="col-sm-8 text-sm">{{ $jobSheetHeadList->vessel }}</dd>
-                                        <dt class="col-sm-4 text-sm">ETD</dt>
-                                        <dd class="col-sm-8 text-sm">{{ $jobSheetHeadList->etd }}</dd>
-                                        <dt class="col-sm-4 text-sm">Freight & Charges</dt>
-                                        <dd class="col-sm-8 text-sm">{{ $jobSheetHeadList->typePayment['name'] }}</dd>
-                                        <dt class="col-sm-4 text-sm">Volume</dt>
-                                        <dd class="col-sm-8 text-sm">{{ $jobSheetHeadList->volume }}</dd>
+                                        <dt class="col-sm-4">Carrier</dt>
+                                        <dd class="col-sm-8">{{ $jobSheetHeadList->carrier }}</dd>
+                                        <dt class="col-sm-4">Vessel</dt>
+                                        <dd class="col-sm-8">{{ $jobSheetHeadList->vessel }}</dd>
+                                        <dt class="col-sm-4">ETD</dt>
+                                        <dd class="col-sm-8">{{ $jobSheetHeadList->etd }}</dd>
+                                        <dt class="col-sm-4">Freight & Charges</dt>
+                                        <dd class="col-sm-8">{{ $jobSheetHeadList->typePayment['name'] }}</dd>
+                                        <dt class="col-sm-4">Volume</dt>
+                                        <dd class="col-sm-8">{{ $jobSheetHeadList->volume }}</dd>
                                     </dl>
                                 </div>
                                 <!-- /.col -->
                             </div>
                             <!-- /.row -->
 
-                                <div class="row justify-content-center">
+                                <div class="row justify-content-center text-sm">
                                     <div class="col-4">
                                         <div class="card">
                                             <div class="card-header">
@@ -128,7 +128,7 @@
                                             </div>
                                             <!-- /.card-header -->
                                             <div class="card-body p-0">
-                                                <table class="table table-sm">
+                                                <table class="table table-bordered table-sm">
                                                     <thead>
                                                         <tr>
                                                             <th style="width: 10px">#</th>
@@ -155,10 +155,10 @@
 
                             <!-- Table row REVENUE OF SALES / OCEAN FREIGHT -->
                             <div class="card border-dark mb-2">
-                                <div class="card-body text-dark">
+                                <div class="card-body text-dark text-sm">
                                     <div class="row justify-content-start">
                                         <div class="col-4">
-                                            <p for=""><b>Exchange Rate (Rp.) :</b>
+                                            <p for=""><b>Exchange Rate (Rp.) :</b></p><p class="rupiah">
                                                 {{ $jobSheetHeadList->sellingBuying['exchange_rate_ros'] }}</p>
                                         </div>
                                         <div class="col-4">
@@ -169,17 +169,17 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-12 table-responsive">
-                                            <table class="table table-striped">
+                                            <table class="table table-bordered table-sm">
                                                 <thead>
-                                                    <tr>
-                                                        <th class="text-center" style="width: 5%">No</th>
-                                                        <th class="text-left" style="width: 20%">Item Name</th>
-                                                        <th class="text-center" style="width: 5%">Volume</th>
-                                                        <th class="text-right" style="width: 15%">Price ($)</th>
-                                                        <th class="text-right" style="width: 15%">Actual Amt ($)</th>
-                                                        <th class="text-center" style="width: 12%">Tax Rate (%)</th>
-                                                        <th class="text-right" style="width: 13%">Tax Amt ($)</th>
-                                                        <th class="text-right" style="width: 15%">Total ($)</th>
+                                                    <tr class="text-center">
+                                                        <th style="width: 3%">No</th>
+                                                        <th style="width: 21%">Item Name</th>
+                                                        <th style="width: 4%">Vol</th>
+                                                        <th style="width: 15%">Price ($)</th>
+                                                        <th style="width: 15%">Actual Amt ($)</th>
+                                                        <th style="width: 10%">Tax Rate (%)</th>
+                                                        <th style="width: 13%">Tax Amt ($)</th>
+                                                        <th style="width: 20%">Total ($)</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -189,27 +189,27 @@
                                                             <td class="text-center">{{ $loop->iteration }}</td>
                                                             <td class="text-left">{{ $jobSheetHead->item_name }}</td>
                                                             <td class="text-center">{{ $jobSheetHead->volume }}</td>
-                                                            <td class="text-right">{{ $jobSheetHead->price }}</td>
-                                                            <td class="text-right">{{ $jobSheetHead->actual_amt }}</td>
+                                                            <td class="text-right nominal">{{ $jobSheetHead->price }}</td>
+                                                            <td class="text-right nominal">{{ $jobSheetHead->actual_amt }}</td>
                                                             <td class="text-center">{{ $jobSheetHead->tax_rate }}</td>
-                                                            <td class="text-right">{{ $jobSheetHead->tax_amt }}</td>
-                                                            <td class="text-right">{{ $jobSheetHead->final_amount }}</td>
+                                                            <td class="text-right nominal">{{ $jobSheetHead->tax_amt }}</td>
+                                                            <td class="text-right nominal">{{ $jobSheetHead->final_amount }}</td>
                                                         </tr>
                                                     @endforeach
                                                     <tr>
                                                         <td colspan="7" class="text-right">
-                                                            <h5><strong>Total ($) :</strong></h5>
+                                                            <h6><strong>Total ($) :</strong></h6>
                                                         </td>
-                                                        <td class="text-right">
+                                                        <td class="text-right dollar">
                                                             <h5><strong>{{ $jobSheetHeadList->sellingBuying['total_ros'] }}</strong>
                                                             </h5>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td colspan="7" class="text-right">
-                                                            <h5><strong>Total (Rp.) :</strong></h5>
+                                                            <h6><strong>Total (Rp) :</strong></h6>
                                                         </td>
-                                                        <td class="text-right">
+                                                        <td class="text-right rupiah">
                                                             <h5><strong>{{ $jobSheetHeadList->sellingBuying['total_ex_rate_ros'] }}</strong>
                                                             </h5>
                                                         </td>
@@ -226,7 +226,7 @@
 
                             <!-- Table row REVENUE OF SALES / EMKL -->
                             <div class="card border-dark mb-2">
-                                <div class="card-body text-dark">
+                                <div class="card-body text-dark text-sm">
                                     <div class="row justify-content-start">
                                         <div class="col-12">
                                             <p class="text-md text-center"><b>REVENUE OF SALES / EMKL</b>
@@ -236,17 +236,17 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-12 table-responsive">
-                                            <table class="table table-striped">
+                                            <table class="table table-bordered table-sm">
                                                 <thead>
-                                                    <tr>
-                                                        <th class="text-center" style="width: 5%">No</th>
-                                                        <th class="text-left" style="width: 20%">Item Name</th>
-                                                        <th class="text-center" style="width: 5%">Volume</th>
-                                                        <th class="text-right" style="width: 15%">Price (Rp.)</th>
-                                                        <th class="text-right" style="width: 15%">Actual Amt (Rp.)</th>
-                                                        <th class="text-center" style="width: 12%">Tax Rate (%)</th>
-                                                        <th class="text-right" style="width: 13%">Tax Amt (Rp.)</th>
-                                                        <th class="text-right" style="width: 15%">Total (Rp.)</th>
+                                                    <tr class="text-center">
+                                                        <th style="width: 3%">No</th>
+                                                        <th style="width: 21%">Item Name</th>
+                                                        <th style="width: 4%">Vol</th>
+                                                        <th style="width: 15%">Price (Rp.)</th>
+                                                        <th style="width: 15%">Actual Amt (Rp.)</th>
+                                                        <th style="width: 10%">Tax Rate (%)</th>
+                                                        <th style="width: 13%">Tax Amt (Rp.)</th>
+                                                        <th style="width: 20%">Total (Rp.)</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -256,18 +256,18 @@
                                                             <td class="text-center">{{ $loop->iteration }}</td>
                                                             <td class="text-left">{{ $jobSheetHead->item_name }}</td>
                                                             <td class="text-center">{{ $jobSheetHead->volume }}</td>
-                                                            <td class="text-right">{{ $jobSheetHead->price }}</td>
-                                                            <td class="text-right">{{ $jobSheetHead->actual_amt }}</td>
+                                                            <td class="text-right nominal">{{ $jobSheetHead->price }}</td>
+                                                            <td class="text-right nominal">{{ $jobSheetHead->actual_amt }}</td>
                                                             <td class="text-center">{{ $jobSheetHead->tax_rate }}</td>
-                                                            <td class="text-right">{{ $jobSheetHead->tax_amt }}</td>
-                                                            <td class="text-right">{{ $jobSheetHead->final_amount }}</td>
+                                                            <td class="text-right nominal">{{ $jobSheetHead->tax_amt }}</td>
+                                                            <td class="text-right nominal">{{ $jobSheetHead->final_amount }}</td>
                                                         </tr>
                                                     @endforeach
                                                     <tr>
                                                         <td colspan="7" class="text-right">
-                                                            <h5><strong>Total (Rp.) :</strong></h5>
+                                                            <h6><strong>Total (Rp) :</strong></h6>
                                                         </td>
-                                                        <td class="text-right">
+                                                        <td class="text-right rupiah">
                                                             <h5><strong>{{ $jobSheetHeadList->sellingBuying['total_emkl'] }}</strong>
                                                             </h5>
                                                         </td>
@@ -284,11 +284,11 @@
 
                             <!-- Table row COST OF SALES -->
                             <div class="card border-dark mb-2">
-                                <div class="card-body text-dark">
+                                <div class="card-body text-dark text-sm">
                                     <div class="row justify-content-start">
                                         <div class="col-4">
-                                            <p for=""><b>Exchange Rate (Rp.) :</b>
-                                                {{ $jobSheetHeadList->sellingBuying['exchange_rate_cos'] }}</p>
+                                            <p for=""><b>Exchange Rate (Rp.) :</b></p>
+                                                <p class="rupiah">{{ $jobSheetHeadList->sellingBuying['exchange_rate_cos'] }}</p>
                                         </div>
                                         <div class="col-4">
                                             <p class="text-md text-center"><b>COST OF SALES</b>
@@ -298,17 +298,17 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-12 table-responsive">
-                                            <table class="table table-striped">
+                                            <table class="table  table-bordered table-sm">
                                                 <thead>
-                                                    <tr>
-                                                        <th class="text-center" style="width: 5%">No</th>
-                                                        <th class="text-left" style="width: 20%">Item Name</th>
-                                                        <th class="text-center" style="width: 5%">Volume</th>
-                                                        <th class="text-right" style="width: 15%">Price ($)</th>
-                                                        <th class="text-right" style="width: 15%">Actual Amt ($)</th>
-                                                        <th class="text-center" style="width: 12%">Tax Rate (%)</th>
-                                                        <th class="text-right" style="width: 13%">Tax Amt ($)</th>
-                                                        <th class="text-right" style="width: 15%">Total ($)</th>
+                                                    <tr class="text-center">
+                                                        <th style="width: 3%">No</th>
+                                                        <th style="width: 21%">Item Name</th>
+                                                        <th style="width: 4%">Vol</th>
+                                                        <th style="width: 15%">Price ($)</th>
+                                                        <th style="width: 15%">Actual Amt ($)</th>
+                                                        <th style="width: 10%">Tax Rate (%)</th>
+                                                        <th style="width: 13%">Tax Amt ($)</th>
+                                                        <th style="width: 20%">Total ($)</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -318,27 +318,27 @@
                                                             <td class="text-center">{{ $loop->iteration }}</td>
                                                             <td class="text-left">{{ $jobSheetHead->item_name }}</td>
                                                             <td class="text-center">{{ $jobSheetHead->volume }}</td>
-                                                            <td class="text-right">{{ $jobSheetHead->price }}</td>
-                                                            <td class="text-right">{{ $jobSheetHead->actual_amt }}</td>
+                                                            <td class="text-right nominal">{{ $jobSheetHead->price }}</td>
+                                                            <td class="text-right nominal">{{ $jobSheetHead->actual_amt }}</td>
                                                             <td class="text-center">{{ $jobSheetHead->tax_rate }}</td>
-                                                            <td class="text-right">{{ $jobSheetHead->tax_amt }}</td>
-                                                            <td class="text-right">{{ $jobSheetHead->final_amount }}</td>
+                                                            <td class="text-right nominal">{{ $jobSheetHead->tax_amt }}</td>
+                                                            <td class="text-right nominal">{{ $jobSheetHead->final_amount }}</td>
                                                         </tr>
                                                     @endforeach
                                                     <tr>
                                                         <td colspan="7" class="text-right">
-                                                            <h5><strong>Total ($) :</strong></h5>
+                                                            <h6><strong>Total ($) :</strong></h6>
                                                         </td>
-                                                        <td class="text-right">
+                                                        <td class="text-right dollar">
                                                             <h5><strong>{{ $jobSheetHeadList->sellingBuying['total_cos'] }}</strong>
                                                             </h5>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td colspan="7" class="text-right">
-                                                            <h5><strong>Total (Rp.) :</strong></h5>
+                                                            <h6><strong>Total (Rp) :</strong></h6>
                                                         </td>
-                                                        <td class="text-right">
+                                                        <td class="text-right rupiah">
                                                             <h5><strong>{{ $jobSheetHeadList->sellingBuying['total_ex_rate_cos'] }}</strong>
                                                             </h5>
                                                         </td>
@@ -355,7 +355,7 @@
 
                             <!-- Table row COST OF SALES (HANDLING) -->
                             <div class="card border-dark mb-2">
-                                <div class="card-body text-dark">
+                                <div class="card-body text-dark text-sm">
                                     <div class="row justify-content-start">
                                         <div class="col-12">
                                             <p class="text-md text-center"><b>COST OF SALES (HANDLING)</b>
@@ -365,17 +365,17 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-12 table-responsive">
-                                            <table class="table table-striped">
+                                            <table class="table table-bordered table-sm">
                                                 <thead>
-                                                    <tr>
-                                                        <th class="text-center" style="width: 5%">No</th>
-                                                        <th class="text-left" style="width: 20%">Item Name</th>
-                                                        <th class="text-center" style="width: 5%">Volume</th>
-                                                        <th class="text-right" style="width: 15%">Price (Rp.)</th>
-                                                        <th class="text-right" style="width: 15%">Actual Amt (Rp.)</th>
-                                                        <th class="text-center" style="width: 12%">Tax Rate (%)</th>
-                                                        <th class="text-right" style="width: 13%">Tax Amt (Rp.)</th>
-                                                        <th class="text-right" style="width: 15%">Total (Rp.)</th>
+                                                    <tr class="text-center">
+                                                        <th style="width: 3%">No</th>
+                                                        <th style="width: 21%">Item Name</th>
+                                                        <th style="width: 4%">Vol</th>
+                                                        <th style="width: 15%">Price (Rp.)</th>
+                                                        <th style="width: 15%">Actual Amt (Rp.)</th>
+                                                        <th style="width: 10%">Tax Rate (%)</th>
+                                                        <th style="width: 13%">Tax Amt (Rp.)</th>
+                                                        <th style="width: 20%">Total (Rp.)</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -384,18 +384,18 @@
                                                             <td class="text-center">{{ $loop->iteration }}</td>
                                                             <td class="text-left">{{ $jobSheetHead->item_name }}</td>
                                                             <td class="text-center">{{ $jobSheetHead->volume }}</td>
-                                                            <td class="text-right">{{ $jobSheetHead->price }}</td>
-                                                            <td class="text-right">{{ $jobSheetHead->actual_amt }}</td>
+                                                            <td class="text-right nominal">{{ $jobSheetHead->price }}</td>
+                                                            <td class="text-right nominal">{{ $jobSheetHead->actual_amt }}</td>
                                                             <td class="text-center">{{ $jobSheetHead->tax_rate }}</td>
-                                                            <td class="text-right">{{ $jobSheetHead->tax_amt }}</td>
-                                                            <td class="text-right">{{ $jobSheetHead->final_amount }}</td>
+                                                            <td class="text-right nominal">{{ $jobSheetHead->tax_amt }}</td>
+                                                            <td class="text-right nominal">{{ $jobSheetHead->final_amount }}</td>
                                                         </tr>
                                                     @endforeach
                                                     <tr>
                                                         <td colspan="7" class="text-right">
-                                                            <h5><strong>Total (Rp.) :</strong></h5>
+                                                            <h6><strong>Total (Rp) :</strong></h6>
                                                         </td>
-                                                        <td class="text-right">
+                                                        <td class="text-right rupiah">
                                                             <h5><strong>{{ $jobSheetHeadList->sellingBuying['total_handling'] }}</strong>
                                                             </h5>
                                                         </td>
@@ -413,7 +413,7 @@
                             <div class="row">
                                 <!-- accepted payments column -->
 
-                                <div class="col-6">
+                                <div class="col-6 text-sm">
                                     <p class="lead">Remarks:</p>
 
                                     <p class="text-muted well well-sm shadow-none" style="margin-top: 10px;">
@@ -421,15 +421,15 @@
                                     </p>
                                 </div>
                                 <!-- /.col -->
-                                <div class="col-6">
+                                <div class="col-6 text-sm">
                                     <p class="lead">Accumulation</p>
                                     <div class="table-responsive">
-                                        <table class="table">
+                                        <table class="table table-sm">
                                             <tr>
                                                 <th style="width:50%">
-                                                    <h5><strong>Grand Total Selling (Rp.) :</strong></h5>
+                                                    <h6><strong>Grand Total Selling (Rp.) :</strong></h6>
                                                 </th>
-                                                <td class="text-right">
+                                                <td class="text-right rupiah">
                                                     <h5><strong>
                                                             {{ $jobSheetHeadList->sellingBuying['grand_total_selling'] }}</strong>
                                                     </h5>
@@ -437,9 +437,9 @@
                                             </tr>
                                             <tr>
                                                 <th>
-                                                    <h5><strong>Grand Total Buying (Rp.) :</strong></h5>
+                                                    <h6><strong>Grand Total Buying (Rp.) :</strong></h6>
                                                 </th>
-                                                <td class="text-right">
+                                                <td class="text-right rupiah">
                                                     <h5><strong>
                                                             {{ $jobSheetHeadList->sellingBuying['grand_total_buying'] }}</strong>
                                                     </h5>
@@ -447,9 +447,9 @@
                                             </tr>
                                             <tr>
                                                 <th>
-                                                    <h5><strong>Profit / Loss (Rp.) :</strong></h5>
+                                                    <h6><strong>Profit / Loss (Rp.) :</strong></h6>
                                                 </th>
-                                                <td class="text-right">
+                                                <td class="text-right rupiah">
                                                     <h5><strong>
                                                             {{ $jobSheetHeadList->sellingBuying['profit_loss'] }}</strong>
                                                     </h5>
@@ -485,4 +485,81 @@
     <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
+    @section('scriptShowDetailJobsheet')
+    <script>
+
+        $(document).ready(function() {
+            // $(".tableShowDetailJobsheet").DataTable({
+            //     "responsive": true,
+            //     "lengthChange": false,
+            //     "autoWidth": false,
+            //     "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            // }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+
+            $('.nominal').inputmask({
+                alias: 'numeric',
+                prefix: '', // You can set the currency symbol here, e.g., '$'
+                suffix: '', // You can set a suffix here, e.g., ' USD'
+                groupSeparator: '.', // Set the group separator, e.g., for thousands
+                // radixPoint: ',',  // Set the group separator, e.g., for thousands
+                digits: 4, // Set the number of decimal digits
+                autoGroup: true, // Automatically groups thousands
+                rightAlign: false, // Align the currency symbol to the left
+                removeMaskOnSubmit: true,
+            });
+
+            $('.rupiah').inputmask({
+                alias: 'numeric',
+                prefix: 'Rp ', // You can set the currency symbol here, e.g., '$'
+                suffix: '', // You can set a suffix here, e.g., ' USD'
+                groupSeparator: '.', // Set the group separator, e.g., for thousands
+                // radixPoint: ',',  // Set the group separator, e.g., for thousands
+                digits: 4, // Set the number of decimal digits
+                autoGroup: true, // Automatically groups thousands
+                rightAlign: false, // Align the currency symbol to the left
+                removeMaskOnSubmit: true,
+            });
+
+            $('.dollar').inputmask({
+                alias: 'numeric',
+                prefix: '$ ', // You can set the currency symbol here, e.g., '$'
+                suffix: '', // You can set a suffix here, e.g., ' USD'
+                groupSeparator: '.', // Set the group separator, e.g., for thousands
+                // radixPoint: ',',  // Set the group separator, e.g., for thousands
+                digits: 4, // Set the number of decimal digits
+                autoGroup: true, // Automatically groups thousands
+                rightAlign: false, // Align the currency symbol to the left
+                removeMaskOnSubmit: true,
+            });
+        });
+
+    </script>
+    @endsection
 @endsection
+
+{{-- <script>
+    $(document).ready(function() {
+        $('.rupiah').inputmask({
+            alias: 'currency',
+            prefix: 'Rp ',         // You can set the currency symbol here, e.g., '$'
+            suffix: '',         // You can set a suffix here, e.g., ' USD'
+            groupSeparator: '.',  // Set the group separator, e.g., for thousands
+            // radixPoint: ',',  // Set the group separator, e.g., for thousands
+            digits: 4,          // Set the number of decimal digits
+            autoGroup: true,    // Automatically groups thousands
+            rightAlign: false,   // Align the currency symbol to the left
+            removeMaskOnSubmit: true,
+        });
+        $('.dollar').inputmask({
+            alias: 'currency',
+            prefix: '$ ',         // You can set the currency symbol here, e.g., '$'
+            suffix: '',         // You can set a suffix here, e.g., ' USD'
+            groupSeparator: '.',  // Set the group separator, e.g., for thousands
+            // radixPoint: ',',  // Set the group separator, e.g., for thousands
+            digits: 4,          // Set the number of decimal digits
+            autoGroup: true,    // Automatically groups thousands
+            rightAlign: false,   // Align the currency symbol to the left
+            removeMaskOnSubmit: true,
+        });
+    })
+</script> --}}

@@ -44,7 +44,7 @@
         <!-- /.content-header -->
 
         <!-- Main content -->
-        <section class="content">
+        <section class="content text-sm">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-6">
@@ -129,7 +129,7 @@
             </div><!-- /.container-fluid -->
         </section>
 
-        <section class="content">
+        <section class="content text-sm">
             <div class="container-fluid">
                 <!-- SELECT2 EXAMPLE -->
                 <form action="{{ route('jobSheet.sellingBuyingStore') }}" method="POST">
@@ -170,7 +170,7 @@
                                             <div class="col-sm-6 col-md-3">
                                                 <div class="form-group">
                                                     <label>Exchange Rate</label>
-                                                    <input class="form-control form-control-sm input_sm number_only"
+                                                    <input class="form-control form-control-sm input_sm rupiahRos"
                                                         type="text" id="exchangeRateRos" name="exchangeRateRos" value="{{ old('exchangeRateRos') }}">
                                                 </div>
                                             </div>
@@ -225,17 +225,16 @@
                                                                             <td><input type="text" name="volRos[]"
                                                                                     id="volRos1" data-ros-no="1"
                                                                                     class="form-control form-control-sm input-sm number_only volRos"
-                                                                                    value="{{ $jobSheetHeadList->volume }}"
-                                                                                    readonly />
+                                                                                    value="{{ old('volRos') }}" />
                                                                             </td>
                                                                             <td><input type="text" name="priceRos[]"
                                                                                     id="priceRos1" data-ros-no="1"
-                                                                                    class="form-control form-control-sm input-sm number_only priceRos rupiah" value="{{ old('priceRos') }}" />
+                                                                                    class="form-control form-control-sm input-sm dollarRos priceRos" value="{{ old('priceRos') }}" />
                                                                             </td>
                                                                             <td><input type="text"
                                                                                     name="actualAmountRos[]"
                                                                                     id="actualAmountRos1" data-ros-no="1"
-                                                                                    class="form-control form-control-sm input-sm actualAmountRos" value="{{ old('actualAmountRos') }}"
+                                                                                    class="form-control form-control-sm input-sm dollarRos actualAmountRos" value="{{ old('actualAmountRos') }}"
                                                                                     readonly /></td>
                                                                             <td><input type="text" name="taxRateRos[]"
                                                                                     id="taxRateRos1" data-ros-no="1"
@@ -244,14 +243,13 @@
                                                                             <td><input type="text"
                                                                                     name="taxAmountRos[]"
                                                                                     id="taxAmountRos1" data-ros-no="1"
-                                                                                    readonly
-                                                                                    class="form-control form-control-sm input-sm taxAmountRos" value="{{ old('taxAmountRos') }}"/>
+                                                                                    class="form-control form-control-sm input-sm dollarRos taxAmountRos" value="{{ old('taxAmountRos') }}" readonly/>
                                                                             </td>
                                                                             <td><input type="text"
                                                                                     name="itemFinalAmountRos[]"
                                                                                     id="itemFinalAmountRos1"
                                                                                     data-ros-no="1" readonly
-                                                                                    class="form-control form-control-sm input-sm itemFinalAmountRos" value="{{ old('itemFinalAmountRos') }}"/>
+                                                                                    class="form-control form-control-sm input-sm dollarRos itemFinalAmountRos" value="{{ old('itemFinalAmountRos') }}"/>
                                                                             </td>
                                                                             <td></td>
                                                                         </tr>
@@ -271,7 +269,7 @@
                                                                 </td> --}}
                                                                 <td align="right"><input type="text"
                                                                     id="finalTotalAmountRos"
-                                                                    name="finalTotalAmountRos" readonly>
+                                                                    name="finalTotalAmountRos" class="dollarRos" readonly>
                                                                 </td>
                                                             </tr>
                                                             <tr>
@@ -287,7 +285,7 @@
                                                                 </td> --}}
                                                                 <td align="right"><input type="text"
                                                                         id="finalTotalAmountExRateRos"
-                                                                        name="finalTotalAmountExRateRos" readonly>
+                                                                        name="finalTotalAmountExRateRos" class="rupiahRos" readonly>
                                                                 </td>
 
                                                             </tr>
@@ -396,13 +394,13 @@
                                                                             </td>
                                                                             <td><input type="text" name="priceEmkl[]"
                                                                                     id="priceEmkl1" data-emkl-no="1"
-                                                                                    class="form-control form-control-sm input-sm number_only priceEmkl" value="{{ old('priceEmkl') }}"/>
+                                                                                    class="form-control form-control-sm input-sm rupiahEmkl priceEmkl" value="{{ old('priceEmkl') }}"/>
                                                                             </td>
                                                                             <td><input type="text"
                                                                                     name="actualAmountEmkl[]"
                                                                                     id="actualAmountEmkl1"
                                                                                     data-emkl-no="1"
-                                                                                    class="form-control form-control-sm input-sm actualAmountEmkl" value="{{ old('actualAmountEmkl') }}"
+                                                                                    class="form-control form-control-sm input-sm rupiahEmkl actualAmountEmkl" value="{{ old('actualAmountEmkl') }}"
                                                                                     readonly /></td>
                                                                             <td><input type="text" name="taxRateEmkl[]"
                                                                                     id="taxRateEmkl1" data-emkl-no="1"
@@ -412,13 +410,13 @@
                                                                                     name="taxAmountEmkl[]"
                                                                                     id="taxAmountEmkl1" data-emkl-no="1"
                                                                                     readonly
-                                                                                    class="form-control form-control-sm input-sm taxAmountEmkl" value="{{ old('taxAmountEmkl') }}"/>
+                                                                                    class="form-control form-control-sm input-sm rupiahEmkl taxAmountEmkl" value="{{ old('taxAmountEmkl') }}"/>
                                                                             </td>
                                                                             <td><input type="text"
                                                                                     name="itemFinalAmountEmkl[]"
                                                                                     id="itemFinalAmountEmkl1"
                                                                                     data-emkl-no="1" readonly
-                                                                                    class="form-control form-control-sm input-sm itemFinalAmountEmkl" value="{{ old('itemFinalAmountEmkl') }}"/>
+                                                                                    class="form-control form-control-sm input-sm rupiahEmkl itemFinalAmountEmkl" value="{{ old('itemFinalAmountEmkl') }}"/>
                                                                             </td>
                                                                             <td></td>
                                                                         </tr>
@@ -444,7 +442,7 @@
                                                                 </td> --}}
                                                                 <td align="right"><input type="text"
                                                                         id="finalTotalAmountEmkl"
-                                                                        name="finalTotalAmountEmkl" readonly>
+                                                                        name="finalTotalAmountEmkl" class="rupiahEmkl" readonly>
                                                                 </td>
                                                             </tr>
                                                             {{-- <tr>
@@ -495,7 +493,7 @@
                                             <div class="col-sm-6 col-md-3">
                                                 <div class="form-group">
                                                     <label>Exchange Rate</label>
-                                                    <input class="form-control form-control-sm input-sm number_only"
+                                                    <input class="form-control form-control-sm input-sm rupiahCos"
                                                         type="text" id="exchangeRateCos" name="exchangeRateCos" value="{{ old('exchangeRateRos') }}">
                                                 </div>
                                             </div>
@@ -549,18 +547,16 @@
                                                                             </td>
                                                                             <td><input type="text" name="volCos[]"
                                                                                     id="volCos1" data-cos-no="1"
-                                                                                    class="form-control form-control-sm input-sm number_only volCos"
-                                                                                    value="{{ $jobSheetHeadList->volume }}"
-                                                                                    readonly />
+                                                                                    class="form-control form-control-sm input-sm number_only volCos" />
                                                                             </td>
                                                                             <td><input type="text" name="priceCos[]"
                                                                                     id="priceCos1" data-cos-no="1"
-                                                                                    class="form-control form-control-sm input-sm number_only priceCos" value="{{ old('priceCos') }}"/>
+                                                                                    class="form-control form-control-sm input-sm dollarCos priceCos" value="{{ old('priceCos') }}"/>
                                                                             </td>
                                                                             <td><input type="text"
                                                                                     name="actualAmountCos[]"
                                                                                     id="actualAmountCos1" data-cos-no="1"
-                                                                                    class="form-control form-control-sm input-sm actualAmountCos" value="{{ old('actualAmountCos') }}"
+                                                                                    class="form-control form-control-sm input-sm dollarCos actualAmountCos" value="{{ old('actualAmountCos') }}"
                                                                                     readonly /></td>
                                                                             <td><input type="text" name="taxRateCos[]"
                                                                                     id="taxRateCos1" data-cos-no="1"
@@ -570,13 +566,13 @@
                                                                                     name="taxAmountCos[]"
                                                                                     id="taxAmountCos1" data-cos-no="1"
                                                                                     readonly
-                                                                                    class="form-control form-control-sm input-sm taxAmountCos" value="{{ old('taxAmountCos') }}"/>
+                                                                                    class="form-control form-control-sm input-sm dollarCos taxAmountCos" value="{{ old('taxAmountCos') }}"/>
                                                                             </td>
                                                                             <td><input type="text"
                                                                                     name="itemFinalAmountCos[]"
                                                                                     id="itemFinalAmountCos1"
                                                                                     data-cos-no="1" readonly
-                                                                                    class="form-control form-control-sm input-sm itemFinalAmountCos" value="{{ old('itemFinalAmountCos') }}"/>
+                                                                                    class="form-control form-control-sm input-sm dollarCos itemFinalAmountCos" value="{{ old('itemFinalAmountCos') }}"/>
                                                                             </td>
                                                                             <td></td>
                                                                         </tr>
@@ -596,7 +592,7 @@
                                                                 </td> --}}
                                                                 <td align="right"><input type="text"
                                                                     id="finalTotalAmountCos"
-                                                                    name="finalTotalAmountCos" readonly>
+                                                                    name="finalTotalAmountCos" class="dollarCos" readonly>
                                                                 </td>
                                                             </tr>
                                                             <tr>
@@ -612,7 +608,7 @@
                                                                 </td> --}}
                                                                 <td align="right"><input type="text"
                                                                         id="finalTotalAmountExRateCos"
-                                                                        name="finalTotalAmountExRateCos" readonly>
+                                                                        name="finalTotalAmountExRateCos" class="rupiahCos" readonly>
                                                                 </td>
 
                                                             </tr>
@@ -721,13 +717,13 @@
                                                                             </td>
                                                                             <td><input type="text" name="priceHand[]"
                                                                                     id="priceHand1" data-hand-no="1"
-                                                                                    class="form-control form-control-sm input-sm number_only priceHand" value="{{ old('priceHand') }}"/>
+                                                                                    class="form-control form-control-sm input-sm rupiahHand priceHand" value="{{ old('priceHand') }}"/>
                                                                             </td>
                                                                             <td><input type="text"
                                                                                     name="actualAmountHand[]"
                                                                                     id="actualAmountHand1"
                                                                                     data-hand-no="1"
-                                                                                    class="form-control form-control-sm input-sm actualAmountHand" value="{{ old('actualAmountHand') }}"
+                                                                                    class="form-control form-control-sm input-sm rupiahHand actualAmountHand" value="{{ old('actualAmountHand') }}"
                                                                                     readonly /></td>
                                                                             <td><input type="text" name="taxRateHand[]"
                                                                                     id="taxRateHand1" data-hand-no="1"
@@ -737,13 +733,13 @@
                                                                                     name="taxAmountHand[]"
                                                                                     id="taxAmountHand1" data-hand-no="1" value="{{ old('taxAmountHand') }}"
                                                                                     readonly
-                                                                                    class="form-control form-control-sm input-sm taxAmountHand" />
+                                                                                    class="form-control form-control-sm input-sm rupiahHand taxAmountHand" />
                                                                             </td>
                                                                             <td><input type="text"
                                                                                     name="itemFinalAmountHand[]"
                                                                                     id="itemFinalAmountHand1"
                                                                                     data-hand-no="1" readonly
-                                                                                    class="form-control form-control-sm input-sm itemFinalAmountHand" value="{{ old('itemFinalAmountHand') }}" />
+                                                                                    class="form-control form-control-sm input-sm rupiahHand itemFinalAmountHand" value="{{ old('itemFinalAmountHand') }}" />
                                                                             </td>
                                                                             <td></td>
                                                                         </tr>
@@ -769,7 +765,7 @@
                                                                 </td> --}}
                                                                 <td align="right"><input type="text"
                                                                         id="finalTotalAmountHand"
-                                                                        name="finalTotalAmountHand" readonly>
+                                                                        name="finalTotalAmountHand" class="rupiahHand" readonly>
                                                                 </td>
                                                             </tr>
                                                             {{-- <tr>
@@ -804,6 +800,7 @@
                     </div>
                     <!-- END HANDLING -->
 
+                    <!-- GRAND TOTAL -->
                     <div class="row">
                         <!-- accepted payments column -->
                         <div class="col-6">
@@ -821,21 +818,21 @@
                                         <th style="width:50%">Grand Total Selling :</th>
                                         <td>
                                             <input type="text" name="grandTotalSelling" id="grandTotalSelling" readonly
-                                                class="form-control form-control-sm input-sm rupiah" />
+                                                class="form-control form-control-sm input-sm rupiahGrandTotal" />
                                         </td>
                                     </tr>
                                     <tr>
                                         <th style="width:50%">Grand Total Buying :</th>
                                         <td>
                                             <input type="text" name="grandTotalBuying" id="grandTotalBuying"readonly
-                                                class="form-control form-control-sm input-sm rupiah" />
+                                                class="form-control form-control-sm input-sm rupiahGrandTotal" />
                                         </td>
                                     </tr>
                                     <tr>
                                         <th style="width:50%">Profit/Loss :</th>
                                         <td>
                                             <input type="text" name="profitLoss" id="profitLoss"readonly
-                                                class="form-control form-control-sm input-sm rupiah" />
+                                                class="form-control form-control-sm input-sm rupiahGrandTotal" />
                                         </td>
                                     </tr>
                                     {{-- <tr>
@@ -849,7 +846,7 @@
                         </div>
                         <!-- /.col -->
                     </div>
-
+                    <!-- END GRAND TOTAL -->
 
                     <!-- /.container-fluid -->
                     <div class="container">
@@ -872,9 +869,85 @@
     <!-- /.content-wrapper -->
 
 @section('script')
+
+    {{-- <!-- NUMBER ONLY -->
+    <script>
+        $(document).ready(function() {
+            $('.number_only').keypress(function(e) {
+                return isNumbers(e, this);
+            });
+
+            function isNumbers(evt, element) {
+                var charCode = (evt.which) ? evt.which : event.keyCode;
+                if (
+                    (charCode != 46 || $(element).val().indexOf('.') != -1) && // “.” CHECK DOT, AND ONLY ONE.
+                    (charCode < 48 || charCode > 57))
+                    return false;
+                return true;
+            }
+        });
+    </script>
+    <!-- END NUMBER ONLY --> --}}
+
     <!-- REVENUE OF SALES SCRIPT -->
     <script>
         $(document).ready(function() {
+            $(function() {
+                maskReloadRos();
+            });
+
+            function maskReloadRos(){
+                // Apply the currency input mask
+                $('.rupiahRos').inputmask({
+                    alias: 'currency',
+                    prefix: 'Rp ',         // You can set the currency symbol here, e.g., '$'
+                    suffix: '',         // You can set a suffix here, e.g., ' USD'
+                    groupSeparator: '.',  // Set the group separator, e.g., for thousands
+                    // radixPoint: ',',  // Set the group separator, e.g., for thousands
+                    digits: 4,          // Set the number of decimal digits
+                    autoGroup: true,    // Automatically groups thousands
+                    rightAlign: false,   // Align the currency symbol to the left
+                    removeMaskOnSubmit: true,
+                });
+
+                $('.dollarRos').inputmask({
+                    alias: 'currency',
+                    prefix: '$ ',         // You can set the currency symbol here, e.g., '$'
+                    suffix: '',         // You can set a suffix here, e.g., ' USD'
+                    groupSeparator: '.',  // Set the group separator, e.g., for thousands
+                    // radixPoint: '.',  // Set the group separator, e.g., for thousands
+                    digits: 4,          // Set the number of decimal digits
+                    autoGroup: true,    // Automatically groups thousands
+                    rightAlign: false,   // Align the currency symbol to the left
+                    removeMaskOnSubmit : true,
+                });
+
+                $('.rupiahGrandTotal').inputmask({
+                    alias: 'currency',
+                    prefix: 'Rp ',         // You can set the currency symbol here, e.g., '$'
+                    suffix: '',         // You can set a suffix here, e.g., ' USD'
+                    groupSeparator: '.',  // Set the group separator, e.g., for thousands
+                    // radixPoint: ',',  // Set the group separator, e.g., for thousands
+                    digits: 4,          // Set the number of decimal digits
+                    autoGroup: true,    // Automatically groups thousands
+                    rightAlign: false,   // Align the currency symbol to the left
+                    removeMaskOnSubmit: true,
+                });
+
+                $('.number_only').keypress(function(e) {
+                return isNumbers(e, this);
+                });
+
+                function isNumbers(evt, element) {
+                    var charCode = (evt.which) ? evt.which : event.keyCode;
+                    if (
+                        (charCode != 46 || $(element).val().indexOf('.') != -1) && // “.” CHECK DOT, AND ONLY ONE.
+                        (charCode < 48 || charCode > 57))
+                        return false;
+                    return true;
+                }
+            }
+
             var finalTotalAmountRos = $('#finalTotalAmountRos').val();
             // var finalTotalExRateAmountRos = $('#finalTotalAmountExRateRos').text();
             var count = 1;
@@ -890,44 +963,53 @@
                     '" class="form-control form-control-sm input-sm text-uppercase" /></td>';
                 html_code += '<td><input type="text" name="volRos[]" id="volRos' + count +
                     '" data-ros-no="' + count +
-                    '"class="form-control form-control-sm input-sm number_only volRos" value="{{ $jobSheetHeadList->volume }}" readonly/></td>';
+                    '"class="form-control form-control-sm input-sm number_only volRos" /></td>';
                 html_code += '<td><input type="text" name="priceRos[]" id="priceRos' + count +
-                    '" data-ros-no="' + count +
-                    '" class="form-control form-control-sm input-sm number_only priceRos" /></td>';
+                    '"data-ros-no="' + count +
+                    '" class="form-control form-control-sm input-sm dollarRos priceRos" /></td>';
+
                 html_code +=
                     '<td><input type="text" name="actualAmountRos[]" id="actualAmountRos' + count +
                     '" data-ros-no="' + count +
-                    '" class="form-control form-control-sm input-sm actualAmountRos" readonly /></td>';
+                    '" class="form-control form-control-sm input-sm dollarRos actualAmountRos" readonly /></td>';
 
                 html_code += '<td><input type="text" name="taxRateRos[]" id="taxRateRos' + count +
                     '" data-ros-no="' + count +
                     '" class="form-control form-control-sm input-sm number_only taxRateRos" /></td>';
                 html_code += '<td><input type="text" name="taxAmountRos[]" id="taxAmountRos' + count +
                     '" data-ros-no="' + count +
-                    '" readonly class="form-control form-control-sm input-sm taxAmountRos" /></td>';
+                    '" class="form-control form-control-sm input-sm dollarRos taxAmountRos" readonly /></td>';
 
                 html_code += '<td><input type="text" name="itemFinalAmountRos[]" id="itemFinalAmountRos' +
                     count + '" data-ros-no="' + count +
-                    '" readonly class="form-control form-control-sm input-sm itemFinalAmountRos" /></td>';
+                    '" class="form-control form-control-sm input-sm dollarRos itemFinalAmountRos" readonly /></td>';
                 html_code += '<td><button type="button" name="remove_row_ros" id="' + count +
                     '" class="btn btn-danger btn-xs remove_row_ros"><i class="fa fa-trash-alt"></i></button></td>';
                 html_code += '</tr>';
                 $('#tableRos').append(html_code);
+                maskReloadRos();
             });
 
             $(document).on('click', '.remove_row_ros', function() {
                 var row_id_ros = $(this).attr("id");
-                var total_item_amount_ros = $('#itemFinalAmountRos' + row_id_ros).val();
-                var final_amount_ros = $('#finalTotalAmountRos').val();
+                // var total_item_amount_ros = $('#itemFinalAmountRos' + row_id_ros).val();
+                var total_item_amount_ros = $('#itemFinalAmountRos' + row_id_ros).inputmask('unmaskedvalue');
+                // console.log(total_item_amount_ros);
+                // var final_amount_ros = $('#finalTotalAmountRos').val();
+                var final_amount_ros = $('#finalTotalAmountRos').inputmask('unmaskedvalue');
+                // console.log(final_amount_ros);
                 var result_amount_ros = parseFloat(final_amount_ros) - parseFloat(total_item_amount_ros);
-                var ex_rate_ros = $('#exchangeRateRos').val();
+                // var ex_rate_ros = $('#exchangeRateRos').val();
+                var ex_rate_ros = $('#exchangeRateRos').inputmask('unmaskedvalue');
                 final_item_total_ex_rate_ros = parseFloat(result_amount_ros) * parseFloat(ex_rate_ros);
                 $('#finalTotalAmountRos').val(result_amount_ros);
                 $('#finalTotalAmountExRateRos').val(final_item_total_ex_rate_ros.toFixed(4));
                 $('#row_id_ros_' + row_id_ros).remove();
                 count--;
                 $('#totalItemRos').val(count);
+                grand_total();
             });
+
 
             function cal_final_total_ros(count) {
                 var final_item_total_ros = 0;
@@ -940,7 +1022,10 @@
                     var tax_rate_ros = 0;
                     var tax_amount_ros = 0;
                     var item_total_ros = 0;
-                    ex_rate_ros = $('#exchangeRateRos').val();
+                    // ex_rate_ros = $('#exchangeRateRos').val();
+                    ex_rate_ros = Number($('#exchangeRateRos').inputmask('unmaskedvalue'));
+                    // console.log(ex_rate_ros);
+
                     // final_item_total_emkl = $('#finalTotalAmountEmkl').val();
                     // if (isNaN(final_item_total_emkl)
                     //     final_item_total_emkl = 0
@@ -948,11 +1033,14 @@
                     // console.log(final_item_total_emkl);
                     vol_ros = $('#volRos' + rowRos).val();
                     if (vol_ros > 0) {
-                        price_ros = $('#priceRos' + rowRos).val();
+                        // price_ros = $('#priceRos' + rowRos).val();
+                        price_ros = Number($('#priceRos' + rowRos).inputmask('unmaskedvalue'));
+
                         if (price_ros > 0) {
                             actual_amount_ros = parseFloat(vol_ros) * parseFloat(price_ros);
                             $('#actualAmountRos' + rowRos).val(actual_amount_ros);
                             tax_rate_ros = $('#taxRateRos' + rowRos).val();
+
                             if (tax_rate_ros >= 0) {
                                 tax_amount_ros = parseFloat(actual_amount_ros) * parseFloat(tax_rate_ros) / 100;
                                 $('#taxAmountRos' + rowRos).val(tax_amount_ros.toFixed(4));
@@ -974,10 +1062,14 @@
             }
 
             function grand_total() {
-                var total_ros = $('#finalTotalAmountExRateRos').val();
-                var total_emkl = $('#finalTotalAmountEmkl').val();
-                var total_cos = $('#finalTotalAmountExRateCos').val();
-                var total_hand = $('#finalTotalAmountHand').val();
+                // var total_ros = $('#finalTotalAmountExRateRos').val();
+                // var total_emkl = $('#finalTotalAmountEmkl').val();
+                // var total_cos = $('#finalTotalAmountExRateCos').val();
+                // var total_hand = $('#finalTotalAmountHand').val();
+                var total_ros = $('#finalTotalAmountExRateRos').inputmask('unmaskedvalue');
+                var total_emkl = $('#finalTotalAmountEmkl').inputmask('unmaskedvalue');
+                var total_cos = $('#finalTotalAmountExRateCos').inputmask('unmaskedvalue');
+                var total_hand = $('#finalTotalAmountHand').inputmask('unmaskedvalue');
                 var total_selling = 0;
                 var total_buying = 0;
                 var profit_loss = 0;
@@ -991,13 +1083,17 @@
                     profit_loss = parseFloat(total_selling) - parseFloat(total_buying);
                 }
                 $('#grandTotalSelling').val(total_selling.toFixed(4));
+                // console.log(total_selling);
                 $('#grandTotalBuying').val(total_buying.toFixed(4));
+                // console.log(total_buying);
                 $('#profitLoss').val(profit_loss.toFixed(4));
+                // console.log(profit_loss);
             }
 
             $(document).on('blur', '.priceRos', function() {
                 cal_final_total_ros(count);
                 grand_total();
+
             });
 
             $(document).on('blur', '.taxRateRos', function() {
@@ -1011,7 +1107,51 @@
     <!-- EMKL SCRIPT -->
     <script>
         $(document).ready(function() {
-            var finalTotalAmountEmkl = $('#finalTotalAmountEmkl').text();
+            $(function() {
+                maskReloadEmkl();
+            });
+
+            function maskReloadEmkl(){
+                // Apply the currency input mask
+                $('.rupiahEmkl').inputmask({
+                    alias: 'currency',
+                    prefix: 'Rp ',         // You can set the currency symbol here, e.g., '$'
+                    suffix: '',         // You can set a suffix here, e.g., ' USD'
+                    groupSeparator: '.',  // Set the group separator, e.g., for thousands
+                    // radixPoint: ',',  // Set the group separator, e.g., for thousands
+                    digits: 4,          // Set the number of decimal digits
+                    autoGroup: true,    // Automatically groups thousands
+                    rightAlign: false,   // Align the currency symbol to the left
+                    removeMaskOnSubmit: true,
+                });
+
+                $('.rupiahGrandTotal').inputmask({
+                    alias: 'currency',
+                    prefix: 'Rp ',         // You can set the currency symbol here, e.g., '$'
+                    suffix: '',         // You can set a suffix here, e.g., ' USD'
+                    groupSeparator: '.',  // Set the group separator, e.g., for thousands
+                    // radixPoint: ',',  // Set the group separator, e.g., for thousands
+                    digits: 4,          // Set the number of decimal digits
+                    autoGroup: true,    // Automatically groups thousands
+                    rightAlign: false,   // Align the currency symbol to the left
+                    removeMaskOnSubmit: true,
+                });
+
+                $('.number_only').keypress(function(e) {
+                return isNumbers(e, this);
+                });
+
+                function isNumbers(evt, element) {
+                    var charCode = (evt.which) ? evt.which : event.keyCode;
+                    if (
+                        (charCode != 46 || $(element).val().indexOf('.') != -1) && // “.” CHECK DOT, AND ONLY ONE.
+                        (charCode < 48 || charCode > 57))
+                        return false;
+                    return true;
+                }
+            }
+
+            var finalTotalAmountEmkl = $('#finalTotalAmountEmkl').val();
             var count = 1;
 
             $(document).on('click', '#add_row_emkl', function() {
@@ -1029,37 +1169,39 @@
                     '"class="form-control form-control-sm input-sm number_only volEmkl" /></td>';
                 html_code += '<td><input type="text" name="priceEmkl[]" id="priceEmkl' + count +
                     '" data-emkl-no="' + count +
-                    '" class="form-control form-control-sm input-sm number_only rupiah priceEmkl" /></td>'
+                    '" class="form-control form-control-sm input-sm rupiahEmkl priceEmkl" /></td>'
                 html_code +=
                     '<td><input type="text" name="actualAmountEmkl[]" id="actualAmountEmkl' + count +
                     '" data-emkl-no="' + count +
-                    '" class="form-control form-control-sm input-sm actualAmountEmkl" readonly /></td>';
+                    '" class="form-control form-control-sm input-sm rupiahEmkl actualAmountEmkl" readonly /></td>';
 
                 html_code += '<td><input type="text" name="taxRateEmkl[]" id="taxRateEmkl' + count +
                     '" data-emkl-no="' + count +
                     '" class="form-control form-control-sm input-sm number_only taxRateEmkl" /></td>';
                 html_code += '<td><input type="text" name="taxAmountEmkl[]" id="taxAmountEmkl' + count +
                     '" data-emkl-no="' + count +
-                    '" readonly class="form-control form-control-sm input-sm taxAmountEmkl" /></td>';
+                    '" readonly class="form-control form-control-sm input-sm rupiahEmkl taxAmountEmkl" /></td>';
 
                 html_code += '<td><input type="text" name="itemFinalAmountEmkl[]" id="itemFinalAmountEmkl' +
                     count + '" data-emkl-no="' + count +
-                    '" readonly class="form-control form-control-sm input-sm itemFinalAmountEmkl" /></td>';
+                    '" readonly class="form-control form-control-sm input-sm rupiahEmkl itemFinalAmountEmkl" /></td>';
                 html_code += '<td><button type="button" name="remove_row_emkl" id="' + count +
                     '" class="btn btn-danger btn-xs remove_row_emkl"><i class="fa fa-trash-alt"></i></button></td>';
                 html_code += '</tr>';
                 $('#tableEmkl').append(html_code);
+                maskReloadEmkl();
             });
 
             $(document).on('click', '.remove_row_emkl', function() {
                 var row_id_emkl = $(this).attr("id");
-                var total_item_amount_emkl = $('#itemFinalAmountEmkl' + row_id_emkl).val();
-                var final_amount_emkl = $('#finalTotalAmountEmkl').val();
+                var total_item_amount_emkl = $('#itemFinalAmountEmkl' + row_id_emkl).inputmask('unmaskedvalue');
+                var final_amount_emkl = $('#finalTotalAmountEmkl').inputmask('unmaskedvalue');
                 var result_amount_emkl = parseFloat(final_amount_emkl) - parseFloat(total_item_amount_emkl);
                 $('#finalTotalAmountEmkl').val(result_amount_emkl.toFixed(4));
                 $('#row_id_emkl_' + row_id_emkl).remove();
                 count--;
                 $('#totalItemEmkl').val(count);
+                grand_total();
             });
 
             function cal_final_total_emkl(count) {
@@ -1075,11 +1217,12 @@
                     // final_item_total_ex_rate_ros = $('#finalTotalAmountExRateRos').val();
                     vol_emkl = $('#volEmkl' + rowEmkl).val();
                     if (vol_emkl > 0) {
-                        price_emkl = $('#priceEmkl' + rowEmkl).val();
+                        price_emkl = $('#priceEmkl' + rowEmkl).inputmask('unmaskedvalue');
                         if (price_emkl > 0) {
                             actual_amount_emkl = parseFloat(vol_emkl) * parseFloat(price_emkl);
                             $('#actualAmountEmkl' + rowEmkl).val(actual_amount_emkl);
                             tax_rate_emkl = $('#taxRateEmkl' + rowEmkl).val();
+
                             if (tax_rate_emkl >= 0) {
                                 tax_amount_emkl = parseFloat(actual_amount_emkl) * parseFloat(tax_rate_emkl) / 100;
                                 $('#taxAmountEmkl' + rowEmkl).val(tax_amount_emkl.toFixed(4));
@@ -1096,10 +1239,10 @@
             }
 
             function grand_total() {
-                var total_ros = $('#finalTotalAmountExRateRos').val();
-                var total_emkl = $('#finalTotalAmountEmkl').val();
-                var total_cos = $('#finalTotalAmountExRateCos').val();
-                var total_hand = $('#finalTotalAmountHand').val();
+                var total_ros = $('#finalTotalAmountExRateRos').inputmask('unmaskedvalue');
+                var total_emkl = $('#finalTotalAmountEmkl').inputmask('unmaskedvalue');
+                var total_cos = $('#finalTotalAmountExRateCos').inputmask('unmaskedvalue');
+                var total_hand = $('#finalTotalAmountHand').inputmask('unmaskedvalue');
                 var total_selling = 0;
                 var total_buying = 0;
                 var profit_loss = 0;
@@ -1128,12 +1271,65 @@
             });
         });
     </script>
-
     <!-- END EMKL SCRIPT -->
 
     <!-- COST OF SALES SCRIPT -->
     <script>
         $(document).ready(function() {
+            $(function () {
+                maskReloadCos();
+            });
+
+            function maskReloadCos(){
+                $('.rupiahCos').inputmask({
+                    alias: 'currency',
+                    prefix: 'Rp ',         // You can set the currency symbol here, e.g., '$'
+                    suffix: '',         // You can set a suffix here, e.g., ' USD'
+                    groupSeparator: '.',  // Set the group separator, e.g., for thousands
+                    // radixPoint: ',',  // Set the group separator, e.g., for thousands
+                    digits: 4,          // Set the number of decimal digits
+                    autoGroup: true,    // Automatically groups thousands
+                    rightAlign: false,   // Align the currency symbol to the left
+                    removeMaskOnSubmit: true,
+                });
+
+                $('.dollarCos').inputmask({
+                    alias: 'currency',
+                    prefix: '$ ',         // You can set the currency symbol here, e.g., '$'
+                    suffix: '',         // You can set a suffix here, e.g., ' USD'
+                    groupSeparator: '.',  // Set the group separator, e.g., for thousands
+                    // radixPoint: '.',  // Set the group separator, e.g., for thousands
+                    digits: 4,          // Set the number of decimal digits
+                    autoGroup: true,    // Automatically groups thousands
+                    rightAlign: false,   // Align the currency symbol to the left
+                    removeMaskOnSubmit : true,
+                });
+
+                $('.rupiahGrandTotal').inputmask({
+                    alias: 'currency',
+                    prefix: 'Rp ',         // You can set the currency symbol here, e.g., '$'
+                    suffix: '',         // You can set a suffix here, e.g., ' USD'
+                    groupSeparator: '.',  // Set the group separator, e.g., for thousands
+                    // radixPoint: ',',  // Set the group separator, e.g., for thousands
+                    digits: 4,          // Set the number of decimal digits
+                    autoGroup: true,    // Automatically groups thousands
+                    rightAlign: false,   // Align the currency symbol to the left
+                    removeMaskOnSubmit: true,
+                });
+
+                $('.number_only').keypress(function(e) {
+                return isNumbers(e, this);
+                });
+
+                function isNumbers(evt, element) {
+                    var charCode = (evt.which) ? evt.which : event.keyCode;
+                    if (
+                        (charCode != 46 || $(element).val().indexOf('.') != -1) && // “.” CHECK DOT, AND ONLY ONE.
+                        (charCode < 48 || charCode > 57))
+                        return false;
+                    return true;
+                }
+            }
             var finalTotalAmountCos = $('#finalTotalAmountCos').val();
             // var finalTotalExRateAmountCos = $('#finalTotalAmountExRateCos').text();
             var count = 1;
@@ -1149,35 +1345,36 @@
                     '" class="form-control form-control-sm input-sm text-uppercase" /></td>';
                 html_code += '<td><input type="text" name="volCos[]" id="volCos' + count +
                     '" data-cos-no="' + count +
-                    '"class="form-control form-control-sm input-sm number_only volCos" value="{{ $jobSheetHeadList->volume }}" readonly/></td>';
+                    '"class="form-control form-control-sm input-sm number_only volCos" /></td>';
                 html_code += '<td><input type="text" name="priceCos[]" id="priceCos' + count +
                     '" data-cos-no="' + count +
-                    '" class="form-control form-control-sm input-sm number_only priceCos" /></td>';
+                    '" class="form-control form-control-sm input-sm dollarCos priceCos" /></td>';
                 html_code +=
                     '<td><input type="text" name="actualAmountCos[]" id="actualAmountCos' + count +
                     '" data-cos-no="' + count +
-                    '" class="form-control form-control-sm input-sm actualAmountCos" readonly /></td>';
+                    '" class="form-control form-control-sm input-sm dollarCos actualAmountCos" readonly /></td>';
 
                 html_code += '<td><input type="text" name="taxRateCos[]" id="taxRateCos' + count +
                     '" data-cos-no="' + count +
                     '" class="form-control form-control-sm input-sm number_only taxRateCos" /></td>';
                 html_code += '<td><input type="text" name="taxAmountCos[]" id="taxAmountCos' + count +
                     '" data-cos-no="' + count +
-                    '" readonly class="form-control form-control-sm input-sm taxAmountCos" /></td>';
+                    '" readonly class="form-control form-control-sm input-sm dollarCos taxAmountCos" /></td>';
 
                 html_code += '<td><input type="text" name="itemFinalAmountCos[]" id="itemFinalAmountCos' +
                     count + '" data-cos-no="' + count +
-                    '" readonly class="form-control form-control-sm input-sm itemFinalAmountCos" /></td>';
+                    '" readonly class="form-control form-control-sm input-sm dollarCos itemFinalAmountCos" /></td>';
                 html_code += '<td><button type="button" name="remove_row_cos" id="' + count +
                     '" class="btn btn-danger btn-xs remove_row_cos"><i class="fa fa-trash-alt"></i></button></td>';
                 html_code += '</tr>';
                 $('#tableCos').append(html_code);
+                maskReloadCos();
             });
 
             $(document).on('click', '.remove_row_cos', function() {
                 var row_id_cos = $(this).attr("id");
-                var total_item_amount_cos = $('#itemFinalAmountCos' + row_id_cos).val();
-                var final_amount_cos = $('#finalTotalAmountCos').val();
+                var total_item_amount_cos = $('#itemFinalAmountCos' + row_id_cos).inputmask('unmaskedvalue');
+                var final_amount_cos = $('#finalTotalAmountCos').inputmask('unmaskedvalue');
                 var result_amount_cos = parseFloat(final_amount_cos) - parseFloat(total_item_amount_cos);
                 var ex_rate_cos = $('#exchangeRateCos').val();
                 final_item_total_ex_rate_cos = parseFloat(result_amount_cos) * parseFloat(ex_rate_cos);
@@ -1186,6 +1383,7 @@
                 $('#row_id_cos_' + row_id_cos).remove();
                 count--;
                 $('#totalItemCos').val(count);
+                grand_total();
             });
 
             function cal_final_total_cos(count) {
@@ -1199,7 +1397,7 @@
                     var tax_rate_cos = 0;
                     var tax_amount_cos = 0;
                     var item_total_cos = 0;
-                    ex_rate_cos = $('#exchangeRateCos').val();
+                    ex_rate_cos = $('#exchangeRateCos').inputmask('unmaskedvalue');
                     // final_item_total_emkl = $('#finalTotalAmountEmkl').val();
                     // if (isNaN(final_item_total_emkl)
                     //     final_item_total_emkl = 0
@@ -1207,7 +1405,7 @@
                     // console.log(final_item_total_emkl);
                     vol_cos = $('#volCos' + rowCos).val();
                     if (vol_cos > 0) {
-                        price_cos = $('#priceCos' + rowCos).val();
+                        price_cos = $('#priceCos' + rowCos).inputmask('unmaskedvalue');
                         if (price_cos > 0) {
                             actual_amount_cos = parseFloat(vol_cos) * parseFloat(price_cos);
                             $('#actualAmountCos' + rowCos).val(actual_amount_cos);
@@ -1233,10 +1431,10 @@
             }
 
             function grand_total() {
-                var total_ros = $('#finalTotalAmountExRateRos').val();
-                var total_emkl = $('#finalTotalAmountEmkl').val();
-                var total_cos = $('#finalTotalAmountExRateCos').val();
-                var total_hand = $('#finalTotalAmountHand').val();
+                var total_ros = $('#finalTotalAmountExRateRos').inputmask('unmaskedvalue');
+                var total_emkl = $('#finalTotalAmountEmkl').inputmask('unmaskedvalue');
+                var total_cos = $('#finalTotalAmountExRateCos').inputmask('unmaskedvalue');
+                var total_hand = $('#finalTotalAmountHand').inputmask('unmaskedvalue');
                 var total_selling = 0;
                 var total_buying = 0;
                 var profit_loss = 0;
@@ -1270,7 +1468,49 @@
     <!-- HANDLING SCRIPT -->
     <script>
         $(document).ready(function() {
-            var finalTotalAmountHand = $('#finalTotalAmountHand').text();
+            $(function() {
+                maskReloadHand();
+            });
+            function maskReloadHand(){
+                $('.rupiahHand').inputmask({
+                    alias: 'currency',
+                    prefix: 'Rp ',         // You can set the currency symbol here, e.g., '$'
+                    suffix: '',         // You can set a suffix here, e.g., ' USD'
+                    groupSeparator: '.',  // Set the group separator, e.g., for thousands
+                    // radixPoint: ',',  // Set the group separator, e.g., for thousands
+                    digits: 4,          // Set the number of decimal digits
+                    autoGroup: true,    // Automatically groups thousands
+                    rightAlign: false,   // Align the currency symbol to the left
+                    removeMaskOnSubmit: true,
+                });
+
+                $('.rupiahGrandTotal').inputmask({
+                    alias: 'currency',
+                    prefix: 'Rp ',         // You can set the currency symbol here, e.g., '$'
+                    suffix: '',         // You can set a suffix here, e.g., ' USD'
+                    groupSeparator: '.',  // Set the group separator, e.g., for thousands
+                    // radixPoint: ',',  // Set the group separator, e.g., for thousands
+                    digits: 4,          // Set the number of decimal digits
+                    autoGroup: true,    // Automatically groups thousands
+                    rightAlign: false,   // Align the currency symbol to the left
+                    removeMaskOnSubmit: true,
+                });
+
+                $('.number_only').keypress(function(e) {
+                return isNumbers(e, this);
+                });
+
+                function isNumbers(evt, element) {
+                    var charCode = (evt.which) ? evt.which : event.keyCode;
+                    if (
+                        (charCode != 46 || $(element).val().indexOf('.') != -1) && // “.” CHECK DOT, AND ONLY ONE.
+                        (charCode < 48 || charCode > 57))
+                        return false;
+                    return true;
+                }
+            }
+
+            var finalTotalAmountHand = $('#finalTotalAmountHand').val();
             var count = 1;
 
             $(document).on('click', '#add_row_hand', function() {
@@ -1288,37 +1528,39 @@
                     '"class="form-control form-control-sm input-sm number_only volHand" /></td>';
                 html_code += '<td><input type="text" name="priceHand[]" id="priceHand' + count +
                     '" data-hand-no="' + count +
-                    '" class="form-control form-control-sm input-sm number_only rupiah priceHand" /></td>'
+                    '" class="form-control form-control-sm input-sm rupiahHand priceHand" /></td>'
                 html_code +=
                     '<td><input type="text" name="actualAmountHand[]" id="actualAmountHand' + count +
                     '" data-hand-no="' + count +
-                    '" class="form-control form-control-sm input-sm actualAmountHand" readonly /></td>';
+                    '" class="form-control form-control-sm input-sm rupiahHand actualAmountHand" readonly /></td>';
 
                 html_code += '<td><input type="text" name="taxRateHand[]" id="taxRateHand' + count +
                     '" data-hand-no="' + count +
                     '" class="form-control form-control-sm input-sm number_only taxRateHand" /></td>';
                 html_code += '<td><input type="text" name="taxAmountHand[]" id="taxAmountHand' + count +
                     '" data-hand-no="' + count +
-                    '" readonly class="form-control form-control-sm input-sm taxAmountHand" /></td>';
+                    '" readonly class="form-control form-control-sm input-sm rupiahHand taxAmountHand" /></td>';
 
                 html_code += '<td><input type="text" name="itemFinalAmountHand[]" id="itemFinalAmountHand' +
                     count + '" data-hand-no="' + count +
-                    '" readonly class="form-control form-control-sm input-sm itemFinalAmountHand" /></td>';
+                    '" readonly class="form-control form-control-sm input-sm rupiahHand itemFinalAmountHand" /></td>';
                 html_code += '<td><button type="button" name="remove_row_hand" id="' + count +
                     '" class="btn btn-danger btn-xs remove_row_hand"><i class="fa fa-trash-alt"></i></button></td>';
                 html_code += '</tr>';
                 $('#tableHand').append(html_code);
+                maskReloadHand();
             });
 
             $(document).on('click', '.remove_row_hand', function() {
                 var row_id_hand = $(this).attr("id");
-                var total_item_amount_hand = $('#itemFinalAmountHand' + row_id_hand).val();
-                var final_amount_hand = $('#finalTotalAmountHand').val();
+                var total_item_amount_hand = $('#itemFinalAmountHand' + row_id_hand).inputmask('unmaskedvalue');
+                var final_amount_hand = $('#finalTotalAmountHand').inputmask('unmaskedvalue');
                 var result_amount_hand = parseFloat(final_amount_hand) - parseFloat(total_item_amount_hand);
                 $('#finalTotalAmountHand').val(result_amount_hand.toFixed(4));
                 $('#row_id_hand_' + row_id_hand).remove();
                 count--;
                 $('#totalItemHand').val(count);
+                grand_total();
             });
 
             function cal_final_total_hand(count) {
@@ -1334,7 +1576,7 @@
                     // final_item_total_ex_rate_ros = $('#finalTotalAmountExRateRos').val();
                     vol_hand = $('#volHand' + rowHand).val();
                     if (vol_hand > 0) {
-                        price_hand = $('#priceHand' + rowHand).val();
+                        price_hand = $('#priceHand' + rowHand).inputmask('unmaskedvalue');
                         if (price_hand > 0) {
                             actual_amount_hand = parseFloat(vol_hand) * parseFloat(price_hand);
                             $('#actualAmountHand' + rowHand).val(actual_amount_hand);
@@ -1355,10 +1597,10 @@
             }
 
             function grand_total() {
-                var total_ros = $('#finalTotalAmountExRateRos').val();
-                var total_emkl = $('#finalTotalAmountEmkl').val();
-                var total_cos = $('#finalTotalAmountExRateCos').val();
-                var total_hand = $('#finalTotalAmountHand').val();
+                var total_ros = $('#finalTotalAmountExRateRos').inputmask('unmaskedvalue');
+                var total_emkl = $('#finalTotalAmountEmkl').inputmask('unmaskedvalue');
+                var total_cos = $('#finalTotalAmountExRateCos').inputmask('unmaskedvalue');
+                var total_hand = $('#finalTotalAmountHand').inputmask('unmaskedvalue');
                 var total_selling = 0;
                 var total_buying = 0;
                 var profit_loss = 0;
@@ -1389,41 +1631,6 @@
     </script>
     <!-- END HANDLING SCRIPT -->
 
-    <!-- NUMBER ONLY -->
-    <script>
-        $(document).ready(function() {
-            $('.number_only').keypress(function(e) {
-                return isNumbers(e, this);
-            });
-
-            function isNumbers(evt, element) {
-                var charCode = (evt.which) ? evt.which : event.keyCode;
-                if (
-                    (charCode != 46 || $(element).val().indexOf('.') != -1) && // “.” CHECK DOT, AND ONLY ONE.
-                    (charCode < 48 || charCode > 57))
-                    return false;
-                return true;
-            }
-        });
-    </script>
-    <!-- END NUMBER ONLY -->
-
-    {{-- <!-- DOLLAR -->
-    <script>
-        $(document).ready(function() {
-            $('.rupiah').mask("#.##0,00", {
-                reverse: true
-            });
-        });
-    </script>
-    <!-- END DOLLAR --> --}}
-    {{-- <script>
-        $(document).ready(function(){
-            $(.rupiah).inputmask("99-9999999");  //static mask
-            $(selector).inputmask({"mask": "(999) 999-9999"}); //specifying options
-            $(selector).inputmask("9-a{1,3}9{1,3}"); //mask with dynamic syntax
-        });
-    </script> --}}
 @endsection
 
 @endsection

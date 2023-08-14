@@ -34,7 +34,8 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
+                {{-- <table id="example1" class="table table-bordered table-striped"> --}}
+                <table id="tableIndexJobsheet" class="table table-striped table-bordered table-sm">
                     <thead>
                         <tr>
                             <th>No</th>
@@ -92,10 +93,12 @@
                             <th>Type Payment</th>
                             <th>Remaks</th> --}}
                             <th>SI Doc</th>
-                            <th>Grand Total Selling</th>
-                            <th>Grand Total Buying</th>
+                            <th style="width: 30%">Grand Total Selling</th>
+                            <th style="width: 30%">Grand Total Buying</th>
+                            <th style="width: 30%">Profit/Loss</th>
                             <th>Status</th>
-                            <th>User</th>
+                            <th>Sales Name</th>
+                            {{-- <th>User</th> --}}
                             <th>Action</th>
                             <th>Status Action</th>
                         </tr>
@@ -157,37 +160,54 @@
                                 <td class="align-middle">{{ $jobSheetHead->top }}</td>
                                 <td class="align-middle">{{ $jobSheetHead->typePayment['name'] }}</td>
                                 <td class="align-middle">{{ $jobSheetHead->remarks }}</td> --}}
-                                <td class="align-middle">
+                                {{-- <td class="align-middle">
                                     <a href="{{ asset('si_doc/' . $jobSheetHead->si_doc) }}" target="_blank"
                                         rel="nooperner noreferrer">{{ $jobSheetHead->si_doc }}</a>
+                                </td> --}}
+                                <td class="align-middle" style="text-align:center">
+                                    {{-- <button type="button" class="btn btn-primary btn-block btn-xs" href="{{ asset('si_doc/' . $jobSheetHead->si_doc) }}" target="_blank"
+                                        rel="nooperner noreferrer"><i class="fas fa-file"></i> View</button> --}}
+                                    <a class="btn btn-primary btn-sm" href="{{ asset('si_doc/' . $jobSheetHead->si_doc) }}"
+                                        target="_blank" rel="nooperner noreferrer"></i>View</a>
+
                                 </td>
-                                <td class="align-middle text-right">{{ $jobSheetHead->sellingBuying['grand_total_selling'] ?? 0 }}</td>
-                                <td class="align-middle text-right">{{ $jobSheetHead->sellingBuying['grand_total_buying'] ?? 0 }}</td>
+                                <td class="align-middle text-right rupiah">
+                                    {{ $jobSheetHead->sellingBuying['grand_total_selling'] ?? 0 }}</td>
+                                <td class="align-middle text-right rupiah">
+                                    {{ $jobSheetHead->sellingBuying['grand_total_buying'] ?? 0 }}</td>
+                                <td class="align-middle text-right rupiah">
+                                    {{ $jobSheetHead->sellingBuying['profit_loss'] ?? 0 }}</td>
                                 <td class="align-middle" style="text-align:center">
                                     @if ($jobSheetHead->status == 0)
-                                    <a class="text-warning">PENDING</a>
+                                        <a class="text-warning">PENDING</a>
                                     @elseif ($jobSheetHead->status == 1)
-                                    <a class="text-success">APPROVED</a>
+                                        <a class="text-success">APPROVED</a>
                                     @else
-                                    <a class="text-danger">REJECTED</a>
+                                        <a class="text-danger">REJECTED</a>
                                     @endif
                                 </td>
-                                <td class="align-middle" style="text-align:center">{{ $jobSheetHead->user['name'] }}</td>
+                                <td class="align-middle" style="text-align:center">{{ $jobSheetHead->sales_name }}</td>
+                                {{-- <td class="align-middle" style="text-align:center">{{ $jobSheetHead->user['name'] }}</td> --}}
                                 <td class="align-middle" style="text-align:center">
-                                    <a class="btn btn-primary btn-xs" href="{{ route('jobSheet.show', $jobSheetHead->id) }}"><i class="fa fa-eye"></i> Show Detail</a>
+                                    <a class="btn btn-primary btn-xs mb-1"
+                                        href="{{ route('jobSheet.show', $jobSheetHead->id) }}">Show Detail</a>
                                     {{-- <a class="btn btn-primary btn-xs" href="{{ route('jobSheet.sellingBuyingCreate',  $jobSheetHead->id) }}"><i class="fa fa-exchange-alt"></i> Selling & Buying</a> --}}
-                                    <a class="btn btn-primary btn-xs" href="{{ route('jobSheet.sellingBuyingCreate', $jobSheetHead->id) }}"><i class="fa fa-exchange-alt"></i> Selling & Buying</a>
-                                    <a class="btn btn-danger btn-xs" href="#" id="delete"><i
-                                            class="fa fa-trash"></i> Delete</a>
+                                    <a class="btn btn-primary btn-xs mb-1"
+                                        href="{{ route('jobSheet.sellingBuyingCreate', $jobSheetHead->id) }}">Selling &
+                                        Buying</a>
+                                    <a class="btn btn-danger btn-xs" href="#" id="delete">Delete</a>
                                 </td>
                                 <td class="align-middle" style="text-align:center">
                                     @if ($jobSheetHead->status == 0)
-                                    <a href="{{ url('jobSheetStatus/'.$jobSheetHead->id) }}" class="btn btn-xs btn-warning" id="changeStatus">PENDING</a>
-                                    {{-- <a href="{{ Route('jobSheet.changeStatus') }}" class="btn btn-xs btn-warning">PENDING</a> --}}
+                                        <a href="{{ url('jobSheetStatus/' . $jobSheetHead->id) }}"
+                                            class="btn btn-xs btn-warning" id="changeStatus">PENDING</a>
+                                        {{-- <a href="{{ Route('jobSheet.changeStatus') }}" class="btn btn-xs btn-warning">PENDING</a> --}}
                                     @elseif ($jobSheetHead->status == 1)
-                                    <a href="{{ url('jobSheetStatus/'.$jobSheetHead->id) }}" class="btn btn-xs btn-success" id="changeStatus">APPROVED</a>
+                                        <a href="{{ url('jobSheetStatus/' . $jobSheetHead->id) }}"
+                                            class="btn btn-xs btn-success" id="changeStatus">APPROVED</a>
                                     @else
-                                    <a href="{{ url('jobSheetStatus/'.$jobSheetHead->id) }}" class="btn btn-xs btn-danger" id="changeStatus">REJECTED</a>
+                                        <a href="{{ url('jobSheetStatus/' . $jobSheetHead->id) }}"
+                                            class="btn btn-xs btn-danger" id="changeStatus">REJECTED</a>
                                     @endif
                                     {{-- <div class="dropdown">
                                             <button type="button" class="btn btn-sm dropdown-toggle"
@@ -219,4 +239,31 @@
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
+
+@section('scriptIndexJobsheet')
+
+    <script>
+        $(document).ready(function() {
+            $("#tableIndexJobsheet").DataTable({
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
+                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+
+            $('.rupiah').inputmask({
+                alias: 'numeric',
+                prefix: 'Rp ', // You can set the currency symbol here, e.g., '$'
+                suffix: '', // You can set a suffix here, e.g., ' USD'
+                groupSeparator: '.', // Set the group separator, e.g., for thousands
+                // radixPoint: ',',  // Set the group separator, e.g., for thousands
+                digits: 4, // Set the number of decimal digits
+                autoGroup: true, // Automatically groups thousands
+                rightAlign: false, // Align the currency symbol to the left
+                removeMaskOnSubmit: true,
+            });
+        });
+    </script>
+
+@endsection
 @endsection

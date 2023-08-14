@@ -19,6 +19,7 @@ class JobSheetSeeder extends Seeder
         $createMultipleJobSheet = [
             [
                 'code_js' => 'JS-071123-0007',
+                'sales_name' => 'ANDY FIRMANSYAH',
                 'booking_no' => '',
                 'shipper_id' => 1,
                 'undername_mbl_id' => 1,
@@ -64,6 +65,7 @@ class JobSheetSeeder extends Seeder
                 'pic_phone' => '+6281313425301',
                 'top' => 'CASH',
                 'type_payment_id' => 1,
+                'due_date_inv' => Carbon::parse('2023-07-20')->format('Y-m-d'),
                 'remarks' => 'TERM OF PAYMENT FOR OCEAN FREGHT IS CASH & CARRY',
                 'si_doc' => 'si_64ad1c6aa2d67.pdf',
                 'status' => 1,

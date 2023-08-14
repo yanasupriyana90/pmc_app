@@ -818,4 +818,31 @@
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
+
+    @section('scriptShowDetailJobsheet')
+    <script>
+
+        $(document).ready(function() {
+            $("#tableIndexJobsheet").DataTable({
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
+                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+
+            $('.rupiah').inputmask({
+                alias: 'numeric',
+                prefix: 'Rp ', // You can set the currency symbol here, e.g., '$'
+                suffix: '', // You can set a suffix here, e.g., ' USD'
+                groupSeparator: '.', // Set the group separator, e.g., for thousands
+                // radixPoint: ',',  // Set the group separator, e.g., for thousands
+                digits: 4, // Set the number of decimal digits
+                autoGroup: true, // Automatically groups thousands
+                rightAlign: false, // Align the currency symbol to the left
+                removeMaskOnSubmit: true,
+            });
+        });
+
+    </script>
+    @endsection
 @endsection

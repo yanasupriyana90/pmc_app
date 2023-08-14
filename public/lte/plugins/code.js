@@ -342,13 +342,13 @@ $(function () {
         autoclose: true,
     });
 
-    $('#issue_date').datetimepicker({
-        // format: 'MM-DD-YYYY',
-        format: 'YYYY-MM-DD',
-        autoclose: true,
-    });
+    // $('#issue_date').datetimepicker({
+    //     // format: 'MM-DD-YYYY',
+    //     format: 'YYYY-MM-DD',
+    //     autoclose: true,
+    // });
 
-    $('#due_date').datetimepicker({
+    $('#due_date_inv').datetimepicker({
         // format: 'MM-DD-YYYY',
         format: 'YYYY-MM-DD',
         autoclose: true,
