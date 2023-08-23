@@ -868,7 +868,7 @@
     </div>
     <!-- /.content-wrapper -->
 
-@section('script')
+@section('scriptCreateSellingBuying')
 
     {{-- <!-- NUMBER ONLY -->
     <script>

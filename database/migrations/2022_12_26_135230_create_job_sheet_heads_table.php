@@ -86,6 +86,8 @@ return new class extends Migration
             $table->foreign('shipper_id')->references('id')->on('shippers')->onDelete('restrict');
             $table->foreign('undername_mbl_id')->references('id')->on('undername_mbls')->onDelete('restrict');
             $table->foreign('undername_hbl_id')->references('id')->on('undername_hbls')->onDelete('restrict');
+            $table->foreign('mandatory_tax_id_cons')->references('id')->on('mandatory_taxes')->onDelete('restrict');
+            $table->foreign('mandatory_tax_id_notify')->references('id')->on('mandatory_taxes')->onDelete('restrict');
             $table->foreign('cont_size_type_id')->references('id')->on('container_size_types')->onDelete('restrict');
             $table->foreign('type_packaging_id')->references('id')->on('type_packagings')->onDelete('restrict');
 
@@ -111,6 +113,8 @@ return new class extends Migration
             $table->dropForeign(['shipper_id']);
             $table->dropForeign(['undername_mbl_id']);
             $table->dropForeign(['undername_hbl_id']);
+            $table->dropForeign(['mandatory_tax_id_cons']);
+            $table->dropForeign(['mandatory_tax_id_noify']);
             $table->dropForeign(['cont_size_type_id']);
             $table->dropForeign(['type_packaging_id']);
 

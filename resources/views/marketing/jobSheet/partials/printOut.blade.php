@@ -37,367 +37,127 @@
                         <div class="invoice p-3 mb-3">
                             <!-- title row -->
                             <div class="row">
-                                <div class="col-sm-4 mb-4">
+                                <div class="col-4 mb-4">
                                     {{-- <h4>
                                         <i class="fas fa-globe"></i> Pundi Mas Corps
                                         <small class="float-right">Date: 2/10/2014</small>
                                     </h4> --}}
-                                    <img src="{{ asset('lte') }}/dist/img/logoFreight.png" width="60%">
+                                    <img src="{{ asset('lte') }}/dist/img/logoFreight.png" width="50%">
+
                                 </div>
                                 <!-- /.col -->
-                                <div class="col-sm-4 text-center mb-4">
-                                    <h4><u><b>Job Sheet</b></u></h4>
+                                <div class="col-4 text-center mb-4">
+                                    <h4><u>Job Sheet</u></h4>
                                 </div>
                             </div>
                             <!-- info row -->
-                            <div class="row invoice-info text-sm">
-                                <div class="col-sm-4 invoice-col">
-                                    <address>
-                                        <strong>Jobsheet Code : </strong> {{ $jobSheetHeadList->code_js }}<br>
-                                    </address>
+                            <div class="row text-sm">
+                                <div class="col-sm-6">
+                                    <dl class="row">
+                                        <dt class="col-sm-4">Jobsheet Code</dt>
+                                        <dd class="col-sm-8">{{ $jobSheetHeadList->code_js }}</dd>
+                                        <dt class="col-sm-4">Booking No.</dt>
+                                        <dd class="col-sm-8">
+                                            @if (empty($jobSheetHeadList->booking_no))
+                                                <p>-</p>
+                                            @else
+                                                <p>{{ $jobSheetHeadList->booking_no }}</p>
+                                            @endif
+                                        </dd>
+                                        <dt class="col-sm-4">Shipper</dt>
+                                        <dd class="col-sm-8">{{ $jobSheetHeadList->shipper['name'] }}</dd>
+                                        <dt class="col-sm-4">Undername MBL</dt>
+                                        <dd class="col-sm-8">
+                                            @if (empty($jobSheetHeadList->undernameMbl))
+                                                <p>-</p>
+                                            @else
+                                                <p>{{ $jobSheetHeadList->undernameMbl['name'] }}</p>
+                                            @endif
+                                        </dd>
+                                        <dt class="col-sm-4">Undername HBL</dt>
+                                        <dd class="col-sm-8">
+                                            @if (empty($jobSheetHeadList->undernameHbl))
+                                                <p>-</p>
+                                            @else
+                                                <p>{{ $jobSheetHeadList->undernameHbl['name'] }}</p>
+                                            @endif
+                                        </dd>
+                                        <dt class="col-sm-4">Container Type</dt>
+                                        <dd class="col-sm-8">{{ $jobSheetHeadList->containerSizeType['name'] }}</dd>
+                                        <dt class="col-sm-4">Port Of Discharge</dt>
+                                        <dd class="col-sm-8">{{ $jobSheetHeadList->pod }}</dd>
+                                    </dl>
                                 </div>
                                 <!-- /.col -->
-                                <div class="col-sm-4 invoice-col">
+                                {{-- <div class="col-sm-4 invoice-col">
+                                    To
                                     <address>
-                                        <strong>Booking No. : </strong>
-                                        @if (empty($jobSheetHeadList->booking_no))
-                                            -
-                                        @else
-                                            {{ $jobSheetHeadList->booking_no }}
-                                        @endif
-                                        <br>
+                                        <strong>John Doe</strong><br>
+                                        795 Folsom Ave, Suite 600<br>
+                                        San Francisco, CA 94107<br>
+                                        Phone: (555) 539-1037<br>
+                                        Email: john.doe@example.com
                                     </address>
-                                </div>
-                                <!-- /.col -->
-                                <div class="col-sm-4 invoice-col">
-                                    <address>
-                                        <strong>Sales Name : </strong> {{ $jobSheetHeadList->sales_name }}<br>
-                                    </address>
-                                </div>
-                                <!-- /.col -->
-                            </div>
-                            <hr size="100" noshade>
-                            <div class="row invoice-info text-sm">
-                                <div class="col-sm-6 invoice-col">
-                                    <strong>Shipper :</strong>
-                                    <address>
-                                        <strong>{{ $jobSheetHeadList->shipper['name'] }}</strong><br>
-                                        {{ $jobSheetHeadList->shipper['address'] }}<br>
-                                        Phone : {{ $jobSheetHeadList->shipper['phone_1'] }}
-                                        @if (empty($jobSheetHeadList->shipper['phone_2']))
-                                        @else
-                                            /{{ $jobSheetHeadList->shipper['phone_2'] }}
-                                        @endif
-                                        <br>
-                                        Fax : @if (empty($jobSheetHeadList->shipper['fax']))
-                                            -
-                                        @else
-                                            {{ $jobSheetHeadList->shipper['fax'] }}
-                                        @endif
-                                        <br>
-                                        Email : @if (empty($jobSheetHeadList->shipper['email']))
-                                            -
-                                        @else
-                                            {{ $jobSheetHeadList->shipper['email'] }}
-                                        @endif
-                                        <br>
-                                        Tax Type : @if (empty($jobSheetHeadList->shipper->mandatoryTax['name']))
-                                            -
-                                        @else
-                                            {{ $jobSheetHeadList->shipper->mandatoryTax['name'] }}
-                                        @endif
-                                        <br>
-                                        Tax ID : @if (empty($jobSheetHeadList->shipper['tax_id']))
-                                            -
-                                        @else
-                                            {{ $jobSheetHeadList->shipper['tax_id'] }}
-                                        @endif
-                                        <br>
-                                    </address>
-                                </div>
+                                </div> --}}
                                 <!-- /.col -->
                                 <div class="col-sm-6 invoice-col">
-                                    <strong>Undername MBL :</strong>
-                                    <address>
-                                        <strong>{{ $jobSheetHeadList->undernameMbl['name'] }}</strong><br>
-                                        {{ $jobSheetHeadList->undernameMbl['address'] }}<br>
-                                        Phone : {{ $jobSheetHeadList->undernameMbl['phone_1'] }}
-                                        @if (empty($jobSheetHeadList->undernameMbl['phone_2']))
-                                        @else
-                                            /{{ $jobSheetHeadList->undernameMbl['phone_2'] }}
-                                        @endif
-                                        <br>
-                                        Fax : @if (empty($jobSheetHeadList->undernameMbl['fax']))
-                                            -
-                                        @else
-                                            {{ $jobSheetHeadList->undernameMbl['fax'] }}
-                                        @endif
-                                        <br>
-                                        Email : @if (empty($jobSheetHeadList->undernameMbl['email']))
-                                            -
-                                        @else
-                                            {{ $jobSheetHeadList->undernameMbl['email'] }}
-                                        @endif
-                                        <br>
-                                        Tax Type : @if (empty($jobSheetHeadList->undernameMbl->mandatoryTax['name']))
-                                            -
-                                        @else
-                                            {{ $jobSheetHeadList->undernameMbl->mandatoryTax['name'] }}
-                                        @endif
-                                        <br>
-                                        Tax ID : @if (empty($jobSheetHeadList->undernameMbl['tax_id']))
-                                            -
-                                        @else
-                                            {{ $jobSheetHeadList->undernameMbl['tax_id'] }}
-                                        @endif
-                                        <br>
-                                    </address>
-                                </div>
-                            </div>
-                            <!-- /.col -->
-                            <hr size="100" noshade>
-                            <div class="row invoice-info text-sm">
-                                @if (empty($jobSheetHeadList->undernameHbl['name']))
-                                @else
-                                    <div class="col-sm-4 invoice-col">
-                                        <strong>Undername HBL :</strong>
-                                        <address>
-                                            <strong>
-                                                @if (empty($jobSheetHeadList->undernameHbl['name']))
-                                                    -
-                                                @else
-                                                    {{ $jobSheetHeadList->undernameHbl['name'] }}
-                                                @endif
-                                            </strong><br>
-                                            @if (empty($jobSheetHeadList->undernameHbl['address']))
-                                                -
-                                            @else
-                                                {{ $jobSheetHeadList->undernameHbl['address'] }}
-                                            @endif
-                                            <br>
-                                            Phone : @if (empty($jobSheetHeadList->undernameHbl['phone_1']))
-                                                -
-                                            @else
-                                                {{ $jobSheetHeadList->undernameHbl['phone_1'] }}
-                                            @endif
-                                            @if (empty($jobSheetHeadList->undernameHbl['phone_2']))
-                                            @else
-                                                /{{ $jobSheetHeadList->undernameHbl['phone_2'] }}
-                                            @endif
-                                            <br>
-                                            Fax : @if (empty($jobSheetHeadList->undernameHbl['fax']))
-                                                -
-                                            @else
-                                                {{ $jobSheetHeadList->undernameHbl['fax'] }}
-                                            @endif
-                                            <br>
-                                            Email : @if (empty($jobSheetHeadList->undernameHbl['email']))
-                                                -
-                                            @else
-                                                {{ $jobSheetHeadList->undernameHbl['email'] }}
-                                            @endif
-                                            <br>
-                                            Tax Type : @if (empty($jobSheetHeadList->undernameHbl->mandatoryTax['name']))
-                                                -
-                                            @else
-                                                {{ $jobSheetHeadList->undernameHbl->mandatoryTax['name'] }}
-                                            @endif
-                                            <br>
-                                            Tax ID : @if (empty($jobSheetHeadList->undernameHbl['tax_id']))
-                                                -
-                                            @else
-                                                {{ $jobSheetHeadList->undernameHbl['tax_id'] }}
-                                            @endif
-                                            <br>
-                                        </address>
-                                    </div>
-                                    <!-- /.col -->
-                                @endif
-                                <div class="col-sm-4 invoice-col">
-                                    <strong>Consignee :</strong>
-                                    <address>
-                                        <strong>
-                                            @if (empty($jobSheetHeadList->name_cons))
-                                                -
-                                            @else
-                                                {{ $jobSheetHeadList->name_cons }}
-                                            @endif
-                                        </strong><br>
-                                        @if (empty($jobSheetHeadList->address_cons))
-                                            -
-                                        @else
-                                            {{ $jobSheetHeadList->address_cons }}
-                                        @endif
-                                        <br>
-                                        Phone : {{ $jobSheetHeadList->phone_1_cons }}
-                                        @if (empty($jobSheetHeadList->phone_2_cons))
-                                        @else
-                                            /{{ $jobSheetHeadList->phone_2_cons }}
-                                        @endif
-                                        <br>
-                                        Fax : @if (empty($jobSheetHeadList->fax_cons))
-                                            -
-                                        @else
-                                            {{ $jobSheetHeadList->fax_cons }}
-                                        @endif
-                                        <br>
-                                        Email : @if (empty($jobSheetHeadList->email_cons))
-                                            -
-                                        @else
-                                            {{ $jobSheetHeadList->email_cons }}
-                                        @endif
-                                        <br>
-                                        Tax Type : @if (empty($jobSheetHeadList->mandatoryTaxCons['name']))
-                                            -
-                                        @else
-                                            {{ $jobSheetHeadList->mandatoryTaxCons['name'] }}
-                                        @endif
-                                        <br>
-                                        Tax ID : @if (empty($jobSheetHeadList->tax_id_cons))
-                                            -
-                                        @else
-                                            {{ $jobSheetHeadList->tax_id_cons }}
-                                        @endif
-                                        <br>
-                                    </address>
-                                </div>
-                                <div class="col-sm-4 invoice-col">
-                                    @if (empty($jobSheetHeadList->name_notify))
-
-                                    @else
-                                    <strong>Notify Party :</strong>
-                                    <address>
-                                        <strong>
-                                            @if (empty($jobSheetHeadList->name_notify))
-                                                -
-                                            @else
-                                                {{ $jobSheetHeadList->name_notify }}
-                                            @endif
-                                        </strong><br>
-                                        @if (empty($jobSheetHeadList->address_notify))
-                                            -
-                                        @else
-                                            {{ $jobSheetHeadList->address_notify }}
-                                        @endif
-                                        <br>
-                                        Phone : @if (empty($jobSheetHeadList->phone_1_notify))
-                                            -
-                                        @else
-                                            {{ $jobSheetHeadList->phone_1_notify }}
-                                        @endif
-                                        @if (empty($jobSheetHeadList->phone_2_notify))
-                                        @else
-                                            /{{ $jobSheetHeadList->phone_2_notify }}
-                                        @endif
-                                        <br>
-                                        Fax : @if (empty($jobSheetHeadList->fax_notify))
-                                            -
-                                        @else
-                                            {{ $jobSheetHeadList->fax_notify }}
-                                        @endif
-                                        <br>
-                                        Email : @if (empty($jobSheetHeadList->email_notify))
-                                            -
-                                        @else
-                                            {{ $jobSheetHeadList->email_notify }}
-                                        @endif
-                                        <br>
-                                        Tax Type : @if (empty($jobSheetHeadList->mandatoryTaxNotify['name']))
-                                            -
-                                        @else
-                                            {{ $jobSheetHeadList->mandatoryTaxNotify['name'] }}
-                                        @endif
-                                        <br>
-                                        Tax ID : @if (empty($jobSheetHeadList->tax_id_notify))
-                                            -
-                                        @else
-                                            {{ $jobSheetHeadList->tax_id_notify }}
-                                        @endif
-                                        <br>
-                                    </address>
-                                    @endif
-                                </div>
-                            </div>
-                            <!-- /.col -->
-                            <hr size="100" noshade>
-                            <div class="row invoice-info text-sm">
-                                <div class="col-sm-4 invoice-col">
-                                    <address>
-                                        <strong>Carrier : </strong> {{ $jobSheetHeadList->carrier }}<br>
-                                        <strong>Vessel / Voyage : </strong> {{ $jobSheetHeadList->vessel }}<br>
-                                        <strong>ETD : </strong>{{ $jobSheetHeadList->etd }}<br>
-                                        <strong>Port Of Loading : </strong> {{ $jobSheetHeadList->pol }}<br>
-                                    </address>
-                                </div>
-                                <!-- /.col -->
-                                <div class="col-sm-4 invoice-col">
-                                    <address>
-                                        <strong>Port Of Discharge : </strong> {{ $jobSheetHeadList->pod }}<br>
-                                        <strong>Open CY : </strong> {{ $jobSheetHeadList->open_cy }}<br>
-                                        <strong>Closing Document : </strong> {{ $jobSheetHeadList->closing_doc }}<br>
-                                        <strong>Closing CY : </strong> {{ $jobSheetHeadList->closing_cy }}<br>
-                                    </address>
-                                </div>
-                                <!-- /.col -->
-                                <div class="col-sm-4 invoice-col">
-                                    <address>
-                                        <strong>Volume : </strong> {{ $jobSheetHeadList->volume }}<br>
-                                        <strong>Size / Type Container : </strong>
-                                        {{ $jobSheetHeadList->containerSizeType['name'] }}<br>
-                                        <strong>Quantity : </strong> {{ $jobSheetHeadList->qty }}<br>
-                                        <strong>Type Pack : </strong> {{ $jobSheetHeadList->typePack['name'] }}<br>
-                                    </address>
+                                    <dl class="row">
+                                        <dt class="col-sm-4">Carrier</dt>
+                                        <dd class="col-sm-8">{{ $jobSheetHeadList->carrier }}</dd>
+                                        <dt class="col-sm-4">Vessel</dt>
+                                        <dd class="col-sm-8">{{ $jobSheetHeadList->vessel }}</dd>
+                                        <dt class="col-sm-4">ETD</dt>
+                                        <dd class="col-sm-8">{{ $jobSheetHeadList->etd }}</dd>
+                                        <dt class="col-sm-4">Freight & Charges</dt>
+                                        <dd class="col-sm-8">{{ $jobSheetHeadList->typePayment['name'] }}</dd>
+                                        <dt class="col-sm-4">Volume</dt>
+                                        <dd class="col-sm-8">{{ $jobSheetHeadList->volume }}</dd>
+                                    </dl>
                                 </div>
                                 <!-- /.col -->
                             </div>
                             <!-- /.row -->
-                            <hr size="100" noshade>
-                            <div class="row justify-content-center text-sm">
-                                <div class="col-4">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <h3 class="card-title"><B>Container Seal Details</B></h3>
-                                        </div>
-                                        <!-- /.card-header -->
-                                        <div class="card-body">
-                                            <table class="table table-sm table-bordered">
-                                                <thead>
-                                                    <tr class="text-center">
-                                                        <th style="width: 10px">#</th>
-                                                        <th>Container No.</th>
-                                                        <th>Seal No.</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    @foreach ($jobSheetHeadList->contSealDetail as $jobSheetHead)
+
+                                <div class="row justify-content-center text-sm">
+                                    <div class="col-4">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h3 class="card-title"><b>Container Seal Details</b></h3>
+                                            </div>
+                                            <!-- /.card-header -->
+                                            <div class="card-body p-0">
+                                                <table class="table table-bordered table-sm">
+                                                    <thead>
                                                         <tr>
-                                                            <td>{{ $loop->iteration }}</td>
-                                                            <td>{{ $jobSheetHead->cont_name }}</td>
-                                                            <td>{{ $jobSheetHead->seal_name }}</td>
+                                                            <th style="width: 10px">#</th>
+                                                            <th>Container No.</th>
+                                                            <th>Seal No.</th>
                                                         </tr>
-                                                    @endforeach
-                                                </tbody>
-                                            </table>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach ($jobSheetHeadList->contSealDetail as $jobSheetHead)
+                                                            <tr>
+                                                                <td>{{ $loop->iteration }}</td>
+                                                                <td>{{ $jobSheetHead->cont_name }}</td>
+                                                                <td>{{ $jobSheetHead->seal_name }}</td>
+                                                            </tr>
+                                                        @endforeach
+                                                    </tbody>
+                                                </table>
+                                            </div>
                                         </div>
-                                        <!-- /.card-body -->
                                     </div>
-                                    <!-- /.card -->
+                                    <!-- /.card-body -->
                                 </div>
-                                <!-- /.card-body -->
-                            </div>
-                            <!-- /.card -->
-                            <hr size="100" noshade>
+                                <!-- /.card -->
 
                             <!-- Table row REVENUE OF SALES / OCEAN FREIGHT -->
                             <div class="card border-dark mb-2">
                                 <div class="card-body text-dark text-sm">
                                     <div class="row justify-content-start">
                                         <div class="col-4">
-                                            <address>
-                                                <b>Exchange Rate (Rp.) : </b>
-                                                <p class="rupiah">
-                                                    {{ $jobSheetHeadList->sellingBuying['exchange_rate_ros'] }}</p>
-                                            </address>
+                                            <p for=""><b>Exchange Rate (Rp.) :</b></p><p class="rupiah">
+                                                {{ $jobSheetHeadList->sellingBuying['exchange_rate_ros'] }}</p>
                                         </div>
                                         <div class="col-4">
                                             <p class="text-md text-center"><b>REVENUE OF SALES / OCEAN FREIGHT</b>
@@ -428,14 +188,10 @@
                                                             <td class="text-left">{{ $jobSheetHead->item_name }}</td>
                                                             <td class="text-center">{{ $jobSheetHead->volume }}</td>
                                                             <td class="text-right nominal">{{ $jobSheetHead->price }}</td>
-                                                            <td class="text-right nominal">{{ $jobSheetHead->actual_amt }}
-                                                            </td>
+                                                            <td class="text-right nominal">{{ $jobSheetHead->actual_amt }}</td>
                                                             <td class="text-center">{{ $jobSheetHead->tax_rate }}</td>
-                                                            <td class="text-right nominal">{{ $jobSheetHead->tax_amt }}
-                                                            </td>
-                                                            <td class="text-right nominal">
-                                                                {{ $jobSheetHead->final_amount }}
-                                                            </td>
+                                                            <td class="text-right nominal">{{ $jobSheetHead->tax_amt }}</td>
+                                                            <td class="text-right nominal">{{ $jobSheetHead->final_amount }}</td>
                                                         </tr>
                                                     @endforeach
                                                     <tr>
@@ -499,14 +255,10 @@
                                                             <td class="text-left">{{ $jobSheetHead->item_name }}</td>
                                                             <td class="text-center">{{ $jobSheetHead->volume }}</td>
                                                             <td class="text-right nominal">{{ $jobSheetHead->price }}</td>
-                                                            <td class="text-right nominal">{{ $jobSheetHead->actual_amt }}
-                                                            </td>
+                                                            <td class="text-right nominal">{{ $jobSheetHead->actual_amt }}</td>
                                                             <td class="text-center">{{ $jobSheetHead->tax_rate }}</td>
-                                                            <td class="text-right nominal">{{ $jobSheetHead->tax_amt }}
-                                                            </td>
-                                                            <td class="text-right nominal">
-                                                                {{ $jobSheetHead->final_amount }}
-                                                            </td>
+                                                            <td class="text-right nominal">{{ $jobSheetHead->tax_amt }}</td>
+                                                            <td class="text-right nominal">{{ $jobSheetHead->final_amount }}</td>
                                                         </tr>
                                                     @endforeach
                                                     <tr>
@@ -533,11 +285,8 @@
                                 <div class="card-body text-dark text-sm">
                                     <div class="row justify-content-start">
                                         <div class="col-4">
-                                            <address>
-                                                <b>Exchange Rate (Rp.) : </b>
-                                                <p class="rupiah">
-                                                    {{ $jobSheetHeadList->sellingBuying['exchange_rate_cos'] }}</p>
-                                            </address>
+                                            <p for=""><b>Exchange Rate (Rp.) :</b></p>
+                                                <p class="rupiah">{{ $jobSheetHeadList->sellingBuying['exchange_rate_cos'] }}</p>
                                         </div>
                                         <div class="col-4">
                                             <p class="text-md text-center"><b>COST OF SALES</b>
@@ -568,14 +317,10 @@
                                                             <td class="text-left">{{ $jobSheetHead->item_name }}</td>
                                                             <td class="text-center">{{ $jobSheetHead->volume }}</td>
                                                             <td class="text-right nominal">{{ $jobSheetHead->price }}</td>
-                                                            <td class="text-right nominal">{{ $jobSheetHead->actual_amt }}
-                                                            </td>
+                                                            <td class="text-right nominal">{{ $jobSheetHead->actual_amt }}</td>
                                                             <td class="text-center">{{ $jobSheetHead->tax_rate }}</td>
-                                                            <td class="text-right nominal">{{ $jobSheetHead->tax_amt }}
-                                                            </td>
-                                                            <td class="text-right nominal">
-                                                                {{ $jobSheetHead->final_amount }}
-                                                            </td>
+                                                            <td class="text-right nominal">{{ $jobSheetHead->tax_amt }}</td>
+                                                            <td class="text-right nominal">{{ $jobSheetHead->final_amount }}</td>
                                                         </tr>
                                                     @endforeach
                                                     <tr>
@@ -638,14 +383,10 @@
                                                             <td class="text-left">{{ $jobSheetHead->item_name }}</td>
                                                             <td class="text-center">{{ $jobSheetHead->volume }}</td>
                                                             <td class="text-right nominal">{{ $jobSheetHead->price }}</td>
-                                                            <td class="text-right nominal">{{ $jobSheetHead->actual_amt }}
-                                                            </td>
+                                                            <td class="text-right nominal">{{ $jobSheetHead->actual_amt }}</td>
                                                             <td class="text-center">{{ $jobSheetHead->tax_rate }}</td>
-                                                            <td class="text-right nominal">{{ $jobSheetHead->tax_amt }}
-                                                            </td>
-                                                            <td class="text-right nominal">
-                                                                {{ $jobSheetHead->final_amount }}
-                                                            </td>
+                                                            <td class="text-right nominal">{{ $jobSheetHead->tax_amt }}</td>
+                                                            <td class="text-right nominal">{{ $jobSheetHead->final_amount }}</td>
                                                         </tr>
                                                     @endforeach
                                                     <tr>
@@ -717,23 +458,20 @@
                                 </div>
                             </div>
                             <!-- /.col -->
+                        </div>
 
-
-                            <!-- this row will not appear when printing -->
-                            <div class="row no-print">
-                                <div class="col-12">
-                                    <a href="invoice-print.html" rel="noopener" target="_blank"
-                                        class="btn btn-default"><i class="fas fa-print"></i> Print</a>
-                                    {{-- <button type="button" class="btn btn-success float-right"><i
-                                            class="far fa-credit-card"></i>
-                                        Submit
-                                        Payment
-                                    </button> --}}
-                                    <button type="button" class="btn btn-primary float-right"
-                                        style="margin-right: 5px;">
-                                        <i class="fas fa-download"></i> Generate PDF
-                                    </button>
-                                </div>
+                        <!-- this row will not appear when printing -->
+                        <div class="row no-print">
+                            <div class="col-12">
+                                <a href="invoice-print.html" rel="noopener" target="_blank" class="btn btn-default"><i
+                                        class="fas fa-print"></i> Print</a>
+                                <button type="button" class="btn btn-success float-right"><i
+                                        class="far fa-credit-card"></i> Submit
+                                    Payment
+                                </button>
+                                <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
+                                    <i class="fas fa-download"></i> Generate PDF
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -745,8 +483,9 @@
     <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
-@section('scriptShowDetailJobsheet')
+    @section('scriptShowDetailJobsheet')
     <script>
+
         $(document).ready(function() {
             // $(".tableShowDetailJobsheet").DataTable({
             //     "responsive": true,
@@ -791,8 +530,9 @@
                 removeMaskOnSubmit: true,
             });
         });
+
     </script>
-@endsection
+    @endsection
 @endsection
 
 {{-- <script>
