@@ -30,7 +30,7 @@ return new class extends Migration
             $table->string('email_cons')->nullable();
             $table->unsignedBigInteger('mandatory_tax_id_cons');
             $table->string('tax_id_cons', 35)->nullable();
-            $table->string('same_as_consignee', 20)->nullable();
+            $table->tinyInteger('same_as_consignee');
             $table->string('name_notify')->nullable();
             $table->string('address_notify')->nullable();
             $table->string('phone_1_notify', 20)->nullable();

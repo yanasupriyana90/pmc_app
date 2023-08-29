@@ -50,10 +50,11 @@
                                 </div>
                             </div>
                             <!-- info row -->
+
                             <div class="row invoice-info text-sm">
                                 <div class="col-sm-4 invoice-col">
                                     <address>
-                                        <strong>Jobsheet Code : </strong> {{ $jobSheetHeadList->code_js }}<br>
+                                        <strong>Jobsheet Code : </strong> {{ $jobSheetHeadList->code_js }}
                                     </address>
                                 </div>
                                 <!-- /.col -->
@@ -65,13 +66,12 @@
                                         @else
                                             {{ $jobSheetHeadList->booking_no }}
                                         @endif
-                                        <br>
                                     </address>
                                 </div>
                                 <!-- /.col -->
                                 <div class="col-sm-4 invoice-col">
                                     <address>
-                                        <strong>Sales Name : </strong> {{ $jobSheetHeadList->sales_name }}<br>
+                                        <strong>Sales Name : </strong> {{ $jobSheetHeadList->sales_name }}
                                     </address>
                                 </div>
                                 <!-- /.col -->
@@ -112,7 +112,6 @@
                                         @else
                                             {{ $jobSheetHeadList->shipper['tax_id'] }}
                                         @endif
-                                        <br>
                                     </address>
                                 </div>
                                 <!-- /.col -->
@@ -150,12 +149,12 @@
                                         @else
                                             {{ $jobSheetHeadList->undernameMbl['tax_id'] }}
                                         @endif
-                                        <br>
                                     </address>
                                 </div>
                             </div>
                             <!-- /.col -->
                             <hr size="100" noshade>
+
                             <div class="row invoice-info text-sm">
                                 @if (empty($jobSheetHeadList->undernameHbl['name']))
                                 @else
@@ -208,7 +207,6 @@
                                             @else
                                                 {{ $jobSheetHeadList->undernameHbl['tax_id'] }}
                                             @endif
-                                            <br>
                                         </address>
                                     </div>
                                     <!-- /.col -->
@@ -258,84 +256,103 @@
                                         @else
                                             {{ $jobSheetHeadList->tax_id_cons }}
                                         @endif
-                                        <br>
                                     </address>
                                 </div>
                                 <div class="col-sm-4 invoice-col">
                                     @if (empty($jobSheetHeadList->name_notify))
-
                                     @else
-                                    <strong>Notify Party :</strong>
-                                    <address>
-                                        <strong>
-                                            @if (empty($jobSheetHeadList->name_notify))
+                                        <strong>Notify Party :</strong>
+                                        <address>
+                                            <strong>
+                                                @if (empty($jobSheetHeadList->name_notify))
+                                                    -
+                                                @else
+                                                    {{ $jobSheetHeadList->name_notify }}
+                                                @endif
+                                            </strong><br>
+                                            @if (empty($jobSheetHeadList->address_notify))
                                                 -
                                             @else
-                                                {{ $jobSheetHeadList->name_notify }}
+                                                {{ $jobSheetHeadList->address_notify }}
                                             @endif
-                                        </strong><br>
-                                        @if (empty($jobSheetHeadList->address_notify))
-                                            -
-                                        @else
-                                            {{ $jobSheetHeadList->address_notify }}
-                                        @endif
-                                        <br>
-                                        Phone : @if (empty($jobSheetHeadList->phone_1_notify))
-                                            -
-                                        @else
-                                            {{ $jobSheetHeadList->phone_1_notify }}
-                                        @endif
-                                        @if (empty($jobSheetHeadList->phone_2_notify))
-                                        @else
-                                            /{{ $jobSheetHeadList->phone_2_notify }}
-                                        @endif
-                                        <br>
-                                        Fax : @if (empty($jobSheetHeadList->fax_notify))
-                                            -
-                                        @else
-                                            {{ $jobSheetHeadList->fax_notify }}
-                                        @endif
-                                        <br>
-                                        Email : @if (empty($jobSheetHeadList->email_notify))
-                                            -
-                                        @else
-                                            {{ $jobSheetHeadList->email_notify }}
-                                        @endif
-                                        <br>
-                                        Tax Type : @if (empty($jobSheetHeadList->mandatoryTaxNotify['name']))
-                                            -
-                                        @else
-                                            {{ $jobSheetHeadList->mandatoryTaxNotify['name'] }}
-                                        @endif
-                                        <br>
-                                        Tax ID : @if (empty($jobSheetHeadList->tax_id_notify))
-                                            -
-                                        @else
-                                            {{ $jobSheetHeadList->tax_id_notify }}
-                                        @endif
-                                        <br>
-                                    </address>
+                                            <br>
+                                            Phone : @if (empty($jobSheetHeadList->phone_1_notify))
+                                                -
+                                            @else
+                                                {{ $jobSheetHeadList->phone_1_notify }}
+                                            @endif
+                                            @if (empty($jobSheetHeadList->phone_2_notify))
+                                            @else
+                                                /{{ $jobSheetHeadList->phone_2_notify }}
+                                            @endif
+                                            <br>
+                                            Fax : @if (empty($jobSheetHeadList->fax_notify))
+                                                -
+                                            @else
+                                                {{ $jobSheetHeadList->fax_notify }}
+                                            @endif
+                                            <br>
+                                            Email : @if (empty($jobSheetHeadList->email_notify))
+                                                -
+                                            @else
+                                                {{ $jobSheetHeadList->email_notify }}
+                                            @endif
+                                            <br>
+                                            Tax Type : @if (empty($jobSheetHeadList->mandatoryTaxNotify['name']))
+                                                -
+                                            @else
+                                                {{ $jobSheetHeadList->mandatoryTaxNotify['name'] }}
+                                            @endif
+                                            <br>
+                                            Tax ID : @if (empty($jobSheetHeadList->tax_id_notify))
+                                                -
+                                            @else
+                                                {{ $jobSheetHeadList->tax_id_notify }}
+                                            @endif
+                                        </address>
                                     @endif
                                 </div>
                             </div>
                             <!-- /.col -->
                             <hr size="100" noshade>
+
                             <div class="row invoice-info text-sm">
                                 <div class="col-sm-4 invoice-col">
                                     <address>
                                         <strong>Carrier : </strong> {{ $jobSheetHeadList->carrier }}<br>
                                         <strong>Vessel / Voyage : </strong> {{ $jobSheetHeadList->vessel }}<br>
-                                        <strong>ETD : </strong>{{ $jobSheetHeadList->etd }}<br>
+                                        <strong>ETD :
+                                        </strong>{{ \Carbon\Carbon::parse($jobSheetHeadList->etd)->format('d M Y') }}<br>
                                         <strong>Port Of Loading : </strong> {{ $jobSheetHeadList->pol }}<br>
+                                        <strong>Port Of Discharge : </strong> {{ $jobSheetHeadList->pod }}
                                     </address>
                                 </div>
                                 <!-- /.col -->
                                 <div class="col-sm-4 invoice-col">
                                     <address>
-                                        <strong>Port Of Discharge : </strong> {{ $jobSheetHeadList->pod }}<br>
-                                        <strong>Open CY : </strong> {{ $jobSheetHeadList->open_cy }}<br>
-                                        <strong>Closing Document : </strong> {{ $jobSheetHeadList->closing_doc }}<br>
-                                        <strong>Closing CY : </strong> {{ $jobSheetHeadList->closing_cy }}<br>
+                                        <strong>Open CY : </strong>
+                                        @if (empty($jobSheetHeadList->open_cy))
+                                            -
+                                        @else
+                                            {{ \Carbon\Carbon::parse($jobSheetHeadList->open_cy)->format('d M Y h:i') }}
+                                        @endif
+                                        <br>
+                                        <strong>Closing Document : </strong>
+                                        @if (empty($jobSheetHeadList->closing_doc))
+                                            -
+                                        @else
+                                            {{ \Carbon\Carbon::parse($jobSheetHeadList->closing_doc)->format('d M Y h:i') }}
+                                        @endif
+                                        <br>
+                                        <strong>Closing CY : </strong>
+                                        @if (empty($jobSheetHeadList->closing_cy))
+                                            -
+                                        @else
+                                            {{ \Carbon\Carbon::parse($jobSheetHeadList->closing_cy)->format('d M Y h:i') }}
+                                        @endif
+                                        <br>
+                                        <strong>Due Date Inv : </strong>
+                                        {{ \Carbon\Carbon::parse($jobSheetHeadList->due_date_inv)->format('d M Y') }}
                                     </address>
                                 </div>
                                 <!-- /.col -->
@@ -344,14 +361,73 @@
                                         <strong>Volume : </strong> {{ $jobSheetHeadList->volume }}<br>
                                         <strong>Size / Type Container : </strong>
                                         {{ $jobSheetHeadList->containerSizeType['name'] }}<br>
-                                        <strong>Quantity : </strong> {{ $jobSheetHeadList->qty }}<br>
-                                        <strong>Type Pack : </strong> {{ $jobSheetHeadList->typePack['name'] }}<br>
+                                        <strong>Quantity : </strong> {{ number_format($jobSheetHeadList->qty) }}<br>
+                                        <strong>Type Pack : </strong> {{ $jobSheetHeadList->typePack['name'] }}
                                     </address>
                                 </div>
                                 <!-- /.col -->
                             </div>
                             <!-- /.row -->
                             <hr size="100" noshade>
+
+                            <div class="row invoice-info text-sm">
+                                <div class="col-sm-4 invoice-col">
+                                    <address>
+                                        <strong>Commodity M-B/L : </strong> {{ $jobSheetHeadList->commodity_mbl }}<br>
+                                        <strong>HS Code M-B/L : </strong> {{ $jobSheetHeadList->hs_code_mbl }}<br>
+                                        <strong>M-B/L : </strong>{{ $jobSheetHeadList->typeBillOfLadingMbl['name'] }}<br>
+                                        @if (empty($jobSheetHeadList->commodity_hbl))
+                                        @else
+                                            <strong>Commodity H-B/L : </strong>
+                                            @if (empty($jobSheetHeadList->commodity_hbl))
+                                                -
+                                            @else
+                                                {{ $jobSheetHeadList->commodity_hbl }}
+                                            @endif
+                                            <br>
+                                            <strong>HS Code H-B/L : </strong>
+                                            @if (empty($jobSheetHeadList->hs_code_hbl))
+                                                -
+                                            @else
+                                                {{ $jobSheetHeadList->hs_code_hbl }}
+                                            @endif
+                                            <br>
+                                            <strong>H-B/L : </strong>
+                                            @if (empty($jobSheetHeadList->typeBillOfLadingHbl['name']))
+                                                -
+                                            @else
+                                                {{ $jobSheetHeadList->typeBillOfLadingHbl['name'] }}
+                                            @endif
+                                        @endif
+                                    </address>
+                                </div>
+                                <!-- /.col -->
+                                <div class="col-sm-4 invoice-col">
+                                    <address>
+                                        <strong>Stuffing Date : </strong>
+                                        {{ \Carbon\Carbon::parse($jobSheetHeadList->stuffing_date)->format('d M Y') }}<br>
+                                        <strong>Stuffing Address : </strong> {{ $jobSheetHeadList->stuffing_address }}<br>
+                                        <strong>PIC Name : </strong>{{ $jobSheetHeadList->pic_name }}<br>
+                                        <strong>PIC Phone : </strong> {{ $jobSheetHeadList->pic_phone }}
+                                    </address>
+                                </div>
+                                <!-- /.col -->
+                                <div class="col-sm-4 invoice-col">
+                                    <address>
+                                        <strong>Term Of Payment : </strong> {{ $jobSheetHeadList->top }}<br>
+                                        <strong>Freight & Charges : </strong>
+                                        {{ $jobSheetHeadList->typePayment['name'] }}<br>
+                                        <strong>Remarks : </strong> {{ $jobSheetHeadList->remarks }}<br>
+                                        <strong>File Shipping Instruction : </strong>
+                                        <a href="{{ asset('si_doc/' . $jobSheetHeadList->si_doc) }}" target="_blank"
+                                            rel="nooperner noreferrer">View</a>
+                                    </address>
+                                </div>
+                                <!-- /.col -->
+                            </div>
+                            <!-- /.row -->
+                            <hr size="100" noshade>
+
                             <div class="row justify-content-center text-sm">
                                 <div class="col-4">
                                     <div class="card">
@@ -568,7 +644,8 @@
                                                             <td class="text-left">{{ $jobSheetHead->item_name }}</td>
                                                             <td class="text-center">{{ $jobSheetHead->volume }}</td>
                                                             <td class="text-right nominal">{{ $jobSheetHead->price }}</td>
-                                                            <td class="text-right nominal">{{ $jobSheetHead->actual_amt }}
+                                                            <td class="text-right nominal">
+                                                                {{ $jobSheetHead->actual_amt }}
                                                             </td>
                                                             <td class="text-center">{{ $jobSheetHead->tax_rate }}</td>
                                                             <td class="text-right nominal">{{ $jobSheetHead->tax_amt }}
@@ -637,8 +714,10 @@
                                                             <td class="text-center">{{ $loop->iteration }}</td>
                                                             <td class="text-left">{{ $jobSheetHead->item_name }}</td>
                                                             <td class="text-center">{{ $jobSheetHead->volume }}</td>
-                                                            <td class="text-right nominal">{{ $jobSheetHead->price }}</td>
-                                                            <td class="text-right nominal">{{ $jobSheetHead->actual_amt }}
+                                                            <td class="text-right nominal">{{ $jobSheetHead->price }}
+                                                            </td>
+                                                            <td class="text-right nominal">
+                                                                {{ $jobSheetHead->actual_amt }}
                                                             </td>
                                                             <td class="text-center">{{ $jobSheetHead->tax_rate }}</td>
                                                             <td class="text-right nominal">{{ $jobSheetHead->tax_amt }}
@@ -718,21 +797,20 @@
                             </div>
                             <!-- /.col -->
 
-
                             <!-- this row will not appear when printing -->
                             <div class="row no-print">
                                 <div class="col-12">
-                                    <a href="invoice-print.html" rel="noopener" target="_blank"
-                                        class="btn btn-default"><i class="fas fa-print"></i> Print</a>
+                                    <a href="{{ route('jobSheet.print', $jobSheetHeadList->id) }}" rel="noopener"
+                                        target="_blank" class="btn btn-default"><i class="fas fa-print"></i> Print</a>
                                     {{-- <button type="button" class="btn btn-success float-right"><i
                                             class="far fa-credit-card"></i>
                                         Submit
                                         Payment
                                     </button> --}}
-                                    <button type="button" class="btn btn-primary float-right"
+                                    {{-- <button type="button" class="btn btn-primary float-right"
                                         style="margin-right: 5px;">
                                         <i class="fas fa-download"></i> Generate PDF
-                                    </button>
+                                    </button> --}}
                                 </div>
                             </div>
                         </div>

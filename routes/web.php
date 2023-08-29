@@ -256,6 +256,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/jobSheet', 'index')->name('jobSheet');
         Route::get('jobSheetStatus/{id}', 'changeStatus')->name('jobSheet.changeStatus');
         Route::get('/jobSheetShow/{id}', 'show')->name('jobSheet.show');
+        Route::get('/jobSheetPrint/{id}', 'printPDF')->name('jobSheet.print');
         Route::get('/jobSheetCreate', 'create')->name('jobSheet.create');
         Route::get('/jobSheetCreate/get-shippers/{nameShip}', 'getShippers');
         Route::get('/jobSheetCreate/get-undernameMbl/{nameUndMbl}', 'getUndernameMbls');

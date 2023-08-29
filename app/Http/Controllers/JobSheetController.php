@@ -241,7 +241,7 @@ class JobSheetController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function store(JobSheetCreateRequest $request)
+    public function store(JobSheetCreateRequest $request, Jobsheet $jobSheet)
     {
 
         // dd($request->all());
@@ -333,15 +333,26 @@ class JobSheetController extends Controller
         $jobsheet->email_cons = strtolower($data['email_cons']);
         $jobsheet->mandatory_tax_id_cons = $data['mandatory_tax_id_cons'];
         $jobsheet->tax_id_cons = $data['tax_id_cons'];
-        $jobsheet->same_as_consignee = $data['same_as_consignee'];
-        $jobsheet->name_notify = strtoupper($data['name_notify']);
-        $jobsheet->address_notify = strtoupper($data['address_notify']);
-        $jobsheet->phone_1_notify = $data['phone_1_notify'];
-        $jobsheet->phone_2_notify = $data['phone_2_notify'];
-        $jobsheet->fax_notify = $data['fax_notify'];
-        $jobsheet->email_notify = strtolower($data['email_notify']);
-        $jobsheet->mandatory_tax_id_notify = $data['mandatory_tax_id_notify'];
-        $jobsheet->tax_id_notify = $data['tax_id_notify'];
+        $jobsheet->same_as_consignee = $data['same_as_consignee_input'];
+        if($jobsheet->same_as_consignee == 0) {
+            $jobsheet->name_notify = strtoupper($data['name_notify']);
+            $jobsheet->address_notify = strtoupper($data['address_notify']);
+            $jobsheet->phone_1_notify = $data['phone_1_notify'];
+            $jobsheet->phone_2_notify = $data['phone_2_notify'];
+            $jobsheet->fax_notify = $data['fax_notify'];
+            $jobsheet->email_notify = strtolower($data['email_notify']);
+            $jobsheet->mandatory_tax_id_notify = $data['mandatory_tax_id_notify'];
+            $jobsheet->tax_id_notify = $data['tax_id_notify'];
+        }else{
+            $jobsheet->name_notify = null;
+            $jobsheet->address_notify = null;
+            $jobsheet->phone_1_notify = null;
+            $jobsheet->phone_2_notify = null;
+            $jobsheet->fax_notify = null;
+            $jobsheet->email_notify = null;
+            $jobsheet->mandatory_tax_id_notify = null;
+            $jobsheet->tax_id_notify = null;
+        }
         $jobsheet->carrier = strtoupper($data['carrier']);
         $jobsheet->vessel = strtoupper($data['vessel']);
         $jobsheet->etd = $data['etd'];
@@ -404,6 +415,7 @@ class JobSheetController extends Controller
         return redirect()->route('jobSheet')->with($notification);
     }
 
+
     // public function simpan_cont_seal(Request $request)
     // {
     //     $cont_seal = $request->cont_seal;
@@ -451,6 +463,9 @@ class JobSheetController extends Controller
             'containerSizeType',
             'typePack',
             'contSealDetail',
+            'typeBillOfLadingMbl',
+            'typeBillOfLadingHbl',
+            'typePayment',
             'sellingBuying',
             'sellingBuying.ros',
             'sellingBuying.emkl',
@@ -493,7 +508,7 @@ class JobSheetController extends Controller
     public function sellingBuyingStore(Request $request)
     {
         $data = $request->all();
-        // dd($data);
+        dd($data);
         $sellingBuying = new SellingBuying;
         $sellingBuying->job_sheet_head_id = $data['jobSheetHeadId'];
         $sellingBuying->exchange_rate_ros = $data['exchangeRateRos'];
@@ -630,6 +645,31 @@ class JobSheetController extends Controller
     public function destroy(JobSheet $jobSheet)
     {
         //
+    }
+
+    public function printPDF($id)
+    {
+        $jobSheetHead = JobSheet::with(
+            ['user',
+            'shipper',
+            'undernameMbl',
+            'undernameHbl',
+            'mandatoryTaxCons',
+            'mandatoryTaxNotify',
+            'containerSizeType',
+            'typePack',
+            'contSealDetail',
+            'typeBillOfLadingMbl',
+            'typeBillOfLadingHbl',
+            'typePayment',
+            'sellingBuying',
+            'sellingBuying.ros',
+            'sellingBuying.emkl',
+            'sellingBuying.cos',
+            'sellingBuying.handling',
+            ])->findorFail($id);
+        return view('marketing.jobSheet.partials.printPDF', ['jobSheetHeadList' => $jobSheetHead]);
+
     }
 
 

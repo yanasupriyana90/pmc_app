@@ -460,9 +460,16 @@
                                                         <div class="custom-control custom-checkbox">
                                                             <input class="custom-control-input" type="checkbox"
                                                                 name="same_as_consignee" id="checkBoxNotify"
-                                                                onclick="showDivNotifyAll()" value="SAME AS CONSIGNEE">
+                                                                onclick="showDivNotifyAll()" value="0">
                                                             <label for="checkBoxNotify" class="custom-control-label">SAME
                                                                 AS CONSIGNEE</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-1" hidden>
+                                                        <div class="form-group">
+                                                            <input type="text"
+                                                                class="form-control form-control-sm text-uppercase"
+                                                                name="same_as_consignee_input" id="checkBoxNotifyInput" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1090,6 +1097,14 @@
             });
         </script>
         <!-- END CONT SEAL DETAIL SCRIPT -->
+        <script>
+            $(document).ready(function() {
+                $('#checkBoxNotify').on('change', function(){
+                    this.value = this.checked ? 1 : 0;
+                    $('#checkBoxNotifyInput').val(this.value);
+                }).change();
+            });
+        </script>
 @endsection
 @endsection
 
@@ -1114,11 +1129,36 @@
         }
     }
 
+    // function showDivNotifyAll() {
+    //     if (document.getElementById('checkBoxNotify').checked) {
+    //         // document.getElementById('checkBoxNotify').value = "1";
+    //         document.getElementById('notify_party_group').style.display = 'none';
+    //     } else {
+    //         // document.getElementById('checkBoxNotify').value = "0";
+    //         document.getElementById('notify_party_group').style.display = 'block';
+    //     }
+    // }
     function showDivNotifyAll() {
         if (document.getElementById('checkBoxNotify').checked) {
             document.getElementById('notify_party_group').style.display = 'none';
+            document.getElementById('name_notify').value = '';
+            document.getElementById('address_notify').value = '';
+            document.getElementById('phone_1_notify').value = '';
+            document.getElementById('phone_2_notify').value = '';
+            document.getElementById('fax_notify').value = '';
+            document.getElementById('email_notify').value = '';
+            document.getElementById('mandatory_tax_id_notify').value = 1;
+            document.getElementById('tax_id_notify').value = '';
         } else {
             document.getElementById('notify_party_group').style.display = 'block';
+            document.getElementById('name_notify').value = '';
+            document.getElementById('address_notify').value = '';
+            document.getElementById('phone_1_notify').value = '';
+            document.getElementById('phone_2_notify').value = '';
+            document.getElementById('fax_notify').value = '';
+            document.getElementById('email_notify').value = '';
+            document.getElementById('mandatory_tax_id_notify').value = 1;
+            document.getElementById('tax_id_notify').value = '';
         }
     }
 

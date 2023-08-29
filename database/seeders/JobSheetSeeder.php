@@ -32,7 +32,7 @@ class JobSheetSeeder extends Seeder
                 'email_cons' => 'asep@gmail.com',
                 'mandatory_tax_id_cons' => 2,
                 'tax_id_cons' => '21710971207',
-                'same_as_consignee' => 'SAME AS CONSIGNEE',
+                'same_as_consignee' => 1,
                 'name_notify' => '',
                 'address_notify' => '',
                 'phone_1_notify' => '',
