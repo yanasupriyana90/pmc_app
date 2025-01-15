@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Barang;
+use App\Models\SatuanBarang;
 use Illuminate\Http\Request;
 
 class BarangController extends Controller
@@ -25,7 +26,8 @@ class BarangController extends Controller
      */
     public function create()
     {
-        //
+        $satuanBarang = SatuanBarang::select('id', 'name')->get();
+        return view('master.barang.partials.create', ['barang' => $satuanBarang]);
     }
 
     /**

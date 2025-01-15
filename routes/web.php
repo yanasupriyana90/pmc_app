@@ -365,5 +365,11 @@ Route::middleware('auth')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::controller(BarangController::class)->group(function () {
         Route::get('/barang', 'index')->name('barang');
+        Route::get('/barangShow/{id}', 'show')->name('barang.show');
+        Route::get('/barangCreate', 'create')->name('barang.create');
+        Route::post('/barangStore', 'store')->name('barang.store');
+        Route::get('/barangEdit/{id}', 'edit')->name('barang.edit');
+        Route::put('/barangUpdate/{id}', 'update')->name(('barang.update'));
+        Route::get('/barangDestroy/{id}', 'destroy')->name('barang.destroy');
     });
 });

@@ -17,13 +17,13 @@ return new class extends Migration
             $table->id();
             $table->string('sku', 20);
             $table->string('nama', 50);
-            $table->string('merk', 50);
+            $table->string('merk', 50)->nullable();
             $table->decimal('panjang', 4, 2)->nullable();
             $table->decimal('lebar', 4, 2)->nullable();
             $table->decimal('tinggi', 4, 2)->nullable();
             $table->integer('qty');
             $table->unsignedBigInteger('satuan_barang_id');
-            $table->text('desk')->nullable();
+            $table->string('desk')->nullable();
             $table->string('pic');
             $table->decimal('usd', 11, 2);
             $table->decimal('exchange_rate', 11, 2);
