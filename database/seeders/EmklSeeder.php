@@ -26,7 +26,6 @@ class EmklSeeder extends Seeder
                 'tax_rate' => 0,
                 'tax_amt' => 0,
                 'final_amount' => 2600000.0000,
-                'user_id' => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -39,7 +38,6 @@ class EmklSeeder extends Seeder
                 'tax_rate' => 0,
                 'tax_amt' => 0,
                 'final_amount' => 650000.0000,
-                'user_id' => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],

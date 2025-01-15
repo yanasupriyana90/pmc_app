@@ -17,21 +17,12 @@ class SellingBuying extends Model
         'grand_total_selling',
         'grand_total_buying',
         'remark',
-        'user_id'
     ];
-
-
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
-
 
     public function jobSheetHead()
     {
         return $this->hasOne(JobSheet::class, 'job_sheet_head_id', 'id');
     }
-
 
     public function ros()
     {

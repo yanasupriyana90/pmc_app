@@ -27,11 +27,8 @@ return new class extends Migration
             $table->decimal('grand_total_selling', 13, 4);
             $table->decimal('grand_total_buying', 13, 4);
             $table->decimal('profit_loss', 13, 4);
-            $table->text('remark')->nullable();
-            $table->unsignedBigInteger('user_id');
             $table->timestamps();
             $table->foreign('job_sheet_head_id')->references('id')->on('job_sheet_heads')->onDelete('restrict');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('restrict');
         });
     }
 
@@ -44,7 +41,6 @@ return new class extends Migration
     {
         Schema::table('selling_buyings', function (Blueprint $table) {
             $table->dropForeign(['job_sheet_head_id']);
-            $table->dropForeign(['user_id']);
         });
         Schema::dropIfExists('selling_buyings');
 

@@ -60,7 +60,6 @@ class TypePackagingController extends Controller
 
         $typePackaging->update($request->all());
         $typePackaging->name = strtoupper($request->name);
-        $typePackaging->user_id = strtoupper($request->user_id);
         $typePackaging->save();
 
         $notification = array(

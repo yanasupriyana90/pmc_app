@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BankAccountController;
+use App\Http\Controllers\BarangController;
 use App\Http\Controllers\CashInBankController;
 use App\Http\Controllers\ContainerSizeTypeController;
 use App\Http\Controllers\DivisionController;
@@ -21,10 +22,9 @@ use App\Http\Controllers\ChartOfAccountHead1Controller;
 use App\Http\Controllers\ContSealDetailController;
 use App\Http\Controllers\DailySalesReportController;
 use App\Http\Controllers\PettyCashController;
-use App\Models\BankAccount;
-use App\Models\pettyCash;
+use App\Http\Controllers\SatuanBarangController;
+use App\Http\Controllers\VendorController;
 use App\Models\SellingBuying;
-use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
@@ -256,6 +256,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/jobSheet', 'index')->name('jobSheet');
         Route::get('jobSheetStatus/{id}', 'changeStatus')->name('jobSheet.changeStatus');
         Route::get('/jobSheetShow/{id}', 'show')->name('jobSheet.show');
+        Route::get('/jobSheetEdit/{id}', 'edit')->name('jobSheet.edit');
         Route::get('/jobSheetPrint/{id}', 'printPDF')->name('jobSheet.print');
         Route::get('/jobSheetCreate', 'create')->name('jobSheet.create');
         Route::get('/jobSheetCreate/get-shippers/{nameShip}', 'getShippers');
@@ -333,3 +334,36 @@ Route::middleware('auth')->group(function () {
             });
         });
 
+
+// Vendor Controller
+Route::middleware('auth')->group(function () {
+    Route::controller(VendorController::class)->group(function () {
+        Route::get('/vendor', 'index')->name('vendor');
+        Route::get('/vendorCreate', 'create')->name('vendor.create');
+        Route::post('/vendorStore', 'store')->name('vendor.store');
+        Route::get('/vendorShow/{id}', 'show')->name('vendor.show');
+        Route::get('/vendorEdit/{id}', 'edit')->name('vendor.edit');
+        Route::put('/vendorUpdate/{id}', 'update')->name('vendor.update');
+        Route::get('/vendorDestroy/{id}', 'destroy')->name('vendor.destroy');
+    });
+});
+
+// Satuan Barang
+Route::middleware('auth')->group(function () {
+    Route::controller(SatuanBarangController::class)->group(function () {
+        Route::get('/satuanBarang', 'index')->name('satuanBarang');
+        Route::get('/satuanBarangShow/{id}', 'show')->name('satuanBarang.show');
+        Route::get('/satuanBarangCreate', 'create')->name('satuanBarang.create');
+        Route::post('/satuanBarangStore', 'store')->name('satuanBarang.store');
+        Route::get('/satuanBarangEdit/{id}', 'edit')->name('satuanBarang.edit');
+        Route::put('/satuanBarangUpdate/{id}', 'update')->name(('satuanBarang.update'));
+        Route::get('/satuanBarangDestroy/{id}', 'destroy')->name('satuanBarang.destroy');
+    });
+});
+
+// Barang Controller
+Route::middleware('auth')->group(function () {
+    Route::controller(BarangController::class)->group(function () {
+        Route::get('/barang', 'index')->name('barang');
+    });
+});

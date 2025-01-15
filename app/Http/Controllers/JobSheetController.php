@@ -20,9 +20,12 @@ use App\Models\TypePayment;
 use App\Models\TypeWeight;
 use App\Models\UndernameHbl;
 use App\Models\UndernameMbl;
+use App\Models\User;
+use Illuminate\Contracts\Queue\Job;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Symfony\Component\Console\Command\DumpCompletionCommand;
+use PHPUnit\Util\Test;
+use Psy\Command\WhereamiCommand;
 
 class JobSheetController extends Controller
 {
@@ -314,7 +317,7 @@ class JobSheetController extends Controller
         // $jobsheet->save();
 
         $data = $request->all();
-        // dd($data);
+        dd($data);
         $nm = $data['si_doc'];
         $fileName = 'si_' . uniqid() . '.' . $nm->extension();
 
@@ -323,8 +326,12 @@ class JobSheetController extends Controller
         $jobsheet->sales_name = $data['sales_name'];
         $jobsheet->booking_no = strtoupper($data['booking_no']);
         $jobsheet->shipper_id = $data['shipper_id'];
-        $jobsheet->undername_mbl_id = $data['undername_mbl_id'];
-        $jobsheet->undername_hbl_id = $data['undername_hbl_id'];
+        $jobsheet->use_und_hbl = $data['use_und_hbl_input'];
+        if($jobsheet->use_und_hbl_input == 0) {
+            $jobsheet->undername_hbl_id = null;
+        }else{
+            $jobsheet->undername_hbl_id = $data['undername_hbl_id'];
+        }
         $jobsheet->name_cons = strtoupper($data['name_cons']);
         $jobsheet->address_cons = strtoupper($data['address_cons']);
         $jobsheet->phone_1_cons = $data['phone_1_cons'];
@@ -334,7 +341,7 @@ class JobSheetController extends Controller
         $jobsheet->mandatory_tax_id_cons = $data['mandatory_tax_id_cons'];
         $jobsheet->tax_id_cons = $data['tax_id_cons'];
         $jobsheet->same_as_consignee = $data['same_as_consignee_input'];
-        if($jobsheet->same_as_consignee == 0) {
+        if($jobsheet->same_as_consignee_input == 0) {
             $jobsheet->name_notify = strtoupper($data['name_notify']);
             $jobsheet->address_notify = strtoupper($data['address_notify']);
             $jobsheet->phone_1_notify = $data['phone_1_notify'];
@@ -375,9 +382,16 @@ class JobSheetController extends Controller
         $jobsheet->commodity_mbl = strtoupper($data['commodity_mbl']);
         $jobsheet->hs_code_mbl = $data['hs_code_mbl'];
         $jobsheet->mbl_type_bl_id = $data['mbl_type_bl_id'];
-        $jobsheet->commodity_hbl = strtoupper($data['commodity_hbl']);
-        $jobsheet->hs_code_hbl = $data['hs_code_hbl'];
-        $jobsheet->hbl_type_bl_id = $data['hbl_type_bl_id'];
+        $jobsheet->use_commodity_hbl = $data['use_commodity_hbl_input'];
+        if($jobsheet->use_commodity_hbl_input == 0) {
+            $jobsheet->commodity_hbl = null;
+            $jobsheet->hs_code_hbl = null;
+            $jobsheet->hbl_type_bl_id = null;
+        }else{
+            $jobsheet->commodity_hbl = strtoupper($data['commodity_hbl']);
+            $jobsheet->hs_code_hbl = $data['hs_code_hbl'];
+            $jobsheet->hbl_type_bl_id = $data['hbl_type_bl_id'];
+        }
         $jobsheet->stuffing_date = $data['stuffing_date'];
         $jobsheet->stuffing_address = strtoupper($data['stuffing_address']);
         $jobsheet->pic_name = strtoupper($data['pic_name']);
@@ -391,7 +405,6 @@ class JobSheetController extends Controller
         $jobsheet->user_id = $data['user_id'];
         $jobsheet->si_doc = $fileName;
         $nm->move(public_path() . '/si_doc', $fileName);
-
         $jobsheet->save();
 
         if (count($data['contName']) > 0) {
@@ -402,6 +415,85 @@ class JobSheetController extends Controller
                     'seal_name' => strtoupper($data['sealName'][$item]),
                 );
                 ContSealDetail::create($dataContName);
+            }
+        }
+
+        $sellingBuying = new SellingBuying;
+        $sellingBuying->job_sheet_head_id = $jobsheet->id;
+        $sellingBuying->exchange_rate_ros = $data['exchangeRateRos'];
+        $sellingBuying->exchange_rate_cos = $data['exchangeRateCos'];
+        $sellingBuying->total_ros = $data['finalTotalAmountRos'];
+        $sellingBuying->total_ex_rate_ros = $data['finalTotalAmountExRateRos'];
+        $sellingBuying->total_emkl = $data['finalTotalAmountEmkl'];
+        $sellingBuying->total_cos = $data['finalTotalAmountCos'];
+        $sellingBuying->total_ex_rate_cos = $data['finalTotalAmountExRateCos'];
+        $sellingBuying->total_handling = $data['finalTotalAmountHand'];
+        $sellingBuying->grand_total_selling = $data['grandTotalSelling'];
+        $sellingBuying->grand_total_buying = $data['grandTotalBuying'];
+        $sellingBuying->profit_loss = $data['profitLoss'];
+        $sellingBuying->save();
+
+        if (count($data['itemNameRos']) > 0) {
+            foreach ($data['itemNameRos'] as $item => $value) {
+                $dataRos = array(
+                    'selling_buying_id' => $sellingBuying -> id,
+                    'item_name' => strtoupper($data['itemNameRos'][$item]),
+                    'volume' => $data['volRos'][$item],
+                    'price' => $data['priceRos'][$item],
+                    'actual_amt' => $data['actualAmountRos'][$item],
+                    'tax_rate' => $data['taxRateRos'][$item],
+                    'tax_amt' => $data['taxAmountRos'][$item],
+                    'final_amount' => $data['itemFinalAmountRos'][$item],
+                );
+                RevenueOfSale::create($dataRos);
+            }
+        }
+
+        if (count($data['itemNameEmkl']) > 0) {
+            foreach ($data['itemNameEmkl'] as $item => $value) {
+                $dataEmkl = array(
+                    'selling_buying_id' => $sellingBuying -> id,
+                    'item_name' => strtoupper($data['itemNameEmkl'][$item]),
+                    'volume' => $data['volEmkl'][$item],
+                    'actual_amt' => $data['actualAmountEmkl'][$item],
+                    'price' => $data['priceEmkl'][$item],
+                    'tax_rate' => $data['taxRateEmkl'][$item],
+                    'tax_amt' => $data['taxAmountEmkl'][$item],
+                    'final_amount' => $data['itemFinalAmountEmkl'][$item],
+                );
+                Emkl::create($dataEmkl);
+            }
+        }
+
+        if (count($data['itemNameCos']) > 0) {
+            foreach ($data['itemNameCos'] as $item => $value) {
+                $dataCos = array(
+                    'selling_buying_id' => $sellingBuying -> id,
+                    'item_name' => strtoupper($data['itemNameCos'][$item]),
+                    'volume' => $data['volCos'][$item],
+                    'price' => $data['priceCos'][$item],
+                    'actual_amt' => $data['actualAmountCos'][$item],
+                    'tax_rate' => $data['taxRateCos'][$item],
+                    'tax_amt' => $data['taxAmountCos'][$item],
+                    'final_amount' => $data['itemFinalAmountCos'][$item],
+                );
+                CostOfSale::create($dataCos);
+            }
+        }
+
+        if (count($data['itemNameHand']) > 0) {
+            foreach ($data['itemNameHand'] as $item => $value) {
+                $dataHand = array(
+                    'selling_buying_id' => $sellingBuying -> id,
+                    'item_name' => strtoupper($data['itemNameHand'][$item]),
+                    'volume' => $data['volHand'][$item],
+                    'price' => $data['priceHand'][$item],
+                    'actual_amt' => $data['actualAmountHand'][$item],
+                    'tax_rate' => $data['taxRateHand'][$item],
+                    'tax_amt' => $data['taxAmountHand'][$item],
+                    'final_amount' => $data['itemFinalAmountHand'][$item],
+                );
+                Handling::create($dataHand);
             }
         }
 
@@ -498,120 +590,120 @@ class JobSheetController extends Controller
         // $undernameHbl = UndernameHbl::with(['user', 'mandatoryTax'])->findOrFail($id);
     }
 
-    public function sellingBuyingCreate($id)
-    {
-        $jobSheetHead = JobSheet::with(['shipper', 'undernameMbl', 'undernameHbl', 'containerSizeType', 'typePayment'])->findorFail($id);
-        return view('marketing.sellingBuying.partials.create', ['jobSheetHeadList' => $jobSheetHead]);
-        // dd($jobSheetHead);
-    }
+    // public function sellingBuyingCreate($id)
+    // {
+    //     $jobSheetHead = JobSheet::with(['shipper', 'undernameMbl', 'undernameHbl', 'containerSizeType', 'typePayment'])->findorFail($id);
+    //     return view('marketing.sellingBuying.partials.create', ['jobSheetHeadList' => $jobSheetHead]);
+    //     // dd($jobSheetHead);
+    // }
 
-    public function sellingBuyingStore(Request $request)
-    {
-        $data = $request->all();
-        dd($data);
-        $sellingBuying = new SellingBuying;
-        $sellingBuying->job_sheet_head_id = $data['jobSheetHeadId'];
-        $sellingBuying->exchange_rate_ros = $data['exchangeRateRos'];
-        $sellingBuying->exchange_rate_cos = $data['exchangeRateCos'];
-        $sellingBuying->total_ros = $data['finalTotalAmountRos'];
-        $sellingBuying->total_ex_rate_ros = $data['finalTotalAmountExRateRos'];
-        $sellingBuying->total_emkl = $data['finalTotalAmountEmkl'];
-        $sellingBuying->total_cos = $data['finalTotalAmountCos'];
-        $sellingBuying->total_ex_rate_cos = $data['finalTotalAmountExRateCos'];
-        $sellingBuying->total_handling = $data['finalTotalAmountHand'];
-        $sellingBuying->grand_total_selling = $data['grandTotalSelling'];
-        $sellingBuying->grand_total_buying = $data['grandTotalBuying'];
-        $sellingBuying->profit_loss = $data['profitLoss'];
-        $sellingBuying->remark = strtoupper($data['remarks']);
-        $sellingBuying->user_id = $data['userId'];
-        $sellingBuying->save();
+    // public function sellingBuyingStore(Request $request)
+    // {
+    //     $data = $request->all();
+    //     dd($data);
+    //     $sellingBuying = new SellingBuying;
+    //     $sellingBuying->job_sheet_head_id = $data['jobSheetHeadId'];
+    //     $sellingBuying->exchange_rate_ros = $data['exchangeRateRos'];
+    //     $sellingBuying->exchange_rate_cos = $data['exchangeRateCos'];
+    //     $sellingBuying->total_ros = $data['finalTotalAmountRos'];
+    //     $sellingBuying->total_ex_rate_ros = $data['finalTotalAmountExRateRos'];
+    //     $sellingBuying->total_emkl = $data['finalTotalAmountEmkl'];
+    //     $sellingBuying->total_cos = $data['finalTotalAmountCos'];
+    //     $sellingBuying->total_ex_rate_cos = $data['finalTotalAmountExRateCos'];
+    //     $sellingBuying->total_handling = $data['finalTotalAmountHand'];
+    //     $sellingBuying->grand_total_selling = $data['grandTotalSelling'];
+    //     $sellingBuying->grand_total_buying = $data['grandTotalBuying'];
+    //     $sellingBuying->profit_loss = $data['profitLoss'];
+    //     $sellingBuying->remark = strtoupper($data['remarks']);
+    //     $sellingBuying->user_id = $data['userId'];
+    //     $sellingBuying->save();
 
-        // $ros = new RevenueOfSale;
-        // $ros->category = $data['categoryRos'];
-        // $ros->volume = $data['qty'];
-        // $ros->unit_cost = $data['unit_cost'];
-        // $ros->amount = $data['amount'];
-        // $ros->remarks = $data['remarksRos'];
-        // $ros->selling_buying_id = $sellingBuying['id'];
-        // $ros->user_id = $sellingBuying['user_id'];
-        // $ros->save();
+    //     // $ros = new RevenueOfSale;
+    //     // $ros->category = $data['categoryRos'];
+    //     // $ros->volume = $data['qty'];
+    //     // $ros->unit_cost = $data['unit_cost'];
+    //     // $ros->amount = $data['amount'];
+    //     // $ros->remarks = $data['remarksRos'];
+    //     // $ros->selling_buying_id = $sellingBuying['id'];
+    //     // $ros->user_id = $sellingBuying['user_id'];
+    //     // $ros->save();
 
-        if (count($data['itemNameRos']) > 0) {
-            foreach ($data['itemNameRos'] as $item => $value) {
-                $dataRos = array(
-                    'selling_buying_id' => $sellingBuying -> id,
-                    'item_name' => strtoupper($data['itemNameRos'][$item]),
-                    'volume' => $data['volRos'][$item],
-                    'price' => $data['priceRos'][$item],
-                    'actual_amt' => $data['actualAmountRos'][$item],
-                    'tax_rate' => $data['taxRateRos'][$item],
-                    'tax_amt' => $data['taxAmountRos'][$item],
-                    'final_amount' => $data['itemFinalAmountRos'][$item],
-                    'user_id' => $sellingBuying -> user_id,
-                );
-                RevenueOfSale::create($dataRos);
-            }
-        }
+    //     if (count($data['itemNameRos']) > 0) {
+    //         foreach ($data['itemNameRos'] as $item => $value) {
+    //             $dataRos = array(
+    //                 'selling_buying_id' => $sellingBuying -> id,
+    //                 'item_name' => strtoupper($data['itemNameRos'][$item]),
+    //                 'volume' => $data['volRos'][$item],
+    //                 'price' => $data['priceRos'][$item],
+    //                 'actual_amt' => $data['actualAmountRos'][$item],
+    //                 'tax_rate' => $data['taxRateRos'][$item],
+    //                 'tax_amt' => $data['taxAmountRos'][$item],
+    //                 'final_amount' => $data['itemFinalAmountRos'][$item],
+    //                 'user_id' => $sellingBuying -> user_id,
+    //             );
+    //             RevenueOfSale::create($dataRos);
+    //         }
+    //     }
 
-        if (count($data['itemNameEmkl']) > 0) {
-            foreach ($data['itemNameEmkl'] as $item => $value) {
-                $dataEmkl = array(
-                    'selling_buying_id' => $sellingBuying -> id,
-                    'item_name' => strtoupper($data['itemNameEmkl'][$item]),
-                    'volume' => $data['volEmkl'][$item],
-                    'actual_amt' => $data['actualAmountEmkl'][$item],
-                    'price' => $data['priceEmkl'][$item],
-                    'tax_rate' => $data['taxRateEmkl'][$item],
-                    'tax_amt' => $data['taxAmountEmkl'][$item],
-                    'final_amount' => $data['itemFinalAmountEmkl'][$item],
-                    'user_id' => $sellingBuying -> user_id,
-                );
-                Emkl::create($dataEmkl);
-            }
-        }
+    //     if (count($data['itemNameEmkl']) > 0) {
+    //         foreach ($data['itemNameEmkl'] as $item => $value) {
+    //             $dataEmkl = array(
+    //                 'selling_buying_id' => $sellingBuying -> id,
+    //                 'item_name' => strtoupper($data['itemNameEmkl'][$item]),
+    //                 'volume' => $data['volEmkl'][$item],
+    //                 'actual_amt' => $data['actualAmountEmkl'][$item],
+    //                 'price' => $data['priceEmkl'][$item],
+    //                 'tax_rate' => $data['taxRateEmkl'][$item],
+    //                 'tax_amt' => $data['taxAmountEmkl'][$item],
+    //                 'final_amount' => $data['itemFinalAmountEmkl'][$item],
+    //                 'user_id' => $sellingBuying -> user_id,
+    //             );
+    //             Emkl::create($dataEmkl);
+    //         }
+    //     }
 
-        if (count($data['itemNameCos']) > 0) {
-            foreach ($data['itemNameCos'] as $item => $value) {
-                $dataCos = array(
-                    'selling_buying_id' => $sellingBuying -> id,
-                    'item_name' => strtoupper($data['itemNameCos'][$item]),
-                    'volume' => $data['volCos'][$item],
-                    'price' => $data['priceCos'][$item],
-                    'actual_amt' => $data['actualAmountCos'][$item],
-                    'tax_rate' => $data['taxRateCos'][$item],
-                    'tax_amt' => $data['taxAmountCos'][$item],
-                    'final_amount' => $data['itemFinalAmountCos'][$item],
-                    'user_id' => $sellingBuying -> user_id,
-                );
-                CostOfSale::create($dataCos);
-            }
-        }
+    //     if (count($data['itemNameCos']) > 0) {
+    //         foreach ($data['itemNameCos'] as $item => $value) {
+    //             $dataCos = array(
+    //                 'selling_buying_id' => $sellingBuying -> id,
+    //                 'item_name' => strtoupper($data['itemNameCos'][$item]),
+    //                 'volume' => $data['volCos'][$item],
+    //                 'price' => $data['priceCos'][$item],
+    //                 'actual_amt' => $data['actualAmountCos'][$item],
+    //                 'tax_rate' => $data['taxRateCos'][$item],
+    //                 'tax_amt' => $data['taxAmountCos'][$item],
+    //                 'final_amount' => $data['itemFinalAmountCos'][$item],
+    //                 'user_id' => $sellingBuying -> user_id,
+    //             );
+    //             CostOfSale::create($dataCos);
+    //         }
+    //     }
 
-        if (count($data['itemNameHand']) > 0) {
-            foreach ($data['itemNameHand'] as $item => $value) {
-                $dataHand = array(
-                    'selling_buying_id' => $sellingBuying -> id,
-                    'item_name' => strtoupper($data['itemNameHand'][$item]),
-                    'volume' => $data['volHand'][$item],
-                    'price' => $data['priceHand'][$item],
-                    'actual_amt' => $data['actualAmountHand'][$item],
-                    'tax_rate' => $data['taxRateHand'][$item],
-                    'tax_amt' => $data['taxAmountHand'][$item],
-                    'final_amount' => $data['itemFinalAmountHand'][$item],
-                    'user_id' => $sellingBuying -> user_id,
-                );
-                Handling::create($dataHand);
-            }
-        }
+    //     if (count($data['itemNameHand']) > 0) {
+    //         foreach ($data['itemNameHand'] as $item => $value) {
+    //             $dataHand = array(
+    //                 'selling_buying_id' => $sellingBuying -> id,
+    //                 'item_name' => strtoupper($data['itemNameHand'][$item]),
+    //                 'volume' => $data['volHand'][$item],
+    //                 'price' => $data['priceHand'][$item],
+    //                 'actual_amt' => $data['actualAmountHand'][$item],
+    //                 'tax_rate' => $data['taxRateHand'][$item],
+    //                 'tax_amt' => $data['taxAmountHand'][$item],
+    //                 'final_amount' => $data['itemFinalAmountHand'][$item],
+    //                 'user_id' => $sellingBuying -> user_id,
+    //             );
+    //             Handling::create($dataHand);
+    //         }
+    //     }
 
-        $notification = array(
-            'message' => 'Selling & Buying Inserted Successfully',
-            'alert-type' => 'success'
-        );
+    //     $notification = array(
+    //         'message' => 'Selling & Buying Inserted Successfully',
+    //         'alert-type' => 'success'
+    //     );
 
-        return redirect()->route('jobSheet')->with($notification);
+    //     return redirect()->route('jobSheet')->with($notification);
 
-    }
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -619,9 +711,47 @@ class JobSheetController extends Controller
      * @param  \App\Models\JobSheet  $jobSheet
      * @return \Illuminate\Http\Response
      */
-    public function edit(JobSheet $jobSheet)
+    public function edit(JobSheet $jobSheet, $id)
     {
-        //
+        $jobSheet = JobSheet::with([
+            'user',
+            'shipper',
+            'undernameMbl',
+            'undernameHbl',
+            // 'mandatoryTaxCons',
+            // 'mandatoryTaxNotify',
+            'containerSizeType',
+            'typePack',
+            'contSealDetail',
+            'typeBillOfLadingMbl',
+            // 'typeBillOfLadingHbl',
+            // 'typePayment',
+            // 'sellingBuying',
+            // 'sellingBuying.ros',
+            // 'sellingBuying.emkl',
+            // 'sellingBuying.cos',
+            // 'sellingBuying.handling',
+        ])->findOrfail($id);
+        // dd($jobSheet);
+        $user = User::where('id', '!=', $jobSheet->user_id)->get(['id', 'name']);
+        $shipper = Shipper::where('id', '!=', $jobSheet->shipper_id)->get(['id', 'name', 'address', 'phone_1', 'phone_2', 'fax', 'email', 'tax_id']);
+        $undernameMbl = UndernameMbl::where('id', '!=', $jobSheet->undername_mbl_id)->get(['id', 'name', 'address', 'phone_1', 'phone_2', 'fax', 'email', 'tax_id']);
+        $undernameHbl = UndernameHbl::where('id', '!=', $jobSheet->undername_hbl_id)->get(['id', 'name', 'address', 'phone_1', 'phone_2', 'fax', 'email', 'tax_id']);
+        $containerSizeType = ContainerSizeType::where('id', '!=', $jobSheet->cont_size_type_id)->get(['id', 'name']);
+        $typePack = TypePackaging::where('id', '!=', $jobSheet->type_pack_id)->get(['id', 'name']);
+        $contSealDetail = ContSealDetail::where('job_sheet_head_id', '!=', $jobSheet->id)->get(['id', 'cont_name', 'seal_name']);
+        $typeBillOfLadingMbl = TypeBillOfLading::where('id', '!=', $jobSheet->mbl_type_bl_id)->get(['id', 'name']);
+        return view('marketing.jobSheet.partials.edit', [
+            'jobSheet' => $jobSheet,
+            'user' => $user,
+            'shipper' => $shipper,
+            'undernameMbl' => $undernameMbl,
+            'undernameHbl' => $undernameHbl,
+            'containerSizeType' => $containerSizeType,
+            'typePack' => $typePack,
+            'contSealDetail' => $contSealDetail,
+            'typeBillOfLadingMbl' => $typeBillOfLadingMbl,
+        ]);
     }
 
     /**

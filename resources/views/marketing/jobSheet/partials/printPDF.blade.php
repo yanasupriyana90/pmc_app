@@ -57,10 +57,11 @@
             <hr size="100" noshade>
 
             <div class="row invoice-info">
-                <div class="col-6 invoice-col">
+                <div class="col-4 invoice-col">
                     <strong>Shipper :</strong>
                     <address>
-                        <strong>{{ $jobSheetHeadList->shipper['name'] }}</strong><br>
+                        <strong>{{ $jobSheetHeadList->shipper['name'] }}</strong>
+                        {{-- <br>
                         {{ $jobSheetHeadList->shipper['address'] }}<br>
                         Phone : {{ $jobSheetHeadList->shipper['phone_1'] }}
                         @if (empty($jobSheetHeadList->shipper['phone_2']))
@@ -90,14 +91,15 @@
                             -
                         @else
                             {{ $jobSheetHeadList->shipper['tax_id'] }}
-                        @endif
+                        @endif --}}
                     </address>
                 </div>
                 <!-- /.col -->
-                <div class="col-6 invoice-col">
+                <div class="col-4 invoice-col">
                     <strong>Undername MBL :</strong>
                     <address>
-                        <strong>{{ $jobSheetHeadList->undernameMbl['name'] }}</strong><br>
+                        <strong>{{ $jobSheetHeadList->undernameMbl['name'] }}</strong>
+                        {{-- <br>
                         {{ $jobSheetHeadList->undernameMbl['address'] }}<br>
                         Phone : {{ $jobSheetHeadList->undernameMbl['phone_1'] }}
                         @if (empty($jobSheetHeadList->undernameMbl['phone_2']))
@@ -127,17 +129,12 @@
                             -
                         @else
                             {{ $jobSheetHeadList->undernameMbl['tax_id'] }}
-                        @endif
+                        @endif --}}
                     </address>
                 </div>
-            </div>
-            <!-- /.col -->
-            <hr size="100" noshade>
-
-            <div class="row invoice-info">
                 @if (empty($jobSheetHeadList->undernameHbl['name']))
                 @else
-                    <div class="col-sm-4 invoice-col">
+                    <div class="col-sm-3 invoice-col">
                         <strong>Undername HBL :</strong>
                         <address>
                             <strong>
@@ -146,7 +143,8 @@
                                 @else
                                     {{ $jobSheetHeadList->undernameHbl['name'] }}
                                 @endif
-                            </strong><br>
+                            </strong>
+                            {{-- <br>
                             @if (empty($jobSheetHeadList->undernameHbl['address']))
                                 -
                             @else
@@ -185,11 +183,16 @@
                                 -
                             @else
                                 {{ $jobSheetHeadList->undernameHbl['tax_id'] }}
-                            @endif
+                            @endif --}}
                         </address>
                     </div>
                     <!-- /.col -->
                 @endif
+            </div>
+            <!-- /.col -->
+            <hr size="100" noshade>
+
+            <div class="row invoice-info">
                 <div class="col-4 invoice-col">
                     <strong>Consignee :</strong>
                     <address>
@@ -238,9 +241,12 @@
                     </address>
                 </div>
                 <div class="col-4 invoice-col">
-                    @if (empty($jobSheetHeadList->name_notify))
+                    <strong>Notify Party :</strong>
+                    @if (empty($jobSheetHeadList->same_as_consignee == 0))
+                        <address>
+                            SAME AS CONSIGNEE
+                        </address>
                     @else
-                        <strong>Notify Party :</strong>
                         <address>
                             <strong>
                                 @if (empty($jobSheetHeadList->name_notify))
@@ -301,7 +307,7 @@
                         <strong>Carrier : </strong> {{ $jobSheetHeadList->carrier }}<br>
                         <strong>Vessel / Voyage : </strong> {{ $jobSheetHeadList->vessel }}<br>
                         <strong>ETD :
-                        </strong>{{ \Carbon\Carbon::parse($jobSheetHeadList->etd)->format('d M Y') }}<br>
+                        </strong>{{ $jobSheetHeadList->etd }}<br>
                         <strong>Port Of Loading : </strong> {{ $jobSheetHeadList->pol }}<br>
                         <strong>Port Of Discharge : </strong> {{ $jobSheetHeadList->pod }}
                     </address>
@@ -313,25 +319,25 @@
                         @if (empty($jobSheetHeadList->open_cy))
                             -
                         @else
-                            {{ \Carbon\Carbon::parse($jobSheetHeadList->open_cy)->format('d M Y h:i') }}
+                            {{ $jobSheetHeadList->open_cy }}
                         @endif
                         <br>
                         <strong>Closing Document : </strong>
                         @if (empty($jobSheetHeadList->closing_doc))
                             -
                         @else
-                            {{ \Carbon\Carbon::parse($jobSheetHeadList->closing_doc)->format('d M Y h:i') }}
+                            {{ $jobSheetHeadList->closing_doc }}
                         @endif
                         <br>
                         <strong>Closing CY : </strong>
                         @if (empty($jobSheetHeadList->closing_cy))
                             -
                         @else
-                            {{ \Carbon\Carbon::parse($jobSheetHeadList->closing_cy)->format('d M Y h:i') }}
+                            {{ $jobSheetHeadList->closing_cy }}
                         @endif
                         <br>
                         <strong>Due Date Inv : </strong>
-                        {{ \Carbon\Carbon::parse($jobSheetHeadList->due_date_inv)->format('d M Y') }}
+                        {{ $jobSheetHeadList->due_date_inv }}
                     </address>
                 </div>
                 <!-- /.col -->
@@ -384,7 +390,7 @@
                 <div class="col-sm-4 invoice-col">
                     <address>
                         <strong>Stuffing Date : </strong>
-                        {{ \Carbon\Carbon::parse($jobSheetHeadList->stuffing_date)->format('d M Y') }}<br>
+                        {{ $jobSheetHeadList->stuffing_date }}<br>
                         <strong>Stuffing Address : </strong> {{ $jobSheetHeadList->stuffing_address }}<br>
                         <strong>PIC Name : </strong>{{ $jobSheetHeadList->pic_name }}<br>
                         <strong>PIC Phone : </strong> {{ $jobSheetHeadList->pic_phone }}
@@ -722,15 +728,8 @@
             <div class="row">
                 <!-- accepted payments column -->
 
-                <div class="col-6">
-                    <p class="lead">Remarks:</p>
-
-                    <p class="text-muted well well-sm shadow-none" style="margin-top: 10px;">
-                        {{ $jobSheetHeadList->sellingBuying['remark'] }}
-                    </p>
-                </div>
                 <!-- /.col -->
-                <div class="col-6">
+                <div class="col-6 offset-6">
                     <p class="lead">Accumulation</p>
                     <div class="table-responsive">
                         <table class="table table-sm">

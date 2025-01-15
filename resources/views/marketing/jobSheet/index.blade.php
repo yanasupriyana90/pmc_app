@@ -190,11 +190,10 @@
                                 {{-- <td class="align-middle" style="text-align:center">{{ $jobSheetHead->user['name'] }}</td> --}}
                                 <td class="align-middle" style="text-align:center">
                                     <a class="btn btn-primary btn-xs mb-1"
-                                        href="{{ route('jobSheet.show', $jobSheetHead->id) }}">Show Detail</a>
-                                    {{-- <a class="btn btn-primary btn-xs" href="{{ route('jobSheet.sellingBuyingCreate',  $jobSheetHead->id) }}"><i class="fa fa-exchange-alt"></i> Selling & Buying</a> --}}
-                                    <a class="btn btn-primary btn-xs mb-1"
+                                        href="{{ route('jobSheet.show', $jobSheetHead->id) }}">Show & Edit</a>
+                                    {{-- <a class="btn btn-primary btn-xs mb-1"
                                         href="{{ route('jobSheet.sellingBuyingCreate', $jobSheetHead->id) }}">Selling &
-                                        Buying</a>
+                                        Buying</a> --}}
                                     <a class="btn btn-danger btn-xs" href="#" id="delete">Delete</a>
                                 </td>
                                 <td class="align-middle" style="text-align:center">

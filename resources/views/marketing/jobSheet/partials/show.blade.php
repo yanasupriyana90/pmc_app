@@ -259,9 +259,12 @@
                                     </address>
                                 </div>
                                 <div class="col-sm-4 invoice-col">
-                                    @if (empty($jobSheetHeadList->name_notify))
+                                    <strong>Notify Party :</strong>
+                                    @if (empty($jobSheetHeadList->same_as_consignee == 0))
+                                        <address>
+                                            SAME AS CONSIGNEE
+                                        </address>
                                     @else
-                                        <strong>Notify Party :</strong>
                                         <address>
                                             <strong>
                                                 @if (empty($jobSheetHeadList->name_notify))
@@ -322,7 +325,7 @@
                                         <strong>Carrier : </strong> {{ $jobSheetHeadList->carrier }}<br>
                                         <strong>Vessel / Voyage : </strong> {{ $jobSheetHeadList->vessel }}<br>
                                         <strong>ETD :
-                                        </strong>{{ \Carbon\Carbon::parse($jobSheetHeadList->etd)->format('d M Y') }}<br>
+                                        </strong>{{ $jobSheetHeadList->etd }}<br>
                                         <strong>Port Of Loading : </strong> {{ $jobSheetHeadList->pol }}<br>
                                         <strong>Port Of Discharge : </strong> {{ $jobSheetHeadList->pod }}
                                     </address>
@@ -334,25 +337,25 @@
                                         @if (empty($jobSheetHeadList->open_cy))
                                             -
                                         @else
-                                            {{ \Carbon\Carbon::parse($jobSheetHeadList->open_cy)->format('d M Y h:i') }}
+                                            {{ $jobSheetHeadList->open_cy }}
                                         @endif
                                         <br>
                                         <strong>Closing Document : </strong>
                                         @if (empty($jobSheetHeadList->closing_doc))
                                             -
                                         @else
-                                            {{ \Carbon\Carbon::parse($jobSheetHeadList->closing_doc)->format('d M Y h:i') }}
+                                            {{ $jobSheetHeadList->closing_doc }}
                                         @endif
                                         <br>
                                         <strong>Closing CY : </strong>
                                         @if (empty($jobSheetHeadList->closing_cy))
                                             -
                                         @else
-                                            {{ \Carbon\Carbon::parse($jobSheetHeadList->closing_cy)->format('d M Y h:i') }}
+                                            {{ $jobSheetHeadList->closing_cy }}
                                         @endif
                                         <br>
                                         <strong>Due Date Inv : </strong>
-                                        {{ \Carbon\Carbon::parse($jobSheetHeadList->due_date_inv)->format('d M Y') }}
+                                        {{ $jobSheetHeadList->due_date_inv }}
                                     </address>
                                 </div>
                                 <!-- /.col -->
@@ -405,7 +408,7 @@
                                 <div class="col-sm-4 invoice-col">
                                     <address>
                                         <strong>Stuffing Date : </strong>
-                                        {{ \Carbon\Carbon::parse($jobSheetHeadList->stuffing_date)->format('d M Y') }}<br>
+                                        {{ $jobSheetHeadList->stuffing_date }}<br>
                                         <strong>Stuffing Address : </strong> {{ $jobSheetHeadList->stuffing_address }}<br>
                                         <strong>PIC Name : </strong>{{ $jobSheetHeadList->pic_name }}<br>
                                         <strong>PIC Phone : </strong> {{ $jobSheetHeadList->pic_phone }}
@@ -749,15 +752,15 @@
                             <div class="row">
                                 <!-- accepted payments column -->
 
-                                <div class="col-6 text-sm">
+                                {{-- <div class="col-6 text-sm">
                                     <p class="lead">Remarks:</p>
 
                                     <p class="text-muted well well-sm shadow-none" style="margin-top: 10px;">
                                         {{ $jobSheetHeadList->sellingBuying['remark'] }}
                                     </p>
-                                </div>
+                                </div> --}}
                                 <!-- /.col -->
-                                <div class="col-6 text-sm">
+                                <div class="col-6 offset-6 text-sm">
                                     <p class="lead">Accumulation</p>
                                     <div class="table-responsive">
                                         <table class="table table-sm">
@@ -802,15 +805,10 @@
                                 <div class="col-12">
                                     <a href="{{ route('jobSheet.print', $jobSheetHeadList->id) }}" rel="noopener"
                                         target="_blank" class="btn btn-default"><i class="fas fa-print"></i> Print</a>
-                                    {{-- <button type="button" class="btn btn-success float-right"><i
-                                            class="far fa-credit-card"></i>
-                                        Submit
-                                        Payment
-                                    </button> --}}
-                                    {{-- <button type="button" class="btn btn-primary float-right"
-                                        style="margin-right: 5px;">
-                                        <i class="fas fa-download"></i> Generate PDF
-                                    </button> --}}
+                                    <a href="{{ route('jobSheet') }}" class="btn btn-success float-right ml-3"><i
+                                            class="fas fa-check"></i> OK</a>
+                                    <a href="{{ route('jobSheet.edit', $jobSheetHeadList->id) }}" class="btn btn-primary float-right"><i class="far fa-edit"></i>
+                                        Edit</a>
                                 </div>
                             </div>
                         </div>

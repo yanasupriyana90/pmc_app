@@ -18,7 +18,6 @@ class Emkl extends Model
         'tax_rate',
         'tax_amt',
         'final_amount',
-        'user_id',
     ];
 
     public function sellingBuying()

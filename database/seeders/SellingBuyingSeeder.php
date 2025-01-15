@@ -30,8 +30,6 @@ class SellingBuyingSeeder extends Seeder
                 'grand_total_selling' =>  428150596.0000,
                 'grand_total_buying' => 192469082.8185,
                 'profit_loss' => 235681513.1815,
-                'remark' => 'TERM OF PAYMENT FOR OCEAN FREGHT IS CASH & CARRY',
-                'user_id' => '1',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],

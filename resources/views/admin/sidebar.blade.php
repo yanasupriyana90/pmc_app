@@ -77,9 +77,21 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="{{ Route('satuanBarang') }}" class="nav-link">
+                                <i class="fas fa-table nav-icon"></i>
+                                <p>Satuan Barang</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="{{ route('division') }}" class="nav-link">
                                 <i class="fas fa-project-diagram nav-icon"></i>
                                 <p>Division</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('vendor') }}" class="nav-link">
+                                <i class="fas fa-user-friends nav-icon"></i>
+                                <p>Vendor</p>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -109,84 +121,141 @@
                             <a href="#" class="nav-link">
                                 <i class="fas fa-ellipsis-h nav-icon"></i>
                                 <p>
-                                    Company Name
+                                    Forwarding
                                     <i class="fas fa-angle-left right"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{ Route('shipper') }}" class="nav-link">
-                                        <i class="fas fa-ship nav-icon"></i>
-                                        <p>Shipper</p>
+                                    <a href="#" class="nav-link">
+                                        <i class="fas fa-ellipsis-h nav-icon"></i>
+                                        <p>
+                                            Company
+                                            <i class="fas fa-angle-left right"></i>
+                                        </p>
+                                    </a>
+                                    <ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="{{ Route('shipper') }}" class="nav-link">
+                                                <i class="fas fa-ship nav-icon"></i>
+                                                <p>Shipper</p>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="{{ Route('undernameMbl') }}" class="nav-link">
+                                                <i class="fas fa-file-signature nav-icon"></i>
+                                                <p>M-BL / Booking</p>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="{{ Route('undernameHbl') }}" class="nav-link">
+                                                <i class="fas fa-file-signature nav-icon"></i>
+                                                <p>H-BL / PEB</p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('mandatoryTax') }}" class="nav-link">
+                                        <i class="fas fa-money-check nav-icon"></i>
+                                        <p>Mandatory Tax</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ Route('undernameMbl') }}" class="nav-link">
-                                        <i class="fas fa-file-signature nav-icon"></i>
-                                        <p>M-BL / Booking</p>
+                                    <a href="{{ Route('containerSizeType') }}" class="nav-link">
+                                        <i class="fas fa-box nav-icon"></i>
+                                        <p>Container Size Type </p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ Route('undernameHbl') }}" class="nav-link">
-                                        <i class="fas fa-file-signature nav-icon"></i>
-                                        <p>H-BL / PEB</p>
+                                    <a href="{{ Route('typePackaging') }}" class="nav-link">
+                                        <i class="fas fa-box-open nav-icon"></i>
+                                        <p>Type Packaging</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ Route('typeWeight') }}" class="nav-link">
+                                        <i class="fas fa-weight nav-icon"></i>
+                                        <p>Type Weight</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ Route('typeMeasurement') }}" class="nav-link">
+                                        <i class="fas fa-ruler-combined nav-icon"></i>
+                                        <p>Type Measurement</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ Route('typeCurrency') }}" class="nav-link">
+                                        <i class="fas fa-money-bill-wave nav-icon"></i>
+                                        <p>Type Currency</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ Route('typeBillOfLading') }}" class="nav-link">
+                                        <i class="fas fa-file-invoice nav-icon"></i>
+                                        <p>Type Bill Of Lading</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ Route('typePayment') }}" class="nav-link">
+                                        <i class="fas fa-handshake nav-icon"></i>
+                                        <p>Payment Information</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ Route('categoryBuySell') }}" class="nav-link">
+                                        <i class="fas fa-shopping-cart nav-icon"></i>
+                                        <p>Category Buy & Sell</p>
                                     </a>
                                 </li>
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('mandatoryTax') }}" class="nav-link">
-                                <i class="fas fa-money-check nav-icon"></i>
-                                <p>Mandatory Tax</p>
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-ellipsis-h nav-icon"></i>
+                                <p>
+                                    Spare Part Accessoris
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
                             </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('barang') }}" class="nav-link">
+                                        <i class="fas fa-cubes nav-icon"></i>
+                                        <p>Barang</p>
+                                    </a>
+                                </li>
+                                {{-- <li class="nav-item">
+                                    <a href="" class="nav-link">
+                                        <i class="fas fa-chart-area nav-icon"></i>
+                                        <p>Blank</p>
+                                    </a>
+                                </li> --}}
+                            </ul>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ Route('containerSizeType') }}" class="nav-link">
-                                <i class="fas fa-box nav-icon"></i>
-                                <p>Container Size Type </p>
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-ellipsis-h nav-icon"></i>
+                                <p>
+                                    Bag
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
                             </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ Route('typePackaging') }}" class="nav-link">
-                                <i class="fas fa-box-open nav-icon"></i>
-                                <p>Type Packaging</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ Route('typeWeight') }}" class="nav-link">
-                                <i class="fas fa-weight nav-icon"></i>
-                                <p>Type Weight</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ Route('typeMeasurement') }}" class="nav-link">
-                                <i class="fas fa-ruler-combined nav-icon"></i>
-                                <p>Type Measurement</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ Route('typeCurrency') }}" class="nav-link">
-                                <i class="fas fa-money-bill-wave nav-icon"></i>
-                                <p>Type Currency</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ Route('typeBillOfLading') }}" class="nav-link">
-                                <i class="fas fa-file-invoice nav-icon"></i>
-                                <p>Type Bill Of Lading</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ Route('typePayment') }}" class="nav-link">
-                                <i class="fas fa-handshake nav-icon"></i>
-                                <p>Payment Information</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ Route('categoryBuySell') }}" class="nav-link">
-                                <i class="fas fa-shopping-cart nav-icon"></i>
-                                <p>Category Buy & Sell</p>
-                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="" class="nav-link">
+                                        <i class="fas fa-landmark nav-icon"></i>
+                                        <p>Blank</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="" class="nav-link">
+                                        <i class="fas fa-chart-area nav-icon"></i>
+                                        <p>Blank</p>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </li>
@@ -290,7 +359,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
@@ -357,7 +426,7 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

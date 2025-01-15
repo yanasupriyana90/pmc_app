@@ -1276,11 +1276,12 @@
     <!-- COST OF SALES SCRIPT -->
     <script>
         $(document).ready(function() {
-            $(function () {
+            $(function() {
                 maskReloadCos();
             });
 
             function maskReloadCos(){
+                // Apply the currency input mask
                 $('.rupiahCos').inputmask({
                     alias: 'currency',
                     prefix: 'Rp ',         // You can set the currency symbol here, e.g., '$'
@@ -1330,6 +1331,7 @@
                     return true;
                 }
             }
+
             var finalTotalAmountCos = $('#finalTotalAmountCos').val();
             // var finalTotalExRateAmountCos = $('#finalTotalAmountExRateCos').text();
             var count = 1;
@@ -1347,8 +1349,9 @@
                     '" data-cos-no="' + count +
                     '"class="form-control form-control-sm input-sm number_only volCos" /></td>';
                 html_code += '<td><input type="text" name="priceCos[]" id="priceCos' + count +
-                    '" data-cos-no="' + count +
+                    '"data-cos-no="' + count +
                     '" class="form-control form-control-sm input-sm dollarCos priceCos" /></td>';
+
                 html_code +=
                     '<td><input type="text" name="actualAmountCos[]" id="actualAmountCos' + count +
                     '" data-cos-no="' + count +
@@ -1359,11 +1362,11 @@
                     '" class="form-control form-control-sm input-sm number_only taxRateCos" /></td>';
                 html_code += '<td><input type="text" name="taxAmountCos[]" id="taxAmountCos' + count +
                     '" data-cos-no="' + count +
-                    '" readonly class="form-control form-control-sm input-sm dollarCos taxAmountCos" /></td>';
+                    '" class="form-control form-control-sm input-sm dollarCos taxAmountCos" readonly /></td>';
 
                 html_code += '<td><input type="text" name="itemFinalAmountCos[]" id="itemFinalAmountCos' +
                     count + '" data-cos-no="' + count +
-                    '" readonly class="form-control form-control-sm input-sm dollarCos itemFinalAmountCos" /></td>';
+                    '" class="form-control form-control-sm input-sm dollarCos itemFinalAmountCos" readonly /></td>';
                 html_code += '<td><button type="button" name="remove_row_cos" id="' + count +
                     '" class="btn btn-danger btn-xs remove_row_cos"><i class="fa fa-trash-alt"></i></button></td>';
                 html_code += '</tr>';
@@ -1373,10 +1376,15 @@
 
             $(document).on('click', '.remove_row_cos', function() {
                 var row_id_cos = $(this).attr("id");
+                // var total_item_amount_cos = $('#itemFinalAmountCos' + row_id_cos).val();
                 var total_item_amount_cos = $('#itemFinalAmountCos' + row_id_cos).inputmask('unmaskedvalue');
+                // console.log(total_item_amount_cos);
+                // var final_amount_cos = $('#finalTotalAmountCos').val();
                 var final_amount_cos = $('#finalTotalAmountCos').inputmask('unmaskedvalue');
+                // console.log(final_amount_cos);
                 var result_amount_cos = parseFloat(final_amount_cos) - parseFloat(total_item_amount_cos);
-                var ex_rate_cos = $('#exchangeRateCos').val();
+                // var ex_rate_cos = $('#exchangeRateCos').val();
+                var ex_rate_cos = $('#exchangeRateCos').inputmask('unmaskedvalue');
                 final_item_total_ex_rate_cos = parseFloat(result_amount_cos) * parseFloat(ex_rate_cos);
                 $('#finalTotalAmountCos').val(result_amount_cos);
                 $('#finalTotalAmountExRateCos').val(final_item_total_ex_rate_cos.toFixed(4));
@@ -1385,6 +1393,7 @@
                 $('#totalItemCos').val(count);
                 grand_total();
             });
+
 
             function cal_final_total_cos(count) {
                 var final_item_total_cos = 0;
@@ -1397,7 +1406,10 @@
                     var tax_rate_cos = 0;
                     var tax_amount_cos = 0;
                     var item_total_cos = 0;
-                    ex_rate_cos = $('#exchangeRateCos').inputmask('unmaskedvalue');
+                    // ex_rate_cos = $('#exchangeRateCos').val();
+                    ex_rate_cos = Number($('#exchangeRateCos').inputmask('unmaskedvalue'));
+                    // console.log(ex_rate_cos);
+
                     // final_item_total_emkl = $('#finalTotalAmountEmkl').val();
                     // if (isNaN(final_item_total_emkl)
                     //     final_item_total_emkl = 0
@@ -1405,11 +1417,14 @@
                     // console.log(final_item_total_emkl);
                     vol_cos = $('#volCos' + rowCos).val();
                     if (vol_cos > 0) {
-                        price_cos = $('#priceCos' + rowCos).inputmask('unmaskedvalue');
+                        // price_cos = $('#priceCos' + rowCos).val();
+                        price_cos = Number($('#priceCos' + rowCos).inputmask('unmaskedvalue'));
+
                         if (price_cos > 0) {
                             actual_amount_cos = parseFloat(vol_cos) * parseFloat(price_cos);
                             $('#actualAmountCos' + rowCos).val(actual_amount_cos);
                             tax_rate_cos = $('#taxRateCos' + rowCos).val();
+
                             if (tax_rate_cos >= 0) {
                                 tax_amount_cos = parseFloat(actual_amount_cos) * parseFloat(tax_rate_cos) / 100;
                                 $('#taxAmountCos' + rowCos).val(tax_amount_cos.toFixed(4));
@@ -1425,7 +1440,7 @@
                     }
                 }
                 $('#finalTotalAmountCos').val(final_item_total_cos.toFixed(4));
-                // console.log(final_item_total_ros);
+                // console.log(final_item_total_cos);
                 $('#finalTotalAmountExRateCos').val(final_item_total_ex_rate_cos.toFixed(4));
                 // $('#grandTotalSelling').val(grand_total_selling.toFixed(4));
             }
@@ -1455,6 +1470,7 @@
             $(document).on('blur', '.priceCos', function() {
                 cal_final_total_cos(count);
                 grand_total();
+
             });
 
             $(document).on('blur', '.taxRateCos', function() {

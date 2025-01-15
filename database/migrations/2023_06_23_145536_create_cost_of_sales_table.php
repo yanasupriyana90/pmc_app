@@ -23,10 +23,8 @@ return new class extends Migration
             $table->tinyInteger('tax_rate');
             $table->decimal('tax_amt', 13, 4);
             $table->decimal('final_amount', 13, 4);
-            $table->unsignedBigInteger('user_id');
             $table->timestamps();
             $table->foreign('selling_buying_id')->references('id')->on('selling_buyings')->onDelete('restrict');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('restrict');
         });
     }
 
@@ -39,7 +37,6 @@ return new class extends Migration
     {
         Schema::table('cost_of_sales', function (Blueprint $table) {
             $table->dropForeign(['selling_buying_id']);
-            $table->dropForeign(['user_id']);
         });
         Schema::dropIfExists('cost_of_sales');
     }

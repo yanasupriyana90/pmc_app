@@ -46,6 +46,7 @@ class DatabaseSeeder extends Seeder
             EmklSeeder::class,
             CostOfSaleSeeder::class,
             HandlingSeeder::class,
+            SatuanBarangSeeder::class,
         ]);
     }
 }

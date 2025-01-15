@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class JobSheet extends Model
 {
@@ -19,6 +20,7 @@ class JobSheet extends Model
         'booking_no',
         'shipper_id',
         'undername_mbl_id',
+        'use_und_hbl',
         'undername_hbl_id',
         'name_cons',
         'address_cons',
@@ -61,6 +63,7 @@ class JobSheet extends Model
         // 'bl_delivery',
         // 'bl_delivery_desc',
         // 'issue_loc',
+        'use_commodity_hbl',
         'commodity_hbl',
         'hs_code_hbl',
         'hbl_type_bl_id',
@@ -155,6 +158,50 @@ class JobSheet extends Model
     public function sellingBuying()
     {
         return $this->hasOne(SellingBuying::class, 'job_sheet_head_id', 'id');
+    }
+
+    // Attribute
+    public function etd(): Attribute
+    {
+        return new Attribute(
+            get: fn ($value) => Carbon::parse($value)->format('d-m-Y'),
+            set: fn ($value) => Carbon::parse($value)->format('Y-m-d'),
+        );
+    }
+    public function openCy(): Attribute
+    {
+        return new Attribute(
+            get: fn ($value) => Carbon::parse($value)->format('d-m-Y H:i'),
+            set: fn ($value) => Carbon::parse($value)->format('Y-m-d H:i'),
+        );
+    }
+    public function closingDoc(): Attribute
+    {
+        return new Attribute(
+            get: fn ($value) => Carbon::parse($value)->format('d-m-Y H:i'),
+            set: fn ($value) => Carbon::parse($value)->format('Y-m-d H:i'),
+        );
+    }
+    public function closingCy(): Attribute
+    {
+        return new Attribute(
+            get: fn ($value) => Carbon::parse($value)->format('d-m-Y H:i'),
+            set: fn ($value) => Carbon::parse($value)->format('Y-m-d H:i'),
+        );
+    }
+    public function stuffingDate(): Attribute
+    {
+        return new Attribute(
+            get: fn ($value) => Carbon::parse($value)->format('d-m-Y'),
+            set: fn ($value) => Carbon::parse($value)->format('Y-m-d'),
+        );
+    }
+    public function dueDateInv(): Attribute
+    {
+        return new Attribute(
+            get: fn ($value) => Carbon::parse($value)->format('d-m-Y'),
+            set: fn ($value) => Carbon::parse($value)->format('Y-m-d'),
+        );
     }
 
 }

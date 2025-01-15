@@ -29,7 +29,6 @@ class TypeCurrencyController extends Controller
         $typeCurrency = TypeCurrency::create($request->all());
         $typeCurrency->code_currency = strtoupper($request->code_currency);
         $typeCurrency->name = strtoupper($request->name);
-        $typeCurrency->user_id = strtoupper($request->user_id);
         $typeCurrency->save();
 
         $notification = array(
@@ -62,7 +61,6 @@ class TypeCurrencyController extends Controller
         $typeCurrency->update($request->all());
         $typeCurrency->code_currency = strtoupper($request->code_currency);
         $typeCurrency->name = strtoupper($request->name);
-        $typeCurrency->user_id = strtoupper($request->user_id);
         $typeCurrency->save();
 
         $notification = array(

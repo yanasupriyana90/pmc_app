@@ -27,7 +27,6 @@ class HandlingSeeder extends Seeder
                 'tax_rate' => 0,
                 'tax_amt' => 0,
                 'final_amount' => 110000.0000,
-                'user_id' => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -40,7 +39,6 @@ class HandlingSeeder extends Seeder
                 'tax_rate' => 0,
                 'tax_amt' => 0,
                 'final_amount' => 165000.0000,
-                'user_id' => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -53,7 +51,6 @@ class HandlingSeeder extends Seeder
                 'tax_rate' => 0,
                 'tax_amt' => 0,
                 'final_amount' => 572000.0000,
-                'user_id' => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -66,7 +63,6 @@ class HandlingSeeder extends Seeder
                 'tax_rate' => 0,
                 'tax_amt' => 0,
                 'final_amount' => 11700000.0000,
-                'user_id' => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -79,7 +75,6 @@ class HandlingSeeder extends Seeder
                 'tax_rate' => 0,
                 'tax_amt' => 0,
                 'final_amount' => 3900000.0000,
-                'user_id' => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -92,7 +87,6 @@ class HandlingSeeder extends Seeder
                 'tax_rate' => 0,
                 'tax_amt' => 0,
                 'final_amount' => 2464200.0000,
-                'user_id' => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -105,7 +99,6 @@ class HandlingSeeder extends Seeder
                 'tax_rate' => 0,
                 'tax_amt' => 0,
                 'final_amount' => 2347650.0000,
-                'user_id' => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -118,7 +111,6 @@ class HandlingSeeder extends Seeder
                 'tax_rate' => 0,
                 'tax_amt' => 0,
                 'final_amount' => 303000.0000,
-                'user_id' => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -131,7 +123,6 @@ class HandlingSeeder extends Seeder
                 'tax_rate' => 0,
                 'tax_amt' => 0,
                 'final_amount' => 75000.0000,
-                'user_id' => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -144,7 +135,6 @@ class HandlingSeeder extends Seeder
                 'tax_rate' => 0,
                 'tax_amt' => 0,
                 'final_amount' => 6000000.0000,
-                'user_id' => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
@@ -157,7 +147,6 @@ class HandlingSeeder extends Seeder
                 'tax_rate' => 0,
                 'tax_amt' => 0,
                 'final_amount' => 650000.0000,
-                'user_id' => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],

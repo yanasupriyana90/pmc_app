@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('booking_no', 20)->nullable();
             $table->unsignedBigInteger('shipper_id');
             $table->unsignedBigInteger('undername_mbl_id')->nullable();
+            $table->tinyInteger('use_und_hbl');
             $table->unsignedBigInteger('undername_hbl_id')->nullable();
             $table->string('name_cons');
             $table->string('address_cons');
@@ -68,6 +69,7 @@ return new class extends Migration
             // $table->string('bl_delivery', 30);
             // $table->string('bl_delivery_desc', 50)->nullable();
             // $table->string('issue_loc', 30);
+            $table->tinyInteger('use_commodity_hbl');
             $table->string('commodity_hbl', 50)->nullable();
             $table->string('hs_code_hbl', 15)->nullable();
             $table->unsignedBigInteger('hbl_type_bl_id');
