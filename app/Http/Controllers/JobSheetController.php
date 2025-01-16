@@ -317,7 +317,7 @@ class JobSheetController extends Controller
         // $jobsheet->save();
 
         $data = $request->all();
-        dd($data);
+        // dd($data);
         $nm = $data['si_doc'];
         $fileName = 'si_' . uniqid() . '.' . $nm->extension();
 

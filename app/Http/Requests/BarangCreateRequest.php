@@ -24,20 +24,18 @@ class BarangCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'sku' => 'required|max:20',
+            'sku' => 'required|unique:barangs|max:20',
             'nama' => 'required|max:50',
             'merk' => 'max:50',
-            'panjang' => 'numeric|max:4',
-            'lebar' => 'numeric|max:4',
-            'tinggi' => 'numeric|max:4',
-            'qty' => 'numeric|max:4',
+            'panjang' => 'numeric',
+            'lebar' => 'numeric',
+            'tinggi' => 'numeric',
             'satuan_barang_id' => 'required',
             'desk' => 'max:255',
-            'pic' => 'required|mimes:jpeg,png,jpg|size:1024',
-            'usd'=> 'required|numeric',
-            'exchange_rate' => 'required|numeric',
-            'idr' => 'required|numeric',
-            'status' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,webp|max:1024|dimensions:ratio=1/1',
+            'usd' => 'required|numeric|min:0.1',
+            'stock' => 'required|numeric|min:0',
+            'min_stock' => 'required|numeric',
             'user_id' => 'required',
         ];
     }
@@ -51,14 +49,12 @@ class BarangCreateRequest extends FormRequest
             'panjang' => 'PANJANG',
             'lebar' => 'LEBAR',
             'tinggi' => 'TINGGI',
-            'qty' => 'QTY',
             'satuan_barang_id' => 'SATUAN BARANG',
             'desk' => 'DESKRIPSI',
-            'pic' => 'PICTURE',
+            'image' => 'IMAGE',
             'usd' => 'USD',
-            'exchange_rate' => 'EXCHANGE RATE',
-            'idr' => 'IDR',
-            'status' => 'STATUS',
+            'stock' => 'STOCK',
+            'min_stock' => 'MIN STOCK',
             'user_id' => 'USER',
         ];
     }

@@ -44,15 +44,16 @@
                             <div class="card-header">
                                 <h3 class="card-title">@yield('subtitle_2')</h3>
                             </div>
-                            <form action="{{ Route('barang.store') }}" method="POST">
+                            <form action="{{ Route('barang.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-3">
                                             <div class="form-group">
                                                 <label for="inputSku">SKU</label>
-                                                <input type="text" class="form-control form-control-sm" name="sku"
-                                                    id="sku" value="{{ old('sku') }}" placeholder="Enter SKU">
+                                                <input type="text" class="form-control form-control-sm text-uppercase"
+                                                    name="sku" id="sku" value="{{ old('sku') }}"
+                                                    placeholder="Enter SKU">
                                             </div>
                                         </div>
                                     </div>
@@ -60,45 +61,41 @@
                                         <div class="col-3">
                                             <div class="form-group">
                                                 <label for="inputNama">Nama</label>
-                                                <input type="text" class="form-control form-control-sm" name="nama"
-                                                    id="nama" value="{{ old('nama') }}"
+                                                <input type="text" class="form-control form-control-sm text-uppercase"
+                                                    name="nama" id="nama" value="{{ old('nama') }}"
                                                     placeholder="Enter Nama Barang">
                                             </div>
                                         </div>
                                         <div class="col-3">
                                             <div class="form-group">
                                                 <label for="inputMerk">Merk</label>
-                                                <input type="text" class="form-control form-control-sm" name="merk"
-                                                    id="merk" value="{{ old('merk') }}"
+                                                <input type="text" class="form-control form-control-sm text-uppercase"
+                                                    name="merk" id="merk" value="{{ old('merk') }}"
                                                     placeholder="Enter Merk Barang">
                                             </div>
                                         </div>
                                         <div class="col-1">
                                             <div class="form-group">
                                                 <label for="inputPanjang">P (cm)</label>
-                                                <input type="text" class="form-control form-control-sm" name="panjang"
-                                                    id="panjang" value="{{ old('panjang') }}" placeholder="0.0">
+                                                <input type="number" step="0.01" min="0"
+                                                    class="form-control form-control-sm" name="panjang" id="panjang"
+                                                    value="{{ old('panjang') }}" placeholder="0.0">
                                             </div>
                                         </div>
                                         <div class="col-1">
                                             <div class="form-group">
                                                 <label for="inputLebar">L (cm)</label>
-                                                <input type="text" class="form-control form-control-sm" name="lebar"
-                                                    id="lebar" value="{{ old('lebar') }}" placeholder="0.0">
+                                                <input type="number" step="0.01" min="0"
+                                                    class="form-control form-control-sm" name="lebar" id="lebar"
+                                                    value="{{ old('lebar') }}" placeholder="0.0">
                                             </div>
                                         </div>
                                         <div class="col-1">
                                             <div class="form-group">
                                                 <label for="inputTinggi">T (cm)</label>
-                                                <input type="text" class="form-control form-control-sm" name="tinggi"
-                                                    id="tinggi" value="{{ old('tinggi') }}" placeholder="0.0">
-                                            </div>
-                                        </div>
-                                        <div class="col-1">
-                                            <div class="form-group">
-                                                <label for="inputQty">Qty</label>
-                                                <input type="text" class="form-control form-control-sm" name="qty"
-                                                    id="qty" value="{{ old('qty') }}" placeholder="0">
+                                                <input type="number" step="0.01" min="0"
+                                                    class="form-control form-control-sm" name="tinggi" id="tinggi"
+                                                    value="{{ old('tinggi') }}" placeholder="0.0">
                                             </div>
                                         </div>
                                         <div class="col-2">
@@ -123,34 +120,40 @@
                                     <div class="row">
                                         <div class="col-3">
                                             <div class="form-group">
-                                                <label for="inputNama">USD</label>
-                                                <input type="text" class="form-control form-control-sm" name="nama"
-                                                    id="nama" value="{{ old('nama') }}"
-                                                    placeholder="Enter Nama Barang">
+                                                <label for="inputUsd">USD</label>
+                                                <input type="text" class="form-control form-control-sm input_sm dollarBarang"
+                                                    name="usd" id="usd" value="{{ old('usd') }}">
                                             </div>
                                         </div>
-                                        <div class="col-3">
+                                        <div class="col-2">
                                             <div class="form-group">
-                                                <label for="inputExchangeRate">Exchange Rate</label>
-                                                <input type="text" class="form-control form-control-sm" name="exchange_rate"
-                                                    id="exchange_rate" value="{{ old('exchange_rate') }}"
-                                                    placeholder="Enter Rate">
-                                            </div>
-                                        </div>
-                                        <div class="col-3">
-                                            <div class="form-group">
-                                                <label for="inputIdr">IDR</label>
-                                                <input type="text" class="form-control form-control-sm" name="idr"
-                                                    id="idr" value="{{ old('idr') }}"
+                                                <label>Stock</label>
+                                                <input type="number" min="0" class="form-control form-control-sm"
+                                                    name="stock" id="stock" value="{{ old('stock') }}"
                                                     placeholder="0">
                                             </div>
                                         </div>
-                                        <div class="col-3">
+                                        <div class="col-2">
                                             <div class="form-group">
-                                                <label for="inputMerk">Status</label>
-                                                <input type="text" class="form-control form-control-sm" name="merk"
-                                                    id="merk" value="{{ old('merk') }}"
-                                                    placeholder="Enter Merk Barang">
+                                                <label>Min Stock</label>
+                                                <input type="number" min="0" class="form-control form-control-sm"
+                                                    name="min_stock" id="min_stock" value="{{ old('min_stock') }}"
+                                                    placeholder="0">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <div class="form-group">
+                                                <label>Image</label>
+                                                <div class="input-group">
+                                                    <div class="custom-file">
+                                                        <input type="file" class="custom-file-input" id="image"
+                                                            name="image">
+                                                        <label class="custom-file-label" for="image">Choose
+                                                            file</label>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -176,38 +179,47 @@
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
-@endsection
 
-<script>
-    function showDiv(select) {
-        // console.log(select.options[select.selectedIndex].text);
-        if (select.options[select.selectedIndex].text != "NONE TAX") {
-            document.getElementById('tax_id').value = "";
-            document.getElementById('tax_id_group').style.display = "block";
-        } else {
-            document.getElementById('tax_id_group').style.display = "none";
-        }
-    }
-</script>
+@section('scriptCreateBarang')
+    <!-- Handle Enter Jadi Tab -->
+    <script>
+        document.addEventListener("keydown", function(e) {
+            if (e.key === "Enter") {
+                e.preventDefault();
+                var formInputs = document.querySelectorAll("input, select, textarea");
+                var currentFocused = document.activeElement;
+                var currentIndex = Array.from(formInputs).indexOf(currentFocused);
 
-{{-- <script>
-    $(document).keypress(
-        function(event){
-            if (event.which == '13') {
-                event.preventDefault();
+                if (currentIndex > -1 && currentIndex < formInputs.length - 1) {
+                    formInputs[currentIndex + 1].focus();
+                }
             }
-    });
-</script> --}}
+        });
+    </script>
 
-{{-- Block Enter Key --}}
-<script type="text/javascript">
-    function stopRKey(evt) {
-        var evt = (evt) ? evt : ((event) ? event : null);
-        var node = (evt.target) ? evt.target : ((evt.srcElement) ? evt.srcElement : null);
-        if ((evt.keyCode == 13) && (node.type == "text")) {
-            return false;
-        }
-    }
+    <script>
+        $(document).ready(function() {
+            $(function () {
+                maskReloadBarang();
+            });
 
-    document.onkeypress = stopRKey;
-</script>
+            function maskReloadBarang() {
+                    // Apply the currency input mask
+
+                    $('.dollarBarang').inputmask({
+                        alias: 'currency',
+                        prefix: '$ ', // You can set the currency symbol here, e.g., '$'
+                        suffix: '', // You can set a suffix here, e.g., ' USD'
+                        groupSeparator: '.', // Set the group separator, e.g., for thousands
+                        // radixPoint: '.',  // Set the group separator, e.g., for thousands
+                        digits: 2, // Set the number of decimal digits
+                        autoGroup: true, // Automatically groups thousands
+                        rightAlign: false, // Align the currency symbol to the left
+                        removeMaskOnSubmit: true,
+                    });
+                }
+        });
+    </script>
+
+@endsection
+@endsection

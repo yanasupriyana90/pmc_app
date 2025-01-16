@@ -135,6 +135,7 @@
     @yield('scriptIndexJobsheet')
     @yield('scriptShowDetailJobsheet')
     @yield('scriptContSealDetail')
+    @yield('scriptCreateBarang')
     <script>
         $(function() {
             $("#example1").DataTable({

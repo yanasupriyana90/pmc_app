@@ -38,20 +38,16 @@
                 <thead>
                     <tr>
                         <th>No</th>
+                        <th>Image</th>
                         <th>SKU</th>
                         <th>Nama</th>
                         <th>Merk</th>
                         <th>P</th>
                         <th>L</th>
                         <th>T</th>
-                        <th>Qty</th>
                         <th>Satuan</th>
                         <th>Desk</th>
-                        <th>Pic</th>
                         <th>USD</th>
-                        <th>Rate</th>
-                        <th>IDR</th>
-                        <th>Status</th>
                         <th>User</th>
                         <th>Created Date</th>
                         <th>Modified Date</th>
@@ -62,20 +58,16 @@
                     @foreach ($barangList as $barang)
                     <tr>
                         <td class="align-middle" style="text-align: center">{{ $loop->iteration }}</td>
+                        <td><img src="{{ asset($barang->image) }}" class="product-image-thumb" style="width:200px" /></td>
                         <td class="align-middle" style="text-align: center">{{ $barang->sku }}</td>
                         <td class="align-middle" style="text-align: center">{{ $barang->nama }}</td>
                         <td class="align-middle" style="text-align: center">{{ $barang->merk }}</td>
                         <td class="align-middle" style="text-align: center">{{ $barang->panjang }}</td>
                         <td class="align-middle" style="text-align: center">{{ $barang->lebar }}</td>
                         <td class="align-middle" style="text-align: center">{{ $barang->tinggi }}</td>
-                        <td class="align-middle" style="text-align: center">{{ $barang->qty }}</td>
                         <td class="align-middle" style="text-align: center">{{ $barang->satuanBarang['name'] }}</td>
                         <td class="align-middle" style="text-align: center">{{ $barang->desk }}</td>
-                        <td class="align-middle" style="text-align: center">{{ $barang->pic }}</td>
                         <td class="align-middle" style="text-align: center">{{ $barang->usd }}</td>
-                        <td class="align-middle" style="text-align: center">{{ $barang->exchange_rate }}</td>
-                        <td class="align-middle" style="text-align: center">{{ $barang->idr }}</td>
-                        <td class="align-middle" style="text-align: center">{{ $barang->status }}</td>
                         <td class="align-middle" style="text-align: center">{{ $barang->user['name'] }}</td>
                         <td class="align-middle" style="text-align: center">{{ ($barang->created_at)->format('l, d-m-Y H:i') }}</td>
                         <td class="align-middle" style="text-align: center">{{ ($barang->updated_at)->format('l, d-m-Y H:i') }}</td>

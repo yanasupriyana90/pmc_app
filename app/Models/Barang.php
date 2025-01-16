@@ -16,14 +16,12 @@ class Barang extends Model
         'panjang',
         'lebar',
         'tinggi',
-        'qty',
         'satuan_barang_id',
         'desk',
-        'pic',
+        'image',
         'usd',
-        'exchange_rate',
-        'idr',
-        'status',
+        'stock',
+        'min_stock',
         'user_id',
     ];
 
