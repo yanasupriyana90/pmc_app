@@ -41,16 +41,16 @@
                         <th>Code</th>
                         <th>Name</th>
                         <th>Address</th>
+                        <th>PIC Name</th>
                         <th>Phone 1</th>
                         <th>Phone 2</th>
-                        <th>Fax</th>
                         <th>Email</th>
                         <th>Mandatory Tax</th>
                         <th>Tax ID</th>
+                        <th>Action</th>
                         <th>User</th>
                         <th>Created Date</th>
                         <th>Modified Date</th>
-                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -60,19 +60,19 @@
                         <td class="align-middle" style="text-align: center">{{ $vendor->initial_code }}</td>
                         <td class="align-middle" style="text-align: center">{{ $vendor->name }}</td>
                         <td class="align-middle" style="text-align: center">{{ $vendor->address }}</td>
+                        <td class="align-middle" style="text-align: center">{{ $vendor->pic_name }}</td>
                         <td class="align-middle" style="text-align: center">{{ $vendor->phone_1 }}</td>
                         <td class="align-middle" style="text-align: center">{{ $vendor->phone_2 }}</td>
-                        <td class="align-middle" style="text-align: center">{{ $vendor->fax }}</td>
                         <td class="align-middle" style="text-align: center">{{ $vendor->email }}</td>
                         <td class="align-middle" style="text-align: center">{{ $vendor->mandatoryTax['name'] }}</td>
                         <td class="align-middle" style="text-align: center">{{ $vendor->tax_id }}</td>
-                        <td class="align-middle" style="text-align: center">{{ $vendor->user['name'] }}</td>
-                        <td class="align-middle" style="text-align: center">{{ ($vendor->created_at)->format('l, d-m-Y H:i') }}</td>
-                        <td class="align-middle" style="text-align: center">{{ ($vendor->updated_at)->format('l, d-m-Y H:i') }}</td>
                         <td class="align-middle" style="text-align: center">
                             <a href="{{ route('vendor.show', $vendor->id) }}" class="btn btn-primary btn-xs"><i class="fa fa-eye"></i> Detail & Edit</a>
                             <a href="{{ route('vendor.destroy', $vendor->id) }}" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure?')"><i class="fa fa-trash"></i> Delete</a>
                         </td>
+                        <td class="align-middle" style="text-align: center">{{ $vendor->user['name'] }}</td>
+                        <td class="align-middle" style="text-align: center">{{ ($vendor->created_at)->format('l, d-m-Y H:i') }}</td>
+                        <td class="align-middle" style="text-align: center">{{ ($vendor->updated_at)->format('l, d-m-Y H:i') }}</td>
                     </tr>
                     @endforeach
                 </tbody>

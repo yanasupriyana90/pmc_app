@@ -66,20 +66,20 @@
                                     <div class="row">
                                         <div class="col-4">
                                             <div class="form-group">
+                                                <label for="inputPicName">PIC Name</label>
+                                                <input type="text" class="form-control form-control-sm text-uppercase" name="pic_name" id="pic_name" value="{{ old('pic_name') }}" placeholder="Enter PIC Name">
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="form-group">
                                                 <label for="inputPhone_1">Phone 1</label>
-                                                <input type="text" class="form-control form-control-sm" name="phone_1" id="phone_1" value="{{ old('phone_1') }}" placeholder="Enter Phone 1">
+                                                <input type="text" class="form-control form-control-sm" name="phone_1" id="phone_1" value="{{ old('phone_1') }}" placeholder="ENTER PHONE 1">
                                             </div>
                                         </div>
                                         <div class="col-4">
                                             <div class="form-group">
                                                 <label for="inputPhone_2">Phone 2</label>
-                                                <input type="text" class="form-control form-control-sm" name="phone_2" id="phone_2" value="{{ old('phone_2') }}" placeholder="Enter Phone 2">
-                                            </div>
-                                        </div>
-                                        <div class="col-4">
-                                            <div class="form-group">
-                                                <label for="inputFax">Fax</label>
-                                                <input type="text" class="form-control form-control-sm" name="fax" id="fax" value="{{ old('fax') }}" placeholder="Enter Fax">
+                                                <input type="text" class="form-control form-control-sm" name="phone_2" id="phone_2" value="{{ old('phone_2') }}" placeholder="ENTER PHONE 2">
                                             </div>
                                         </div>
                                     </div>

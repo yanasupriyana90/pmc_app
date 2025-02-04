@@ -24,8 +24,9 @@ class BarangCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'sku' => 'required|unique:barangs|max:20',
+            'kode_barang' => 'required|unique:barangs|max:10',
             'nama' => 'required|max:50',
+            'kategori_barang_id' => 'required',
             'merk' => 'max:50',
             'panjang' => 'numeric',
             'lebar' => 'numeric',
@@ -33,8 +34,11 @@ class BarangCreateRequest extends FormRequest
             'satuan_barang_id' => 'required',
             'desk' => 'max:255',
             'image' => 'required|image|mimes:jpeg,png,jpg,webp|max:1024|dimensions:ratio=1/1',
-            'usd' => 'required|numeric|min:0.1',
-            'stock' => 'required|numeric|min:0',
+            'harga_modal_usd' => 'required|numeric',
+            'exchange' => 'required|numeric',
+            'harga_modal_idr' => 'required|numeric',
+            'harga_jual' => 'numeric',
+            'stock' => 'numeric|min:0',
             'min_stock' => 'required|numeric',
             'user_id' => 'required',
         ];
@@ -43,8 +47,9 @@ class BarangCreateRequest extends FormRequest
     public function attributes()
     {
         return [
-            'sku' => 'SKU',
+            'kode_barang' => 'KODE BARANG',
             'nama' => 'NAMA',
+            'kategori_barang_id' => 'KATEGORI BARANG',
             'merk' => 'MERK',
             'panjang' => 'PANJANG',
             'lebar' => 'LEBAR',
@@ -52,7 +57,10 @@ class BarangCreateRequest extends FormRequest
             'satuan_barang_id' => 'SATUAN BARANG',
             'desk' => 'DESKRIPSI',
             'image' => 'IMAGE',
-            'usd' => 'USD',
+            'harga_modal_usd' => 'HARGA MODAL USD',
+            'exchange' => 'EXCHANGE RATE',
+            'harga_modal_idr' => 'HARGA MODAL IDR',
+            'harga_jual' => 'HARGA JUAL',
             'stock' => 'STOCK',
             'min_stock' => 'MIN STOCK',
             'user_id' => 'USER',

@@ -46,6 +46,7 @@ class VendorController extends Controller
         $vendor->initial_code = strtoupper($request->initial_code);
         $vendor->name = strtoupper($request->name);
         $vendor->address = strtoupper($request->address);
+        $vendor->pic_name = strtoupper($request->pic_name);
         $vendor->email = strtolower($request->email);
         $vendor->save();
 
@@ -96,6 +97,7 @@ class VendorController extends Controller
         $vendor->update($request->all());
         $vendor->name = strtoupper($request->name);
         $vendor->address = strtoupper($request->address);
+        $vendor->pic_name = strtoupper($request->pic_name);
         $vendor->email = strtolower($request->email);
         $vendor->save();
 

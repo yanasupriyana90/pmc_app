@@ -395,6 +395,62 @@ $(function () {
 // });
 
 
+// Search Vendor
+$(document).ready(function () {
+    //Array of Values
+    $("#name_vendor").autocomplete({
+        source: function (request, cb) {
+            $.ajax({
+                url: '/barangMasukCreate/get-vendors/' + request.term,
+                method: 'GET',
+                dataType: 'json',
+                success: function (res) {
+                    var result;
+                    result = [
+                        {
+                            label: 'There Is No Matching Record Found For ' + request.term,
+                            value: ''
+                        }
+                    ];
+
+                    console.log(res);
+
+
+                    if (res.length) {
+                        result = $.map(res, function (obj) {
+                            return {
+                                label: obj.name,
+                                value: obj.name,
+                                data: obj
+                            };
+                        });
+                    }
+                    cb(result);
+                }
+            });
+        },
+        select: function (e, selectedData) {
+            console.log(selectedData);
+
+            if (selectedData && selectedData.item && selectedData.item.data) {
+                var data = selectedData.item.data;
+
+                $('#vendor_id').val(data.id);
+                $('#name_vendor').val(data.name);
+                $('#address_vendor').val(data.address);
+                $('#pic_vendor').val(data.pic_name);
+                $('#phone_1_vendor').val(data.phone_1);
+                $('#phone_2_vendor').val(data.phone_2);
+                $('#email_vendor').val(data.email);
+                $('#mandatory_tax_id_vendor').val(data.mandatory_tax.name);
+                $('#tax_id_vendor').val(data.tax_id);
+
+            }
+        }
+    });
+});
+
+
 // Search Shipper
 $(document).ready(function () {
     //Array of Values

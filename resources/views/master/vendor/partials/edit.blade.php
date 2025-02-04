@@ -88,10 +88,10 @@
                                         </div>
                                         <div class="col-4">
                                             <div class="form-group">
-                                                <label>Fax</label>
-                                                <input type="text" class="form-control form-control-sm" name="fax"
-                                                    id="fax" value="{{ old('fax', $vendor->fax) }}"
-                                                    placeholder="Enter Fax">
+                                                <label>PIC Name</label>
+                                                <input type="text" class="form-control form-control-sm text-uppercase" name="pic_name"
+                                                    id="pic_name" value="{{ old('pic_name', $vendor->pic_name) }}"
+                                                    placeholder="Enter PIC Name">
                                             </div>
                                         </div>
                                     </div>

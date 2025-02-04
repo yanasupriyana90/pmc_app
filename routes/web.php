@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BankAccountController;
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\BarangMasukController;
 use App\Http\Controllers\CashInBankController;
 use App\Http\Controllers\ContainerSizeTypeController;
 use App\Http\Controllers\DivisionController;
@@ -21,6 +22,7 @@ use App\Http\Controllers\CategoryBuySellController;
 use App\Http\Controllers\ChartOfAccountHead1Controller;
 use App\Http\Controllers\ContSealDetailController;
 use App\Http\Controllers\DailySalesReportController;
+use App\Http\Controllers\KategoriBarangController;
 use App\Http\Controllers\PettyCashController;
 use App\Http\Controllers\SatuanBarangController;
 use App\Http\Controllers\VendorController;
@@ -361,6 +363,19 @@ Route::middleware('auth')->group(function () {
     });
 });
 
+// Kategori Barang Controller
+Route::middleware('auth')->group(function () {
+    Route::controller(KategoriBarangController::class)->group(function () {
+        Route::get('/kategoriBarang', 'index')->name('kategoriBarang');
+        Route::get('/kategoriBarangShow/{id}', 'show')->name('kategoriBarang.show');
+        Route::get('/kategoriBarangCreate', 'create')->name('kategoriBarang.create');
+        Route::post('/kategoriBarangStore', 'store')->name('kategoriBarang.store');
+        Route::get('/kategoriBarangEdit/{id}', 'edit')->name('kategoriBarang.edit');
+        Route::put('/kategoriBarangUpdate/{id}', 'update')->name(('kategoriBarang.update'));
+        Route::get('/kategoriBarangDestroy/{id}', 'destroy')->name('kategoriBarang.destroy');
+    });
+});
+
 // Barang Controller
 Route::middleware('auth')->group(function () {
     Route::controller(BarangController::class)->group(function () {
@@ -371,5 +386,19 @@ Route::middleware('auth')->group(function () {
         Route::get('/barangEdit/{id}', 'edit')->name('barang.edit');
         Route::put('/barangUpdate/{id}', 'update')->name(('barang.update'));
         Route::get('/barangDestroy/{id}', 'destroy')->name('barang.destroy');
+    });
+});
+
+// Barang Masuk Controller
+Route::middleware('auth')->group(function () {
+    Route::controller(BarangMasukController::class)->group(function () {
+        Route::get('/barangMasuk', 'index')->name('barangMasuk');
+        Route::get('/barangMasukShow/{id}', 'show')->name('barangMasuk.show');
+        Route::get('/barangMasukCreate', 'create')->name('barangMasuk.create');
+        Route::post('/barangMasukStore', 'store')->name('barangMasuk.store');
+        Route::get('/barangMasukEdit/{id}', 'edit')->name('barangMasuk.edit');
+        Route::put('/barangMasukUpdate/{id}', 'update')->name(('barangMasuk.update'));
+        Route::get('/barangMasukDestroy/{id}', 'destroy')->name('barangMasuk.destroy');
+        Route::get('/barangMasukCreate/get-vendors/{nameVendor}', 'getVendors');
     });
 });

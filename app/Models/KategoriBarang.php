@@ -5,21 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Vendor extends Model
+class KategoriBarang extends Model
 {
     use HasFactory;
 
-
     protected $fillable = [
-        'initial_code',
         'name',
-        'address',
-        'phone_1',
-        'phone_2',
-        'pic_name',
-        'email',
-        'mandatory_tax_id',
-        'tax_id',
         'user_id',
     ];
 
@@ -27,10 +18,4 @@ class Vendor extends Model
     {
         return $this->belongsTo(User::class);
     }
-
-    public function mandatoryTax()
-    {
-        return $this->belongsTo(MandatoryTax::class);
-    }
-
 }

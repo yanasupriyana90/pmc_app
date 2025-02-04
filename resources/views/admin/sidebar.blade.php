@@ -63,6 +63,29 @@
                 <li class="nav-header">MENU</li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
+                        <i class="fas fa-exchange-alt nav-icon"></i>
+                        <p>
+                            Transaksi
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('barangMasuk') }}" class="nav-link">
+                                <i class="fas fa-box nav-icon"></i>
+                                <p>Barang Masuk</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-box-open nav-icon"></i>
+                                <p>Barang Keluar</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
                             Master
@@ -94,7 +117,7 @@
                                 <p>Vendor</p>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="fas fa-ellipsis-h nav-icon"></i>
                                 <p>
@@ -210,7 +233,7 @@
                                     </a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> --}}
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="fas fa-ellipsis-h nav-icon"></i>
@@ -221,17 +244,19 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{ route('barang') }}" class="nav-link">
-                                        <i class="fas fa-cubes nav-icon"></i>
-                                        <p>Barang</p>
+                                    <a href="{{ route('kategoriBarang') }}" class="nav-link">
+                                        <i class="fas fa-list nav-icon"></i>
+                                        <p>Kategori Barang</p>
                                     </a>
                                 </li>
-                                {{-- <li class="nav-item">
-                                    <a href="" class="nav-link">
-                                        <i class="fas fa-chart-area nav-icon"></i>
-                                        <p>Blank</p>
+                            </ul>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('barang') }}" class="nav-link">
+                                        <i class="fas fa-cubes nav-icon"></i>
+                                        <p>Data Barang</p>
                                     </a>
-                                </li> --}}
+                                </li>
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -259,7 +284,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
@@ -329,7 +354,7 @@
                             </ul>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>

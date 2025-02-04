@@ -15,8 +15,9 @@ return new class extends Migration
     {
         Schema::create('barangs', function (Blueprint $table) {
             $table->id();
-            $table->string('sku', 20);
+            $table->string('kode_barang', 10)->unique();
             $table->string('nama', 50);
+            $table->unsignedBigInteger('kategori_barang_id');
             $table->string('merk', 50)->nullable();
             $table->decimal('panjang', 5, 2)->nullable();
             $table->decimal('lebar', 5, 2)->nullable();
@@ -24,11 +25,15 @@ return new class extends Migration
             $table->unsignedBigInteger('satuan_barang_id');
             $table->string('desk')->nullable();
             $table->string('image');
-            $table->decimal('usd', 11, 2);
+            $table->decimal('harga_modal_usd');
+            $table->decimal('exchange');
+            $table->decimal('harga_modal_idr');
+            $table->decimal('harga_jual');
             $table->integer('stock')->default(0);
             $table->integer('min_stock')->default(0);
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
+            $table->foreign('kategori_barang_id')->references('id')->on('kategori_barangs')->onDelete('restrict');
             $table->foreign('satuan_barang_id')->references('id')->on('satuan_barangs')->onDelete('restrict');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('restrict');
         });
@@ -42,6 +47,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('barangs', function (Blueprint $table) {
+            $table->dropForeign(['kategori_barang_id']);
             $table->dropForeign(['satuan_barang_id']);
             $table->dropForeign(['user_id']);
         });

@@ -61,6 +61,13 @@
                                     <div class="row">
                                         <div class="col-4">
                                             <div class="form-group">
+                                                <label>PIC Name</label>
+                                                <input type="text" name="pic_name" class="form-control form-control-sm text-uppercase"
+                                                    id="pic_name" value="{{ $vendor->pic_name }}" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="form-group">
                                                 <label>Phone 1</label>
                                                 <input type="text" name="phone_1" class="form-control form-control-sm"
                                                     id="phone_1" value="{{ $vendor->phone_1 }}" disabled>
@@ -72,13 +79,6 @@
                                                 <input type="text" name="phone_2" id="phone_2"
                                                     class="form-control form-control-sm" value="{{ $vendor->phone_2 }}"
                                                     disabled>
-                                            </div>
-                                        </div>
-                                        <div class="clo-4">
-                                            <div class="form-group">
-                                                <label>Fax</label>
-                                                <input type="text" name="fax" class="form-control form-control-sm"
-                                                    id="fax" value="{{ $vendor->fax }}" disabled>
                                             </div>
                                         </div>
                                     </div>

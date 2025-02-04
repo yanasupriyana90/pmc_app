@@ -50,10 +50,10 @@
                                     <div class="row">
                                         <div class="col-3">
                                             <div class="form-group">
-                                                <label for="inputSku">SKU</label>
+                                                <label for="inputKodeBarang">Kode Barang</label>
                                                 <input type="text" class="form-control form-control-sm text-uppercase"
-                                                    name="sku" id="sku" value="{{ old('sku') }}"
-                                                    placeholder="Enter SKU">
+                                                    name="kode_barang" id="kode_barang" value="{{ 'HD-7-' . $kd }}"
+                                                    placeholder="Enter Kode Barang" readonly>
                                             </div>
                                         </div>
                                     </div>
@@ -66,12 +66,17 @@
                                                     placeholder="Enter Nama Barang">
                                             </div>
                                         </div>
-                                        <div class="col-3">
+                                        <div class="col-2">
                                             <div class="form-group">
-                                                <label for="inputMerk">Merk</label>
-                                                <input type="text" class="form-control form-control-sm text-uppercase"
-                                                    name="merk" id="merk" value="{{ old('merk') }}"
-                                                    placeholder="Enter Merk Barang">
+                                                <label for="inputKategoriBarang">Kategori</label>
+                                                <select name="kategori_barang_id" id="kategori_barang_id"
+                                                    class="form-control form-control-sm select2" style="width: 100%;"
+                                                    onchange="showDiv(this)">
+                                                    @foreach ($kategoriBarang as $item)
+                                                        <option value="{{ old('kategori_barang_id', $item->id) }}">
+                                                            {{ $item->name }}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="col-1">
@@ -104,11 +109,21 @@
                                                 <select name="satuan_barang_id" id="satuan_barang_id"
                                                     class="form-control form-control-sm select2" style="width: 100%;"
                                                     onchange="showDiv(this)">
-                                                    @foreach ($barang as $item)
+                                                    @foreach ($satuanBarang as $item)
                                                         <option value="{{ old('mandatory_tax_id', $item->id) }}">
                                                             {{ $item->name }}</option>
                                                     @endforeach
                                                 </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <div class="form-group">
+                                                <label for="inputMerk">Merk</label>
+                                                <input type="text" class="form-control form-control-sm text-uppercase"
+                                                    name="merk" id="merk" value="{{ old('merk') }}"
+                                                    placeholder="Enter Merk Barang">
                                             </div>
                                         </div>
                                     </div>
@@ -118,19 +133,44 @@
                                             placeholder="Enter Deskripsi">{{ old('desk') }}</textarea>
                                     </div>
                                     <div class="row">
-                                        <div class="col-3">
+                                        <div class="col-2">
                                             <div class="form-group">
-                                                <label for="inputUsd">USD</label>
-                                                <input type="text" class="form-control form-control-sm input_sm dollarBarang"
-                                                    name="usd" id="usd" value="{{ old('usd') }}">
+                                                <label for="inputHargaModalUsd">Harga Modal (USD)</label>
+                                                <input type="text" class="form-control form-control-sm dollarBarang"
+                                                    name="harga_modal_usd" id="harga_modal_usd"
+                                                    value="{{ old('harga_modal_usd') }}">
                                             </div>
                                         </div>
                                         <div class="col-2">
                                             <div class="form-group">
+                                                <label for="inputExchangeRate">Exchange Rate (IDR)</label>
+                                                <input type="text" class="form-control form-control-sm rupiahBarang"
+                                                    name="exchange" id="exchange" value="{{ old('exchange') }}">
+                                            </div>
+                                        </div>
+                                        <div class="col-2">
+                                            <div class="form-group">
+                                                <label for="inputHargaModalIdr">Harga Modal (IDR)</label>
+                                                <input type="text" class="form-control form-control-sm rupiahBarang"
+                                                    name="harga_modal_idr" id="harga_modal_idr"
+                                                    value="{{ old('harga_modal_idr') }}" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-2">
+                                            <div class="form-group">
+                                                <label for="inputHargaJual">Harga Jual</label>
+                                                <input type="text" class="form-control form-control-sm rupiahBarang"
+                                                    name="harga_jual" id="harga_jual" value="{{ old('harga_jual') }}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-2">
+                                            <div class="form-group">
                                                 <label>Stock</label>
                                                 <input type="number" min="0" class="form-control form-control-sm"
-                                                    name="stock" id="stock" value="{{ old('stock') }}"
-                                                    placeholder="0">
+                                                    name="stock" id="stock" value="0" placeholder="0"
+                                                    readonly>
                                             </div>
                                         </div>
                                         <div class="col-2">
@@ -199,25 +239,45 @@
 
     <script>
         $(document).ready(function() {
-            $(function () {
-                maskReloadBarang();
+            // Terapkan Inputmask ke input dengan kelas "rupiah"
+            $(".rupiahBarang").inputmask({
+                alias: 'currency',
+                prefix: 'Rp ', // You can set the currency symbol here, e.g., '$'
+                suffix: '', // You can set a suffix here, e.g., ' USD'
+                groupSeparator: '.', // Set the group separator, e.g., for thousands
+                // radixPoint: ',',  // Set the group separator, e.g., for thousands
+                digits: 2, // Set the number of decimal digits
+                autoGroup: true, // Automatically groups thousands
+                rightAlign: false, // Align the currency symbol to the left
+                removeMaskOnSubmit: true,
             });
 
-            function maskReloadBarang() {
-                    // Apply the currency input mask
+            $(".dollarBarang").inputmask({
+                alias: 'currency',
+                prefix: '$ ', // You can set the currency symbol here, e.g., '$'
+                suffix: '', // You can set a suffix here, e.g., ' USD'
+                groupSeparator: '.', // Set the group separator, e.g., for thousands
+                // radixPoint: ',',  // Set the group separator, e.g., for thousands
+                digits: 2, // Set the number of decimal digits
+                autoGroup: true, // Automatically groups thousands
+                rightAlign: false, // Align the currency symbol to the left
+                removeMaskOnSubmit: true,
+            });
 
-                    $('.dollarBarang').inputmask({
-                        alias: 'currency',
-                        prefix: '$ ', // You can set the currency symbol here, e.g., '$'
-                        suffix: '', // You can set a suffix here, e.g., ' USD'
-                        groupSeparator: '.', // Set the group separator, e.g., for thousands
-                        // radixPoint: '.',  // Set the group separator, e.g., for thousands
-                        digits: 2, // Set the number of decimal digits
-                        autoGroup: true, // Automatically groups thousands
-                        rightAlign: false, // Align the currency symbol to the left
-                        removeMaskOnSubmit: true,
-                    });
-                }
+            // Fungsi untuk menghitung total harga
+            function hitungTotal() {
+                let harga_modal_usd = $("#harga_modal_usd").inputmask('unmaskedvalue') || 0;
+                let exchange = $("#exchange").inputmask('unmaskedvalue') || 0;
+                let harga_modal_idr = harga_modal_usd * exchange;
+
+                // Format kembali total ke dalam format rupiah
+                $("#harga_modal_idr").val(harga_modal_idr).inputmask("setvalue", harga_modal_idr);
+            }
+
+            // Event listener untuk perhitungan otomatis
+            $("#harga_modal_usd, #exchange").on("input", function() {
+                hitungTotal();
+            });
         });
     </script>
 

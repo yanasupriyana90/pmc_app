@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use App\Exceptions\Handler;
 use App\Models\BankAccount;
+use App\Models\Vendor;
 use Illuminate\Database\Seeder;
 
 
@@ -36,7 +37,6 @@ class DatabaseSeeder extends Seeder
             UndernameMblSeeder::class,
             BankAccountSeeder::class,
             ChartOfAccountHead1Seeder::class,
-            // DailySalesReportSeeder::class,
 
             // Marketing
             JobSheetSeeder::class,
@@ -46,7 +46,12 @@ class DatabaseSeeder extends Seeder
             EmklSeeder::class,
             CostOfSaleSeeder::class,
             HandlingSeeder::class,
+
+            // Inventory
             SatuanBarangSeeder::class,
+            KategoriBarangSeeder::class,
+            VendorSeeder::class,
+            BarangSeeder::class,
         ]);
     }
 }

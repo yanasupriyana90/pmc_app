@@ -10,8 +10,9 @@ class Barang extends Model
     use HasFactory;
 
     protected $fillable = [
-        'sku',
+        'kode_barang',
         'nama',
+        'kategori_barang_id',
         'merk',
         'panjang',
         'lebar',
@@ -19,7 +20,10 @@ class Barang extends Model
         'satuan_barang_id',
         'desk',
         'image',
-        'usd',
+        'harga_modal_usd',
+        'exchange',
+        'harga_modal_idr',
+        'harga_jual',
         'stock',
         'min_stock',
         'user_id',
@@ -28,6 +32,11 @@ class Barang extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function kategoriBarang()
+    {
+        return $this->belongsTo(kategoriBarang::class);
     }
 
     public function satuanBarang()

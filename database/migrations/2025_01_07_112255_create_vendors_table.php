@@ -18,9 +18,9 @@ return new class extends Migration
             $table->string('initial_code', 4)->unique();
             $table->string('name');
             $table->string('address');
+            $table->string('pic_name');
             $table->string('phone_1', 20);
             $table->string('phone_2', 20)->nullable();
-            $table->string('fax', 20)->nullable();
             $table->string('email');
             $table->unsignedBigInteger('mandatory_tax_id');
             $table->string('tax_id', 35)->nullable();

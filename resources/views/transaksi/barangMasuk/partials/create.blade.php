@@ -1,10 +1,10 @@
 @extends('admin.panel')
 
-@section('title', 'Master')
+@section('title', 'Transaksi')
 
-@section('subtitle', 'Barang')
+@section('subtitle', 'Barang Masuk')
 
-@section('subtitle_2', 'Show Data')
+@section('subtitle_2', 'Add Data')
 
 @section('content')
     <!-- Content Wrapper. Contains page content -->
@@ -19,7 +19,7 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">@yield('title')</a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('barang') }}">@yield('subtitle')</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('barangMasuk') }}">@yield('subtitle')</a></li>
                             <li class="breadcrumb-item active">@yield('subtitle_2')</li>
                         </ol>
                     </div>
@@ -44,33 +44,122 @@
                             <div class="card-header">
                                 <h3 class="card-title">@yield('subtitle_2')</h3>
                             </div>
-                            <form>
+                            <form action="{{ Route('barangMasuk.store') }}" method="POST" enctype="multipart/form-data">
+                                @csrf
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-3">
+                                        <div class="col-2">
                                             <div class="form-group">
-                                                <label for="inputKodeBarang">Kode Barang</label>
-                                                <input type="text" class="form-control form-control-sm text-uppercase"
-                                                    name="kode_barang" id="kode_barang" value="{{ $barang->kode_barang }}"
-                                                    placeholder="Enter Kode Barang" disabled>
+                                                <label>Nomor Invoice</label>
+                                                <input type="text" class="form-control form-control-sm"
+                                                    name="nomor_invoice" id="nomor_invoice" value="{{ $nomorInvoice }}"
+                                                    readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-2 offset-8">
+                                            <div class="form-group">
+                                                <label>Tanggal Invoice</label>
+                                                <input type="text" class="form-control form-control-sm"
+                                                    name="tanggal_pembelian" id="tanggal_pembelian" value="{{ \Carbon\Carbon::now()->format('D, d-m-Y | H:i') }}"
+                                                    readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-2">
+                                            <div class="form-group">
+                                                <input type="hidden"
+                                                    class="form-control form-control-sm text-uppercase"
+                                                    name="vendor_id" id="vendor_id" readonly>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-3">
                                             <div class="form-group">
+                                                <label>Vendor</label>
+                                                <input type="text"
+                                                    class="form-control form-control-sm text-uppercase"
+                                                    name="name_vendor" id="name_vendor"
+                                                    value="{{ old('name_vendor') }}" placeholder="Search Vendor..">
+                                            </div>
+                                        </div>
+                                        <div class="col-2">
+                                            <div class="form-group">
+                                                <label>PIC Name</label>
+                                                <input type="text" class="form-control form-control-sm"
+                                                name="pic_vendor" id="pic_vendor" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-2">
+                                            <div class="form-group">
+                                                <label>Phone 1</label>
+                                                <input type="text" class="form-control form-control-sm"
+                                                    name="phone_1_vendor" id="phone_1_vendor" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-2">
+                                            <div class="form-group">
+                                                <label>Phone 2</label>
+                                                <input type="text" class="form-control form-control-sm"
+                                                    name="phone_2_vendor" id="phone_2_vendor" readonly>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <div class="form-group">
+                                                <label>Address</label>
+                                                <textarea class="form-control form-control-sm text-uppercase" name="address_vendor" id="address_vendor" rows="3"
+                                                    readonly></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="form-group">
+                                                <label>Email address</label>
+                                                <input type="email" class="form-control form-control-sm"
+                                                    name="email_vendor" id="email_vendor" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-2 offset-1">
+                                            <div class="form-group">
+                                                <label>Mandatory Tax</label>
+                                                <input type="text" name="mandatory_tax_id_vendor"
+                                                    class="form-control form-control-sm"
+                                                    id="mandatory_tax_id_vendor" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-2">
+                                            <div class="form-group">
+                                                <label>Tax ID</label>
+                                                <input type="text" name="tax_id_vendor"
+                                                    class="form-control form-control-sm" id="tax_id_vendor"
+                                                    readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {{-- <div class="row">
+                                        <div class="col-3">
+                                            <div class="form-group">
                                                 <label for="inputNama">Nama</label>
                                                 <input type="text" class="form-control form-control-sm text-uppercase"
-                                                    name="nama" id="nama" value="{{ $barang->nama }}"
-                                                    placeholder="Enter Nama Barang" disabled>
+                                                    name="nama" id="nama" value="{{ old('nama') }}"
+                                                    placeholder="Enter Nama Barang">
                                             </div>
                                         </div>
                                         <div class="col-2">
                                             <div class="form-group">
                                                 <label for="inputKategoriBarang">Kategori</label>
-                                                <input type="text" name="kategori_barang_id"
-                                                    class="form-control form-control-sm" id="kategori_barang_id"
-                                                    value="{{ $barang->kategoriBarang['name'] }}" disabled>
+                                                <select name="kategori_barang_id" id="kategori_barang_id"
+                                                    class="form-control form-control-sm select2" style="width: 100%;"
+                                                    onchange="showDiv(this)">
+                                                    @foreach ($kategoriBarang as $item)
+                                                        <option value="{{ old('kategori_barang_id', $item->id) }}">
+                                                            {{ $item->name }}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="col-1">
@@ -78,7 +167,7 @@
                                                 <label for="inputPanjang">P (cm)</label>
                                                 <input type="number" step="0.01" min="0"
                                                     class="form-control form-control-sm" name="panjang" id="panjang"
-                                                    value="{{ $barang->panjang }}" placeholder="0.0" disabled>
+                                                    value="{{ old('panjang') }}" placeholder="0.0">
                                             </div>
                                         </div>
                                         <div class="col-1">
@@ -86,7 +175,7 @@
                                                 <label for="inputLebar">L (cm)</label>
                                                 <input type="number" step="0.01" min="0"
                                                     class="form-control form-control-sm" name="lebar" id="lebar"
-                                                    value="{{ $barang->lebar }}" placeholder="0.0" disabled>
+                                                    value="{{ old('lebar') }}" placeholder="0.0">
                                             </div>
                                         </div>
                                         <div class="col-1">
@@ -94,15 +183,20 @@
                                                 <label for="inputTinggi">T (cm)</label>
                                                 <input type="number" step="0.01" min="0"
                                                     class="form-control form-control-sm" name="tinggi" id="tinggi"
-                                                    value="{{ $barang->tinggi }}" placeholder="0.0" disabled>
+                                                    value="{{ old('tinggi') }}" placeholder="0.0">
                                             </div>
                                         </div>
                                         <div class="col-2">
                                             <div class="form-group">
                                                 <label for="inputSatuanBarang">Satuan</label>
-                                                <input type="text" name="satuan_barang_id"
-                                                    class="form-control form-control-sm" id="satuan_barang_id"
-                                                    value="{{ $barang->satuanBarang['name'] }}" disabled>
+                                                <select name="satuan_barang_id" id="satuan_barang_id"
+                                                    class="form-control form-control-sm select2" style="width: 100%;"
+                                                    onchange="showDiv(this)">
+                                                    @foreach ($satuanBarang as $item)
+                                                        <option value="{{ old('mandatory_tax_id', $item->id) }}">
+                                                            {{ $item->name }}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -111,15 +205,15 @@
                                             <div class="form-group">
                                                 <label for="inputMerk">Merk</label>
                                                 <input type="text" class="form-control form-control-sm text-uppercase"
-                                                    name="merk" id="merk" value="{{ $barang->merk }}"
-                                                    placeholder="Enter Merk Barang" disabled>
+                                                    name="merk" id="merk" value="{{ old('merk') }}"
+                                                    placeholder="Enter Merk Barang">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputDesk">Deskripsi</label>
                                         <textarea class="form-control form-control-sm text-uppercase" name="desk" id="desk"
-                                            placeholder="Enter Deskripsi" disabled>{{ $barang->desk }}</textarea>
+                                            placeholder="Enter Deskripsi">{{ old('desk') }}</textarea>
                                     </div>
                                     <div class="row">
                                         <div class="col-2">
@@ -127,15 +221,14 @@
                                                 <label for="inputHargaModalUsd">Harga Modal (USD)</label>
                                                 <input type="text" class="form-control form-control-sm dollarBarang"
                                                     name="harga_modal_usd" id="harga_modal_usd"
-                                                    value="{{ $barang->harga_modal_usd }}" disabled>
+                                                    value="{{ old('harga_modal_usd') }}">
                                             </div>
                                         </div>
                                         <div class="col-2">
                                             <div class="form-group">
                                                 <label for="inputExchangeRate">Exchange Rate (IDR)</label>
                                                 <input type="text" class="form-control form-control-sm rupiahBarang"
-                                                    name="exchange" id="exchange" value="{{ $barang->exchange }}"
-                                                    disabled>
+                                                    name="exchange" id="exchange" value="{{ old('exchange') }}">
                                             </div>
                                         </div>
                                         <div class="col-2">
@@ -143,15 +236,14 @@
                                                 <label for="inputHargaModalIdr">Harga Modal (IDR)</label>
                                                 <input type="text" class="form-control form-control-sm rupiahBarang"
                                                     name="harga_modal_idr" id="harga_modal_idr"
-                                                    value="{{ $barang->harga_modal_idr }}" disabled>
+                                                    value="{{ old('harga_modal_idr') }}" readonly>
                                             </div>
                                         </div>
                                         <div class="col-2">
                                             <div class="form-group">
                                                 <label for="inputHargaJual">Harga Jual</label>
                                                 <input type="text" class="form-control form-control-sm rupiahBarang"
-                                                    name="harga_jual" id="harga_jual" value="{{ $barang->harga_jual }}"
-                                                    disabled>
+                                                    name="harga_jual" id="harga_jual" value="{{ old('harga_jual') }}">
                                             </div>
                                         </div>
                                     </div>
@@ -160,48 +252,43 @@
                                             <div class="form-group">
                                                 <label>Stock</label>
                                                 <input type="number" min="0" class="form-control form-control-sm"
-                                                    name="stock" id="stock" value="{{ $barang->stock }}"
-                                                    placeholder="0" disabled>
+                                                    name="stock" id="stock" value="0" placeholder="0"
+                                                    readonly>
                                             </div>
                                         </div>
                                         <div class="col-2">
                                             <div class="form-group">
                                                 <label>Min Stock</label>
                                                 <input type="number" min="0" class="form-control form-control-sm"
-                                                    name="min_stock" id="min_stock" value="{{ $barang->min_stock }}"
-                                                    placeholder="0" disabled>
-                                            </div>
-                                        </div>
-                                        <div class="col-3">
-                                            <div class="form-group">
-                                                <label>Created Date</label>
-                                                <input type="text" name="created_at"
-                                                    class="form-control form-control-sm" id="created_at"
-                                                    value="{{ $barang->created_at->format('l, d-m-Y H:i') }}" disabled>
-                                            </div>
-                                        </div>
-                                        <div class="col-3">
-                                            <div class="form-group">
-                                                <label>Modified Date</label>
-                                                <input type="text" name="updated_at"
-                                                    class="form-control form-control-sm" id="updated_at"
-                                                    value="{{ $barang->updated_at->format('l, d-m-Y H:i') }}" disabled>
+                                                    name="min_stock" id="min_stock" value="{{ old('min_stock') }}"
+                                                    placeholder="0">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <img src="{{ Storage::url('public/images/') . $barang->image }}" width="150px">
-                                    </div>
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <div class="form-group">
+                                                <label>Image</label>
+                                                <div class="input-group">
+                                                    <div class="custom-file">
+                                                        <input type="file" class="custom-file-input" id="image"
+                                                            name="image">
+                                                        <label class="custom-file-label" for="image">Choose
+                                                            file</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> --}}
 
                                     {{-- Hidden User --}}
-                                    <input type="hidden" class="form-control form-control-sm" name="user_id"
-                                        id="user_id" value="{{ Auth::user()->id }}">
+                                    <input type="hidden" class="form-control form-control-sm" name="user_id" id="user_id"
+                                        value="{{ Auth::user()->id }}">
 
                                     <div class="d-grid gap-2 d-md-block">
-                                        <a href="{{ route('barang') }}" class="btn btn-success mr-3" type="button"><i
-                                                class="fa fa-check"> OK</i></a>
-                                        <a href="{{ route('barang.edit', $barang->id) }}" class="btn btn-primary"><i
-                                                class="fa fa-edit"> Edit</i></a>
+                                        <button class="btn btn-primary mr-3" type="submit">SAVE</button>
+                                        <a href="{{ route('barangMasuk') }}" class="btn btn-danger"
+                                            type="button">CANCEL</a>
                                     </div>
                                 </div>
                                 <!-- /.card-body -->
@@ -277,6 +364,31 @@
             });
         });
     </script>
+
+    {{-- <script>
+        $(document).ready(function() {
+            $('#searchVendor').on('keyup', function() {
+                var keyword = $(this).val();
+                if (keyword.length > 2) {
+                    $.ajax({
+                        url: "/vendor/ajax-search",
+                        type: "GET",
+                        data: {
+                            keyword: keyword
+                        },
+                        success: function(data) {
+                            $('#vendorList').empty();
+                            $.each(data, function(index, vendor) {
+                                $('#vendorList').append('<li>' + vendor.name + '</li>');
+                            });
+                        }
+                    });
+                } else {
+                    $('#vendorList').empty();
+                }
+            });
+        });
+    </script> --}}
 
 @endsection
 @endsection

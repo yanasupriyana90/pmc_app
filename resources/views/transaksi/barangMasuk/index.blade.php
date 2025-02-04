@@ -1,8 +1,8 @@
 @extends('admin.panel')
 
-@section('title', 'Master')
+@section('title', 'Transaksi')
 
-@section('subtitle', 'Barang')
+@section('subtitle', 'Barang Masuk')
 
 @section('content')
 
@@ -30,7 +30,7 @@
 
     <div class="card">
         <div class="card-header">
-            <a href="{{ route('barang.create') }}" class="btn btn-primary pull-right" role="button"><i class="fa fa-plus"></i> Add Data</a>
+            <a href="{{ route('barangMasuk.create') }}" class="btn btn-primary pull-right" role="button"><i class="fa fa-plus"></i> Add Data</a>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
@@ -38,22 +38,11 @@
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Image</th>
-                        <th>Kode Barang</th>
-                        <th>Nama</th>
-                        <th>Kategori</th>
-                        <th>Merk</th>
-                        <th>P</th>
-                        <th>L</th>
-                        <th>T</th>
-                        <th>Stock</th>
-                        <th>Min Stock</th>
-                        <th>Satuan</th>
-                        <th>Harga Modal USD</th>
-                        <th>Exchange</th>
-                        <th>Harga Modal IDR</th>
-                        <th>Harga Jual</th>
-                        <th>Desk</th>
+                        <th>Vendor</th>
+                        <th>No Invoice</th>
+                        <th>Tanggal Pembelian</th>
+                        <th>Total Harga</th>
+                        <th>Keterangan</th>
                         <th>Action</th>
                         <th>User</th>
                         <th>Created Date</th>
@@ -61,25 +50,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($barangList as $barang)
+                    @foreach ($barangMasukList as $barangMasuk)
                     <tr>
                         <td class="align-middle" style="text-align: center">{{ $loop->iteration }}</td>
-                        <td><img src="{{ Storage::url('public/images/').$barang->image }}" class="product-image-thumb" style="width:200px" /></td>
-                        <td class="align-middle" style="text-align: center">{{ $barang->kode_barang }}</td>
-                        <td class="align-middle" style="text-align: center">{{ $barang->nama }}</td>
-                        <td class="align-middle" style="text-align: center">{{ $barang->kategoriBarang['name'] }}</td>
-                        <td class="align-middle" style="text-align: center">{{ $barang->merk }}</td>
-                        <td class="align-middle" style="text-align: center">{{ $barang->panjang }}</td>
-                        <td class="align-middle" style="text-align: center">{{ $barang->lebar }}</td>
-                        <td class="align-middle" style="text-align: center">{{ $barang->tinggi }}</td>
-                        <td class="align-middle" style="text-align: center">{{ $barang->stock }}</td>
-                        <td class="align-middle" style="text-align: center">{{ $barang->min_stock }}</td>
-                        <td class="align-middle" style="text-align: center">{{ $barang->satuanBarang['name'] }}</td>
-                        <td class="align-middle dollarBarang" style="text-align: center">{{ $barang->harga_modal_usd }}</td>
-                        <td class="align-middle rupiahBarang" style="text-align: center">{{ $barang->exchange }}</td>
-                        <td class="align-middle rupiahBarang" style="text-align: center">{{ $barang->harga_modal_idr }}</td>
-                        <td class="align-middle rupiahBarang" style="text-align: center">{{ $barang->harga_jual }}</td>
-                        <td class="align-middle" style="text-align: center">{{ $barang->desk }}</td>
+                        <td class="align-middle" style="text-align: center">{{ $barang->vendor['name'] }}</td>
+                        <td class="align-middle" style="text-align: center">{{ $barang->nomor_invoice }}</td>
+                        <td class="align-middle" style="text-align: center">{{ $barang->tanggal_pembelian }}</td>
+                        <td class="align-middle" style="text-align: center">{{ $barang->total_harga }}</td>
+                        <td class="align-middle" style="text-align: center">{{ $barang->keterangan }}</td>
                         <td class="align-middle" style="text-align: center">
                             <a href="{{ route('barang.show', $barang->id) }}" class="btn btn-primary btn-xs"><i class="fa fa-eye"></i> Detail & Edit</a>
                             <a href="{{ route('barang.destroy', $barang->id) }}" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure?')"><i class="fa fa-trash"></i> Delete</a>
