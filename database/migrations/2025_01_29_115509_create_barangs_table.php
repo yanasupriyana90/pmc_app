@@ -25,10 +25,10 @@ return new class extends Migration
             $table->unsignedBigInteger('satuan_barang_id');
             $table->string('desk')->nullable();
             $table->string('image');
-            $table->decimal('harga_modal_usd');
-            $table->decimal('exchange');
-            $table->decimal('harga_modal_idr');
-            $table->decimal('harga_jual');
+            $table->decimal('harga_modal_usd',15 ,2);
+            $table->decimal('exchange',15 ,2);
+            $table->decimal('harga_modal_idr',15 ,2);
+            $table->decimal('harga_jual',15, 2);
             $table->integer('stock')->default(0);
             $table->integer('min_stock')->default(0);
             $table->unsignedBigInteger('user_id');

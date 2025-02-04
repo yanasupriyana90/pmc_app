@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Barang;
 use App\Models\BarangMasuk;
+use App\Models\DetailBarangMasuk;
 use App\Models\Vendor;
+use Faker\Provider\Base;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -45,6 +48,23 @@ class BarangMasukController extends Controller
             ->get();
 
         return $vendors;
+    }
+
+    public function findByBarcode(Request $request)
+    {
+        $product = Barang::where('kode_barang', $request->barcode)->first();
+
+        if ($product) {
+            return response()->json([
+                'success' => true,
+                'product' => $product
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Produk tidak ditemukan'
+            ]);
+        }
     }
 
     /**

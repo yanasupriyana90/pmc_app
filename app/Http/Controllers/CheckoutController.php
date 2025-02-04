@@ -3,26 +3,27 @@
 namespace App\Http\Controllers;
 
 use App\Models\Barang;
-use App\Models\DetailBarangMasuk;
 use Illuminate\Http\Request;
 
-class DetailBarangMasukController extends Controller
+class CheckoutController extends Controller
 {
-    public function findByBarcode(Request $request)
-    {
-        $barang = Barang::where('barcode', $request->kode_barang)->first();
 
-        if ($barang) {
-            return response()->json([
-                'success' => true,
-                'barang' => $barang
-            ]);
-        } else {
-            return response()->json([
-                'success' => false,
-                'message' => 'Produk tidak ditemukan'
-            ]);
+    public function processCheckout(Request $request)
+    {
+        $cart = $request->cart;
+
+        foreach ($cart as $item) {
+            $product = Barang::find($item['id']);
+            if ($product) {
+                $product->stock += $item['qty'];
+                $product->save();
+            }
         }
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Transaksi berhasil!'
+        ]);
     }
 
 
@@ -60,10 +61,10 @@ class DetailBarangMasukController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\DetailBarangMasuk  $detailBarangMasuk
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(DetailBarangMasuk $detailBarangMasuk)
+    public function show($id)
     {
         //
     }
@@ -71,10 +72,10 @@ class DetailBarangMasukController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\DetailBarangMasuk  $detailBarangMasuk
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(DetailBarangMasuk $detailBarangMasuk)
+    public function edit($id)
     {
         //
     }
@@ -83,10 +84,10 @@ class DetailBarangMasukController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\DetailBarangMasuk  $detailBarangMasuk
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, DetailBarangMasuk $detailBarangMasuk)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -94,10 +95,10 @@ class DetailBarangMasukController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\DetailBarangMasuk  $detailBarangMasuk
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(DetailBarangMasuk $detailBarangMasuk)
+    public function destroy($id)
     {
         //
     }

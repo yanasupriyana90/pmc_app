@@ -18,7 +18,10 @@ return new class extends Migration
             $table->foreignId('barang_masuk_id')->constrained('barang_masuks')->onDelete('cascade'); // Relasi ke tabel purchases
             $table->foreignId('barang_id')->constrained('barangs')->onDelete('cascade'); // Relasi ke tabel produk
             $table->integer('qty'); // Jumlah barang yang dibeli
-            $table->decimal('unit_price', 15, 2); // Harga per unit
+            $table->decimal('harga_modal_usd',15 ,2);
+            $table->decimal('exchange',15 ,2);
+            $table->decimal('harga_modal_idr',15 ,2);
+            $table->decimal('harga_jual', 15, 2);
             $table->decimal('subtotal', 15, 2); // Total harga produk (quantity * unit_price)
             $table->timestamps();
         });
@@ -34,7 +37,6 @@ return new class extends Migration
         Schema::table('detail_barang_masuks', function (Blueprint $table) {
             $table->dropForeign(['barang_masuk_id']);
             $table->dropForeign(['barang_id']);
-            $table->dropForeign(['user_id']);
         });
 
         Schema::dropIfExists('detail_barang_masuks');

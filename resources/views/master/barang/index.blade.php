@@ -75,10 +75,10 @@
                         <td class="align-middle" style="text-align: center">{{ $barang->stock }}</td>
                         <td class="align-middle" style="text-align: center">{{ $barang->min_stock }}</td>
                         <td class="align-middle" style="text-align: center">{{ $barang->satuanBarang['name'] }}</td>
-                        <td class="align-middle dollarBarang" style="text-align: center">{{ $barang->harga_modal_usd }}</td>
-                        <td class="align-middle rupiahBarang" style="text-align: center">{{ $barang->exchange }}</td>
-                        <td class="align-middle rupiahBarang" style="text-align: center">{{ $barang->harga_modal_idr }}</td>
-                        <td class="align-middle rupiahBarang" style="text-align: center">{{ $barang->harga_jual }}</td>
+                        <td class="align-middle dollarBarang" style="text-align: center">{{"$ " . number_format($barang->harga_modal_usd, 2, '.', ',') }}</td>
+                        <td class="align-middle rupiahBarang" style="text-align: center">{{"Rp " . number_format($barang->exchange, 2, '.', ',') }}</td>
+                        <td class="align-middle rupiahBarang" style="text-align: center">{{"Rp " . number_format($barang->harga_modal_idr, 2, '.', ',') }}</td>
+                        <td class="align-middle rupiahBarang" style="text-align: center">{{"Rp " . number_format($barang->harga_jual, 2, '.', ',') }}</td>
                         <td class="align-middle" style="text-align: center">{{ $barang->desk }}</td>
                         <td class="align-middle" style="text-align: center">
                             <a href="{{ route('barang.show', $barang->id) }}" class="btn btn-primary btn-xs"><i class="fa fa-eye"></i> Detail & Edit</a>
@@ -115,49 +115,6 @@
         });
     </script>
 
-    <script>
-        $(document).ready(function() {
-            // Terapkan Inputmask ke input dengan kelas "rupiah"
-            $(".rupiahBarang").inputmask({
-                alias: 'currency',
-                prefix: 'Rp ', // You can set the currency symbol here, e.g., '$'
-                suffix: '', // You can set a suffix here, e.g., ' USD'
-                groupSeparator: '.', // Set the group separator, e.g., for thousands
-                // radixPoint: ',',  // Set the group separator, e.g., for thousands
-                digits: 2, // Set the number of decimal digits
-                autoGroup: true, // Automatically groups thousands
-                rightAlign: false, // Align the currency symbol to the left
-                removeMaskOnSubmit: true,
-            });
-
-            $(".dollarBarang").inputmask({
-                alias: 'currency',
-                prefix: '$ ', // You can set the currency symbol here, e.g., '$'
-                suffix: '', // You can set a suffix here, e.g., ' USD'
-                groupSeparator: '.', // Set the group separator, e.g., for thousands
-                // radixPoint: ',',  // Set the group separator, e.g., for thousands
-                digits: 2, // Set the number of decimal digits
-                autoGroup: true, // Automatically groups thousands
-                rightAlign: false, // Align the currency symbol to the left
-                removeMaskOnSubmit: true,
-            });
-
-            // Fungsi untuk menghitung total harga
-            function hitungTotal() {
-                let harga_modal_usd = $("#harga_modal_usd").inputmask('unmaskedvalue') || 0;
-                let exchange = $("#exchange").inputmask('unmaskedvalue') || 0;
-                let harga_modal_idr = harga_modal_usd * exchange;
-
-                // Format kembali total ke dalam format rupiah
-                $("#harga_modal_idr").val(harga_modal_idr).inputmask("setvalue", harga_modal_idr);
-            }
-
-            // Event listener untuk perhitungan otomatis
-            $("#harga_modal_usd, #exchange").on("input", function() {
-                hitungTotal();
-            });
-        });
-    </script>
 
 @endsection
 @endsection

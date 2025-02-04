@@ -20,8 +20,10 @@ use App\Http\Controllers\UndernameMBLController;
 use App\Http\Controllers\UndernameHBLController;
 use App\Http\Controllers\CategoryBuySellController;
 use App\Http\Controllers\ChartOfAccountHead1Controller;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ContSealDetailController;
 use App\Http\Controllers\DailySalesReportController;
+use App\Http\Controllers\DetailBarangMasukController;
 use App\Http\Controllers\KategoriBarangController;
 use App\Http\Controllers\PettyCashController;
 use App\Http\Controllers\SatuanBarangController;
@@ -400,5 +402,7 @@ Route::middleware('auth')->group(function () {
         Route::put('/barangMasukUpdate/{id}', 'update')->name(('barangMasuk.update'));
         Route::get('/barangMasukDestroy/{id}', 'destroy')->name('barangMasuk.destroy');
         Route::get('/barangMasukCreate/get-vendors/{nameVendor}', 'getVendors');
+        Route::post('/find-product', [BarangMasukController::class, 'findByBarcode']);
+        // Route::post('/checkout', [BarangMasukController::class, 'checkout']);
     });
 });

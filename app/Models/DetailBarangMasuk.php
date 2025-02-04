@@ -13,7 +13,10 @@ class DetailBarangMasuk extends Model
         'barang_masuk_id',
         'barang_id',
         'qty',
-        'unit_price',
+        'harga_modal_usd',
+        'exchange',
+        'harga_modal_idr',
+        'harga_jual',
         'subtotal',
     ];
 

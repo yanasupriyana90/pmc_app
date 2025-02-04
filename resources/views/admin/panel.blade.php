@@ -38,6 +38,8 @@
     <!-- Notification -->
     <link rel="stylesheet" href="{{ asset('lte') }}/plugins/toastr/toastr.css">
 
+    {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
+
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
