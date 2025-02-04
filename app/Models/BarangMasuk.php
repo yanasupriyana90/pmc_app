@@ -24,6 +24,11 @@ class BarangMasuk extends Model
         return $this->belongsTo(Vendor::class);
     }
 
+    public function detailBarangMasuk()
+    {
+        return $this->hasMany(DetailBarangMasuk::class);
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
